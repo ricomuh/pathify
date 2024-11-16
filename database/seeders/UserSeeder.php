@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\RoleEnum;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,20 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        // make roles
+        $roles = collect([
+            'Admin',
+            'Mentor',
+            'User'
+        ]);
+
+        $roles->each(function ($role) {
+            Role::create([
+                'name' => $role,
+            ]);
+        });
+
+
         // make admin
         User::factory()->create([
             // 'name' => 'Admin',
@@ -21,17 +36,15 @@ class UserSeeder extends Seeder
             'role_id' => RoleEnum::Admin,
         ]);
 
-        // make mentor
-        User::factory()->create([
+        // make mentors
+        User::factory(3)->create([
             // 'name' => 'Mentor',
-            'email' => 'mentor@example.com',
             'role_id' => RoleEnum::Mentor,
         ]);
 
-        // make user
-        User::factory()->create([
+        // make users
+        User::factory(10)->create([
             // 'name' => 'User',
-            'email' => 'user@example.com',
             'role_id' => RoleEnum::User,
         ]);
     }

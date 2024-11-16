@@ -17,7 +17,7 @@ class CourseCommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'content' => $this->faker->paragraph(),
+            'body' => $this->faker->paragraph(),
         ];
     }
 }
