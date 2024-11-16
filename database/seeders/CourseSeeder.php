@@ -41,6 +41,7 @@ class CourseSeeder extends Seeder
             // attach mentor
             $mentor = $mentors->random();
             $course->mentor_id = $mentor->id;
+            $course->save();
 
             // attach users
             $attendingUsers = $users->random(rand(1, 5));
