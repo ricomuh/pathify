@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Course;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +15,8 @@ return new class extends Migration
     {
         Schema::create('course_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('icon_image')->nullable();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('color')->nullable();
-            $table->foreignId('parent_id')->nullable()->constrained('course_categories');
+            $table->foreignIdFor(Course::class, 'course_id')->constrained();
+            $table->foreignIdFor(Category::class, 'category_id')->constrained();
         });
     }
 
