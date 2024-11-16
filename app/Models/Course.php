@@ -51,4 +51,16 @@ class Course extends Model
     {
         return $this->status ? $this->status->name : null;
     }
+
+    // categories
+    public function categories()
+    {
+        return $this->belongsToMany(CourseCategory::class, 'course_categories', 'course_id', 'category_id');
+    }
+
+    // contents
+    public function contents()
+    {
+        return $this->hasMany(CourseContent::class);
+    }
 }
