@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -44,5 +47,53 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the role that the user belongs to.
+     */
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * Get the role name attribute.
+     */
+    public function getRoleNameAttribute(): string
+    {
+        return $this->role->name;
+    }
+
+    /**
+     * Determine if the user is an admin.
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role_id === RoleEnum::Admin;
+    }
+
+    /**
+     * Determine if the user is a mentor.
+     */
+    public function isMentor(): bool
+    {
+        return $this->role_id === RoleEnum::Mentor;
+    }
+
+    /**
+     * Determine if the user is a user.
+     */
+    public function isUser(): bool
+    {
+        return $this->role_id === RoleEnum::User;
+    }
+
+    /**
+     * Check if the user has a role.
+     */
+    public function hasRole(int $role): bool
+    {
+        return $this->role_id === $role;
     }
 }
