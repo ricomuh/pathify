@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['mentor_id', 'thumbnail', 'title', 'slug', 'description'];
+    protected $fillable = ['mentor_id', 'status_id', 'thumbnail', 'title', 'slug', 'description'];
 
     // auto generate uuid and slug
     protected static function boot()
@@ -36,6 +36,16 @@ class Course extends Model
 
     public function mentor()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'mentor_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(CourseStatus::class, 'status_id');
+    }
+
+    public function getStatusAttribute()
+    {
+        return $this->status ? $this->status->name : null;
     }
 }
