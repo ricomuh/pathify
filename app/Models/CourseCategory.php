@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ClassCategory extends Model
+class CourseCategory extends Model
 {
     protected $fillable = ['icon_image', 'name', 'slug', 'color', 'parent_id'];
 
@@ -54,11 +54,11 @@ class ClassCategory extends Model
 
     public function parent()
     {
-        return $this->belongsTo(ClassCategory::class, 'parent_id');
+        return $this->belongsTo(CourseCategory::class, 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany(ClassCategory::class, 'parent_id');
+        return $this->hasMany(CourseCategory::class, 'parent_id');
     }
 }
