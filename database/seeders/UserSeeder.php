@@ -16,21 +16,21 @@ class UserSeeder extends Seeder
     {
         // make admin
         User::factory()->create([
-            'name' => 'Admin',
+            // 'name' => 'Admin',
             'email' => 'admin@example.com',
             'role_id' => RoleEnum::Admin,
         ]);
 
         // make mentor
         User::factory()->create([
-            'name' => 'Mentor',
+            // 'name' => 'Mentor',
             'email' => 'mentor@example.com',
             'role_id' => RoleEnum::Mentor,
         ]);
 
         // make user
         User::factory()->create([
-            'name' => 'User',
+            // 'name' => 'User',
             'email' => 'user@example.com',
             'role_id' => RoleEnum::User,
         ]);

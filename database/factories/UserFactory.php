@@ -16,6 +16,9 @@ class UserFactory extends Factory
      */
     protected static ?string $password;
 
+    // name
+    protected static ?string $name;
+
     /**
      * Define the model's default state.
      *
@@ -23,8 +26,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name();
+        // $name = static::$name ??= fake()->name();
         return [
-            'name' => fake()->name(),
+            // 'fullname' => fake()->name(),
+            'fullname' => $name,
+            'username' => str($name)->lower()->slug(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
@@ -37,7 +44,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

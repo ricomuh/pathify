@@ -20,7 +20,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'id',
+        'fullname',
+        'username',
         'email',
         'password',
         'role_id',
@@ -47,6 +49,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // auto generate uuid when creating a new user
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->id = str()->uuid();
+        });
     }
 
     /**
