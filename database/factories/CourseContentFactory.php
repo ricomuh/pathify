@@ -17,7 +17,11 @@ class CourseContentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            // the body field is a HTML content
+            'body' => '<p>' . implode('</p><p>', $this->faker->paragraphs(5)) . '</p>',
+            'view_count' => $this->faker->numberBetween(0, 1000),
         ];
     }
 }
