@@ -33,11 +33,8 @@ class UserCourse extends Model
         // get total episode
         $totalEpisode = $this->course->contents->count();
 
-        // get progress
-        $progress = $this->progress;
-
         // calculate percentage
-        $percentage = ($progress / $totalEpisode) * 100;
+        $percentage = ($this->progress / $totalEpisode) * 100;
 
         return $percentage;
     }
