@@ -31,4 +31,24 @@ class CourseComment extends Model
     {
         return $this->belongsTo(CourseComment::class, 'parent_id');
     }
+
+    public function children()
+    {
+        return $this->hasMany(CourseComment::class, 'parent_id');
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(CourseCommentVote::class);
+    }
+
+    public function upvotes()
+    {
+        return $this->votes()->upvote();
+    }
+
+    public function downvotes()
+    {
+        return $this->votes()->downvote();
+    }
 }
