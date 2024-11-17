@@ -61,6 +61,19 @@ class User extends Authenticatable
         static::creating(function ($model) {
             $model->id = str()->uuid();
 
+            // auto generate image by initials
+            // $model->profile_picture = 'https://ui-avatars.com/api/?name=' . urlencode($model->fullname) . '&color=7F9CF5&background=EBF4FF';
+
+            // get the picture and save it to the storage
+            $picture = 'https://ui-avatars.com/api/?name=' . urlencode($model->fullname) . '&color=7F9CF5&background=EBF4FF';
+
+            $filename = 'profiles/' . $model->id . '.jpg';
+            $path = storage_path('app/public/images/' . $filename);
+
+            file_put_contents($path, file_get_contents($picture));
+
+            $model->profile_picture = asset('storage/images/' . $filename);
+
             if (!$model->username || empty($model->username)) {
 
                 $found = true;
