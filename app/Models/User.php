@@ -60,19 +60,15 @@ class User extends Authenticatable
         static::creating(function ($model) {
             $model->id = str()->uuid();
 
-            if (!$model->username) {
+            if (!$model->username || empty($model->username)) {
 
-                $found = false;
+                $found = true;
+                $username = str($model->fullname)->lower()->slug('_');
 
-                while (!$found) {
-                    $username = str($model->fullname)->slug('_');
-
-                    $user = User::where('username', $username)->first();
-
-                    if ($user) {
-                        $username = str($username . '_' . str()->random(5))->slug('_');
-                    } else {
-                        $found = true;
+                while ($found) {
+                    $found = User::where('username', $username)->exists();
+                    if ($found) {
+                        $username = $username . '_' . str()->random(3);
                     }
                 }
 
