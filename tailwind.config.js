@@ -12,6 +12,7 @@ export default {
 
     theme: {
         colors: {
+            white: "#FFFFFF",
             primary: {
                 DEFAULT: "#4696E6",
                 surface: "#DAEAFA",

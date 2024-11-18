@@ -1,21 +1,40 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+import InputError from "@/Components/InputError.vue";
+import InputLabel from "@/Components/InputLabel.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import TextInput from "@/Components/TextInput.vue";
+import { Head, Link, useForm } from "@inertiajs/vue3";
+import eyeIcon from "../../../images/icons/eye.svg";
+import eyeCloseIcon from "../../../images/icons/eye-close.svg";
 
+import { ref } from "vue";
+
+// data form
 const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
 });
 
+// show confirmation password
+const showConfirmPassword = ref(false);
+
+const togglePasswordConfirmationVisibility = () => {
+    showConfirmPassword.value = !showConfirmPassword.value;
+};
+
+// show password
+const showPassword = ref(false);
+
+const togglePasswordVisibility = () => {
+    showPassword.value = !showPassword.value;
+};
+
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+    form.post(route("register"), {
+        onFinish: () => form.reset("password", "password_confirmation"),
     });
 };
 </script>
@@ -24,9 +43,17 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
+        <div class="mb-12">
+            <h1 class="text-5xl font-bold mb-1">Selamat Bergabung</h1>
+            <p class="text-neutral-70 text-xl">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </div>
+
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Nama" />
 
                 <TextInput
                     id="name"
@@ -36,6 +63,7 @@ const submit = () => {
                     required
                     autofocus
                     autocomplete="name"
+                    placeholder="Masukkan nama Anda"
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />
@@ -51,22 +79,36 @@ const submit = () => {
                     v-model="form.email"
                     required
                     autocomplete="username"
+                    placeholder="Masukkan email Anda"
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Kata Sandi" />
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
+                <div class="relative">
+                    <TextInput
+                        id="password"
+                        :type="showPassword ? 'text' : 'password'"
+                        class="mt-1 block w-full"
+                        v-model="form.password"
+                        required
+                        autocomplete="new-password"
+                        placeholder="******************"
+                    />
+                    <button
+                        type="button"
+                        @click="togglePasswordVisibility"
+                        class="absolute right-4 top-1/2 -translate-y-1/2"
+                    >
+                        <img
+                            :src="showPassword ? eyeIcon : eyeCloseIcon"
+                            alt="Toggle Password Visibility"
+                        />
+                    </button>
+                </div>
 
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
@@ -74,17 +116,30 @@ const submit = () => {
             <div class="mt-4">
                 <InputLabel
                     for="password_confirmation"
-                    value="Confirm Password"
+                    value="Konfirmasi Kata Sandi"
                 />
 
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
+                <div class="relative">
+                    <TextInput
+                        id="password_confirmation"
+                        :type="showConfirmPassword ? 'text' : 'password'"
+                        class="mt-1 block w-full"
+                        v-model="form.password_confirmation"
+                        required
+                        autocomplete="new-password"
+                        placeholder="******************"
+                    />
+                    <button
+                        type="button"
+                        @click="togglePasswordConfirmationVisibility"
+                        class="absolute right-4 top-1/2 -translate-y-1/2"
+                    >
+                        <img
+                            :src="showConfirmPassword ? eyeIcon : eyeCloseIcon"
+                            alt="Toggle Password Visibility"
+                        />
+                    </button>
+                </div>
 
                 <InputError
                     class="mt-2"
@@ -92,22 +147,23 @@ const submit = () => {
                 />
             </div>
 
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Already registered?
-                </Link>
-
+            <div class="mt-12 flex items-center justify-end">
                 <PrimaryButton
-                    class="ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Register
+                    Buat Akun
                 </PrimaryButton>
             </div>
         </form>
+        <div class="mt-3 flex justify-center gap-3 items-center">
+            <span class="text-neutral-80">Sudah punya akun?</span>
+            <Link
+                :href="route('login')"
+                class="text-primary font-bold underline"
+            >
+                Masuk di sini!
+            </Link>
+        </div>
     </GuestLayout>
 </template>
