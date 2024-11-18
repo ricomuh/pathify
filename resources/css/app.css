@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 * {
-    font-family: "Gabarito", sans-serif !important;
+    @apply font-gabarito text-neutral-100;
 }

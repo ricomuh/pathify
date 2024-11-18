@@ -18,11 +18,11 @@ import { Link } from "@inertiajs/vue3";
                     />
                 </Link>
             </div>
-            <div class="pt-12 pb-56 px-[6.25rem] bg-neutral-10">
+            <div class="pt-12 pb-72 px-[6.25rem] bg-neutral-10">
                 <slot />
             </div>
             <div class="bg-primary-surface py-6 px-12 text-center">
-                <p class="text-neutral-90">
+                <p class="text-neutral-90 text-2xl">
                     &copy; {{ new Date().getFullYear() }} Phatify
                 </p>
             </div>
