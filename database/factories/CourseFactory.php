@@ -17,10 +17,11 @@ class CourseFactory extends Factory
      */
     public function definition(): array
     {
+        $title = $this->faker->sentence();
         return [
             'status_id' => CourseStatusEnum::Published,
             'thumbnail' => $this->faker->imageUrl(),
-            'title' => $this->faker->sentence(),
+            'title' => $title,
             'description' => $this->faker->paragraph(),
         ];
     }

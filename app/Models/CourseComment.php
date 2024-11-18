@@ -51,4 +51,11 @@ class CourseComment extends Model
     {
         return $this->votes()->downvote();
     }
+
+    public function scopeVoted($query, $userId)
+    {
+        return $query->whereHas('votes', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        });
+    }
 }

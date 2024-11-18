@@ -27,4 +27,9 @@ class CourseCommentVote extends Model
     {
         return $this->belongsTo(CourseComment::class);
     }
+
+    public function scopeVoted($query, $userId)
+    {
+        return $query->where('user_id', $userId);
+    }
 }
