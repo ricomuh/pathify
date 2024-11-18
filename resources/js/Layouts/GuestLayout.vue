@@ -4,25 +4,27 @@ import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <div class="grid grid-cols-2 h-screen overflow-hidden">
+    <div class="grid lg:grid-cols-2 h-screen overflow-hidden">
         <img
             src="../../images/banner.png"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover hidden lg:block"
             alt=""
         />
         <div class="col overflow-y-auto h-screen">
-            <div class="bg-primary-surface px-12 py-6">
+            <div class="bg-primary-surface px-8 md:px-12 py-6">
                 <Link href="/">
                     <ApplicationLogo
-                        class="h-20 w-auto fill-current text-gray-500"
+                        class="h-12 md:h-16 xl:h-20 w-auto fill-current text-gray-500"
                     />
                 </Link>
             </div>
-            <div class="pt-12 pb-72 px-[6.25rem] bg-neutral-10">
+            <div
+                class="min-h-[88vh] pt-12 pb-32 xl:pb-56 px-6 md:px-[6.25rem] lg:px-8 xl:px-[6.25rem] bg-neutral-10 flex flex-col justify-center xl:block"
+            >
                 <slot />
             </div>
             <div class="bg-primary-surface py-6 px-12 text-center">
-                <p class="text-neutral-90 text-2xl">
+                <p class="text-neutral-90 md:text-lg lg:text-xl xl:text-2xl">
                     &copy; {{ new Date().getFullYear() }} Phatify
                 </p>
             </div>

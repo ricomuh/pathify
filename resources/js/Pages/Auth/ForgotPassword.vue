@@ -4,6 +4,7 @@ import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
+import TitleAuth from "@/Components/TitleAuth.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 
 defineProps({
@@ -25,13 +26,11 @@ const submit = () => {
     <GuestLayout>
         <Head title="Lupa Kata Sandi" />
 
-        <div class="mb-12">
-            <h1 class="text-5xl font-bold mb-1">Pulihkan akun Anda</h1>
-            <p class="text-neutral-70 text-xl">
-                Silahkan isikan alamat email Anda, dan link untuk reset kata
-                sandi akan muncul di sana
-            </p>
-        </div>
+        <TitleAuth
+            title="Pulihkan akun Anda"
+            subtitle=" Silahkan isikan alamat email Anda, dan link untuk reset kata
+                sandi akan muncul di sana"
+        />
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}

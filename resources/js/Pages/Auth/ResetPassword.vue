@@ -3,6 +3,7 @@ import GuestLayout from "@/Layouts/GuestLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import TitleAuth from "@/Components/TitleAuth.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/vue3";
 import eyeIcon from "../../../images/icons/eye.svg";
@@ -50,12 +51,10 @@ const submit = () => {
     <GuestLayout>
         <Head title="Ubah Kata Sandi" />
 
-        <div class="mb-12">
-            <h1 class="text-5xl font-bold mb-1">Buat Kata Sandi Baru</h1>
-            <p class="text-neutral-70 text-xl">
-                Silahkan buat kata sandi baru untuk masuk ke akun Anda
-            </p>
-        </div>
+        <TitleAuth
+            title="Buat Kata Sandi Baru"
+            subtitle=" Silahkan buat kata sandi baru untuk masuk ke akun Anda"
+        />
 
         <form @submit.prevent="submit">
             <div>

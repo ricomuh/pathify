@@ -3,6 +3,7 @@ import GuestLayout from "@/Layouts/GuestLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import TitleAuth from "@/Components/TitleAuth.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 import eyeIcon from "../../../images/icons/eye.svg";
@@ -45,16 +46,14 @@ const submit = () => {
     <GuestLayout>
         <Head title="Daftar" />
 
-        <div class="mb-12">
-            <h1 class="text-5xl font-bold mb-1">Selamat Bergabung</h1>
-            <p class="text-neutral-70 text-xl">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-        </div>
+        <TitleAuth
+            title="Selamat Bergabung"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        />
 
         <form @submit.prevent="submit">
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid md:grid-cols-2 gap-3">
                 <div>
                     <InputLabel for="firstName" value="Nama Depan" />
                     <TextInput
