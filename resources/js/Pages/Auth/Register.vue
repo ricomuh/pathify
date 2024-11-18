@@ -7,32 +7,34 @@ import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 import eyeIcon from "../../../images/icons/eye.svg";
 import eyeCloseIcon from "../../../images/icons/eye-close.svg";
-
 import { ref } from "vue";
 
 // data form
 const form = useForm({
-    name: "",
+    firstName: "",
+    lastName: "",
+    fullname: "",
     email: "",
     password: "",
     password_confirmation: "",
+    username: "",
 });
 
 // show confirmation password
 const showConfirmPassword = ref(false);
-
 const togglePasswordConfirmationVisibility = () => {
     showConfirmPassword.value = !showConfirmPassword.value;
 };
 
 // show password
 const showPassword = ref(false);
-
 const togglePasswordVisibility = () => {
     showPassword.value = !showPassword.value;
 };
 
 const submit = () => {
+    form.fullname = `${form.firstName} ${form.lastName}`.trim();
+
     form.post(route("register"), {
         onFinish: () => form.reset("password", "password_confirmation"),
     });
@@ -41,7 +43,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Register" />
+        <Head title="Daftar" />
 
         <div class="mb-12">
             <h1 class="text-5xl font-bold mb-1">Selamat Bergabung</h1>
@@ -52,21 +54,34 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Nama" />
-
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                    placeholder="Masukkan nama Anda"
-                />
-
-                <InputError class="mt-2" :message="form.errors.name" />
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <InputLabel for="firstName" value="Nama Depan" />
+                    <TextInput
+                        id="firstName"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.firstName"
+                        required
+                        autofocus
+                        autocomplete="given-name"
+                        placeholder="Masukkan nama depan"
+                    />
+                    <InputError class="mt-2" :message="form.errors.firstName" />
+                </div>
+                <div>
+                    <InputLabel for="lastName" value="Nama Belakang" />
+                    <TextInput
+                        id="lastName"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.lastName"
+                        required
+                        autocomplete="family-name"
+                        placeholder="Masukkan nama belakang"
+                    />
+                    <InputError class="mt-2" :message="form.errors.lastName" />
+                </div>
             </div>
 
             <div class="mt-4">
@@ -78,8 +93,23 @@ const submit = () => {
                     class="mt-1 block w-full"
                     v-model="form.email"
                     required
-                    autocomplete="username"
+                    autocomplete="email"
                     placeholder="Masukkan email Anda"
+                />
+
+                <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+            <div class="mt-4">
+                <InputLabel for="username" value="Username" />
+
+                <TextInput
+                    id="username"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.username"
+                    required
+                    autocomplete="username"
+                    placeholder="Masukkan username Anda"
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />

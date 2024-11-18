@@ -64,7 +64,7 @@ const togglePasswordVisibility = () => {
                     v-model="form.email"
                     required
                     autofocus
-                    placeholder="Masukkan email"
+                    placeholder="Masukkan email Anda"
                     autocomplete="username"
                 />
 

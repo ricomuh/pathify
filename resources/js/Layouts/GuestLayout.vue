@@ -18,7 +18,7 @@ import { Link } from "@inertiajs/vue3";
                     />
                 </Link>
             </div>
-            <div class="pt-12 pb-56 px-[6.25rem]">
+            <div class="pt-12 pb-56 px-[6.25rem] bg-neutral-10">
                 <slot />
             </div>
             <div class="bg-primary-surface py-6 px-12 text-center">
