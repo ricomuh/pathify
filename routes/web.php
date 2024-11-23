@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CourseController;
+use App\Http\Controllers\User\AboutController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/courses', [App\Http\Controllers\User\CourseController::class, 'index'])->name('courses.index');
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
 require __DIR__ . '/auth.php';

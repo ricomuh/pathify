@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CourseController extends Controller
 {
@@ -29,16 +30,13 @@ class CourseController extends Controller
                         ]);
                         // and check if user has voted
                         // call scopeVoted from CourseComment model
-
-
                     }
                 ]);
             }
         ]);
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $courses->get()
+        return Inertia::render('Course/ListCourse', [
+            'courses' => $courses
         ]);
     }
 }
