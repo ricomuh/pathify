@@ -11,6 +11,10 @@ export default {
     ],
 
     theme: {
+        container: {
+            center: true,
+            padding: "3rem",
+        },
         colors: {
             white: "#FFFFFF",
             primary: {

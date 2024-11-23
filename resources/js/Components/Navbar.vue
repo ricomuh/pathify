@@ -15,7 +15,7 @@ const showingNavigationDropdown = ref(false);
         <nav class="fixed shadow top-0 w-full bg-white">
             <!-- Primary Navigation Menu -->
             <div
-                class="relative mx-auto flex items-center justify-between px-12 py-2"
+                class="container relative mx-auto flex items-center justify-between px-12 py-2"
             >
                 <!-- Logo -->
                 <Link :href="route('dashboard')">

@@ -1,5 +1,4 @@
 <script setup>
-import Checkbox from "@/Components/Checkbox.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
@@ -79,7 +78,7 @@ const togglePasswordVisibility = () => {
                         class="mt-1 block w-full"
                         v-model="form.password"
                         required
-                        autocomplete="current-password"
+                        autocomplete
                         placeholder="******************"
                     />
                     <button

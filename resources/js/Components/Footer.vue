@@ -50,7 +50,7 @@ const sections = ref([
 <template>
     <footer class="bg-neutral-100">
         <div class="container py-12">
-            <div class="flex justify-between px-12">
+            <div class="flex justify-between">
                 <ApplicationLogo
                     class="h-16 w-auto fill-current text-gray-500"
                 />
