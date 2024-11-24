@@ -11,9 +11,23 @@ export default {
     ],
 
     theme: {
-        container: {
-            center: true,
-            padding: "3rem",
+        extend: {
+            container: {
+                center: true,
+                padding: {
+                    DEFAULT: "1rem",
+                    md: "1.5rem",
+                    lg: "2rem",
+                    "2xl": "3rem",
+                },
+                screens: {
+                    sm: "100%",
+                    md: "100%",
+                    lg: "1120px",
+                    xl: "1280px",
+                    "2xl": "1440px",
+                },
+            },
         },
         colors: {
             white: "#FFFFFF",
@@ -46,10 +60,8 @@ export default {
                 100: "#171A1B",
             },
         },
-        extend: {
-            fontFamily: {
-                gabarito: ["Gabarito", "sans-serif"],
-            },
+        fontFamily: {
+            gabarito: ["Gabarito", "sans-serif"],
         },
     },
 

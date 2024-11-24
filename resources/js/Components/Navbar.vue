@@ -12,10 +12,10 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <nav class="fixed shadow top-0 w-full bg-white">
+        <nav class="fixed shadow top-0 w-full bg-neutral-10 z-50">
             <!-- Primary Navigation Menu -->
             <div
-                class="container relative mx-auto flex items-center justify-between px-12 py-2"
+                class="container relative flex items-center justify-between py-2"
             >
                 <!-- Logo -->
                 <Link :href="route('dashboard')">
@@ -49,32 +49,54 @@ const showingNavigationDropdown = ref(false);
                 <div class="flex h-16 justify-center">
                     <div class="flex"></div>
 
-                    <div class="hidden sm:ms-6 sm:flex sm:items-center">
+                    <div class="hidden sm:ms-6 gap-4 sm:flex sm:items-center">
                         <!-- Settings Dropdown -->
-                        <div class="relative ms-3">
+                        <div class="relative">
                             <Dropdown align="right" width="48">
                                 <template #trigger>
-                                    <span class="inline-flex rounded-md">
+                                    <div class="inline-flex">
                                         <button
                                             type="button"
-                                            class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
+                                            class="size-10 border-[3px] border-primary-surface bg-primary-surface rounded-xl flex items-center justify-center"
                                         >
-                                            {{ $page.props.auth.user.name }}
-
-                                            <svg
-                                                class="-me-0.5 ms-2 h-4 w-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fill-rule="evenodd"
-                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"
-                                                />
-                                            </svg>
+                                            <img
+                                                src="../../images/icons/notification.svg"
+                                                alt=""
+                                                class="h-full w-full p-1.5 object-cover"
+                                            />
                                         </button>
-                                    </span>
+                                    </div>
+                                </template>
+
+                                <template #content>
+                                    <div class="py-3 px-4">
+                                        <h1
+                                            class="text-lg font-bold text-neutral-100"
+                                        >
+                                            Notifikasi
+                                        </h1>
+                                        <p
+                                            class="text-neutral-80 text-center text-sm mt-2"
+                                        >
+                                            Tidak ada notifikasi
+                                        </p>
+                                    </div>
+                                </template>
+                            </Dropdown>
+                        </div>
+                        <div class="relative">
+                            <Dropdown align="right" width="48">
+                                <template #trigger>
+                                    <button
+                                        type="button"
+                                        class="size-10 rounded-xl border-[3px] border-primary-border overflow-hidden"
+                                    >
+                                        <img
+                                            src="../../images/banner.png"
+                                            alt=""
+                                            class="h-full w-full object-cover"
+                                        />
+                                    </button>
                                 </template>
 
                                 <template #content>

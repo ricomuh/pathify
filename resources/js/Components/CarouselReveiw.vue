@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 // Dummy data untuk carousel
 const props = defineProps({
@@ -11,28 +11,29 @@ const props = defineProps({
 
 // Ref untuk posisi scroll
 const carouselRef = ref(null);
+let autoScrollInterval = null;
 
-const startCarousel = () => {
+const startAutoScroll = () => {
     if (carouselRef.value) {
-        let scrollAmount = 0;
-        const scrollStep = 1;
-        const interval = setInterval(() => {
-            carouselRef.value.scrollLeft += scrollStep;
-            scrollAmount += scrollStep;
+        autoScrollInterval = setInterval(() => {
+            carouselRef.value.scrollLeft += 1;
+        }, 16); // Smooth scrolling interval
+    }
+};
 
-            if (
-                scrollAmount >=
-                carouselRef.value.scrollWidth - carouselRef.value.clientWidth
-            ) {
-                scrollAmount = 0;
-                carouselRef.value.scrollLeft = 0;
-            }
-        }, 10);
+const stopAutoScroll = () => {
+    if (autoScrollInterval) {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = null;
     }
 };
 
 onMounted(() => {
-    startCarousel();
+    startAutoScroll();
+});
+
+onBeforeUnmount(() => {
+    stopAutoScroll();
 });
 </script>
 
