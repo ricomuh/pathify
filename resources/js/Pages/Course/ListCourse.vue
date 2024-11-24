@@ -11,10 +11,17 @@ import DevOpsIcon from "../../../images/icons/devops.svg";
 import GameIcon from "../../../images/icons/game.svg";
 import DataIcon from "../../../images/banner.png";
 import BoxCourse from "@/Components/BoxCourse.vue";
+import { router } from "@inertiajs/vue3";
 
 import { ref } from "vue";
 
+// search function
 const search = ref("");
+const handleSearch = () => {
+    if (search.value.trim() !== "") {
+        router.get("/courses/search", { query: search.value });
+    }
+};
 
 // dummy data
 const courses = [
@@ -114,6 +121,7 @@ const courses = [
                             v-model="search"
                         />
                         <button
+                            @click="handleSearch"
                             class="bg-primary text-white text-xl border-b-4 border-primary-hover px-6 py-3 rounded-xl"
                         >
                             Cari

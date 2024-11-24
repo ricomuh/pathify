@@ -35,7 +35,7 @@ const showingNavigationDropdown = ref(false);
                     </NavLink>
                     <NavLink
                         :href="route('courses.index')"
-                        :active="route().current('courses.index')"
+                        :active="route().current('courses.*')"
                     >
                         Kelas
                     </NavLink>

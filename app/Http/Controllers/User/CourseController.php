@@ -28,8 +28,6 @@ class CourseController extends Controller
                                 $query->where('is_upvote', false);
                             }
                         ]);
-                        // and check if user has voted
-                        // call scopeVoted from CourseComment model
                     }
                 ]);
             }
@@ -38,5 +36,46 @@ class CourseController extends Controller
         return Inertia::render('Course/ListCourse', [
             'courses' => $courses
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('query', '');
+
+        $courses = Course::with([
+            'mentor',
+            'status',
+            'categories',
+            'contents' => function ($query) {
+                $query->latest();
+                $query->with([
+                    'comments' => function ($query) {
+                        $query->withCount([
+                            'upvotes as upvotes' => function ($query) {
+                                $query->where('is_upvote', true);
+                            },
+                            'downvotes as downvotes' => function ($query) {
+                                $query->where('is_upvote', false);
+                            }
+                        ]);
+                    }
+                ]);
+            }
+        ])
+        ->where('name', 'like', '%' . $query . '%')
+        ->orWhereHas('categories', function ($q) use ($query) {
+            $q->where('name', 'like', '%' . $query . '%');
+        })
+        ->get();
+
+        return Inertia::render('Course/SearchCourse', [
+            'query' => $query,
+            'courses' => $courses,
+        ]);
+    }
+
+    public function show($id)
+    {
+        return Inertia::render('Course/DetailCourse');
     }
 }
