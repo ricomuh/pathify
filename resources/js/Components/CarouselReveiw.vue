@@ -1,0 +1,96 @@
+<script setup>
+import { ref, onMounted } from "vue";
+
+// Dummy data untuk carousel
+const props = defineProps({
+    testimonials: {
+        type: Array,
+        required: true,
+    },
+});
+
+// Ref untuk posisi scroll
+const carouselRef = ref(null);
+
+const startCarousel = () => {
+    if (carouselRef.value) {
+        let scrollAmount = 0;
+        const scrollStep = 1;
+        const interval = setInterval(() => {
+            carouselRef.value.scrollLeft += scrollStep;
+            scrollAmount += scrollStep;
+
+            if (
+                scrollAmount >=
+                carouselRef.value.scrollWidth - carouselRef.value.clientWidth
+            ) {
+                scrollAmount = 0;
+                carouselRef.value.scrollLeft = 0;
+            }
+        }, 10);
+    }
+};
+
+onMounted(() => {
+    startCarousel();
+});
+</script>
+
+<template>
+    <div class="relative">
+        <div
+            class="absolute top-0 left-0 h-full w-[10%] bg-gradient-to-r from-white to-transparent pointer-events-none z-10"
+        ></div>
+
+        <!-- Carousel -->
+        <div
+            ref="carouselRef"
+            class="flex overflow-x-auto gap-6 no-scrollbar relative"
+        >
+            <div
+                v-for="(testimonial, index) in [
+                    ...testimonials,
+                    ...testimonials,
+                ]"
+                :key="index"
+                class="min-w-[30rem] max-w-[30rem] flex-shrink-0 border-2 border-neutral-50 bg-neutral-20 p-6 rounded-2xl"
+            >
+                <p class="text-xl leading-[1.60125rem] h-32 text-neutral-80">
+                    {{ testimonial.feedback }}
+                </p>
+                <div
+                    class="flex gap-3 items-center border rounded-xl border-neutral-50 p-3"
+                >
+                    <img
+                        :src="testimonial.photo"
+                        class="size-[3.125rem] rounded-lg"
+                        alt=""
+                    />
+                    <div>
+                        <h2 class="text-neutral-100 font-bold text-xl">
+                            {{ testimonial.name }}
+                        </h2>
+                        <p class="-mt-1 text-neutral-90">
+                            {{ testimonial.job }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="absolute top-0 right-0 h-full w-[10%] bg-gradient-to-l from-white to-transparent pointer-events-none z-10"
+        ></div>
+    </div>
+</template>
+
+<style scoped>
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+</style>

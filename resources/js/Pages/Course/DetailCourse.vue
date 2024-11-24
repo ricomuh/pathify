@@ -10,6 +10,7 @@ import MobileIcon from "../../../images/icons/mobile.svg";
 import DesignIcon from "../../../images/icons/ui.svg";
 import { ref } from "vue";
 import BoxCourse from "@/Components/BoxCourse.vue";
+import CarouselReveiw from "@/Components/CarouselReveiw.vue";
 
 const dummyCourse = ref({
     title: "Kotlin untuk Pengembangan Android dan Lainnya",
@@ -274,9 +275,7 @@ const dummyCourse = ref({
                                 alt=""
                             />
                             <div>
-                                <h2
-                                    class="text-neutral-100 font-bold text-[1.3125rem]"
-                                >
+                                <h2 class="text-neutral-100 font-bold text-xl">
                                     {{ dummyCourse.instructor.name }}
                                 </h2>
                                 <p class="-mt-1 text-neutral-90">
@@ -285,9 +284,7 @@ const dummyCourse = ref({
                             </div>
                         </div>
                         <div class="p-3">
-                            <h1
-                                class="text-neutral-100 font-bold text-[1.3125rem]"
-                            >
+                            <h1 class="text-neutral-100 font-bold text-xl">
                                 Siapakan Dia?
                             </h1>
                             <p class="text-neutral-80">
@@ -306,38 +303,7 @@ const dummyCourse = ref({
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. incididunt ut labore et dolore magna aliqua.
                 </p>
-                <div class="grid grid-cols-3 gap-6">
-                    <div
-                        v-for="(testimonial, index) in dummyCourse.testimonials"
-                        :key="index"
-                        class="border-2 border-neutral-50 bg-neutral-20 p-6 rounded-2xl"
-                    >
-                        <p
-                            class="text-[1.3125rem] leading-[1.60125rem] h-40 text-neutral-80"
-                        >
-                            {{ testimonial.feedback }}
-                        </p>
-                        <div
-                            class="flex gap-3 items-center border rounded-xl border-neutral-50 p-3"
-                        >
-                            <img
-                                :src="testimonial.photo"
-                                class="size-[3.125rem] rounded-lg"
-                                alt=""
-                            />
-                            <div>
-                                <h2
-                                    class="text-neutral-100 font-bold text-[1.3125rem]"
-                                >
-                                    {{ testimonial.name }}
-                                </h2>
-                                <p class="-mt-1 text-neutral-90">
-                                    {{ testimonial.job }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <CarouselReveiw :testimonials="dummyCourse.testimonials" />
             </div>
 
             <!-- You Might Like -->

@@ -73,9 +73,7 @@ const bars = computed(() => {
                 :backgroundColor="backgroundBadge"
                 :icons="iconBadge"
             />
-            <h1
-                class="mt-1 text-[1.3125rem] text-neutral-100 font-bold h-28 mb-3"
-            >
+            <h1 class="mt-1 text-xl text-neutral-100 font-bold h-28 mb-3">
                 {{ title }}
             </h1>
         </div>

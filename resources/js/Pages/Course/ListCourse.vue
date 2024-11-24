@@ -105,7 +105,7 @@ const courses = [
                     <h1 class="text-4xl font-bold text-neutral-100 mb-2">
                         Ayo Kapten! <br />Saatnya meluncurkan kapalmu ⛵️
                     </h1>
-                    <p class="text-[1.3125rem] text-neutral-80 mb-6">
+                    <p class="text-xl text-neutral-80 mb-6">
                         Siapkan layar dan ikuti arus pengetahuan pemrograman.
                         Bersama kita akan menjelajahi dunia teknologi dengan
                         cara yan interaktif. Pilih rute yang kamu inginkan, dan
@@ -205,7 +205,7 @@ const courses = [
                 <h1 class="text-[2.3125rem] text-neutral-100 font-bold">
                     Lorem Ipsum dolor sit Amet!
                 </h1>
-                <p class="text-[1.3125rem] text-neutral-70">
+                <p class="text-xl text-neutral-70">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam,

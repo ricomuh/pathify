@@ -33,7 +33,10 @@ const toggleAccordion = (index) => {
             </p>
             <button type="button">
                 <img
-                    :class="{ 'rotate-180': activeIndex === index }"
+                    :class="{
+                        'rotate-180 duration-300 ease-in-out':
+                            activeIndex === index,
+                    }"
                     src="../../images/icons/chevron.svg"
                     alt=""
                 />
