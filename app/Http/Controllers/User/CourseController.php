@@ -19,7 +19,7 @@ class CourseController extends Controller
             ->where('status_id', CourseStatusEnum::Published)
             ->latest()->get();
 
-        // dd($courses);
+        dd($courses);
 
         return Inertia::render('Course/ListCourse', [
             'courses' => $courses
@@ -47,22 +47,22 @@ class CourseController extends Controller
         ]);
     }
 
-    public function show(Course $course)
-    {
-        $course->load([
-            'mentor',
-            'status',
-            'categories',
-            'contents' => function ($query) {
-                $query->orderBy('order', 'asc');
-                $query->select('id', 'course_id', 'title', 'description');
-            }
-        ])->loadCount('users');
+    // public function show(Course $course)
+    // {
+    //     $course->load([
+    //         'mentor',
+    //         'status',
+    //         'categories',
+    //         'contents' => function ($query) {
+    //             $query->orderBy('order', 'asc');
+    //             $query->select('id', 'course_id', 'title', 'description');
+    //         }
+    //     ])->loadCount('users');
 
-        // check if user has access to this course
-        $hasAccess = auth()->user()->hasAccess($course);
-        dd(compact('course', 'hasAccess'));
+    //     // check if user has access to this course
+    //     $hasAccess = auth()->user()->hasAccess($course);
+    //     dd(compact('course', 'hasAccess'));
 
-        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
-    }
+    //     return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
+    // }
 }

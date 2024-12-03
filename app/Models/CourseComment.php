@@ -44,12 +44,18 @@ class CourseComment extends Model
 
     public function upvotes()
     {
-        return $this->votes()->upvote();
+        return $this->hasMany(CourseCommentVote::class)->where('is_upvote', true);
     }
 
     public function downvotes()
     {
-        return $this->votes()->downvote();
+        return $this->hasMany(CourseCommentVote::class)->where('is_upvote', false);
+    }
+
+    // check if user has voted this comment, returns null if not voted, true if upvoted, false if downvoted
+    public function voted()
+    {
+        return $this->hasOne(CourseCommentVote::class)->where('user_id', auth()->id());
     }
 
     public function scopeVoted($query, $userId)

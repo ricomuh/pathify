@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CourseCommentVote extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['user_id', 'course_comment_id', 'is_upvote'];
 
     public function user()

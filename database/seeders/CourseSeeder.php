@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\CourseStatusEnum;
 use App\Models\Course;
 use App\Models\CourseComment;
+use App\Models\CourseCommentVote;
 use App\Models\CourseContent;
 use App\Models\UserCourse;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -72,6 +73,14 @@ class CourseSeeder extends Seeder
                 ]);
 
                 $comments->each(function ($comment) use ($users) {
+                    // for each random numbers
+                    collect(range(1, rand(1, 5)))->each(function () use ($comment, $users) {
+                        CourseCommentVote::factory()->create([
+                            'course_comment_id' => $comment->id,
+                            'user_id' => $users->random()->id,
+                        ]);
+                    });
+
                     // make replies
                     $replies = CourseComment::factory(rand(1, 3))->create([
                         'course_content_id' => $comment->course_content_id,
@@ -79,6 +88,16 @@ class CourseSeeder extends Seeder
                         'course_id' => $comment->course_id,
                         'parent_id' => $comment->id,
                     ]);
+
+                    $replies->each(function ($reply) use ($users) {
+                        // for each random numbers
+                        collect(range(1, rand(1, 5)))->each(function () use ($reply, $users) {
+                            CourseCommentVote::factory()->create([
+                                'course_comment_id' => $reply->id,
+                                'user_id' => $users->random()->id,
+                            ]);
+                        });
+                    });
                 });
             });
         });
