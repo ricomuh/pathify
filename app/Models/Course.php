@@ -91,4 +91,38 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'user_courses', 'course_id', 'user_id');
     }
+
+    // owned by user (auth)
+    // public function owned()
+    // {
+    //     // return $this->belongsTo(UserCourse::class, 'course_id')->where('user_id', auth()->id());
+    //     // return $this->hasOne(UserCourse::class)->where('user_id', auth()->id());
+    // }
+    public function access(int $episode = 0)
+    {
+        if ($episode === 0) return;
+
+        $user = auth()->user();
+
+        if ($user->isAdmin() || $user->isMentor()) return;
+
+        $userCourse = UserCourse::where('user_id', $user->id)
+            ->where('course_id', $this->id)
+            ->first();
+
+        $courseContentCount = $this->contents()->count();
+
+        $userCourse->last_watched_at = now();
+        // check if the progress is bigger than the last progress
+        $proggres = $episode / $courseContentCount * 100;
+        if ($proggres > $userCourse->progress) {
+            $userCourse->progress = $proggres;
+        }
+        // check if the progress is 100%
+        if ($proggres === 100) {
+            $userCourse->completed_at = now();
+        }
+
+        $userCourse->save();
+    }
 }

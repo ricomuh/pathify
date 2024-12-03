@@ -33,7 +33,9 @@ class CourseWatchController extends Controller
 
     public function watch(Course $course, int $order)
     {
-        abort_unless(auth()->user()->hasAccess($course), 403);
+        // abort_unless(auth()->user()->hasAccess($course), 403);
+        // $owned = auth()->user()->access()
+        $course->access($order);
 
         $course->load([
             'mentor' => function ($query) {
@@ -89,6 +91,11 @@ class CourseWatchController extends Controller
                 }
             ])
             ->firstOrFail();
+
+        // calculate total votes each comment
+        $content->comments->each(function ($comment) {
+            $comment->votes = $comment->upvotes_count - $comment->downvotes_count;
+        });
 
         // organize comments children to parent
         $comments = $content->comments->groupBy('parent_id');

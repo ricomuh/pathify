@@ -160,4 +160,11 @@ class User extends Authenticatable
 
         return true;
     }
+
+    public function access(Course $course): UserCourse
+    {
+        return UserCourse::where('user_id', $this->id)
+            ->where('course_id', $course->id)
+            ->first();
+    }
 }
