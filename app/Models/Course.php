@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CourseLevelEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ class Course extends Model
 {
     use HasUuids, HasFactory;
 
-    protected $fillable = ['mentor_id', 'status_id', 'thumbnail', 'title', 'slug', 'description'];
+    protected $fillable = ['mentor_id', 'status_id', 'thumbnail', 'title', 'slug', 'description', 'level'];
 
     // auto generate uuid and slug
     protected static function boot()
@@ -38,6 +39,24 @@ class Course extends Model
         });
     }
 
+    // public function casts()
+    // {
+    //     return [
+    //         'level' => CourseLevelEnum::class,
+    //     ];
+    // }
+
+    // public function getLevelNameAttribute()
+    // {
+    //     return match ($this->level) {
+    //         1 => 'Beginner',
+    //         2 => 'Intermediate',
+    //         3 => 'Advanced',
+    //         default => 'Beginner',
+    //     };
+    // }
+
+    // mentor
     public function mentor()
     {
         return $this->belongsTo(User::class, 'mentor_id');
@@ -65,5 +84,11 @@ class Course extends Model
     public function contents()
     {
         return $this->hasMany(CourseContent::class);
+    }
+
+    // users
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_courses', 'course_id', 'user_id');
     }
 }

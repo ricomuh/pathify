@@ -138,4 +138,26 @@ class User extends Authenticatable
     {
         return $this->role_id === $role;
     }
+
+    /**
+     * Get the courses that the user has.
+     */
+    public function courses(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(UserCourse::class);
+    }
+
+    /**
+     * Check if the user has access to the course.
+     */
+    public function hasAccess(Course $course): bool
+    {
+        if ($this->isUser()) {
+            return UserCourse::where('user_id', $this->id)
+                ->where('course_id', $course->id)
+                ->exists();
+        }
+
+        return true;
+    }
 }

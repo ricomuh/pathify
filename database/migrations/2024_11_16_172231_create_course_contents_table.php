@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('course_contents', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Course::class, 'course_id')->constrained();
+            $table->integer('order')->default(1);
             $table->string('title');
             $table->text('description');
             $table->text('body');

@@ -236,6 +236,28 @@ class CourseCategorySeeder extends Seeder
                     ],
                 ],
             ],
+            'Game Development' => [
+                'icon' => 'fas fa-gamepad',
+                'color' => '#3498db',
+                'children' => [
+                    'Unity' => [
+                        'icon' => 'fab fa-unity',
+                        'color' => '#000000',
+                    ],
+                    'Unreal Engine' => [
+                        'icon' => 'fas fa-ellipsis-h',
+                        'color' => '#313131',
+                    ],
+                    'Godot' => [
+                        'icon' => 'fas fa-ellipsis-h',
+                        'color' => '#478cbf',
+                    ],
+                    'GameMaker Studio' => [
+                        'icon' => 'fas fa-ellipsis-h',
+                        'color' => '#2c3e50',
+                    ],
+                ],
+            ],
         ]);
 
         $courseCategories->each(function ($children, $name) {

@@ -61,7 +61,9 @@ class CourseSeeder extends Seeder
             $contents = CourseContent::factory(rand(3, 10))->create([
                 'course_id' => $course->id,
             ]);
-            $contents->each(function ($content) use ($users, $course) {
+            $contents->each(function ($content, $index) use ($users, $course) {
+                $content->order = $index + 1;
+                $content->save();
                 // make comments
                 $comments = CourseComment::factory(rand(1, 5))->create([
                     'course_content_id' => $content->id,

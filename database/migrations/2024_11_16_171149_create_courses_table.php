@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(CourseStatus::class, 'status_id')->constrained();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->integer('level')->default(1);
             $table->text('description');
             $table->timestamps();
         });

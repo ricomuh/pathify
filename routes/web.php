@@ -24,11 +24,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::as('courses.')->prefix('courses')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::get('/search', [CourseController::class, 'search'])->name('search');
+        Route::get('/{course:slug}', [CourseController::class, 'show'])->name('show');
+    });
 });
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('/courses/search', [CourseController::class, 'search'])->name('courses.search');
 Route::get('/courses/{id}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
 
 require __DIR__ . '/auth.php';

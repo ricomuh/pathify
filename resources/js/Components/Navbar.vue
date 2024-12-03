@@ -92,7 +92,10 @@ const showingNavigationDropdown = ref(false);
                                         class="size-10 rounded-xl border-[3px] border-primary-border overflow-hidden"
                                     >
                                         <img
-                                            src="../../images/banner.png"
+                                            :src="
+                                                $page.props.auth.user
+                                                    .profile_picture
+                                            "
                                             alt=""
                                             class="h-full w-full object-cover"
                                         />

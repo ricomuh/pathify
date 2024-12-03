@@ -23,6 +23,7 @@ class CourseFactory extends Factory
             'thumbnail' => $this->faker->imageUrl(),
             'title' => $title,
             'description' => $this->faker->paragraph(),
+            'level' => $this->faker->randomElement([1, 2, 3]),
         ];
     }
 }
