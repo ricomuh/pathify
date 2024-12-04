@@ -39,22 +39,10 @@ class Course extends Model
         });
     }
 
-    // public function casts()
-    // {
-    //     return [
-    //         'level' => CourseLevelEnum::class,
-    //     ];
-    // }
-
-    // public function getLevelNameAttribute()
-    // {
-    //     return match ($this->level) {
-    //         1 => 'Beginner',
-    //         2 => 'Intermediate',
-    //         3 => 'Advanced',
-    //         default => 'Beginner',
-    //     };
-    // }
+    public function scopePopular($query)
+    {
+        return $query->orderBy('users_count', 'desc');
+    }
 
     // mentor
     public function mentor()

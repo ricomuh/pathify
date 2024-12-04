@@ -18,7 +18,7 @@ class CourseWatchController extends Controller
             'categories',
             'contents' => function ($query) {
                 $query->orderBy('order', 'asc');
-                $query->select('id', 'course_id', 'title', 'description');
+                $query->select('id', 'course_id', 'title', 'description', 'order');
             }
         ])->loadCount('users');
 
@@ -33,7 +33,7 @@ class CourseWatchController extends Controller
 
     public function watch(Course $course, int $order)
     {
-        // abort_unless(auth()->user()->hasAccess($course), 403);
+        abort_unless(auth()->user()->hasAccess($course), 403);
         // $owned = auth()->user()->access()
         $course->access($order);
 

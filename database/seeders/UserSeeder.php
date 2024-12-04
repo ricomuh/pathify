@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         ]);
 
         // make users
-        User::factory(10)->create([
+        User::factory(50)->create([
             // 'name' => 'User',
             'role_id' => RoleEnum::User,
         ]);

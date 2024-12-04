@@ -45,8 +45,8 @@ class CourseSeeder extends Seeder
             $course->save();
 
             // attach users
-            $attendingUsers = $users->random(rand(1, 5));
-            $attendingUsers->each(function ($user) use ($course) {
+            $users = $users->random(rand(1, 8));
+            $users->each(function ($user) use ($course) {
                 UserCourse::factory()->create([
                     'user_id' => $user->id,
                     'course_id' => $course->id,
