@@ -119,4 +119,14 @@ class Course extends Model
 
         $userCourse->save();
     }
+
+    public function submission()
+    {
+        return $this->hasOne(CourseSubmission::class)->latestOfMany();
+    }
+
+    public function userCourseSubmissions()
+    {
+        return $this->hasMany(UserCourseSubmission::class);
+    }
 }

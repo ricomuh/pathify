@@ -7,7 +7,9 @@ use App\Models\Course;
 use App\Models\CourseComment;
 use App\Models\CourseCommentVote;
 use App\Models\CourseContent;
+use App\Models\CourseSubmission;
 use App\Models\UserCourse;
+use App\Models\UserCourseSubmission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -44,12 +46,25 @@ class CourseSeeder extends Seeder
             $course->mentor_id = $mentor->id;
             $course->save();
 
+            $courseSubmission = CourseSubmission::factory()->create([
+                'course_id' => $course->id,
+            ]);
+
             // attach users
             $users = $users->random(rand(1, 8));
             $users->each(function ($user) use ($course) {
                 UserCourse::factory()->create([
                     'user_id' => $user->id,
                     'course_id' => $course->id,
+                ]);
+            });
+
+            // make user course submissions
+            $users->each(function ($user) use ($courseSubmission, $course) {
+                $userCourseSubmission = UserCourseSubmission::factory()->create([
+                    'user_id' => $user->id,
+                    'course_id' => $course->id,
+                    'course_submission_id' => $courseSubmission->id,
                 ]);
             });
 
