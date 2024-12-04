@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\CourseLevelEnum;
+use App\Enums\CourseStatusEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,6 +38,11 @@ class Course extends Model
 
             $course->slug = $slug;
         });
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status_id', CourseStatusEnum::Published);
     }
 
     public function scopePopular($query)

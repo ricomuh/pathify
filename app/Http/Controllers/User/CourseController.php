@@ -12,18 +12,35 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::with([
-            'mentor',
-            'categories'
+        // $courses = Course::with([
+        //     'mentor',
+        //     'categories'
+        // ])
+        //     ->where('status_id', CourseStatusEnum::Published)
+        //     ->latest()->get();
+
+        $latestCourses = Course::with([
+            'mentor' => function ($query) {
+                $query->select('id', 'profile_picture', 'fullname', 'username');
+            },
+            'categories',
         ])
-            ->where('status_id', CourseStatusEnum::Published)
-            ->latest()->get();
+            ->published()
+            ->latest()->limit(6)->get();
+
+        $popularCourses = Course::with([
+            'mentor',
+            'categories',
+        ])
+            ->published()
+            ->withCount('users')
+            ->orderBy('users_count', 'desc')
+            ->limit(6)->get();
 
         // dd($courses);
+        return response()->json(compact('latestCourses', 'popularCourses'));
 
-        return Inertia::render('Course/ListCourse', [
-            'courses' => $courses
-        ]);
+        return Inertia::render('Course/ListCourse', compact('latestCourses', 'popularCourses'));
     }
 
     public function search(Request $request)
@@ -38,7 +55,7 @@ class CourseController extends Controller
             ->orWhereHas('categories', function ($q) use ($query) {
                 $q->where('name', 'like', '%' . $query . '%');
             })
-            ->where('status_id', CourseStatusEnum::Published)
+            ->published()
             ->get();
 
         return Inertia::render('Course/SearchCourse', [
