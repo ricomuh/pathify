@@ -19,7 +19,7 @@ class CourseController extends Controller
             ->where('status_id', CourseStatusEnum::Published)
             ->latest()->get();
 
-        dd($courses);
+        // dd($courses);
 
         return Inertia::render('Course/ListCourse', [
             'courses' => $courses

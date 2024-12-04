@@ -51,29 +51,6 @@ class CourseWatchController extends Controller
 
         $content = CourseContent::where('course_id', $course->id)
             ->where('order', $order)
-            // ->with([
-            //     'comments' => function ($query) {
-            //         $query->whereNull('parent_id');
-            //         $query->with([
-            //             'user',
-            //             'voted',
-            //             'children' => function ($query) {
-            //                 $query->with([
-            //                     'user',
-            //                     'voted',
-            //                 ]);
-            //                 $query->withCount([
-            //                     'upvotes',
-            //                     'downvotes',
-            //                 ]);
-            //             },
-            //         ]);
-            //         $query->withCount([
-            //             'upvotes',
-            //             'downvotes',
-            //         ]);
-            //     }
-            // ])
             ->with([
                 'comments' => function ($query) {
                     $query->with([
