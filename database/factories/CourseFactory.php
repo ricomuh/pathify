@@ -26,7 +26,7 @@ class CourseFactory extends Factory
             'level' => $this->faker->randomElement([1, 2, 3]),
             'body' => $this->faker->paragraphs(3, true),
             'requirements' => $this->faker->sentences(3),
-            'recommended' => $this->faker->sentences(3),
+            // 'recommended' => $this->faker->sentences(3),
         ];
     }
 }
