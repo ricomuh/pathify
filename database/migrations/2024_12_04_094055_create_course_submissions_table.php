@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('course_submissions', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Course::class)->constrained();
             $table->string('title');
             $table->text('body');
-            $table->foreignIdFor(Course::class)->index();
             $table->time('closed_at')->nullable();
             $table->timestamps();
         });

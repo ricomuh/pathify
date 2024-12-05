@@ -17,8 +17,9 @@ class CourseSubmissionFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->words,
-            'body' => $this->faker->paragraphs
+            'course_id' => $this->faker->randomNumber(),
+            'title' => $this->faker->words(3, true),
+            'body' => $this->faker->paragraphs(3, true),
         ];
     }
 }

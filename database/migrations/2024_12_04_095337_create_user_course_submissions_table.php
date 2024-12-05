@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('user_course_submissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->index();
-            $table->foreignIdFor(CourseSubmission::class)->index();
-            $table->foreignIdFor(Course::class)->index();
+            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(CourseSubmission::class)->constrained();
+            $table->foreignIdFor(Course::class)->constrained();
             // file path
             $table->string('file_path');
             // status

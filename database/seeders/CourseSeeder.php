@@ -35,22 +35,22 @@ class CourseSeeder extends Seeder
         $courseCategories = \App\Models\Category::all();
 
         // make courses
+        $this->command->info('Making courses...');
         $courses = Course::factory(10)->create([
             'status_id' => CourseStatusEnum::Published,
             'mentor_id' => $mentors->random()->id,
         ]);
 
+        $this->command->info('Making course submissions, content, comments, votes, and replies.... attaching users, mentors, categories...');
         $courses->each(function ($course) use ($mentors, $courseCategories, $users) {
             // attach mentor
             $mentor = $mentors->random();
             $course->mentor_id = $mentor->id;
             $course->save();
 
-            $courseSubmission = CourseSubmission::factory()->create([
-                'course_id' => $course->id,
-            ]);
 
             // attach users
+            $this->command->info("Attaching users to the course {$course->title}");
             $users = $users->random(rand(1, 8));
             $users->each(function ($user) use ($course) {
                 UserCourse::factory()->create([
@@ -59,8 +59,18 @@ class CourseSeeder extends Seeder
                 ]);
             });
 
+            $this->command->info("Making course submission for the course {$course->title}");
+            $courseSubmission = CourseSubmission::factory()->create([
+                'course_id' => $course->id,
+                'title' => 'Sample Title',
+                // 'body' => 'Sample body text for the course submission.',
+            ]);
+
             // make user course submissions
+            $this->command->info("Making user course submissions for the course {$course->title}");
             $users->each(function ($user) use ($courseSubmission, $course) {
+                // log to the terminal
+                // $this->command->info("User ID: {$user->id} - Course ID: {$course->id}");
                 $userCourseSubmission = UserCourseSubmission::factory()->create([
                     'user_id' => $user->id,
                     'course_id' => $course->id,
@@ -74,6 +84,7 @@ class CourseSeeder extends Seeder
             });
 
             // make content
+            $this->command->info("Making course content for the course {$course->title}");
             $contents = CourseContent::factory(rand(3, 10))->create([
                 'course_id' => $course->id,
             ]);
@@ -81,6 +92,7 @@ class CourseSeeder extends Seeder
                 $content->order = $index + 1;
                 $content->save();
                 // make comments
+                $this->command->info("Making comments, replies, and votes for the content {$content->title}");
                 $comments = CourseComment::factory(rand(1, 5))->create([
                     'course_content_id' => $content->id,
                     'user_id' => $users->random()->id,
