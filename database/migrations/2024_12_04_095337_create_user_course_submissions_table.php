@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('file_path');
             // status
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            // score
+            $table->integer('score')->nullable();
             $table->timestamps();
         });
     }
