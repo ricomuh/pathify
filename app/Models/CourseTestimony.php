@@ -9,4 +9,16 @@ class CourseTestimony extends Model
 {
     /** @use HasFactory<\Database\Factories\CourseTestimonyFactory> */
     use HasFactory;
+
+    protected $fillable = ['course_id', 'user_id', 'body'];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

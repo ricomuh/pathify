@@ -12,7 +12,14 @@ class Course extends Model
 {
     use HasUuids, HasFactory;
 
-    protected $fillable = ['mentor_id', 'status_id', 'thumbnail', 'title', 'slug', 'description', 'level'];
+    protected $fillable = ['mentor_id', 'status_id', 'thumbnail', 'title', 'slug', 'description', 'level', 'body', 'requirements'];
+
+    public function casts()
+    {
+        return [
+            'requirements' => 'array',
+        ];
+    }
 
     // auto generate uuid and slug
     protected static function boot()
@@ -128,5 +135,10 @@ class Course extends Model
     public function userCourseSubmissions()
     {
         return $this->hasMany(UserCourseSubmission::class);
+    }
+
+    public function testimonies()
+    {
+        return $this->hasMany(CourseTestimony::class);
     }
 }
