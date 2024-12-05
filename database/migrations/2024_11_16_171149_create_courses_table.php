@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->integer('level')->default(1);
             $table->text('description');
+            $table->text('body');
+            $table->json('requirements')->nullable();
+            // recommended people categories
+            $table->json('recommended')->nullable();
             $table->timestamps();
         });
     }
