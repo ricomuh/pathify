@@ -13,7 +13,9 @@ class CourseWatchController extends Controller
     public function show(Course $course)
     {
         $course->load([
-            'mentor',
+            'mentor' => function ($query) {
+                $query->select('id', 'fullname', 'username', 'profile_picture');
+            },
             'status',
             'categories',
             'contents' => function ($query) {

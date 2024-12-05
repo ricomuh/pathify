@@ -148,6 +148,31 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the events that the user enrolled in.
+     */
+    public function events(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(UserEvent::class);
+    }
+
+    /**
+     * Get the comments that the user has.
+     */
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CourseComment::class);
+    }
+
+    /**
+     * Get the testimonies that the user has.
+     */
+    public function testimonies(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CourseTestimony::class);
+    }
+
+
+    /**
      * Check if the user has access to the course.
      */
     public function hasAccess(Course $course): bool
@@ -166,5 +191,13 @@ class User extends Authenticatable
         return UserCourse::where('user_id', $this->id)
             ->where('course_id', $course->id)
             ->first();
+    }
+
+    /**
+     * Get the mentor details of the user.
+     */
+    public function mentorDetail(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(MentorDetail::class);
     }
 }
