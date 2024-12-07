@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\QuestionnaireResultCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -55,10 +56,22 @@ class QuestionnaireResultFactory extends Factory
             ? $highest->last()
             : null;
 
+        $questionnaireCategory = QuestionnaireResultCategory::where([
+            '1st_category_id' => $firstHighest->id,
+            '2nd_category_id' => $secondHighest ? $secondHighest->id : null,
+        ])->first();
+
+        if (!$questionnaireCategory) {
+            $questionnaireCategory = QuestionnaireResultCategory::where([
+                '1st_category_id' => $firstHighest->id,
+                // '2nd_category_id' => null,
+            ])->first();
+        }
 
         return [
             'result' => $result,
-            'questionnaire_result_category_id' => $this->faker->numberBetween(1, 5),
+            // 'questionnaire_result_category_id' => $this->faker->numberBetween(1, 5),
+            'questionnaire_result_category_id' => $questionnaireCategory ? $questionnaireCategory->id : null,
             '1st_category_id' => $firstHighest->id,
             '2nd_category_id' => $secondHighest ? $secondHighest->id : null,
         ];

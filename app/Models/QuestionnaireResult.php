@@ -12,6 +12,13 @@ class QuestionnaireResult extends Model
 
     public $fillable = ['user_id', 'result', 'questionnaire_result_category_id', '1st_category_id', '2nd_category_id'];
 
+    public function casts()
+    {
+        return [
+            'result' => 'array',
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

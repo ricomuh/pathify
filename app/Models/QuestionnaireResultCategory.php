@@ -11,5 +11,17 @@ class QuestionnaireResultCategory extends Model
         'description',
         'color',
         'icon',
+        '1st_category_id',
+        '2nd_category_id',
     ];
+
+    public function firstCategory()
+    {
+        return $this->belongsTo(Category::class, '1st_category_id');
+    }
+
+    public function secondCategory()
+    {
+        return $this->belongsTo(Category::class, '2nd_category_id');
+    }
 }

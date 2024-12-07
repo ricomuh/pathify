@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('color')->nullable();
             $table->string('icon')->nullable();
+            $table->foreignIdFor(Category::class, '1st_category_id')->nullable();
+            $table->foreignIdFor(Category::class, '2nd_category_id')->nullable();
             $table->timestamps();
         });
     }

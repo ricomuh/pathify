@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             EventSeeder::class,
 
-            QuestionnaireSeeder::class,
             QuestionnaireCategorySeeder::class,
+            QuestionnaireSeeder::class,
         ]);
     }
 }
