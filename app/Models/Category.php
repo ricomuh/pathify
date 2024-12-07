@@ -52,6 +52,11 @@ class Category extends Model
         });
     }
 
+    public function scopeParentOnly($query)
+    {
+        return $query->whereNull('parent_id');
+    }
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');

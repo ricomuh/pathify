@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CourseSeeder::class,
             EventSeeder::class,
+
+            QuestionnaireSeeder::class,
+            QuestionnaireCategorySeeder::class,
         ]);
     }
 }
