@@ -36,6 +36,7 @@ class CourseWatchController extends Controller
                     },
                 ]);
             },
+            'joined'
             // 'contents' => function ($query) {
             //     $query->orderBy('order', 'asc');
             //     $query->select('id', 'course_id', 'title', 'description', 'order');
@@ -63,10 +64,10 @@ class CourseWatchController extends Controller
 
         // return response()->json(compact('course', 'courseCategories', 'relatedCourses'));
         // check if user has access to this course
-        $hasAccess = auth()->user()->hasAccess($course);
+        // $hasAccess = auth()->user()->hasAccess($course);
         // dd(compact('course', 'hasAccess'));
 
-        return response()->json(compact('course', 'hasAccess', 'relatedCourses'));
+        return response()->json(compact('course', 'relatedCourses'));
 
         return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
     }
