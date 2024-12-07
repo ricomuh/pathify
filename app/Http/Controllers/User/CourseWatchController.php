@@ -25,16 +25,23 @@ class CourseWatchController extends Controller
             }
         ])->loadCount('users');
 
+        $categories = $course->categories->pluck('id')->toArray();
 
-        $latestCourses = Course::with([
+        $relatedCourses = Course::with([
             'mentor' => function ($query) {
-                $query->select('id', 'profile_picture', 'fullname', 'username');
+                $query->select('id', 'fullname', 'username', 'profile_picture');
                 $query->with('mentorDetail');
             },
             'categories',
         ])
             ->published()
-            ->latest()->limit(4)->get();
+            ->whereHas('categories', function ($q) use ($categories) {
+                $q->whereIn('id', $categories);
+            })
+            ->inRandomOrder()
+            ->where('id', '!=', $course->id)
+            ->limit(6)
+            ->get();
 
         // check if user has access to this course
         $hasAccess = auth()->user()->hasAccess($course);
@@ -42,7 +49,7 @@ class CourseWatchController extends Controller
 
         // return response()->json(compact('course', 'hasAccess'));
 
-        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess', 'latestCourses'));
+        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
     }
 
     public function watch(Course $course, int $order)
@@ -79,7 +86,14 @@ class CourseWatchController extends Controller
                         'upvotes',
                         'downvotes',
                     ]);
-                }
+                },
+                'testimonies' => function ($query) {
+                    $query->with([
+                        'user' => function ($query) {
+                            $query->select('id', 'fullname', 'username', 'profile_picture');
+                        },
+                    ]);
+                },
             ])
             ->firstOrFail();
 

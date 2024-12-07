@@ -41,62 +41,34 @@ class CourseController extends Controller
 
         return Inertia::render('Course/ListCourse', compact('latestCourses', 'popularCourses', 'categories'));
     }
-    
-    // public function search(Request $request)
-    // {
-    //     $categories = Category::parentOnly()->get();
-    //     $categoryQuery = explode(',', $request->get('category', ''));
-    //     $query = $request->get('query', '');
 
-    //     // $courses = Course::with([
-    //     //     'mentor',
-    //     //     'categories',
-    //     // ])
-    //     //     ->where('name', 'like', '%' . $query . '%')
-    //     //     ->orWhereHas('categories', function ($q) use ($query) {
-    //     //         $q->where('name', 'like', '%' . $query . '%');
-    //     //     })
-    //     //     ->published()
-    //     //     ->get();
-
-    //     $courses = Course::with([
-    //         'mentor' => function ($query) {
-    //             $query->select('id', 'profile_picture', 'fullname', 'username');
-    //         },
-    //         'categories',
-    //     ])
-    //         ->where('name', 'like', '%' . $query . '%')
-    //         ->orWhereHas('categories', function ($q) use ($query) {
-    //             $q->where('name', 'like', '%' . $query . '%');
-    //         })
-    //         ->when($categoryQuery, function ($q, $categoryQuery) {
-    //             return $q->whereHas('categories', function ($q) use ($categoryQuery) {
-    //                 $q->whereIn('slug', $categoryQuery);
-    //             });
-    //         })
-    //         ->published()
-    //         ->paginate(10);
-
-    //     return response()->json(compact('courses', 'categories', 'query', 'categoryQuery'));
-    //     return Inertia::render('Course/SearchCourse', compact('courses', 'categories', 'query', 'categoryQuery'));
-    // }
-
-    public function show(Course $course)
+    public function search(Request $request)
     {
-        $course->load([
-            'mentor',
-            'status',
+        $categories = Category::parentOnly()->get();
+        $categoryQuery = explode(',', $request->get('category', ''));
+        $query = $request->get('query', '');
+
+
+        $courses = Course::with([
+            'mentor' => function ($query) {
+                $query->select('id', 'profile_picture', 'fullname', 'username');
+                $query->with('mentorDetail');
+            },
             'categories',
-            'contents' => function ($query) {
-                $query->orderBy('order', 'asc');
-                $query->select('id', 'course_id', 'title', 'description');
-            }
-        ])->loadCount('users');
+        ])
+            ->where('name', 'like', '%' . $query . '%')
+            ->orWhereHas('categories', function ($q) use ($query) {
+                $q->where('name', 'like', '%' . $query . '%');
+            })
+            ->when($categoryQuery, function ($q, $categoryQuery) {
+                return $q->whereHas('categories', function ($q) use ($categoryQuery) {
+                    $q->whereIn('slug', $categoryQuery);
+                });
+            })
+            ->published()
+            ->paginate(10);
 
-        // check if user has access to this course
-        $hasAccess = auth()->user()->hasAccess($course);
-        // dd(compact('course', 'hasAccess'));
-
-        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
+        return response()->json(compact('courses', 'categories', 'query', 'categoryQuery'));
+        return Inertia::render('Course/SearchCourse', compact('courses', 'categories', 'query', 'categoryQuery'));
     }
 }
