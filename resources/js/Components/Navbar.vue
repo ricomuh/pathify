@@ -12,16 +12,14 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <nav class="fixed shadow top-0 w-full bg-neutral-10 z-50">
+        <nav class="fixed shadow top-0 w-full !bg-neutral-10 z-50">
             <!-- Primary Navigation Menu -->
             <div
                 class="container relative flex items-center justify-between py-2"
             >
                 <!-- Logo -->
                 <Link :href="route('dashboard')">
-                    <ApplicationLogo
-                        class="block h-12 w-auto fill-current text-gray-800"
-                    />
+                    <ApplicationLogo class="block h-12 w-auto" />
                 </Link>
                 <!-- Navigation Links -->
                 <div
