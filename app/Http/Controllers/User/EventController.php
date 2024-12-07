@@ -47,6 +47,8 @@ class EventController extends Controller
 
         $event->seats_left = $event->quota - $event->users_count;
 
-        return response()->json(compact('event', 'isJoined'));
+        // return response()->json(compact('event', 'isJoined'));
+        return Inertia::render('EventPage/DetailEvent', compact('event','isJoined'));
+
     }
 }

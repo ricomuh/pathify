@@ -23,10 +23,6 @@ const props = defineProps({
         default: "py-1",
     },
 });
-
-onMounted(() => {
-    lucide.createIcons();
-});
 </script>
 
 <template>

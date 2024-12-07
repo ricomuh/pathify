@@ -1,149 +1,17 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import BadgeCategory from "@/Components/BadgeCategory.vue";
-import Accordion from "@/Components/Accordion.vue";
 import { Head } from "@inertiajs/vue3";
-import PlaceholderImage from "../../../images/banner.png";
-import FrontendIcon from "../../../images/icons/fe.svg";
-import CyberIcon from "../../../images/icons/cyber.svg";
-import MobileIcon from "../../../images/icons/mobile.svg";
-import DesignIcon from "../../../images/icons/ui.svg";
-import { computed, ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import BoxCourse from "@/Components/BoxCourse.vue";
 import CarouselReveiw from "@/Components/CarouselReveiw.vue";
-
-const dummyCourse = ref({
-    title: "Kotlin untuk Pengembangan Android dan Lainnya",
-    description:
-        "Belajar Kotlin, bahasa resmi untuk pengembangan Android dan platform lainnya, dengan materi yang relevan dan praktis.",
-    category: "Pengembangan Android",
-    classDescription: `
-        <p>Kotlin merupakan bahasa utama yang digunakan dalam pengembangan Android saat ini. Hal ini karena manfaat yang diberikan seperti ringkas, cepat, dan aman. Selain itu, sifatnya yang interoperability membuat developer bisa beralih dari bahasa Java ke Kotlin dengan cepat. Tak ayal, Google pernah melaporkan hampir 80% dari 1000 aplikasi teratas di Play Store menggunakan Kotlin. Selain pengembangan Android, Kotlin dapat digunakan untuk berbagai macam pengembangan, baik itu server, back-end, maupun website.</p>
-        <ul>
-            <li>Materi relevan dengan tools dan framework yang banyak dipakai sekarang.</li>
-            <li>Dengan menggunakan Kotlin, pengembangan aplikasi akan jauh lebih cepat.</li>
-            <li>Pengembangan aplikasi menggunakan Kotlin bisa berjalan bersamaan dengan Java dalam satu project.</li>
-            <li>Kotlin menjadi bahasa resmi yang direkomendasikan dalam pengembangan Android.</li>
-            <li>Kotlin juga dapat digunakan untuk pengembangan platform selain seperti server, back-end, dan website.</li>
-        </ul>
-        <p>Kotlin merupakan bahasa utama yang digunakan dalam pengembangan Android saat ini. Hal ini karena manfaat yang diberikan seperti ringkas, cepat, dan aman. Selain itu, sifatnya yang interoperability membuat developer bisa beralih dari bahasa Java ke Kotlin dengan cepat. Tak ayal, Google pernah melaporkan hampir 80% dari 1000 aplikasi teratas di Play Store menggunakan Kotlin. Selain pengembangan Android, Kotlin dapat digunakan untuk berbagai macam pengembangan, baik itu server, back-end, maupun website.</p>
-    `,
-    requirements: [
-        "Laptop dengan minimum RAM 8GB dan processor minimum Intel Core i3 (Rekomendasi Core i5 keatas)",
-        "Laptop atau PC dengan Android Studio terinstal",
-        "Koneksi internet stabil",
-    ],
-    forWho: [
-        "Pengembang Android pemula",
-        "Pengembang yang ingin beralih dari Java ke Kotlin",
-        "Mahasiswa atau profesional yang ingin memperdalam Kotlin",
-    ],
-    instructor: {
-        name: "Prof. Azriel Pamungkas, Ph.D.",
-        position: "Web Developer",
-        photo: PlaceholderImage,
-        description:
-            "Prof. Azriel merupakan Web Developer yang berpengalaman selama 5+ tahun. Berfokus pada pengembangan teknologi frontend terlebih ReactJs. Beberapa pengalaman beliau adalah menjadi Frontend Developer di Perusahaanku.id selama 3 tahun, dan kemudian menjadi mentor di komunitas KomunitasQ selama 2 tahun.",
-    },
-    curriculum: [
-        {
-            id: 1,
-            title: "Lecture 1 - Ini adalah judul materi 1",
-            subs: [
-                "Pengenalan Dart dan fundamental Flutter",
-                "Pengenalan Dart dan fundamental Flutter",
-                "Pengenalan Dart dan fundamental Flutter",
-            ],
-        },
-        {
-            id: 2,
-            title: "Lecture 2 - Ini adalah judul materi 2",
-            subs: [
-                "Pengenalan Dart dan fundamental Flutter",
-                "Pengenalan Dart dan fundamental Flutter",
-                "Pengenalan Dart dan fundamental Flutter",
-            ],
-        },
-        {
-            id: 3,
-            title: "Lecture 3 - Ini adalah judul materi 3",
-            subs: [
-                "Pengenalan Dart dan fundamental Flutter",
-                "Pengenalan Dart dan fundamental Flutter",
-                "Pengenalan Dart dan fundamental Flutter",
-            ],
-        },
-    ],
-    testimonials: [
-        {
-            name: "Andi Pratama",
-            job: "Pelajar",
-            feedback:
-                "Materi yang diberikan sangat membantu. Saya bisa beralih dari Java ke Kotlin dengan mudah.",
-            photo: PlaceholderImage,
-        },
-        {
-            name: "Siti Aminah",
-            job: "Pelajar",
-            feedback:
-                "Pengajarnya sangat jelas dalam menjelaskan konsep-konsep Kotlin. Sekarang saya lebih percaya diri mengembangkan aplikasi Android.",
-            photo: PlaceholderImage,
-        },
-        {
-            name: "Dimas Aditya",
-            job: "Pelajar",
-            feedback:
-                "Kursus ini membuka wawasan saya tentang penggunaan Kotlin untuk pengembangan server. Sangat bermanfaat!",
-            photo: PlaceholderImage,
-        },
-    ],
-    recommendationCourse: [
-        {
-            iconBadge: FrontendIcon,
-            backgroundBadge: "#FF7A00",
-            categoryClass: "Frontend",
-            title: 'Pengantar Dunia Komputer : “Hello World!"',
-            teacher: "Flora Shafiqa Riyadi, M.Kom",
-            teachersJob: "Mobile Apps Developer",
-            avatar: PlaceholderImage,
-            level: 2,
-            slug: "pengantar-dunia-komputer-hello-world",
-        },
-        {
-            iconBadge: CyberIcon,
-            backgroundBadge: "#EA1C00",
-            categoryClass: "Cyber Security",
-            title: 'Pengantar Dunia Komputer : “Hello World!"',
-            teacher: "Flora Shafiqa Riyadi, M.Kom",
-            teachersJob: "Mobile Apps Developer",
-            avatar: PlaceholderImage,
-            level: 1,
-            slug: "pengantar-dunia-komputer-hello-world",
-        },
-        {
-            iconBadge: MobileIcon,
-            backgroundBadge: "#00CD52",
-            categoryClass: "Mobile Development",
-            title: "Pengantar Pemrograman Mobile Development",
-            teacher: "Flora Shafiqa Riyadi, M.Kom",
-            teachersJob: "Mobile Apps Developer",
-            avatar: PlaceholderImage,
-            level: 3,
-            slug: "pengantar-dunia-komputer-hello-world",
-        },
-        {
-            iconBadge: DesignIcon,
-            backgroundBadge: "#00987D",
-            categoryClass: "UI/UX Design",
-            title: 'Pengantar Dunia Komputer : “Hello World!"',
-            teacher: "Flora Shafiqa Riyadi, M.Kom",
-            teachersJob: "Mobile Apps Developer",
-            avatar: PlaceholderImage,
-            level: 2,
-            slug: "pengantar-dunia-komputer-hello-world",
-        },
-    ],
-});
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Progress } from "@/components/ui/progress";
 
 // bars
 const bars = computed(() => {
@@ -176,6 +44,9 @@ const props = defineProps({
         required: true,
     },
 });
+
+// progress
+const progress = ref(40);
 </script>
 
 <template>
@@ -245,12 +116,44 @@ const props = defineProps({
                                 ></div>
                             </div>
                         </div>
-                        <button
-                            type="button"
-                            class="bg-primary text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-16 py-3 rounded-xl"
+                        <div
+                            v-if="props.course.joined != null"
+                            class="grid grid-cols-5 items-center gap-4"
                         >
-                            Bergabung
-                        </button>
+                            <div class="col-span-3">
+                                <div class="flex gap-4 items-center py-2">
+                                    <Progress
+                                        v-model="progress"
+                                        class="bg-white w-full border-none h-3"
+                                    />
+                                    <p
+                                        class="text-white font-bold text-[1.75rem]"
+                                    >
+                                        {{ progress }}%
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-span-2 ms-auto">
+                                <button
+                                    type="button"
+                                    class="bg-primary text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-8 py-3 rounded-xl"
+                                >
+                                    Lanjut Belajar
+                                </button>
+                            </div>
+                        </div>
+                        <div v-else class="flex justify-between items-center">
+                            <button
+                                type="button"
+                                class="bg-primary text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-16 py-3 rounded-xl"
+                            >
+                                Bergabung
+                            </button>
+                            <p class="text-white text-end">
+                                {{ props.course.users_count }} siswa telah
+                                bergabung
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -267,7 +170,7 @@ const props = defineProps({
                     </p>
                     <ul class="flex flex-col gap-3">
                         <li
-                            v-for="(value, key) in dummyCourse.forWho"
+                            v-for="(value, key) in props.course.recommended"
                             :key="key"
                             class="flex gap-3 items-center px-3 py-2 border border-neutral-50 rounded-xl"
                         >
@@ -318,7 +221,37 @@ const props = defineProps({
                         magna aliqua. incididunt ut labore et dolore magna
                         aliqua.
                     </p>
-                    <Accordion :curriculum="dummyCourse.curriculum" />
+                    <Accordion
+                        type="single"
+                        class="w-full flex flex-col gap-2"
+                        collapsible
+                        :default-value="props.course.groups[0]"
+                    >
+                        <AccordionItem
+                            class="bg-neutral-10 cursor-pointer border border-neutral-40 rounded-lg"
+                            v-for="(value, index) in props.course.groups"
+                            :key="index"
+                            :value="index"
+                        >
+                            <AccordionTrigger
+                                class="text-neutral-90 px-6 py-3 text-start"
+                            >
+                                Lecture {{ index + 1 }} -
+                                {{ value.title }}</AccordionTrigger
+                            >
+                            <AccordionContent class="bg-neutral-20 p-0">
+                                <ul class="flex flex-col gap-3 px-6 py-3">
+                                    <li
+                                        v-for="(item, key) in value.contents"
+                                        :key="key"
+                                        class="text-sm text-neutral-90"
+                                    >
+                                        {{ item.title }}
+                                    </li>
+                                </ul>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </div>
                 <!-- Profile Mentor -->
                 <div class="lg:col-span-1 xl:col-span-2">
@@ -365,37 +298,39 @@ const props = defineProps({
                     </div>
                 </div>
             </div>
-            <!-- Review -->
-            <div class="xl:py-12 py-8">
+        </div>
+        <!-- Review -->
+        <div class="xl:py-12 py-8">
+            <div class="container">
                 <h1 class="title mb-1">Apa kata mereka?</h1>
                 <p class="text-neutral-90 mb-12 md:w-3/5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. incididunt ut labore et dolore magna aliqua.
                 </p>
-                <CarouselReveiw :testimonials="props.course.testimonies" />
             </div>
-            <!-- You Might Like -->
-            <div class="xl:py-12 py-8">
-                <h1 class="title mb-3">Mungkin kamu suka</h1>
-                <div
-                    class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-                >
-                    <BoxCourse
-                        v-for="(course, index) in props.relatedCourses"
-                        :key="index"
-                        :iconBadge="course.categories[0].icon_image"
-                        :backgroundBadge="course.categories[0].color"
-                        :categoryClass="course.categories[0].name"
-                        :title="course.title"
-                        :teacher="course.mentor.fullname"
-                        :teachersJob="course.mentor.mentor_detail.profession"
-                        :avatar="course.mentor.profile_picture"
-                        :level="course.level"
-                        :slug="course.slug"
-                        :thumbnail="course.thumbnail"
-                    />
-                </div>
+            <CarouselReveiw :testimonials="props.course.testimonies" />
+        </div>
+        <!-- You Might Like -->
+        <div class="container xl:py-12 py-8">
+            <h1 class="title mb-3">Mungkin kamu suka</h1>
+            <div
+                class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            >
+                <BoxCourse
+                    v-for="(course, index) in props.relatedCourses"
+                    :key="index"
+                    :iconBadge="course.categories[0].icon_image"
+                    :backgroundBadge="course.categories[0].color"
+                    :categoryClass="course.categories[0].name"
+                    :title="course.title"
+                    :teacher="course.mentor.fullname"
+                    :teachersJob="course.mentor.mentor_detail.profession"
+                    :avatar="course.mentor.profile_picture"
+                    :level="course.level"
+                    :slug="course.slug"
+                    :thumbnail="course.thumbnail"
+                />
             </div>
         </div>
     </AuthenticatedLayout>

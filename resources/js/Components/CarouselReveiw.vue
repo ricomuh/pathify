@@ -54,13 +54,15 @@ onBeforeUnmount(() => {
                     ...testimonials,
                 ]"
                 :key="index"
-                class="min-w-[30rem] max-w-[30rem] flex-shrink-0 border-2 border-neutral-50 bg-neutral-20 p-6 rounded-2xl"
+                class="min-w-96 max-w-96 xl:min-w-[30rem] xl:max-w-[30rem] flex-shrink-0 border-2 border-neutral-50 bg-neutral-20 p-6 rounded-2xl"
             >
-                <p class="text-xl leading-[1.60125rem] h-32 text-neutral-80">
+                <p
+                    class="xl:text-lg xl:leading-[1.60125rem] h-32 text-neutral-80"
+                >
                     {{ testimonial.body }}
                 </p>
                 <div
-                    class="flex gap-3 items-center border rounded-xl border-neutral-50 p-3"
+                    class="flex gap-3 items-center border rounded-xl border-neutral-50 p-2 xl:p-3"
                 >
                     <img
                         :src="testimonial.user.profile_picture"
@@ -68,7 +70,7 @@ onBeforeUnmount(() => {
                         alt=""
                     />
                     <div>
-                        <h2 class="text-neutral-100 font-bold text-xl">
+                        <h2 class="text-neutral-100 font-bold xl:text-lg">
                             {{ testimonial.user.fullname }}
                         </h2>
                         <p class="-mt-1 text-neutral-90">
