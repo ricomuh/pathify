@@ -40,6 +40,12 @@ const showingNavigationDropdown = ref(false);
                         Kelas
                     </NavLink>
                     <NavLink
+                        :href="route('event.index')"
+                        :active="route().current('event.index')"
+                    >
+                        Event
+                    </NavLink>
+                    <NavLink
                         :href="route('about.index')"
                         :active="route().current('about.index')"
                     >

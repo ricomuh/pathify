@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
-import DataIcon from "../../../images/banner.png";
+import ContentBottom from "@/Components/ContentBottom.vue";
 import BoxCourse from "@/Components/BoxCourse.vue";
 
 import { ref } from "vue";
@@ -167,23 +167,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
 
         <!-- Content -->
         <div class="container">
-            <div class="mb-6 max-w-[32.5rem] mx-auto">
-                <h1
-                    class="text-[2.3125rem] leading-[2.775rem] text-neutral-100 font-bold"
-                >
-                    Belajar tanpa batas ruang dan waktu
-                </h1>
-                <p class="text-xl text-neutral-70">
-                    Nikmati pengalaman belajar tanpa batasan ruang dan waktu.
-                    Nikmati keseruan luar biasa dari kami
-                </p>
-                <i data-lucide="x"></i>
-            </div>
-            <img
-                :src="DataIcon"
-                class="w-3/4 mx-auto object-cover h-52"
-                alt=""
-            />
+            <ContentBottom />
         </div>
     </AuthenticatedLayout>
 </template>
