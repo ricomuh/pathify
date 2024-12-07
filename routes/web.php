@@ -42,7 +42,12 @@ Route::middleware('auth')->group(function () {
 // Route::get('/courses/search', [CourseController::class, 'search'])->name('courses.search');
 // Route::get('/courses/{id}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
-Route::get('/event', [EventController::class, 'index'])->name('event.index');
+// Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
+Route::as('events.')->prefix('events')->group(function () {
+    Route::get('/', [EventController::class, 'index'])->name('index');
+    Route::get('/{event:slug}', [EventController::class, 'show'])->name('show');
+});
 
 
 require __DIR__ . '/auth.php';

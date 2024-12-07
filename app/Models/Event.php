@@ -52,4 +52,16 @@ class Event extends Model
             $event->slug = $slug;
         });
     }
+
+    // scope for published only
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
+
+    // get the seats left
+    public function getSeatsLeftAttribute()
+    {
+        return $this->quota - $this->users_count;
+    }
 }
