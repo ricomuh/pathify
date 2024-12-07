@@ -8,7 +8,7 @@ import FrontendIcon from "../../../images/icons/fe.svg";
 import CyberIcon from "../../../images/icons/cyber.svg";
 import MobileIcon from "../../../images/icons/mobile.svg";
 import DesignIcon from "../../../images/icons/ui.svg";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import BoxCourse from "@/Components/BoxCourse.vue";
 import CarouselReveiw from "@/Components/CarouselReveiw.vue";
 
@@ -144,6 +144,38 @@ const dummyCourse = ref({
         },
     ],
 });
+
+// bars
+const bars = computed(() => {
+    const levels = [
+        { height: "h-3", color: "bg-white" },
+        { height: "h-5", color: "bg-neutral-60" },
+        { height: "h-7", color: "bg-neutral-60" },
+    ];
+
+    return levels.map((bar, index) => {
+        if (index < props.course.level) {
+            bar.color = "bg-white";
+        }
+        return bar;
+    });
+});
+
+// get data
+const props = defineProps({
+    course: {
+        type: Object,
+        required: true,
+    },
+    hasAccess: {
+        type: Boolean,
+        required: true,
+    },
+    latestCourses: {
+        type: Array,
+        required: true,
+    },
+});
 </script>
 
 <template>
@@ -151,58 +183,104 @@ const dummyCourse = ref({
 
     <AuthenticatedLayout>
         <!-- Hero -->
-        <div class="bg-primary-surface py-12">
-            <div class="container">
-                <div class="grid grid-cols-2 gap-12 items-center px-16">
+        <div
+            class="bg-primary-pressed relative xl:h-screen flex justify-center flex-col py-16"
+        >
+            <img
+                :src="props.course.thumbnail"
+                class="absolute top-0 right-0 w-2/5 h-full object-cover hidden lg:block"
+                alt=""
+            />
+            <!-- Konten dalam container -->
+            <div class="container relative z-10">
+                <div class="grid xl:grid-cols-2 gap-8 xl:gap-12 items-center">
                     <div class="col">
                         <BadgeCategory
-                            :icons="FrontendIcon"
-                            backgroundColor="#FF7A00"
-                            category="Frontend"
+                            :icons="props.course.categories[0].icon_image"
+                            :backgroundColor="props.course.categories[0].color"
+                            :category="props.course.categories[0].name"
+                            fontSize="text-base"
                         />
-                        <h1 class="title my-3">
-                            Pengantar Dunia Komputer : Hal yang perlu diketahui
-                            sebelumnya
+                        <h1
+                            class="text-[2.3125rem] leading-[2.775rem] font-bold text-neutral-10 my-3"
+                        >
+                            {{ props.course.title }}
                         </h1>
-                        <p class="text-neutral-80 mb-6">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat.
+                        <p class="text-neutral-40 text-base mb-6">
+                            {{ props.course.body }}
                         </p>
+                        <!-- Mentor -->
+                        <div class="flex justify-between items-center p-3 mb-6">
+                            <div class="flex gap-2 items-center">
+                                <img
+                                    :src="props.course.mentor.profile_picture"
+                                    class="size-8 object-cover rounded-full"
+                                    alt=""
+                                />
+
+                                <div>
+                                    <p
+                                        class="text-neutral-20 font-bold text-sm mb-1"
+                                    >
+                                        {{ props.course.mentor.fullname }}
+                                    </p>
+                                    <p class="text-neutral-40 -mt-1.5 text-sm">
+                                        {{
+                                            props.course.mentor.mentor_detail
+                                                .profession
+                                        }}
+                                        di
+                                        {{
+                                            props.course.mentor.mentor_detail
+                                                .profession_at
+                                        }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-end gap-[0.13rem]">
+                                <div
+                                    v-for="(bar, index) in bars"
+                                    :key="index"
+                                    :class="`w-2 ${bar.height} ${bar.color} rounded-[6.25rem] border border-neutral-20`"
+                                ></div>
+                            </div>
+                        </div>
                         <button
                             type="button"
-                            class="bg-primary text-neutral-20 text-xl border-b-4 border-primary-hover px-8 py-3 rounded-xl"
+                            class="bg-primary text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-16 py-3 rounded-xl"
                         >
                             Bergabung
                         </button>
-                    </div>
-                    <div class="col">
-                        <img
-                            src="../../../images/banner.png"
-                            class="w-full h-[22rem] object-cover hidden lg:block rounded-3xl"
-                            alt=""
-                        />
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Detail Course -->
-        <div class="container">
-            <div class="grid grid-cols-5 gap-12 py-12">
-                <!-- About this course -->
-                <div class="col-span-3">
-                    <h1 class="title mb-1">Tentang kelas ini</h1>
-                    <div class="!text-neutral-90">
-                        <div
-                            class="about-course"
-                            v-html="dummyCourse.classDescription"
-                        ></div>
-                    </div>
+        <div class="container xl:py-12 py-8">
+            <div class="grid md:grid-cols-2 gap-8 xl:gap-12">
+                <div class="col-span-1">
+                    <!-- For Who -->
+                    <h1 class="title mb-1">Untuk Siapa?</h1>
+                    <p class="text-neutral-90 mb-3">
+                        Kelas ini cocok buat kamu apabila kamu adalah
+                    </p>
+                    <ul class="flex flex-col gap-3">
+                        <li
+                            v-for="(value, key) in dummyCourse.forWho"
+                            :key="key"
+                            class="flex gap-3 items-center px-3 py-2 border border-neutral-50 rounded-xl"
+                        >
+                            <img
+                                src="../../../images/icons/who.svg"
+                                class="size-6"
+                                alt=""
+                            />
+                            <p class="text-neutral-90">{{ value }}</p>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-span-2">
+                <div class="col-span-1">
                     <!-- Requirement -->
                     <div class="mb-12">
                         <h1 class="title mb-1">Kebutuhan kamu</h1>
@@ -212,7 +290,8 @@ const dummyCourse = ref({
                         </p>
                         <ul class="flex flex-col gap-3">
                             <li
-                                v-for="(value, key) in dummyCourse.requirements"
+                                v-for="(value, key) in props.course
+                                    .requirements"
                                 :key="key"
                                 class="flex gap-3 items-center"
                             >
@@ -225,32 +304,13 @@ const dummyCourse = ref({
                             </li>
                         </ul>
                     </div>
-                    <!-- For Who -->
-                    <div>
-                        <h1 class="title mb-1">Untuk Siapa?</h1>
-                        <p class="text-neutral-90 mb-3">
-                            Kelas ini cocok buat kamu apabila kamu adalah
-                        </p>
-                        <ul class="flex flex-col gap-3">
-                            <li
-                                v-for="(value, key) in dummyCourse.forWho"
-                                :key="key"
-                                class="flex gap-3 items-center px-3 py-2 border border-neutral-50 rounded-xl"
-                            >
-                                <img
-                                    src="../../../images/icons/who.svg"
-                                    class="size-6"
-                                    alt=""
-                                />
-                                <p class="text-neutral-90">{{ value }}</p>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
-            <div class="grid grid-cols-5 gap-12 py-12">
+            <div
+                class="grid lg:grid-cols-2 xl:grid-cols-5 gap-8 xl:gap-12 xl:py-12 py-8"
+            >
                 <!-- Curriculum -->
-                <div class="col-span-3">
+                <div class="lg:col-span-1 xl:col-span-3">
                     <h1 class="title mb-1">Kurikulum</h1>
                     <p class="text-neutral-90 mb-6">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -261,7 +321,7 @@ const dummyCourse = ref({
                     <Accordion :curriculum="dummyCourse.curriculum" />
                 </div>
                 <!-- Profile Mentor -->
-                <div class="col-span-2">
+                <div class="lg:col-span-1 xl:col-span-2">
                     <h1 class="title mb-1">Profil Pengajar</h1>
                     <p class="text-neutral-90 mb-6">
                         Pengajar adalah orang yang membuat dan berkontribusi
@@ -270,16 +330,24 @@ const dummyCourse = ref({
                     <div class="border border-neutral-50 rounded-xl">
                         <div class="bg-neutral-30 flex items-center p-3 gap-3">
                             <img
-                                :src="dummyCourse.instructor.photo"
+                                :src="props.course.mentor.profile_picture"
                                 class="size-[3.125rem] rounded-lg"
                                 alt=""
                             />
                             <div>
                                 <h2 class="text-neutral-100 font-bold text-xl">
-                                    {{ dummyCourse.instructor.name }}
+                                    {{ props.course.mentor.fullname }}
                                 </h2>
                                 <p class="-mt-1 text-neutral-90">
-                                    {{ dummyCourse.instructor.position }}
+                                    {{
+                                        props.course.mentor.mentor_detail
+                                            .profession
+                                    }}
+                                    di
+                                    {{
+                                        props.course.mentor.mentor_detail
+                                            .profession_at
+                                    }}
                                 </p>
                             </div>
                         </div>
@@ -288,42 +356,44 @@ const dummyCourse = ref({
                                 Siapakan Dia?
                             </h1>
                             <p class="text-neutral-80">
-                                {{ dummyCourse.instructor.description }}
+                                {{
+                                    props.course.mentor.mentor_detail
+                                        .description
+                                }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Review -->
-            <div class="py-12">
+            <div class="xl:py-12 py-8">
                 <h1 class="title mb-1">Apa kata mereka?</h1>
-                <p class="text-neutral-90 mb-12 w-3/5">
+                <p class="text-neutral-90 mb-12 md:w-3/5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. incididunt ut labore et dolore magna aliqua.
                 </p>
                 <CarouselReveiw :testimonials="dummyCourse.testimonials" />
             </div>
-
             <!-- You Might Like -->
-            <div class="py-12">
+            <div class="xl:py-12 py-8">
                 <h1 class="title mb-3">Mungkin kamu suka</h1>
-                <div class="grid grid-cols-4 gap-6">
+                <div
+                    class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                >
                     <BoxCourse
-                        v-for="(
-                            course, index
-                        ) in dummyCourse.recommendationCourse"
+                        v-for="(course, index) in props?.latestCourses"
                         :key="index"
-                        :iconBadge="course.iconBadge"
-                        :backgroundBadge="course.backgroundBadge"
-                        :categoryClass="course.categoryClass"
+                        :iconBadge="course.categories[0].icon_image"
+                        :backgroundBadge="course.categories[0].color"
+                        :categoryClass="course.categories[0].name"
                         :title="course.title"
-                        :teacher="course.teacher"
-                        :teachersJob="course.teachersJob"
-                        :avatar="course.avatar"
+                        :teacher="course.mentor.fullname"
+                        :teachersJob="course.mentor.mentor_detail.profession"
+                        :avatar="course.mentor.profile_picture"
                         :level="course.level"
                         :slug="course.slug"
+                        :thumbnail="course.thumbnail"
                     />
                 </div>
             </div>
@@ -333,7 +403,7 @@ const dummyCourse = ref({
 
 <style scoped>
 .title {
-    @apply text-[2.3125rem] leading-[2.775rem] font-bold text-neutral-100;
+    @apply text-2xl xl:text-[2.3125rem] leading-[2.775rem] font-bold text-neutral-100;
 }
 ::v-deep .about-course ul {
     @apply list-disc list-inside;

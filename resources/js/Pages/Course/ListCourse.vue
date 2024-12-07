@@ -1,114 +1,22 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
-import FrontendIcon from "../../../images/icons/fe.svg";
-import CyberIcon from "../../../images/icons/cyber.svg";
-import MobileIcon from "../../../images/icons/mobile.svg";
-import DesignIcon from "../../../images/icons/ui.svg";
-import DevOpsIcon from "../../../images/icons/devops.svg";
-import GameIcon from "../../../images/icons/game.svg";
 import DataIcon from "../../../images/banner.png";
 import BoxCourse from "@/Components/BoxCourse.vue";
-import { router } from "@inertiajs/vue3";
 
 import { ref } from "vue";
 
+// get data
 const props = defineProps({
     latestCourses: Array,
     popularCourses: Array,
     categories: Array,
 });
+
 // search function
 const search = ref("");
-const handleSearch = () => {
-    if (search.value.trim() !== "") {
-        router.get("/courses/search", { query: search.value });
-    }
-};
-
-// dummy data
-const courses = [
-    {
-        iconBadge: FrontendIcon,
-        backgroundBadge: "#FF7A00",
-        categoryClass: "Frontend",
-        title: 'Pengantar Dunia Komputer : “Hello World!"',
-        teacher: "Flora Shafiqa Riyadi, M.Kom",
-        teachersJob: "Mobile Apps Developer",
-        avatar: DataIcon,
-        level: 2,
-        slug: "pengantar-dunia-komputer-hello-world",
-    },
-    {
-        iconBadge: CyberIcon,
-        backgroundBadge: "#EA1C00",
-        categoryClass: "Cyber Security",
-        title: 'Pengantar Dunia Komputer : “Hello World!"',
-        teacher: "Flora Shafiqa Riyadi, M.Kom",
-        teachersJob: "Mobile Apps Developer",
-        avatar: DataIcon,
-        level: 1,
-        slug: "pengantar-dunia-komputer-hello-world",
-    },
-    {
-        iconBadge: MobileIcon,
-        backgroundBadge: "#00CD52",
-        categoryClass: "Mobile Development",
-        title: "Pengantar Pemrograman Mobile Development",
-        teacher: "Flora Shafiqa Riyadi, M.Kom",
-        teachersJob: "Mobile Apps Developer",
-        avatar: DataIcon,
-        level: 3,
-        slug: "pengantar-dunia-komputer-hello-world",
-    },
-    {
-        iconBadge: DesignIcon,
-        backgroundBadge: "#00987D",
-        categoryClass: "UI/UX Design",
-        title: 'Pengantar Dunia Komputer : “Hello World!"',
-        teacher: "Flora Shafiqa Riyadi, M.Kom",
-        teachersJob: "Mobile Apps Developer",
-        avatar: DataIcon,
-        level: 2,
-        slug: "pengantar-dunia-komputer-hello-world",
-    },
-    {
-        iconBadge: DevOpsIcon,
-        backgroundBadge: "#53A700",
-        categoryClass: "DevOps",
-        title: 'Pengantar Dunia Komputer : “Hello World!"',
-        teacher: "Flora Shafiqa Riyadi, M.Kom",
-        teachersJob: "Mobile Apps Developer",
-        avatar: DataIcon,
-        level: 1,
-        slug: "pengantar-dunia-komputer-hello-world",
-    },
-    {
-        iconBadge: GameIcon,
-        backgroundBadge: "#7705AD",
-        categoryClass: "Game Development",
-        title: 'Pengantar Dunia Komputer : “Hello World!"',
-        teacher: "Flora Shafiqa Riyadi, M.Kom",
-        teachersJob: "Mobile Apps Developer",
-        avatar: DataIcon,
-        level: 3,
-        slug: "pengantar-dunia-komputer-hello-world",
-    },
-];
 
 // categories
-const categories = ref([
-    {
-        id: 1,
-        name: "Web Development",
-        icon: "media/icons/category.svg",
-    },
-    { id: 2, name: "UI / UX Design", icon: "media/icons/category.svg" },
-    { id: 3, name: "Data Science", icon: "media/icons/category.svg" },
-    { id: 4, name: "Mobile Development", icon: "media/icons/category.svg" },
-    { id: 5, name: "Cyber Security", icon: "media/icons/category.svg" },
-]);
-
 const selectedCategories = ref([]);
 
 const toggleCategory = (id) => {
@@ -196,7 +104,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
 
         <!-- List Course -->
         <div class="container pt-6 pb-12">
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex flex-wrap gap-2 justify-between items-center mb-6">
                 <h1 class="text-[2.3125rem] text-neutral-100 font-bold">
                     Semua Kelas
                 </h1>
@@ -206,6 +114,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                     <img src="media/icons/search.svg" alt="" />
                     <input
                         type="search"
+                        v-model="search"
                         class="outline-none !h-max py-0 px-0 border-0 bg-neutral-10 shadow-none !ring-0 w-full"
                         placeholder="Mau belajar apa hari ini?"
                     />

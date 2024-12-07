@@ -18,10 +18,6 @@ const props = defineProps({
         type: String,
         default: "text-xs",
     },
-    imageSize: {
-        type: String,
-        default: "size-3",
-    },
     paddingY: {
         type: String,
         default: "py-1",
@@ -38,7 +34,7 @@ onMounted(() => {
         :class="`flex px-2 w-max rounded-lg gap-1 items-center ${paddingY}`"
         :style="{ backgroundColor: backgroundColor }"
     >
-        <i :class="icons" class="text-xs text-white"></i>
+        <i :class="`${icons} ${fontSize} text-white`"></i>
         <span :class="`${fontSize} text-neutral-20`">{{ category }}</span>
     </div>
 </template>

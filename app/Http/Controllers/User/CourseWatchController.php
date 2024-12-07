@@ -15,6 +15,7 @@ class CourseWatchController extends Controller
         $course->load([
             'mentor' => function ($query) {
                 $query->select('id', 'fullname', 'username', 'profile_picture');
+                $query->with('mentorDetail');
             },
             'status',
             'categories',
@@ -24,13 +25,24 @@ class CourseWatchController extends Controller
             }
         ])->loadCount('users');
 
+
+        $latestCourses = Course::with([
+            'mentor' => function ($query) {
+                $query->select('id', 'profile_picture', 'fullname', 'username');
+                $query->with('mentorDetail');
+            },
+            'categories',
+        ])
+            ->published()
+            ->latest()->limit(4)->get();
+
         // check if user has access to this course
         $hasAccess = auth()->user()->hasAccess($course);
         // dd(compact('course', 'hasAccess'));
 
-        return response()->json(compact('course', 'hasAccess'));
+        // return response()->json(compact('course', 'hasAccess'));
 
-        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
+        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess', 'latestCourses'));
     }
 
     public function watch(Course $course, int $order)
