@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseContent;
+use App\Models\CourseSubmission;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -98,7 +99,7 @@ class CourseWatchController extends Controller
                     }
                 ]);
             },
-        ])->loadCount('users');
+        ]);
 
         $content = CourseContent::where('course_id', $course->id)
             ->where('order', $order)
@@ -140,5 +141,36 @@ class CourseWatchController extends Controller
         return response()->json(compact('course', 'content', 'order'));
         // echo "hello";
         // return Inertia::render('Course/WatchCourse', compact('course', 'content'));
+    }
+
+    public function submission(Course $course)
+    {
+        abort_unless(auth()->user()->hasAccess($course), 403);
+
+        $course->load([
+            'mentor' => function ($query) {
+                $query->select('id', 'fullname', 'username', 'profile_picture');
+            },
+            'groups' => function ($query) {
+                $query->orderBy('order', 'asc');
+                // $query->select('id', 'course_id', 'title', 'order');
+                $query->with([
+                    'contents' => function ($query) {
+                        $query->orderBy('order', 'asc');
+                        $query->select('id', 'course_id', 'group_id', 'title', 'description', 'order');
+                    }
+                ]);
+            },
+        ]);
+
+        $submission = CourseSubmission::where('course_id', $course->id)
+            ->with([
+                'userCourseSubmissions' => function ($query) {
+                    $query->where('user_id', auth()->id());
+                }
+            ])
+            ->first();
+
+        return response()->json(compact('course', 'submission'));
     }
 }
