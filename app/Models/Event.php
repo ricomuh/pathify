@@ -10,7 +10,7 @@ class Event extends Model
     /** @use HasFactory<\Database\Factories\EventFactory> */
     use HasFactory;
 
-    protected $fillable = ['thumbnail', 'title', 'slug', 'body', 'start_date', 'end_date', 'location', 'registration_start_date', 'registration_end_date', 'quota', 'status', 'rundown'];
+    protected $fillable = ['event_category_id', 'thumbnail', 'title', 'slug', 'body', 'start_date', 'end_date', 'location', 'registration_start_date', 'registration_end_date', 'quota', 'status', 'rundown'];
 
     public function casts()
     {
@@ -26,6 +26,11 @@ class Event extends Model
     public function users()
     {
         return $this->hasManyThrough(User::class, UserEvent::class, 'event_id', 'id', 'id', 'user_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(EventCategory::class, 'event_category_id');
     }
 
     // generate slug

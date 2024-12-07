@@ -15,6 +15,7 @@ class EventController extends Controller
     {
         $events = Event::select('id', 'thumbnail', 'title', 'slug', 'quota')
             ->latest()
+            ->with('category')
             ->withCount('users')
             // ->whereDate('registration_end_date', '>=', now())
             ->paginate(10);
@@ -36,7 +37,9 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
-        $event->loadCount('users')->get();
+        $event
+            ->load('category')
+            ->loadCount('users')->get();
 
         $isJoined = UserEvent::where('user_id', auth()->id())
             ->where('event_id', $event->id)
