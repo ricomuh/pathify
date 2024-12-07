@@ -12,12 +12,13 @@ class Course extends Model
 {
     use HasUuids, HasFactory;
 
-    protected $fillable = ['mentor_id', 'status_id', 'thumbnail', 'title', 'slug', 'description', 'level', 'body', 'requirements'];
+    protected $fillable = ['mentor_id', 'status_id', 'thumbnail', 'title', 'slug', 'description', 'level', 'body', 'requirements', 'recommended'];
 
     public function casts()
     {
         return [
             'requirements' => 'array',
+            'recommended' => 'array',
         ];
     }
 

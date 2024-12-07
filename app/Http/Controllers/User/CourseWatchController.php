@@ -36,6 +36,7 @@ class CourseWatchController extends Controller
                     },
                 ]);
             },
+            'joined'
             // 'contents' => function ($query) {
             //     $query->orderBy('order', 'asc');
             //     $query->select('id', 'course_id', 'title', 'description', 'order');
