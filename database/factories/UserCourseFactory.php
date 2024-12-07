@@ -18,7 +18,8 @@ class UserCourseFactory extends Factory
     {
         return [
             'is_favorite' => $this->faker->boolean,
-            'progress' => $this->faker->numberBetween(0, 3),
+            // random percentage
+            'progress' => $this->faker->numberBetween(0, 100),
             'last_watched_at' => $this->faker->dateTimeThisYear,
             'completed_at' => $this->faker->dateTimeThisYear,
         ];
