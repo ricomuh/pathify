@@ -38,7 +38,7 @@ class EventFactory extends Factory
         }
 
         return [
-            'category_id' => $this->faker->numberBetween(1, 4),
+            'event_category_id' => $this->faker->numberBetween(1, 4),
             'thumbnail' => $this->faker->imageUrl(),
             'title' => $this->faker->sentence(),
             'body' => $this->faker->paragraphs(3, true),
