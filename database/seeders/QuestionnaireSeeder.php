@@ -501,5 +501,9 @@ class QuestionnaireSeeder extends Seeder
                 }
             }
         });
+
+        $this->command->info('Questionnaire seeded!');
+
+        $this->call(QuestionnaireResultSeeder::class);
     }
 }
