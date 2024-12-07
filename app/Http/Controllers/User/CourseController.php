@@ -21,6 +21,7 @@ class CourseController extends Controller
                 $query->with('mentorDetail');
             },
             'categories',
+            'joined'
         ])
             ->published()
             ->latest()->limit(6)->get();
@@ -31,13 +32,14 @@ class CourseController extends Controller
                 $query->with('mentorDetail');
             },
             'categories',
+            'joined'
         ])
             ->published()
             ->withCount('users')
             ->orderBy('users_count', 'desc')
             ->limit(6)->get();
 
-        // return response()->json(compact('latestCourses', 'popularCourses', 'categories'));
+        return response()->json(compact('latestCourses', 'popularCourses', 'categories'));
 
         return Inertia::render('Course/ListCourse', compact('latestCourses', 'popularCourses', 'categories'));
     }
@@ -55,6 +57,7 @@ class CourseController extends Controller
                 $query->with('mentorDetail');
             },
             'categories',
+            'joined'
         ])
             ->where('name', 'like', '%' . $query . '%')
             ->orWhereHas('categories', function ($q) use ($query) {

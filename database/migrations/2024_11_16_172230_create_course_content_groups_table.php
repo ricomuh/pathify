@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Course;
-use App\Models\CourseContentGroup;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,15 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_contents', function (Blueprint $table) {
+        Schema::create('course_content_groups', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Course::class, 'course_id')->constrained();
-            $table->foreignIdFor(CourseContentGroup::class, 'group_id')->constrained();
+            $table->foreignIdFor(Course::class)->constrained()->cascadeOnDelete();
             $table->integer('order')->default(1);
             $table->string('title');
-            $table->text('description');
-            $table->text('body');
-            $table->integer('view_count')->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_contents');
+        Schema::dropIfExists('course_content_groups');
     }
 };

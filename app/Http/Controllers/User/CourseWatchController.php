@@ -19,10 +19,27 @@ class CourseWatchController extends Controller
             },
             'status',
             'categories',
-            'contents' => function ($query) {
+            'groups' => function ($query) {
                 $query->orderBy('order', 'asc');
-                $query->select('id', 'course_id', 'title', 'description', 'order');
-            }
+                // $query->select('id', 'course_id', 'title', 'order');
+                $query->with([
+                    'contents' => function ($query) {
+                        $query->orderBy('order', 'asc');
+                        $query->select('id', 'course_id', 'group_id', 'title', 'description', 'order');
+                    }
+                ]);
+            },
+            'testimonies' => function ($query) {
+                $query->with([
+                    'user' => function ($query) {
+                        $query->select('id', 'fullname', 'username', 'profile_picture');
+                    },
+                ]);
+            },
+            // 'contents' => function ($query) {
+            //     $query->orderBy('order', 'asc');
+            //     $query->select('id', 'course_id', 'title', 'description', 'order');
+            // }
         ])->loadCount('users')->get();
 
 
@@ -41,7 +58,7 @@ class CourseWatchController extends Controller
             })
             ->inRandomOrder()
             ->where('id', '!=', $course->id)
-            ->limit(6)
+            ->limit(4)
             ->get();
 
         // return response()->json(compact('course', 'courseCategories', 'relatedCourses'));
@@ -49,7 +66,7 @@ class CourseWatchController extends Controller
         $hasAccess = auth()->user()->hasAccess($course);
         // dd(compact('course', 'hasAccess'));
 
-        // return response()->json(compact('course', 'hasAccess'));
+        return response()->json(compact('course', 'hasAccess', 'relatedCourses'));
 
         return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
     }
@@ -66,10 +83,20 @@ class CourseWatchController extends Controller
             },
             // 'status',
             // 'categories',
-            'contents' => function ($query) {
+            // 'contents' => function ($query) {
+            //     $query->orderBy('order', 'asc');
+            //     $query->select('id', 'course_id', 'title', 'description', 'order');
+            // }
+            'groups' => function ($query) {
                 $query->orderBy('order', 'asc');
-                $query->select('id', 'course_id', 'title', 'description', 'order');
-            }
+                // $query->select('id', 'course_id', 'title', 'order');
+                $query->with([
+                    'contents' => function ($query) {
+                        $query->orderBy('order', 'asc');
+                        $query->select('id', 'course_id', 'group_id', 'title', 'description', 'order');
+                    }
+                ]);
+            },
         ])->loadCount('users');
 
         $content = CourseContent::where('course_id', $course->id)
@@ -89,13 +116,7 @@ class CourseWatchController extends Controller
                         'downvotes',
                     ]);
                 },
-                'testimonies' => function ($query) {
-                    $query->with([
-                        'user' => function ($query) {
-                            $query->select('id', 'fullname', 'username', 'profile_picture');
-                        },
-                    ]);
-                },
+
             ])
             ->firstOrFail();
 
@@ -115,7 +136,7 @@ class CourseWatchController extends Controller
         $content->increment('view_count');
 
         // dd(compact('course', 'content'));
-        return response()->json(compact('course', 'content'));
+        return response()->json(compact('course', 'content', 'order'));
         // echo "hello";
         // return Inertia::render('Course/WatchCourse', compact('course', 'content'));
     }

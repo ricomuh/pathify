@@ -93,6 +93,18 @@ class Course extends Model
         return $this->belongsToMany(User::class, 'user_courses', 'course_id', 'user_id');
     }
 
+    // joined by user (auth)
+    public function joined()
+    {
+        // return $this->belongsTo(UserCourse::class, 'course_id')->where('user_id', auth()->id());
+        return $this->hasOne(UserCourse::class)->where('user_id', auth()->id());
+    }
+
+    public function groups()
+    {
+        return $this->hasMany(CourseContentGroup::class);
+    }
+
     // owned by user (auth)
     // public function owned()
     // {

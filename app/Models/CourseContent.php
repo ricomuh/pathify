@@ -10,7 +10,15 @@ class CourseContent extends Model
     /** @use HasFactory<\Database\Factories\CourseContentFactory> */
     use HasFactory;
 
-    protected $fillable = ['course_id', 'title', 'description', 'body', 'view_count', 'order'];
+    protected $fillable = [
+        'course_id',
+        'group_id',
+        'title',
+        'description',
+        'body',
+        'view_count',
+        'order'
+    ];
 
     public function course()
     {
@@ -20,5 +28,10 @@ class CourseContent extends Model
     public function comments()
     {
         return $this->hasMany(CourseComment::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(CourseContentGroup::class);
     }
 }
