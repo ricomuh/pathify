@@ -16,6 +16,7 @@ import { ref } from "vue";
 const props = defineProps({
     latestCourses: Array,
     popularCourses: Array,
+    categories: Array,
 });
 // search function
 const search = ref("");
@@ -142,14 +143,14 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                     Filter berdasarkan Kategori
                 </h1>
                 <p class="text-[1.3125rem] text-neutral-80">
-                    10 Kelas ditemukan
+                    {{ props.latestCourses.length }} Kelas ditemukan
                 </p>
             </div>
             <div
-                class="flex gap-3 flex-nowrap w-full overflow-x-auto items-center"
+                class="flex gap-3 flex-wrap w-full overflow-x-auto items-center"
             >
                 <div
-                    v-for="category in categories"
+                    v-for="category in props.categories"
                     :key="category.id"
                     class="form-group flex-shrink-0"
                 >
@@ -166,19 +167,27 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                         :class="[
                             'py-2 px-4 text-nowrap cursor-pointer text-lg rounded-2xl border-[1.4px] flex gap-2 items-center tracking-[0.00406rem]',
                             isSelected(category.id)
-                                ? 'bg-green-700 text-white border-green-700'
+                                ? `text-white`
                                 : 'bg-neutral-10 text-neutral-60 border-neutral-50',
                         ]"
+                        :style="
+                            isSelected(category.id)
+                                ? {
+                                      backgroundColor: category.color,
+                                      borderColor: category.color,
+                                  }
+                                : null
+                        "
                     >
-                        <img
-                            :src="category.icon"
-                            :class="
+                        <i
+                            :class="[
+                                category.icon_image,
                                 isSelected(category.id)
-                                    ? 'invert brightness-0'
-                                    : ''
-                            "
-                            alt=""
-                        />
+                                    ? 'text-white'
+                                    : 'text-neutral-60',
+                            ]"
+                            class="text-lg"
+                        ></i>
                         {{ category.name }}
                     </label>
                 </div>
@@ -213,7 +222,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                     :categoryClass="course.categories[0].name"
                     :title="course.title"
                     :teacher="course.mentor.fullname"
-                    :teachersJob="course.teachersJob"
+                    :teachersJob="course.mentor.mentor_detail.profession"
                     :avatar="course.mentor.profile_picture"
                     :level="course.level"
                     :slug="course.slug"
@@ -238,7 +247,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                     :categoryClass="course.categories[0].name"
                     :title="course.title"
                     :teacher="course.mentor.fullname"
-                    :teachersJob="course.teachersJob"
+                    :teachersJob="course.mentor.mentor_detail?.profession"
                     :avatar="course.mentor.profile_picture"
                     :level="course.level"
                     :slug="course.slug"
