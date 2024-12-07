@@ -23,9 +23,10 @@ class CourseWatchController extends Controller
                 $query->orderBy('order', 'asc');
                 $query->select('id', 'course_id', 'title', 'description', 'order');
             }
-        ])->loadCount('users');
+        ])->loadCount('users')->get();
 
-        $categories = $course->categories->pluck('id')->toArray();
+
+        $courseCategories = $course->categories->pluck('id')->toArray();
 
         $relatedCourses = Course::with([
             'mentor' => function ($query) {
@@ -35,14 +36,15 @@ class CourseWatchController extends Controller
             'categories',
         ])
             ->published()
-            ->whereHas('categories', function ($q) use ($categories) {
-                $q->whereIn('id', $categories);
+            ->whereHas('categories', function ($q) use ($courseCategories) {
+                $q->whereIn('categories.id', $courseCategories);
             })
             ->inRandomOrder()
             ->where('id', '!=', $course->id)
             ->limit(6)
             ->get();
 
+        // return response()->json(compact('course', 'courseCategories', 'relatedCourses'));
         // check if user has access to this course
         $hasAccess = auth()->user()->hasAccess($course);
         // dd(compact('course', 'hasAccess'));
