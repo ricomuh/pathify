@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('body');
             $table->json('requirements')->nullable();
             // recommended people categories
-            // $table->json('recommended')->nullable();
+            $table->json('recommended')->nullable();
             $table->timestamps();
         });
     }
