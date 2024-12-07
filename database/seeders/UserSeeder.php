@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\RoleEnum;
 use App\Models\MentorDetail;
+use App\Models\MentorSocialLink;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -37,14 +38,22 @@ class UserSeeder extends Seeder
             'role_id' => RoleEnum::Admin,
         ]);
 
+        $this->call([
+            SocialLinkSeeder::class,
+        ]);
+
         // make mentors
         User::factory(3)->create([
             // 'name' => 'Mentor',
             'role_id' => RoleEnum::Mentor,
         ])->each(function ($mentor) {
-            MentorDetail::factory()->create([
+            $mentorDetail = MentorDetail::factory()->create([
                 'user_id' => $mentor->id,
-            ]);
+            ])->each(function ($mentorDetail) {
+                MentorSocialLink::factory()->create([
+                    'mentor_detail_id' => $mentorDetail->id,
+                ]);
+            });
         });
 
         // make users

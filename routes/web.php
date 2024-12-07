@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MentorDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\AboutController;
@@ -48,6 +49,8 @@ Route::as('events.')->prefix('events')->group(function () {
     Route::get('/', [EventController::class, 'index'])->name('index');
     Route::get('/{event:slug}', [EventController::class, 'show'])->name('show');
 });
+
+Route::get('/mentor/{mentor:username}', [MentorDetailController::class, 'show'])->name('mentor.show');
 
 
 require __DIR__ . '/auth.php';

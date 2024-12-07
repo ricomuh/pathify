@@ -19,4 +19,9 @@ class MentorDetail extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function socialLinks()
+    {
+        return $this->hasMany(MentorSocialLink::class);
+    }
 }
