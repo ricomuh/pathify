@@ -1,7 +1,7 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
 import BadgeCategory from "./BadgeCategory.vue";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 
 const props = defineProps({
     categoryClass: {
@@ -40,6 +40,10 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    thumbnail: {
+        type: String,
+        required: true,
+    },
 });
 
 const bars = computed(() => {
@@ -60,36 +64,42 @@ const bars = computed(() => {
 <template>
     <Link
         :href="`/courses/${slug}`"
-        class="rounded-2xl overflow-hidden border border-neutral-90 bg-neutral-10"
+        class="h-[25rem] w-full rounded-2xl border border-neutral-90 overflow-hidden relative group"
     >
-        <div class="p-3">
-            <img
-                src="../../images/banner.png"
-                class="h-[10.40625rem] w-full object-cover rounded-lg mb-3"
-                alt=""
-            />
+        <img
+            :src="thumbnail"
+            class="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            alt=""
+        />
+        <div
+            class="absolute h-full w-full bottom-0 bg-box-course py-2 px-4 flex flex-col justify-end gap-3"
+        >
+            <!-- Category -->
             <BadgeCategory
                 :category="categoryClass"
                 :backgroundColor="backgroundBadge"
                 :icons="iconBadge"
             />
-            <h1 class="mt-1 text-xl text-neutral-100 font-bold h-28 mb-3">
+            <!-- Title -->
+            <h1
+                class="text-[1.3125rem] text-neutral-10 font-bold h-[4.6875rem] mb-3"
+            >
                 {{ title }}
             </h1>
-        </div>
-        <div class="bg-neutral-40 p-3">
-            <div class="flex justify-between items-center">
+            <!-- Mentor -->
+            <div class="flex justify-between items-center py-3">
                 <div class="flex gap-2 items-center">
                     <img
                         :src="avatar"
                         class="size-8 object-cover rounded-full"
                         alt=""
                     />
+
                     <div>
-                        <p class="text-neutral-100 font-bold text-sm mb-1">
+                        <p class="text-neutral-20 font-bold text-sm mb-1">
                             {{ teacher }}
                         </p>
-                        <p class="text-neutral-90 -mt-1.5 text-sm">
+                        <p class="text-neutral-40 -mt-1.5 text-sm">
                             {{ teachersJob }}
                         </p>
                     </div>

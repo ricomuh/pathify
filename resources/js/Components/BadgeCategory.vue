@@ -1,4 +1,6 @@
 <script setup>
+import { onMounted } from "vue";
+
 const props = defineProps({
     category: {
         type: String,
@@ -14,7 +16,7 @@ const props = defineProps({
     },
     fontSize: {
         type: String,
-        default: "text-sm",
+        default: "text-xs",
     },
     imageSize: {
         type: String,
@@ -25,14 +27,18 @@ const props = defineProps({
         default: "py-1",
     },
 });
+
+onMounted(() => {
+    lucide.createIcons();
+});
 </script>
 
 <template>
     <div
-        :class="`flex px-3 w-max rounded-md gap-[0.38rem] items-center ${paddingY}`"
+        :class="`flex px-2 w-max rounded-lg gap-1 items-center ${paddingY}`"
         :style="{ backgroundColor: backgroundColor }"
     >
-        <img :src="icons" :alt="category" :class="imageSize" />
+        <i :class="icons" class="text-xs text-white"></i>
         <span :class="`${fontSize} text-neutral-20`">{{ category }}</span>
     </div>
 </template>

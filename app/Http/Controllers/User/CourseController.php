@@ -38,31 +38,11 @@ class CourseController extends Controller
             ->limit(6)->get();
 
         // dd($courses);
-        return response()->json(compact('latestCourses', 'popularCourses'));
+        // return response()->json(compact('latestCourses', 'popularCourses'));
 
         return Inertia::render('Course/ListCourse', compact('latestCourses', 'popularCourses'));
     }
 
-    public function search(Request $request)
-    {
-        $query = $request->get('query', '');
-
-        $courses = Course::with([
-            'mentor',
-            'categories',
-        ])
-            ->where('name', 'like', '%' . $query . '%')
-            ->orWhereHas('categories', function ($q) use ($query) {
-                $q->where('name', 'like', '%' . $query . '%');
-            })
-            ->published()
-            ->get();
-
-        return Inertia::render('Course/SearchCourse', [
-            'query' => $query,
-            'courses' => $courses,
-        ]);
-    }
 
     // public function show(Course $course)
     // {
