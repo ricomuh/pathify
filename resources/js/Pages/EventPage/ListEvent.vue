@@ -1,86 +1,24 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, router } from "@inertiajs/vue3";
 import BoxEvent from "@/Components/BoxEvent.vue";
 import ContentBottom from "@/Components/ContentBottom.vue";
 import { ref } from "vue";
 
 const search = ref("");
 
-const events = [
-    {
-        id: 1,
-        category: "Seminar",
-        title: "Beginner Developer Fest 2024: Event yang menyenangkan dan menegangkan",
-        slug: "beginner-developer-fest-2024",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 150,
-        daysLeft: 4,
+const props = defineProps({
+    events: {
+        type: Object,
+        required: true,
     },
-    {
-        id: 2,
-        category: "Workshop",
-        title: "Advanced JavaScript Workshop: Mastering ES6+",
-        slug: "advanced-javascript-workshop",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 50,
-        daysLeft: 2,
-    },
-    {
-        id: 3,
-        category: "Conference",
-        title: "Tech Conference 2024: Innovations in AI",
-        slug: "tech-conference-2024",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 0,
-        daysLeft: 0,
-    },
-    {
-        id: 4,
-        category: "Meetup",
-        title: "Vue.js Meetup: Best Practices and Tips",
-        slug: "vuejs-meetup",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 20,
-        daysLeft: 1,
-    },
-    {
-        id: 5,
-        category: "Webinar",
-        title: "Webinar: Introduction to Machine Learning",
-        slug: "webinar-machine-learning",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 100,
-        daysLeft: 5,
-    },
-    {
-        id: 6,
-        category: "Hackathon",
-        title: "Hackathon 2024: Code for Good",
-        slug: "hackathon-2024",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 10,
-        daysLeft: 3,
-    },
-    {
-        id: 7,
-        category: "Seminar",
-        title: "Seminar: Future of Web Development",
-        slug: "seminar-future-web-development",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 75,
-        daysLeft: 7,
-    },
-    {
-        id: 8,
-        category: "Workshop",
-        title: "Workshop: Building Mobile Apps with Flutter",
-        slug: "workshop-flutter",
-        image: "media/illustrations/event-placeholder.png",
-        seatsLeft: 30,
-        daysLeft: 6,
-    },
-];
+});
+
+const goToPage = (url) => {
+    if (url) {
+        router.get(url, {}, { preserveState: true, preserveScroll: true });
+    }
+};
 </script>
 
 <template>
@@ -122,15 +60,35 @@ const events = [
                     class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
                 >
                     <BoxEvent
-                        v-for="(value, key) in events"
+                        v-for="(value, key) in props.events.data"
                         :key="key"
                         :title="value.title"
                         :category="value.category"
                         :slug="value.slug"
-                        :seatsLeft="value.seatsLeft"
-                        :daysLeft="value.daysLeft"
+                        :seatsLeft="value.seats_left"
+                        :daysLeft="value.start_date"
+                        :thumbnail="value.thumbnail"
                     />
                 </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center items-center gap-2 mb-12">
+                <button
+                    v-for="(link, index) in props.events.links"
+                    :key="index"
+                    :disabled="!link.url"
+                    @click="goToPage(link.url)"
+                    :class="[
+                        'px-3 py-1 border rounded',
+                        link.active
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-white text-blue-500 border-blue-500',
+                        !link.url && 'opacity-50 cursor-not-allowed',
+                    ]"
+                >
+                    <span v-html="link.label"></span>
+                </button>
             </div>
 
             <!-- Content -->

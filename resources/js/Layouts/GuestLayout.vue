@@ -15,9 +15,7 @@ import { Link } from "@inertiajs/vue3";
                 class="bg-primary-surface px-8 md:px-12 py-3 sticky top-0 w-full md:py-4"
             >
                 <Link href="/">
-                    <ApplicationLogo
-                        class="h-12 md:h-16 w-auto fill-current text-gray-500"
-                    />
+                    <ApplicationLogo class="h-12 md:h-16 w-auto" />
                 </Link>
             </div>
             <div

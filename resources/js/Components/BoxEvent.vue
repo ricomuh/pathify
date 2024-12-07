@@ -23,18 +23,27 @@ const props = defineProps({
         type: Number,
         required: true,
     },
+    thumbnail: {
+        type: String,
+        required: true,
+    },
 });
 
-const isFinished = computed(() => props.daysLeft <= 0);
+// days left
+const daysLeft = computed(() => {
+    const eventDate = new Date(props.daysLeft);
+    const today = new Date();
+    const timeDiff = eventDate - today;
+    const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    return days;
+});
+
+const isFinished = computed(() => daysLeft.value <= 0);
 </script>
 
 <template>
     <div class="rounded-2xl border border-neutral-90 overflow-hidden">
-        <img
-            src="media/illustrations/event-placeholder.png"
-            alt=""
-            class="w-full h-[12.5rem] object-cover"
-        />
+        <img :src="thumbnail" alt="" class="w-full h-[12.5rem] object-cover" />
         <div class="p-3">
             <p class="text-primary">{{ category }}</p>
             <h1
@@ -43,7 +52,7 @@ const isFinished = computed(() => props.daysLeft <= 0);
                 {{ title }}
             </h1>
             <Link
-                :href="`/event/${slug}`"
+                :href="`/events/${slug}`"
                 class="w-full text-center text-neutral-20 block rounded-xl border-b-4 border-primary-hover mb-1 bg-primary py-2"
                 >Lihat Detail</Link
             >

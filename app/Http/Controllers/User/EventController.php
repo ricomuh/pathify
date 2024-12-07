@@ -13,7 +13,7 @@ class EventController extends Controller
     //
     public function index()
     {
-        $events = Event::select('id', 'thumbnail', 'title', 'slug', 'quota')
+        $events = Event::select('id', 'thumbnail', 'title', 'slug', 'quota', 'start_date')
             ->latest()
             ->with('category')
             ->withCount('users')
@@ -30,9 +30,9 @@ class EventController extends Controller
             return $event;
         });
 
-        return response()->json(compact('events'));
+        // return response()->json(compact('events'));
 
-        return Inertia::render('EventPage/ListEvent');
+        return Inertia::render('EventPage/ListEvent', compact('events'));
     }
 
     public function show(Event $event)

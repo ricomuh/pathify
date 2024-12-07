@@ -57,19 +57,19 @@ onBeforeUnmount(() => {
                 class="min-w-[30rem] max-w-[30rem] flex-shrink-0 border-2 border-neutral-50 bg-neutral-20 p-6 rounded-2xl"
             >
                 <p class="text-xl leading-[1.60125rem] h-32 text-neutral-80">
-                    {{ testimonial.feedback }}
+                    {{ testimonial.body }}
                 </p>
                 <div
                     class="flex gap-3 items-center border rounded-xl border-neutral-50 p-3"
                 >
                     <img
-                        :src="testimonial.photo"
+                        :src="testimonial.user.profile_picture"
                         class="size-[3.125rem] rounded-lg"
                         alt=""
                     />
                     <div>
                         <h2 class="text-neutral-100 font-bold text-xl">
-                            {{ testimonial.name }}
+                            {{ testimonial.user.fullname }}
                         </h2>
                         <p class="-mt-1 text-neutral-90">
                             {{ testimonial.job }}

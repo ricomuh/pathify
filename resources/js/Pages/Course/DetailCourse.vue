@@ -171,7 +171,7 @@ const props = defineProps({
         type: Boolean,
         required: true,
     },
-    latestCourses: {
+    relatedCourses: {
         type: Array,
         required: true,
     },
@@ -373,7 +373,7 @@ const props = defineProps({
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. incididunt ut labore et dolore magna aliqua.
                 </p>
-                <CarouselReveiw :testimonials="dummyCourse.testimonials" />
+                <CarouselReveiw :testimonials="props.course.testimonies" />
             </div>
             <!-- You Might Like -->
             <div class="xl:py-12 py-8">
@@ -382,7 +382,7 @@ const props = defineProps({
                     class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
                     <BoxCourse
-                        v-for="(course, index) in props?.latestCourses"
+                        v-for="(course, index) in props.relatedCourses"
                         :key="index"
                         :iconBadge="course.categories[0].icon_image"
                         :backgroundBadge="course.categories[0].color"

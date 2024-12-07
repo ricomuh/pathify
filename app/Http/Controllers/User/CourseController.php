@@ -39,7 +39,7 @@ class CourseController extends Controller
             ->orderBy('users_count', 'desc')
             ->limit(6)->get();
 
-        return response()->json(compact('latestCourses', 'popularCourses', 'categories'));
+        // return response()->json(compact('latestCourses', 'popularCourses', 'categories'));
 
         return Inertia::render('Course/ListCourse', compact('latestCourses', 'popularCourses', 'categories'));
     }

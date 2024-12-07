@@ -66,9 +66,9 @@ class CourseWatchController extends Controller
         $hasAccess = auth()->user()->hasAccess($course);
         // dd(compact('course', 'hasAccess'));
 
-        return response()->json(compact('course', 'hasAccess', 'relatedCourses'));
+        // return response()->json(compact('course', 'hasAccess', 'relatedCourses'));
 
-        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess'));
+        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess', 'relatedCourses'));
     }
 
     public function watch(Course $course, int $order)
