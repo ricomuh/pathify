@@ -7,6 +7,7 @@ use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\CourseWatchController;
 use App\Http\Controllers\User\EventController;
 use App\Http\Controllers\User\MyCourseController;
+use App\Http\Controllers\User\MyEventController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/my-courses', [MyCourseController::class, 'index'])->name('my-courses.index');
+    Route::get('/my-events', [MyEventController::class, 'index'])->name('my-events.index');
 
     Route::as('courses.')->prefix('courses')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('index');

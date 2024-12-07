@@ -13,7 +13,7 @@ class EventController extends Controller
     //
     public function index()
     {
-        $events = Event::select('id', 'thumbnail', 'title', 'slug', 'quota', 'start_date')
+        $events = Event::select('id', 'thumbnail', 'title', 'slug', 'quota', 'start_date', 'event_category_id')
             ->latest()
             ->with('category')
             ->withCount('users')
@@ -48,7 +48,6 @@ class EventController extends Controller
         $event->seats_left = $event->quota - $event->users_count;
 
         // return response()->json(compact('event', 'isJoined'));
-        return Inertia::render('EventPage/DetailEvent', compact('event','isJoined'));
-
+        return Inertia::render('EventPage/DetailEvent', compact('event', 'isJoined'));
     }
 }
