@@ -13,6 +13,7 @@ const props = defineProps({
     course: Object,
     content: Object,
     order: Number,
+    submission: Object,
 });
 
 // default value for accordion
@@ -103,10 +104,10 @@ const formatDate = (dateString) => {
                                 <AccordionContent class="bg-neutral-10 p-0">
                                     <div class="flex flex-col gap-3 px-4 pb-3">
                                         <Link
-                                            :href="`/courses/${props.course.slug}/watch/${item.order}`"
+                                            :href="`/courses/${props.course.slug}/watch/${item?.order}`"
                                             v-for="(
                                                 item, key
-                                            ) in value.contents"
+                                            ) in value?.contents"
                                             :key="key"
                                             class="text-base flex gap-3 items-center px-3 py-2 rounded-xl"
                                             :class="{
@@ -150,24 +151,169 @@ const formatDate = (dateString) => {
                                     </div>
                                 </AccordionContent>
                             </AccordionItem>
+                            <AccordionItem
+                                class="bg-neutral-10 cursor-pointer border border-neutral-40 rounded-xl"
+                                value="submission"
+                            >
+                                <AccordionTrigger
+                                    class="text-neutral-90 text-[1.3125rem] p-4 text-start bg-none"
+                                >
+                                    Submission
+                                </AccordionTrigger>
+                                <AccordionContent class="bg-neutral-10 p-0">
+                                    <div class="flex flex-col gap-3 px-4 pb-3">
+                                        <Link
+                                            :href="`/courses/${props.course.slug}/submission`"
+                                            class="text-base flex gap-3 items-center px-3 py-2 rounded-xl"
+                                        >
+                                            <img
+                                                src="/media/icons/section.svg"
+                                                alt=""
+                                                class="w-[1.125rem]"
+                                            />
+                                            <p class="text-neutral-100">
+                                                Overview
+                                            </p>
+                                        </Link>
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
                         </Accordion>
                     </div>
                     <div class="col-span-3 bg-neutral-20 p-6 overflow-y-auto">
                         <!-- Content -->
-                        <div class="bg-neutral-10 p-6 rounded-xl">
+                        <div
+                            v-if="!submission"
+                            class="bg-neutral-10 p-6 rounded-xl"
+                        >
                             <h1
                                 class="text-5xl font-bold mb-3 leading-[3.5rem]"
                             >
-                                {{ content.title }}
+                                {{ content?.title }}
                             </h1>
                             <div
-                                v-html="content.body"
+                                v-html="content?.body"
                                 class="course-content"
                             ></div>
                         </div>
+                        <!-- Submission -->
+                        <div v-else class="bg-neutral-10 p-6 rounded-xl">
+                            <div class="flex gap-2 flex-col mb-4">
+                                <h1 class="text-5xl font-bold leading-[3.5rem]">
+                                    Submission
+                                </h1>
+                                <p class="text-neutral-90 text-lg">
+                                    Selamat, Anda Telah Berhasil Sampai di Tahap
+                                    Ini!
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Kami sangat mengapresiasi usaha dan dedikasi
+                                    Anda dalam mengikuti setiap langkah hingga
+                                    saat ini. Sekarang, Anda berada di titik
+                                    yang sangat penting dalam proses ini.
+                                    Sebelum melanjutkan pengumpulan tugas Anda,
+                                    pastikan Anda telah memahami dengan jelas
+                                    Aturan Submission, Petunjuk Submission,
+                                    serta Soal Submission yang telah disediakan.
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Proses pengumpulan tugas ini dirancang untuk
+                                    menguji pemahaman dan keterampilan Anda
+                                    dalam mengaplikasikan materi yang telah
+                                    dipelajari. Kami berharap Anda dapat
+                                    menunjukkan hasil terbaik dalam setiap tugas
+                                    yang diserahkan.
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Jangan lupa untuk memeriksa setiap detail
+                                    dengan teliti dan pastikan bahwa Anda
+                                    mengirimkan pekerjaan yang sesuai dengan
+                                    instruksi. Pengumpulan yang berhasil dan
+                                    tepat waktu akan membantu Anda mencapai
+                                    hasil yang maksimal.
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Semoga sukses dalam penyelesaian tugas, dan
+                                    kami berharap Anda menikmati proses ini!
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-2 mb-4">
+                                <h1 class="text-4xl font-bold">
+                                    Aturan Submission
+                                </h1>
+                                <p class="text-neutral-90 text-lg">
+                                    Berikut adalah aturan yang harus Anda ikuti
+                                    dalam proses submission:
+                                </p>
+                                <ol class="list-decimal pl-6 text-neutral-90">
+                                    <li
+                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                    >
+                                        Batas Waktu
+                                        <span
+                                            class="block text-lg font-normal text-neutral-90"
+                                            >Semua submission harus diterima
+                                            paling lambat [Tanggal & Jam].
+                                            Pengiriman yang terlambat tidak akan
+                                            diproses.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                    >
+                                        Format dan Ukuran File
+                                        <span
+                                            class="block text-lg font-normal text-neutral-90"
+                                            >Pastikan file yang Anda kirimkan
+                                            dalam format yang sesuai.
+                                            Diperbolehkan untuk mengirimkan
+                                            dalam format file kompres (.zip)
+                                            dengan maksimal ukuran adalah
+                                            100mb.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                    >
+                                        Nama File
+                                        <span
+                                            class="block text-lg font-normal text-neutral-90"
+                                            >Harap beri nama file Anda dengan
+                                            format 1012341-nama.zip</span
+                                        >
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="flex gap-2 flex-col">
+                                <h1 class="text-4xl font-bold">Kesimpulan</h1>
+                                <div
+                                    v-html="submission?.body"
+                                    class="course-content text-neutral-90"
+                                ></div>
+                            </div>
+                        </div>
+
+                        <!-- Ready to Submission -->
+                        <div
+                            v-if="submission"
+                            class="bg-neutral-10 p-6 rounded-xl mt-12"
+                        >
+                            <p class="text-neutral-90 text-lg mb-4">
+                                Apakah anda sudah siap?
+                            </p>
+                            <button
+                                type="button"
+                                class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
+                            >
+                                Mulai Submission
+                            </button>
+                        </div>
                         <!-- Discussion -->
-                        <div class="my-12 border-t-4 border-neutral-40"></div>
-                        <div class="p-6 rounded-xl">
+                        <div
+                            v-if="!submission"
+                            class="my-12 border-t-4 border-neutral-40"
+                        ></div>
+                        <div v-if="!submission" class="p-6 rounded-xl">
                             <div class="flex flex-col gap-6">
                                 <div class="flex justify-between items-center">
                                     <h1 class="text-[1.75rem] font-bold">
@@ -233,7 +379,7 @@ const formatDate = (dateString) => {
                                 </form>
                                 <!-- Discuss content -->
                                 <div
-                                    v-for="(value, key) in content.comments"
+                                    v-for="(value, key) in content?.comments"
                                     :key="key"
                                     class="p-6 rounded-xl bg-neutral-10 flex flex-col gap-6"
                                 >

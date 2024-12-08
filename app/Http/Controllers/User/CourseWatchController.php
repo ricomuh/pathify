@@ -174,8 +174,9 @@ class CourseWatchController extends Controller
                     $query->where('user_id', auth()->id());
                 }
             ])
-            ->first();
+            ->first();        
 
-        return response()->json(compact('course', 'submission'));
+        // return response()->json(compact('course', 'submission'));
+        return Inertia::render('Course/WatchCourse', compact('course', 'submission'));
     }
 }
