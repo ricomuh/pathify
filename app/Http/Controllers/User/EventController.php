@@ -17,6 +17,9 @@ class EventController extends Controller
             ->latest()
             ->with('category')
             ->withCount('users')
+            ->when(request('search'), function ($query, $search) {
+                $query->where('title', 'like', '%' . $search . '%');
+            })
             // ->whereDate('registration_end_date', '>=', now())
             ->paginate(10);
 

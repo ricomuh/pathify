@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Course::class, 'course_id')->constrained()->cascadeOnDelete();
             $table->boolean('is_favorite')->default(false);
             // progress in episode
+            $table->integer('last_watched_episode')->default(0);
             $table->integer('progress')->default(0);
             $table->timestamp('last_watched_at')->nullable();
             $table->timestamp('completed_at')->nullable();

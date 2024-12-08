@@ -105,6 +105,10 @@ class CourseWatchController extends Controller
             ->where('order', $order)
             ->with([
                 'comments' => function ($query) {
+                    // apply search
+                    $query->when(request('search'), function ($query, $search) {
+                        $query->where('content', 'like', '%' . $search . '%');
+                    });
                     $query->with([
                         'user' => function ($query) {
                             $query->select('id', 'fullname', 'username', 'profile_picture');
