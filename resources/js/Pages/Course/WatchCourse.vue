@@ -41,17 +41,41 @@ const nextContentUrl = computed(() => {
     }
     return null;
 });
+
+// format date comment
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffSeconds = Math.floor(diffTime / 1000);
+    const diffMinutes = Math.floor(diffSeconds / 60);
+    const diffHours = Math.floor(diffMinutes / 60);
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffDays > 0) {
+        return `${diffDays} hari yang lalu`;
+    } else if (diffHours > 0) {
+        return `${diffHours} jam yang lalu`;
+    } else if (diffMinutes > 0) {
+        return `${diffMinutes} menit yang lalu`;
+    } else {
+        return `${diffSeconds} detik yang lalu`;
+    }
+};
 </script>
 
 <template>
     <Head title="Detail Materi" />
 
     <SecondaryLayout>
-        <div class="bg-neutral-30">
-            <div class="container content-container overflow-hidden">
-                <div class="grid grid-cols-4 gap-6">
-                    <div class="col-span-1 py-6">
-                        <!-- Sidebar -->
+        <div class="bg-neutral-30 relative">
+            <div class="container mx-auto xl:px-0">
+                <!-- Container utama -->
+                <div
+                    class="grid grid-cols-4 gap-6 h-[calc(100vh-170px)] overflow-hidden"
+                >
+                    <!-- Sidebar -->
+                    <div class="col-span-1 py-6 overflow-y-auto">
                         <Link
                             href="/dashboard"
                             class="flex gap-3 items-center p-3 mb-6"
@@ -72,10 +96,10 @@ const nextContentUrl = computed(() => {
                                 :value="value.id"
                             >
                                 <AccordionTrigger
-                                    class="text-neutral-90 text-[1.3125rem] p-4 text-start"
+                                    class="text-neutral-90 text-[1.3125rem] p-4 text-start bg-none"
                                 >
-                                    {{ value.title }}</AccordionTrigger
-                                >
+                                    {{ value.title }}
+                                </AccordionTrigger>
                                 <AccordionContent class="bg-neutral-10 p-0">
                                     <div class="flex flex-col gap-3 px-4 pb-3">
                                         <Link
@@ -97,7 +121,7 @@ const nextContentUrl = computed(() => {
                                                 "
                                                 src="/media/icons/uncheck.svg"
                                                 alt=""
-                                                class="size-[1.125rem]"
+                                                class="w-[1.125rem]"
                                             />
                                             <img
                                                 v-else-if="
@@ -105,13 +129,13 @@ const nextContentUrl = computed(() => {
                                                 "
                                                 src="/media/icons/checked.svg"
                                                 alt=""
-                                                class="size-[1.125rem]"
+                                                class="w-[1.125rem]"
                                             />
                                             <img
                                                 v-else
                                                 src="/media/icons/section.svg"
                                                 alt=""
-                                                class="size-[1.125rem]"
+                                                class="w-[1.125rem]"
                                             />
                                             <p
                                                 :class="
@@ -128,9 +152,9 @@ const nextContentUrl = computed(() => {
                             </AccordionItem>
                         </Accordion>
                     </div>
-                    <!-- Content -->
-                    <div class="col-span-3 bg-neutral-20 p-6">
-                        <div class="bg-neutral-10 p-6 rounded-xl mb-6">
+                    <div class="col-span-3 bg-neutral-20 p-6 overflow-y-auto">
+                        <!-- Content -->
+                        <div class="bg-neutral-10 p-6 rounded-xl">
                             <h1
                                 class="text-5xl font-bold mb-3 leading-[3.5rem]"
                             >
@@ -141,42 +165,176 @@ const nextContentUrl = computed(() => {
                                 class="course-content"
                             ></div>
                         </div>
-                        <div
-                            class="bg-neutral-10 p-6 flex justify-between items-center rounded-xl"
-                        >
-                            <Link
-                                :href="previousContentUrl"
-                                class="flex gap-2 items-center p-3 hover:bg-neutral-20 rounded-xl"
-                            >
-                                <img src="/media/icons/arrow-left.svg" alt="" />
-                                <p class="text-neutral-90">Materi Sebelumnya</p>
-                            </Link>
-                            <Link
-                                :href="nextContentUrl"
-                                class="flex gap-2 items-center p-3 hover:bg-neutral-20 rounded-xl"
-                            >
-                                <p class="text-neutral-90">
-                                    Materi Selanjutnya
-                                </p>
-                                <img
-                                    src="/media/icons/arrow-left.svg"
-                                    class="rotate-180"
-                                    alt=""
-                                />
-                            </Link>
+                        <!-- Discussion -->
+                        <div class="my-12 border-t-4 border-neutral-40"></div>
+                        <div class="p-6 rounded-xl">
+                            <div class="flex flex-col gap-6">
+                                <div class="flex justify-between items-center">
+                                    <h1 class="text-[1.75rem] font-bold">
+                                        Diskusi Terdahulu
+                                    </h1>
+                                    <div
+                                        class="flex gap-1 items-center py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 w-96"
+                                    >
+                                        <img
+                                            src="/media/icons/search.svg"
+                                            alt=""
+                                        />
+                                        <input
+                                            type="search"
+                                            v-model="search"
+                                            class="outline-none !h-max py-0 px-0 border-0 bg-neutral-10 shadow-none !ring-0 w-full"
+                                            placeholder="Cari Pertanyaan"
+                                        />
+                                    </div>
+                                </div>
+                                <!-- Form -->
+                                <form
+                                    class="p-6 rounded-xl border-2 border-neutral-40 bg-neutral-10"
+                                >
+                                    <div class="mb-3">
+                                        <label
+                                            for="title"
+                                            class="text-neutral-90 block mb-1"
+                                            >Judul Pertanyaan</label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="title"
+                                            name="title"
+                                            class="border-2 rounded-xl w-full py-3 px-6 border-neutral-40"
+                                            placeholder="Masukkan judul pertanyaan"
+                                        />
+                                    </div>
+                                    <div class="mb-6">
+                                        <label
+                                            for="question"
+                                            class="text-neutral-90 block mb-1"
+                                        >
+                                            Pertanyaan</label
+                                        >
+                                        <textarea
+                                            type="text"
+                                            rows="4"
+                                            id="question"
+                                            name="question"
+                                            class="border-2 rounded-xl w-full py-3 px-6 border-neutral-40"
+                                            placeholder="Masukkan pertanyaan"
+                                        ></textarea>
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <button
+                                            type="submit"
+                                            class="text-neutral-20 rounded-xl border-b-4 bg-primary border-primary-hover py-2 px-16"
+                                        >
+                                            Tanyakan
+                                        </button>
+                                    </div>
+                                </form>
+                                <!-- Discuss content -->
+                                <div
+                                    v-for="(value, key) in content.comments"
+                                    :key="key"
+                                    class="p-6 rounded-xl bg-neutral-10 flex flex-col gap-6"
+                                >
+                                    <div class="flex gap-3 items-center">
+                                        <img
+                                            :src="value.user.profile_picture"
+                                            class="size-11 rounded-full object-cover"
+                                            alt=""
+                                        />
+                                        <div class="flex gap-2.5 items-center">
+                                            <p class="text-lg font-bold">
+                                                {{ value.user.fullname }}
+                                            </p>
+                                            <img
+                                                src="/media/icons/dot.svg"
+                                                alt=""
+                                            />
+                                            <p class="text-neutral-80">
+                                                {{
+                                                    formatDate(value.created_at)
+                                                }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h1 class="text-2xl font-bold">
+                                            Lorem ipsum dolor sit amet.
+                                        </h1>
+                                        <p class="text-neutral-90 text-lg">
+                                            {{ value.body }}
+                                        </p>
+                                    </div>
+                                    <div class="flex gap-6 items-center">
+                                        <!-- Total Discuss -->
+                                        <button
+                                            type="button"
+                                            class="flex gap-3 items-center"
+                                        >
+                                            <img
+                                                src="/media/icons/discuss.svg"
+                                                alt=""
+                                                class="size-6"
+                                            />
+                                            <p class="text-neutral-80 text-lg">
+                                                {{
+                                                    value.children?.length > 0
+                                                        ? value.children.length
+                                                        : 0
+                                                }}
+                                                Diskusi
+                                            </p>
+                                        </button>
+                                        <!-- Upvote -->
+                                        <button
+                                            class="flex gap-3 items-center"
+                                            type="button"
+                                        >
+                                            <img
+                                                src="/media/icons/chevron-up.svg"
+                                                alt=""
+                                                class="size-6"
+                                            />
+                                            <p class="text-neutral-80 text-lg">
+                                                {{ value.upvotes_count }}
+                                            </p>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Next Prev -->
+            <div
+                class="bg-neutral-10 px-6 py-5 border-t flex justify-between items-center rounded-xl fixed w-full"
+            >
+                <Link
+                    :href="previousContentUrl"
+                    class="flex gap-2 items-center p-3 border-2 boder-neutral-50 !border-b-[6px] hover:bg-neutral-20 rounded-xl"
+                >
+                    <img src="/media/icons/arrow-left.svg" alt="" />
+                    <p class="text-neutral-90">Materi Sebelumnya</p>
+                </Link>
+                <Link
+                    :href="nextContentUrl"
+                    class="flex gap-2 items-center p-3 border-2 boder-neutral-50 !border-b-[6px] hover:bg-neutral-20 rounded-xl"
+                >
+                    <p class="text-neutral-90">Materi Selanjutnya</p>
+                    <img
+                        src="/media/icons/arrow-left.svg"
+                        class="rotate-180"
+                        alt=""
+                    />
+                </Link>
             </div>
         </div>
     </SecondaryLayout>
 </template>
 
 <style scoped>
-.content-container {
-    max-height: calc(100% - 138px);
-    overflow-y: auto;
-}
 ::v-deep .course-content ul {
     @apply list-disc list-inside;
 }

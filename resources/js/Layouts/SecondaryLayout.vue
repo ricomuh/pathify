@@ -1,6 +1,7 @@
 <script setup>
 import Navbar from "@/Components/Navbar.vue";
 import FooterCourse from "@/Components/FooterCourse.vue";
+import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
@@ -15,7 +16,7 @@ import FooterCourse from "@/Components/FooterCourse.vue";
             </main>
 
             <!-- Footer -->
-            <FooterCourse />
+            <!-- <FooterCourse /> -->
         </div>
     </div>
 </template>
