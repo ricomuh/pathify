@@ -412,39 +412,56 @@ const formatDate = (dateString) => {
                                             {{ value.body }}
                                         </p>
                                     </div>
-                                    <div class="flex gap-6 items-center">
-                                        <!-- Total Discuss -->
-                                        <button
-                                            type="button"
-                                            class="flex gap-3 items-center"
-                                        >
+                                    <div
+                                        class="flex justify-between items-center"
+                                    >
+                                        <div class="flex gap-6 items-center">
+                                            <!-- Total Discuss -->
+                                            <button
+                                                type="button"
+                                                class="flex gap-3 items-center"
+                                            >
+                                                <img
+                                                    src="/media/icons/discuss.svg"
+                                                    alt=""
+                                                    class="size-6"
+                                                />
+                                                <p
+                                                    class="text-neutral-80 text-lg"
+                                                >
+                                                    {{
+                                                        value.children?.length >
+                                                        0
+                                                            ? value.children
+                                                                  .length
+                                                            : 0
+                                                    }}
+                                                    Diskusi
+                                                </p>
+                                            </button>
+                                            <!-- Upvote -->
+                                            <button
+                                                class="flex gap-3 items-center"
+                                                type="button"
+                                            >
+                                                <img
+                                                    src="/media/icons/chevron-up.svg"
+                                                    alt=""
+                                                    class="size-6"
+                                                />
+                                                <p
+                                                    class="text-neutral-80 text-lg"
+                                                >
+                                                    {{ value.upvotes_count }}
+                                                </p>
+                                            </button>
+                                        </div>
+                                        <button type="button">
                                             <img
-                                                src="/media/icons/discuss.svg"
+                                                src="/media/icons/report.svg"
                                                 alt=""
                                                 class="size-6"
                                             />
-                                            <p class="text-neutral-80 text-lg">
-                                                {{
-                                                    value.children?.length > 0
-                                                        ? value.children.length
-                                                        : 0
-                                                }}
-                                                Diskusi
-                                            </p>
-                                        </button>
-                                        <!-- Upvote -->
-                                        <button
-                                            class="flex gap-3 items-center"
-                                            type="button"
-                                        >
-                                            <img
-                                                src="/media/icons/chevron-up.svg"
-                                                alt=""
-                                                class="size-6"
-                                            />
-                                            <p class="text-neutral-80 text-lg">
-                                                {{ value.upvotes_count }}
-                                            </p>
                                         </button>
                                     </div>
                                 </div>
