@@ -260,7 +260,7 @@ const formatDate = (dateString) => {
                                     </div>
                                     <div>
                                         <h1 class="text-2xl font-bold">
-                                            Lorem ipsum dolor sit amet.
+                                            {{ value.title }}
                                         </h1>
                                         <p class="text-neutral-90 text-lg">
                                             {{ value.body }}

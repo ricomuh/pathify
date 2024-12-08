@@ -47,6 +47,11 @@ const props = defineProps({
 
 // progress
 const progress = ref(40);
+
+// default value for accordion
+const defaultAccordionValue = computed(() => {
+    return props.course.groups.length > 0 ? props.course.groups[0].id : null;
+});
 </script>
 
 <template>
@@ -226,13 +231,13 @@ const progress = ref(40);
                         type="single"
                         class="w-full flex flex-col gap-2"
                         collapsible
-                        :default-value="props.course.groups[0]"
+                        :default-value="defaultAccordionValue"
                     >
                         <AccordionItem
                             class="bg-neutral-10 cursor-pointer border border-neutral-40 rounded-lg"
                             v-for="(value, index) in props.course.groups"
                             :key="index"
-                            :value="index"
+                            :value="value.id"
                         >
                             <AccordionTrigger
                                 class="text-neutral-90 px-6 py-3 text-start"

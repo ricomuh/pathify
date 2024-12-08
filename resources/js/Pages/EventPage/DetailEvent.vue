@@ -102,11 +102,29 @@ const formattedDateTime = computed(() => {
                             </table>
                         </div>
                         <!-- Pertanyaan -->
-                        <h1
-                            class="text-3xl lg:text-[2.3125rem] font-bold text-neutral-90 mb-3"
-                        >
-                            Pertanyaan
-                        </h1>
+                        <div>
+                            <h1
+                                class="text-3xl lg:text-[2.3125rem] font-bold text-neutral-90 mb-3"
+                            >
+                                Pertanyaan
+                            </h1>
+                            <ol class="text-neutral-90">
+                                <li
+                                    v-for="(faq, index) in props.event.faqs"
+                                    :key="index"
+                                    class="mb-2 text-neutral-90"
+                                >
+                                    <p class="font-semibold text-neutral-90">
+                                        {{ index + 1 }}. {{ faq.question }}
+                                    </p>
+                                    <ul class="ml-8 list-disc text-neutral-90">
+                                        <li class="text-neutral-90">
+                                            Jawab: {{ faq.answer }}
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
                 <div class="lg:col-span-1 xl:col-span-2">
@@ -134,13 +152,45 @@ const formattedDateTime = computed(() => {
                                 Waktu dan Tempat
                             </h1>
                             <div
-                                class="text-neutral-90 mb-6"
-                                v-html="formattedDateTime"
-                            ></div>
-                            <div
+                                :class="
+                                    props.event.is_online == 0 ? 'mb-6' : ''
+                                "
+                            >
+                                <div
+                                    class="text-neutral-90"
+                                    v-html="formattedDateTime"
+                                ></div>
+                                <p
+                                    v-if="props.event.is_online == 0"
+                                    class="text-neutral-90"
+                                >
+                                    Pertemuan diadakan secara Offline dengan
+                                    lokasi
+                                </p>
+                                <p v-else class="text-neutral-90">
+                                    Pertemuan diadakan secara Online melalui
+                                    kanal
+                                    <span class="font-bold text-neutral-90">{{
+                                        props.event.platform
+                                    }}</span>
+                                </p>
+                                <a
+                                    target="_blank"
+                                    class="text-primary"
+                                    :href="props.event.link"
+                                    ><span class="text-neutral-90">Link:</span>
+                                    {{ props.event.link }}</a
+                                >
+                            </div>
+                            <p
+                                v-if="props.event.is_online == 0"
                                 class="text-neutral-90 font-bold"
-                                v-html="props.event.location"
-                            ></div>
+                            >
+                                {{ props.event.location_name }}
+                            </p>
+                            <p class="text-neutral-90">
+                                {{ props.event.location_address }}
+                            </p>
                         </div>
                         <div>
                             <h1
