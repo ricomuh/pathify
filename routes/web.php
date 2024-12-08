@@ -8,6 +8,7 @@ use App\Http\Controllers\User\CourseWatchController;
 use App\Http\Controllers\User\EventController;
 use App\Http\Controllers\User\MyCourseController;
 use App\Http\Controllers\User\MyEventController;
+use App\Http\Controllers\User\QuestionnaireController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -42,6 +43,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/submission', [CourseWatchController::class, 'submission'])->name('submission');
         });
         Route::get('/{course:slug}', [CourseWatchController::class, 'show'])->name('show');
+    });
+
+    Route::as('questionnaire.')->prefix('questionnaire')->group(function () {
+        Route::get('/', [QuestionnaireController::class, 'index'])->name('index');
+        Route::post('/', [QuestionnaireController::class, 'store'])->name('store');
     });
 });
 
