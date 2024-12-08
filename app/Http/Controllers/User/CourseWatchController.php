@@ -117,6 +117,7 @@ class CourseWatchController extends Controller
                         'upvotes',
                         'downvotes',
                     ]);
+                    $query->latest();
                 },
 
             ])
