@@ -87,18 +87,19 @@ const formattedDateTime = computed(() => {
                             >
                                 Rundown
                             </h1>
-                            <ul>
-                                <li
-                                    class="text-neutral-90"
+                            <table>
+                                <tr
                                     v-for="(value, key) in props.event.rundown"
                                     :key="key"
                                 >
-                                    {{ value[0] }} - {{ value[1] }}
-                                    <span class="ps-4 text-neutral-90">{{
-                                        value[2]
-                                    }}</span>
-                                </li>
-                            </ul>
+                                    <td class="text-neutral-90">
+                                        {{ value[0] }} - {{ value[1] }}
+                                    </td>
+                                    <td class="text-neutral-90 ps-6">
+                                        {{ value[2] }}
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <!-- Pertanyaan -->
                         <h1

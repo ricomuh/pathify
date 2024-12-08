@@ -111,7 +111,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                 <div
                     class="flex gap-1 items-center py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 w-96"
                 >
-                    <img src="media/icons/search.svg" alt="" />
+                    <img src="/media/icons/search.svg" alt="" />
                     <input
                         type="search"
                         v-model="search"

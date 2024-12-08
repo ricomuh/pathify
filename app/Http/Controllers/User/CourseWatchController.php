@@ -138,9 +138,9 @@ class CourseWatchController extends Controller
         $content->increment('view_count');
 
         // dd(compact('course', 'content'));
-        return response()->json(compact('course', 'content', 'order'));
+        // return response()->json(compact('course', 'content', 'order'));
         // echo "hello";
-        // return Inertia::render('Course/WatchCourse', compact('course', 'content'));
+        return Inertia::render('Course/WatchCourse', compact('course', 'content', 'order'));
     }
 
     public function submission(Course $course)

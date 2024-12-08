@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import BadgeCategory from "@/Components/BadgeCategory.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import { computed, ref, watchEffect } from "vue";
 import BoxCourse from "@/Components/BoxCourse.vue";
 import CarouselReveiw from "@/Components/CarouselReveiw.vue";
@@ -77,9 +77,10 @@ const progress = ref(40);
                         >
                             {{ props.course.title }}
                         </h1>
-                        <p class="text-neutral-40 text-base mb-6">
-                            {{ props.course.body }}
-                        </p>
+                        <p
+                            class="text-neutral-40 text-base mb-6"
+                            v-html="props.course.body"
+                        ></p>
                         <!-- Mentor -->
                         <div class="flex justify-between items-center p-3 mb-6">
                             <div class="flex gap-2 items-center">
@@ -143,12 +144,12 @@ const progress = ref(40);
                             </div>
                         </div>
                         <div v-else class="flex justify-between items-center">
-                            <button
-                                type="button"
-                                class="bg-primary text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-16 py-3 rounded-xl"
+                            <Link
+                                :href="`/courses/${props.course.slug}/watch/${props.course.groups[0].id}`"
+                                class="bg-primary block text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-16 py-3 rounded-xl"
                             >
                                 Bergabung
-                            </button>
+                            </Link>
                             <p class="text-white text-end">
                                 {{ props.course.users_count }} siswa telah
                                 bergabung
