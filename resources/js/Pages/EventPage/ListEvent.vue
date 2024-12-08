@@ -63,7 +63,7 @@ const goToPage = (url) => {
                         v-for="(value, key) in props.events.data"
                         :key="key"
                         :title="value.title"
-                        :category="value.category"
+                        :category="value.category.name"
                         :slug="value.slug"
                         :seatsLeft="value.seats_left"
                         :daysLeft="value.start_date"
