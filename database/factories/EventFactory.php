@@ -37,6 +37,25 @@ class EventFactory extends Factory
             $time = $end;
         }
 
+        $is_online = $this->faker->boolean();
+
+        if ($is_online) {
+            $platform = $this->faker->randomElement(['Zoom', 'Google Meet', 'Microsoft Teams']);
+            $link = $this->faker->url;
+        } else {
+            $location = $this->faker->address;
+            $locationName = $this->faker->company;
+            $locationAddress = $this->faker->address;
+        }
+
+        $faqs = [];
+        for ($i = 0; $i < 3; $i++) {
+            $faqs[] = [
+                'question' => $this->faker->sentence(),
+                'answer' => $this->faker->paragraph(),
+            ];
+        }
+
         return [
             'event_category_id' => $this->faker->numberBetween(1, 4),
             'thumbnail' => $this->faker->imageUrl(),
@@ -46,11 +65,17 @@ class EventFactory extends Factory
             // add 1 to 3 hours to start date
             'end_date' => $this->faker->dateTimeBetween($start, $start->modify('+3 hours')),
             'quota' => $this->faker->numberBetween(100, 150),
-            'location' => $this->faker->address,
+            // 'location' => $this->faker->address,
+            'is_online' => $is_online,
+            'platform' => $platform ?? null,
+            'link' => $link ?? null,
+            'location_name' => $locationName ?? null,
+            'location_address' => $locationAddress ?? null,
             'registration_start_date' => $this->faker->dateTimeBetween('-1 month', $start),
             'registration_end_date' => $this->faker->dateTimeBetween($start, '+1 month'),
             'status' => $this->faker->randomElement(['draft', 'published']),
             'rundown' => $rundown,
+            'faqs' => $faqs,
         ];
     }
 }

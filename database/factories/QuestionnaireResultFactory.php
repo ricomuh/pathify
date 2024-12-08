@@ -66,7 +66,9 @@ class QuestionnaireResultFactory extends Factory
                 '1st_category_id' => $secondHighest->id,
                 '2nd_category_id' => $firstHighest->id,
             ])->first();
-        } elseif (!$questionnaireCategory) {
+        }
+
+        if (!$questionnaireCategory) {
             $questionnaireCategory = QuestionnaireResultCategory::where([
                 '1st_category_id' => $firstHighest->id,
             ])->first();

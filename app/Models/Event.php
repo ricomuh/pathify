@@ -10,12 +10,32 @@ class Event extends Model
     /** @use HasFactory<\Database\Factories\EventFactory> */
     use HasFactory;
 
-    protected $fillable = ['event_category_id', 'thumbnail', 'title', 'slug', 'body', 'start_date', 'end_date', 'location', 'registration_start_date', 'registration_end_date', 'quota', 'status', 'rundown'];
+    protected $fillable = [
+        'event_category_id',
+        'thumbnail',
+        'title',
+        'slug',
+        'body',
+        'start_date',
+        'end_date',
+        'is_online',
+        'platform',
+        'link',
+        'location_name',
+        'location_address',
+        'registration_start_date',
+        'registration_end_date',
+        'quota',
+        'status',
+        'rundown',
+        'faqs',
+    ];
 
     public function casts()
     {
         return [
             'rundown' => 'array',
+            'faqs' => 'array',
             'start_date' => 'datetime',
             'end_date' => 'datetime',
             'registration_start_date' => 'datetime',

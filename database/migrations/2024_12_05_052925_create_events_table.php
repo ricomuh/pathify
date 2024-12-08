@@ -22,11 +22,17 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->integer('quota');
-            $table->string('location');
+            // $table->string('location');
+            $table->boolean('is_online');
+            $table->string('platform')->nullable();
+            $table->string('link')->nullable();
+            $table->string('location_name')->nullable();
+            $table->string('location_address')->nullable();
             $table->dateTime('registration_start_date');
             $table->dateTime('registration_end_date');
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->json('rundown')->nullable();
+            $table->json('faqs')->nullable();
             $table->timestamps();
         });
     }
