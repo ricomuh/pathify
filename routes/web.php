@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
 Route::as('courses.')->prefix('courses')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
+    Route::get('/search', [CourseController::class, 'search'])->name('search');
 
     Route::as('show.')->prefix('/{course:slug}')->group(function () {
         Route::get('/', [CourseWatchController::class, 'show'])->name('show');

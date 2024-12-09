@@ -20,24 +20,43 @@ class CourseController extends Controller
                 $query->select('id', 'profile_picture', 'fullname', 'username');
                 $query->with('mentorDetail');
             },
-            'categories',
+            'categories' => function ($query) {
+                $query->whereNull('parent_id');
+            },
             'joined'
         ])
             ->published()
             ->latest()->limit(6)->get();
 
-        $popularCourses = Course::with([
-            'mentor' => function ($query) {
-                $query->select('id', 'profile_picture', 'fullname', 'username');
-                $query->with('mentorDetail');
-            },
-            'categories',
-            'joined'
-        ])
-            ->published()
-            ->withCount('users')
-            ->orderBy('users_count', 'desc')
-            ->limit(6)->get();
+        $years = [now()->year, now()->subYears(2)->year, null];
+        $popularCourses = collect();
+
+        foreach ($years as $year) {
+            $query = Course::with([
+                'mentor' => function ($query) {
+                    $query->select('id', 'profile_picture', 'fullname', 'username');
+                    $query->with('mentorDetail');
+                },
+                'categories' => function ($query) {
+                    $query->whereNull('parent_id');
+                },
+                'joined'
+            ])
+                ->published()
+                ->withCount('users')
+                ->orderBy('users_count', 'desc')
+                ->limit(6);
+
+            if ($year) {
+                $query->whereYear('created_at', '>=', $year);
+            }
+
+            $popularCourses = $query->get();
+
+            if ($popularCourses->count() >= 6 || $year === null) {
+                break;
+            }
+        }
 
         // return response()->json(compact('latestCourses', 'popularCourses', 'categories'));
 
@@ -47,7 +66,7 @@ class CourseController extends Controller
     public function search(Request $request)
     {
         $categories = Category::parentOnly()->get();
-        $categoryQuery = explode(',', $request->get('category', ''));
+        $categoryQuery = explode(',', $request->get('categories', ''));
         $query = $request->get('query', '');
 
 
@@ -56,18 +75,20 @@ class CourseController extends Controller
                 $query->select('id', 'profile_picture', 'fullname', 'username');
                 $query->with('mentorDetail');
             },
-            'categories',
+            'categories' => function ($query) {
+                $query->whereNull('parent_id');
+            },
             'joined'
         ])
-            ->where('name', 'like', '%' . $query . '%')
-            ->orWhereHas('categories', function ($q) use ($query) {
-                $q->where('name', 'like', '%' . $query . '%');
+            ->when($query, function ($q, $query) {
+                return $q->where('name', 'like', '%' . $query . '%');
             })
             ->when($categoryQuery, function ($q, $categoryQuery) {
                 return $q->whereHas('categories', function ($q) use ($categoryQuery) {
                     $q->whereIn('slug', $categoryQuery);
                 });
             })
+            ->latest()
             ->published()
             ->paginate(10);
 
