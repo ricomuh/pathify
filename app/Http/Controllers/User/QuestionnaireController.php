@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\QuestionnaireAnswer;
 use App\Models\QuestionnaireAnswerScore;
 use App\Models\QuestionnaireQuestion;
+use App\Models\QuestionnaireResult;
+use App\Models\QuestionnaireResultCategory;
 use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
@@ -83,6 +85,53 @@ class QuestionnaireController extends Controller
             return $category;
         });
 
-        return response()->json($categoryScores);
+        // get the 2 highest value
+        $highest = $categoryScores->sortByDesc(function ($category) {
+            return $category->score;
+        })->take(2);
+
+        $firstHighest = $highest->first();
+
+        $secondHighest = $highest->count() > 1 && abs($highest->last()->score - $firstHighest->score) < 10
+            ? $highest->last()
+            : null;
+
+        $questionnaireCategory = QuestionnaireResultCategory::where([
+            '1st_category_id' => $firstHighest->id,
+            '2nd_category_id' => $secondHighest ? $secondHighest->id : null,
+        ]);
+
+        if (!$questionnaireCategory->exists() && $secondHighest) {
+            $questionnaireCategory = QuestionnaireResultCategory::where([
+                '1st_category_id' => $secondHighest->id,
+                '2nd_category_id' => $firstHighest->id,
+            ]);
+        }
+
+        if (!$questionnaireCategory->exists()) {
+            $questionnaireCategory = QuestionnaireResultCategory::where([
+                '1st_category_id' => $firstHighest->id,
+            ]);
+        }
+
+        $questionnaireCategory = $questionnaireCategory->first();
+
+        $questionnaireResult = QuestionnaireResult::create([
+            'user_id' => auth()->id(),
+            'result' => $categoryScores->mapWithKeys(function ($category) {
+                return [$category->name => $category->score];
+            }),
+            'questionnaire_result_category_id' => $questionnaireCategory ? $questionnaireCategory->id : null,
+            '1st_category_id' => $firstHighest->id,
+            '2nd_category_id' => $secondHighest ? $secondHighest->id : null,
+        ]);
+
+
+        // insert the answer to the database
+        // QuestionnaireResult::create
+
+        // return response()->json($categoryScores);
+
+        return response()->json(compact('categoryScores', 'questionnaireCategory'));
     }
 }
