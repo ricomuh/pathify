@@ -20,7 +20,9 @@ class CourseController extends Controller
                 $query->select('id', 'profile_picture', 'fullname', 'username');
                 $query->with('mentorDetail');
             },
-            'categories',
+            'categories' => function ($query) {
+                $query->whereNull('parent_id');
+            },
             'joined'
         ])
             ->published()
@@ -35,7 +37,9 @@ class CourseController extends Controller
                     $query->select('id', 'profile_picture', 'fullname', 'username');
                     $query->with('mentorDetail');
                 },
-                'categories',
+                'categories' => function ($query) {
+                    $query->whereNull('parent_id');
+                },
                 'joined'
             ])
                 ->published()
@@ -71,7 +75,9 @@ class CourseController extends Controller
                 $query->select('id', 'profile_picture', 'fullname', 'username');
                 $query->with('mentorDetail');
             },
-            'categories',
+            'categories' => function ($query) {
+                $query->whereNull('parent_id');
+            },
             'joined'
         ])
             ->when($query, function ($q, $query) {

@@ -31,8 +31,10 @@ class MyCourseController extends Controller
                 $query->select('id', 'fullname', 'username', 'profile_picture');
                 $query->with('mentorDetail');
             },
-            'categories',
-            'joined'
+            'categories' => function ($query) {
+                $query->whereNull('parent_id');
+            },
+            'joined',
         ])
             ->whereIn('id', $userCourses->pluck('course_id'))
             ->get();
@@ -60,7 +62,9 @@ class MyCourseController extends Controller
                 $query->select('id', 'fullname', 'username', 'profile_picture');
                 $query->with('mentorDetail');
             },
-            'categories',
+            'categories' => function ($query) {
+                $query->whereNull('parent_id');
+            },
             'joined'
         ])
             ->whereHas('categories', function ($query) use ($categories) {
