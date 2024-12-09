@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\QuestionnaireResult;
 use App\Models\UserCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class MyCourseController extends Controller
@@ -58,20 +59,14 @@ class MyCourseController extends Controller
 
         $categories = array_merge($categories, $coursesCategories->toArray());
 
-        $relatedCourses = Course::with([
-            'mentor' => function ($query) {
-                $query->select('id', 'fullname', 'username', 'profile_picture');
-                $query->with('mentorDetail');
-            },
-            'categories' => function ($query) {
-                $query->whereNull('parent_id');
-            },
-            'joined'
-        ])
-            ->whereHas('categories', function ($query) use ($categories) {
-                $query->whereIn('id', $categories);
-            })
-            ->whereNotIn('id', $userCourses->pluck('course_id'))
+        $relatedCourses = Course::whereExists(function ($query) use ($categories) {
+            $query->select(DB::raw(1))
+                ->from('categories')
+                ->join('course_categories', 'categories.id', '=', 'course_categories.category_id')
+                ->whereColumn('courses.id', 'course_categories.course_id')
+                ->whereIn('categories.id', $categories);
+        })
+            ->whereNotIn('courses.id', $userCourses->pluck('course_id'))
             ->inRandomOrder()
             ->limit(6)
             ->get();
