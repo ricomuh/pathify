@@ -45,9 +45,6 @@ const props = defineProps({
     },
 });
 
-// progress
-const progress = ref(40);
-
 // default value for accordion
 const defaultAccordionValue = computed(() => {
     return props.course.groups.length > 0 ? props.course.groups[0].id : null;
@@ -129,28 +126,29 @@ const defaultAccordionValue = computed(() => {
                             <div class="col-span-3">
                                 <div class="flex gap-4 items-center py-2">
                                     <Progress
-                                        v-model="progress"
+                                        v-model="props.course.joined.progress"
                                         class="bg-white w-full border-none h-3"
                                     />
                                     <p
                                         class="text-white font-bold text-[1.75rem]"
                                     >
-                                        {{ progress }}%
+                                        {{ props.course.joined.progress }}%
                                     </p>
                                 </div>
                             </div>
                             <div class="col-span-2 ms-auto">
-                                <button
+                                <Link
+                                    :href="`/courses/${props.course.slug}/watch/${props.course.joined.last_watched_episode}`"
                                     type="button"
                                     class="bg-primary text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-8 py-3 rounded-xl"
                                 >
                                     Lanjut Belajar
-                                </button>
+                                </Link>
                             </div>
                         </div>
                         <div v-else class="flex justify-between items-center">
                             <Link
-                                :href="`/courses/${props.course.slug}/watch/${props.course.groups[0].id}`"
+                                :href="`/courses/${props.course.slug}/watch/1`"
                                 class="bg-primary block text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-16 py-3 rounded-xl"
                             >
                                 Bergabung

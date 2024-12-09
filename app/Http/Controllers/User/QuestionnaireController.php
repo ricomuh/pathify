@@ -8,6 +8,7 @@ use App\Models\QuestionnaireAnswer;
 use App\Models\QuestionnaireAnswerScore;
 use App\Models\QuestionnaireQuestion;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class QuestionnaireController extends Controller
 {
@@ -20,7 +21,8 @@ class QuestionnaireController extends Controller
             }])
             ->get();
 
-        return response()->json($questionnaireQuestions);
+        // return response()->json(data: $questionnaireQuestions);
+        return Inertia::render('Questionnaire/Index', compact('questionnaireQuestions'));
     }
 
     public function store(Request $request)

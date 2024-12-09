@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\UserCourse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class MyCourseController extends Controller
 {
@@ -26,6 +27,7 @@ class MyCourseController extends Controller
             ->whereIn('id', $userCourses->pluck('course_id'))
             ->get();
 
-        return response()->json(compact('courses'));
+        // return response()->json(compact('courses'));
+        return Inertia::render('Course/MyCourse', compact('courses'));
     }
 }

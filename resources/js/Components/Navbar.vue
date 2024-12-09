@@ -29,7 +29,7 @@ const showingNavigationDropdown = ref(false);
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
                     >
-                        Menu
+                        Beranda
                     </NavLink>
                     <NavLink
                         :href="route('courses.index')"
