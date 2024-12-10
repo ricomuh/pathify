@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\UserEvent;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class MyEventController extends Controller
 {
@@ -33,6 +34,7 @@ class MyEventController extends Controller
             return $event;
         });
 
-        return response()->json(compact('events'));
+        // return response()->json(compact('events'));
+        return Inertia::render('EventPage/MyEvent', compact('events'));
     }
 }

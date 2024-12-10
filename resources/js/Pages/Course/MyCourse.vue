@@ -11,6 +11,14 @@ const props = defineProps({
         type: Array,
         required: true,
     },
+    relatedCourses: {
+        type: Array,
+        required: true,
+    },
+    questionnaire_result: {
+        type: Object,
+        required: true,
+    },
 });
 
 const bars = computed(() => {
@@ -150,11 +158,9 @@ const bars = computed(() => {
                     <h1 class="text-[2.3125rem] font-bold mb-6">
                         Mungkin kamu suka
                     </h1>
-                    <div
-                        class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
-                    >
-                        <!-- <BoxCourse
-                            v-for="(course, index) in props?.courses"
+                    <div class="flex flex-nowrap gap-6 overflow-x-auto">
+                        <BoxCourse
+                            v-for="(course, index) in props?.relatedCourses"
                             :key="index"
                             :iconBadge="course.categories[0].icon_image"
                             :backgroundBadge="course.categories[0].color"
@@ -168,7 +174,8 @@ const bars = computed(() => {
                             :level="course.level"
                             :slug="course.slug"
                             :thumbnail="course.thumbnail"
-                        /> -->
+                            class="w-80 flex-shrink-0"
+                        />
                     </div>
                 </div>
             </div>
