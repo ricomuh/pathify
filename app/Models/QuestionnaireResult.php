@@ -2,15 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class QuestionnaireResult extends Model
 {
     /** @use HasFactory<\Database\Factories\QuestionnaireResultFactory> */
-    use HasFactory;
+    use HasFactory, HasUuids;
 
-    public $fillable = ['user_id', 'result', 'questionnaire_result_category_id', '1st_category_id', '2nd_category_id'];
+    public $fillable = ['id', 'user_id', 'result', 'questionnaire_result_category_id', '1st_category_id', '2nd_category_id'];
+
+
+    // auto generate uuid
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->id = str()->uuid();
+        });
+    }
 
     public function casts()
     {

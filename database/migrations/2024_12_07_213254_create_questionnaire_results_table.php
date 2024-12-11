@@ -15,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('questionnaire_results', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignIdFor(User::class)->constrained();
             $table->json('result');
             $table->foreignIdFor(QuestionnaireResultCategory::class)->constrained();

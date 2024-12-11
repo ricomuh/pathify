@@ -493,6 +493,7 @@ class QuestionnaireSeeder extends Seeder
 
                 foreach ($scores as $category => $score) {
                     $courseCategory = $courseCategories->firstWhere('name', $category);
+                    $this->command->info("Category: {$courseCategory->name}");
                     QuestionnaireAnswerScore::create([
                         'category_id' => $courseCategory->id,
                         'questionnaire_answer_id' => $questionnaireAnswer->id,

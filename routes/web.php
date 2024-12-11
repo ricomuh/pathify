@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::as('questionnaire.')->prefix('questionnaire')->group(function () {
         Route::get('/', [QuestionnaireController::class, 'index'])->name('index');
         Route::post('/', [QuestionnaireController::class, 'store'])->name('store');
+        Route::get('/{questionnaireResult}', [QuestionnaireController::class, 'show'])->name('show')->withoutMiddleware('auth');
     });
 });
 

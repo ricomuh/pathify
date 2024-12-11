@@ -31,13 +31,13 @@ class QuestionnaireController extends Controller
     {
         $request->validate([
             'answers' => 'required|array',
-            'answers.*.id' => 'required|exists:questionnaire_questions,id',
+            'answers.*.id' => 'required|exists:questionnaire_answers,id',
             // 'answers.*.answer' => 'required|string',
         ]);
 
         $categories = Category::whereNull('parent_id')->get();
 
-        $answerScores = QuestionnaireAnswer::
+        $answers = QuestionnaireAnswer::
             // whereIn('questionnaire_question_id', collect($request->answers)->pluck('questionnaire_question_id'))
             // ->whereIn('answer', collect($request->answers)->pluck('answer'))
             with([
@@ -48,47 +48,40 @@ class QuestionnaireController extends Controller
             ->get();
         //
 
-        $answerScores->each(function ($answerScore) use ($categories) {
-            $answerScore->scores->each(function ($score) use ($categories) {
+        $answers->each(function ($answer) use ($categories) {
+            $answer->scores->each(function ($score) use ($categories) {
                 $category = $categories->firstWhere('id', $score->category_id);
                 $category->max_score += $score->score;
             });
         });
 
-        // now we have the max score for each category
-        // now, let's calculate all of the answer scores, that included in the request, and calculate the total score for each category, and then calculate the percentage
-        $totalScores = collect($request->answers)->reduce(function ($carry, $answer) use ($answerScores) {
-            $answerScore = $answerScores->firstWhere('questionnaire_question_id', $answer['id']);
-            $score = $answerScore->scores->firstWhere('category_id', $answer['category_id']);
+        $userAnswers = collect($request->answers);
 
-            $carry[$answer['category_id']] += $score->score;
+        // $categoryScores = $categories->map(function ($category) use ($answers, $userAnswers) {
+        //     $category->score = $answers->sum(function ($answer) use ($category, $userAnswers) {
+        //         $answerScore = $answer->scores->firstWhere('category_id', $category->id);
+        //         $userAnswer = $userAnswers->firstWhere('id', $answer->id);
 
-            return $carry;
-        }, $categories->pluck('max_score')->mapWithKeys(function ($maxScore, $categoryId) {
-            return [$categoryId => 0];
-        })->toArray());
-        // $totalScores = collect($request->answers)->reduce(function ($carry, $answer) use ($answerScores) {
-        //     $answerScore = $answerScores->firstWhere('questionnaire_question_id', $answer['questionnaire_question_id']);
-        //     $score = $answerScore->scores->firstWhere('category_id', $answer['category_id']);
+        //         return $answerScore->score * $userAnswer->answer;
+        //     });
 
-        //     $carry[$answer['category_id']] += $score->score;
-
-        //     return $carry;
-        // }, $categories->pluck('max_score')->mapWithKeys(function ($maxScore, $categoryId) {
-        //     return [$categoryId => 0];
-        // })->toArray());
-
-        $totalMaxScores = $categories->pluck('max_score')->sum();
-
-        $categoryScores = $categories->map(function ($category) use ($totalScores, $totalMaxScores) {
-            $category->score = $totalScores[$category->id];
-            $category->percentage = $totalMaxScores > 0 ? $category->score / $totalMaxScores * 100 : 0;
-
-            return $category;
+        //     return $category;
+        // });
+        $answers->filter(function ($answer) use ($userAnswers) {
+            return $userAnswers->contains('id', $answer->id);
+        })->each(function ($answer) use ($categories, $userAnswers) {
+            $answer->scores->each(function ($score) use ($categories, $answer, $userAnswers) {
+                $category = $categories->firstWhere('id', $score->category_id);
+                $category->rawScore += $score->score; // * $userAnswers->firstWhere('id', $answer->id)->answer;
+                $category->score = $category->rawScore / $category->max_score * 100;
+            });
         });
 
+        // dd($answers, $userAnswers, $categories);
+
+
         // get the 2 highest value
-        $highest = $categoryScores->sortByDesc(function ($category) {
+        $highest = $categories->sortByDesc(function ($category) {
             return $category->score;
         })->take(2);
 
@@ -120,7 +113,7 @@ class QuestionnaireController extends Controller
 
         $questionnaireResult = QuestionnaireResult::create([
             'user_id' => auth()->id(),
-            'result' => $categoryScores->mapWithKeys(function ($category) {
+            'result' => $categories->mapWithKeys(function ($category) {
                 return [$category->name => $category->score];
             }),
             'questionnaire_result_category_id' => $questionnaireCategory ? $questionnaireCategory->id : null,
@@ -134,6 +127,19 @@ class QuestionnaireController extends Controller
 
         // return response()->json($categoryScores);
 
-        return response()->json(compact('categoryScores', 'questionnaireCategory'));
+        // return response()->json(compact('categoryScores', 'questionnaireCategory'));
+        return redirect()->route('questionnaire.show', $questionnaireResult);
+    }
+
+    public function show(QuestionnaireResult $questionnaireResult)
+    {
+        $questionnaireResult->load([
+            'user',
+            'category',
+            'firstCategory',
+            'secondCategory',
+        ]);
+
+        return response()->json(compact('questionnaireResult'));
     }
 }
