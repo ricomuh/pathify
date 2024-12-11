@@ -17,9 +17,11 @@ class QuestionnaireController extends Controller
     public function index()
     {
         $questionnaireQuestions = QuestionnaireQuestion::select('id', 'order', 'question')
-            ->orderBy('order', 'asc')
+            // ->orderBy('order', 'asc')
+            ->inRandomOrder()
             ->with(['answers' => function ($query) {
                 $query->select('id', 'questionnaire_question_id', 'answer');
+                $query->inRandomOrder();
             }])
             ->get();
 
