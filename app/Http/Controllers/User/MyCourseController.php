@@ -68,14 +68,24 @@ class MyCourseController extends Controller
         })
             ->whereNotIn('courses.id', $userCourses->pluck('course_id'))
             ->inRandomOrder()
+            ->with([
+                'mentor' => function ($query) {
+                    $query->select('id', 'profile_picture', 'fullname', 'username');
+                    $query->with('mentorDetail');
+                },
+                'categories' => function ($query) {
+                    $query->whereNull('parent_id');
+                },
+            ])
             ->limit(6)
             ->get();
 
         // return response()->json(compact('courses'));
-        return response()->json([
-            'courses' => $courses,
-            'questionnaire_result' => $questionnaireResult,
-            'related_courses' => $relatedCourses,
-        ]);
+        // return response()->json([
+        //     'courses' => $courses,
+        //     'questionnaire_result' => $questionnaireResult,
+        //     'related_courses' => $relatedCourses,
+        // ]);
+        return Inertia::render('Course/MyCourse', compact('courses', 'questionnaireResult', 'relatedCourses'));
     }
 }

@@ -70,3 +70,9 @@ Route::get('/mentor/{mentor:username}', [MentorDetailController::class, 'show'])
 
 
 require __DIR__ . '/auth.php';
+
+
+// Fallback route for 404 error page
+Route::fallback(function () {
+    return Inertia::render('Error404');
+});

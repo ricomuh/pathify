@@ -6,7 +6,7 @@ import { Link } from "@inertiajs/vue3";
 <template>
     <div class="grid lg:grid-cols-2 h-screen overflow-hidden">
         <img
-            src="../../images/banner.png"
+            src="/media/illustrations/banner.png"
             class="w-full h-full object-cover hidden lg:block"
             alt=""
         />

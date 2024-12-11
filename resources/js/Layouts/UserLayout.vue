@@ -15,19 +15,19 @@ const menuItems = [
         name: "Kelas Saya",
         href: "/my-courses",
         icon: "/media/icons/class.svg",
-        active: "my-courses",
+        active: "my-courses.index",
     },
     {
         name: "Event Saya",
         href: "/my-events",
         icon: "/media/icons/event.svg",
-        active: "my-events",
+        active: "my-events.index",
     },
     {
         name: "Akun Saya",
         href: "/profile",
         icon: "/media/icons/profile.svg",
-        active: "profile",
+        active: "profile.edit",
     },
 ];
 </script>
