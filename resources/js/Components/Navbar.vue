@@ -1,24 +1,45 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, usePage } from "@inertiajs/vue3";
 
 const showingNavigationDropdown = ref(false);
+const isScrolled = ref(false);
+const page = usePage();
+
+const handleScroll = () => {
+    isScrolled.value = window.scrollY > 0;
+};
+
+onMounted(() => {
+    window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
     <div>
-        <nav class="fixed shadow top-0 w-full !bg-neutral-10 z-50">
+        <nav
+            :class="[
+                'fixed top-0 w-full z-50 transition-colors duration-300',
+                isScrolled || !route().current('home')
+                    ? 'bg-neutral-10 shadow'
+                    : 'bg-transparent',
+            ]"
+        >
             <!-- Primary Navigation Menu -->
             <div
                 class="container relative flex items-center justify-between py-2"
             >
                 <!-- Logo -->
-                <Link :href="route('dashboard')">
+                <Link :href="route('home')">
                     <ApplicationLogo class="block h-12 w-auto" />
                 </Link>
                 <!-- Navigation Links -->
@@ -26,33 +47,35 @@ const showingNavigationDropdown = ref(false);
                     class="hidden justify-center space-x-8 sm:-my-px sm:ms-10 sm:flex"
                 >
                     <NavLink
-                        :href="route('dashboard')"
-                        :active="route().current('dashboard')"
+                        :href="route('home')"
+                        :active="route().current('home')"
+                        :isScrolled="isScrolled || !route().current('home')"
+                        >Beranda</NavLink
                     >
-                        Beranda
-                    </NavLink>
                     <NavLink
                         :href="route('courses.index')"
                         :active="route().current('courses.*')"
+                        :isScrolled="isScrolled || !route().current('home')"
+                        >Kelas</NavLink
                     >
-                        Kelas
-                    </NavLink>
                     <NavLink
                         :href="route('events.index')"
                         :active="route().current('events.*')"
+                        :isScrolled="isScrolled || !route().current('home')"
+                        >Event</NavLink
                     >
-                        Event
-                    </NavLink>
                     <NavLink
                         :href="route('about.index')"
                         :active="route().current('about.index')"
+                        :isScrolled="isScrolled || !route().current('home')"
+                        >Tentang</NavLink
                     >
-                        Tentang
-                    </NavLink>
                 </div>
-                <div class="flex h-16 justify-center">
+                <div
+                    v-if="$page.props.auth.user"
+                    class="flex h-16 justify-center"
+                >
                     <div class="flex"></div>
-
                     <div class="hidden sm:ms-6 gap-4 sm:flex sm:items-center">
                         <!-- Settings Dropdown -->
                         <div class="relative">
@@ -71,7 +94,6 @@ const showingNavigationDropdown = ref(false);
                                         </button>
                                     </div>
                                 </template>
-
                                 <template #content>
                                     <div class="py-3 px-4">
                                         <h1
@@ -105,23 +127,20 @@ const showingNavigationDropdown = ref(false);
                                         />
                                     </button>
                                 </template>
-
                                 <template #content>
-                                    <DropdownLink :href="route('profile.edit')">
-                                        Profile
-                                    </DropdownLink>
+                                    <DropdownLink :href="route('dashboard')"
+                                        >Dashboard</DropdownLink
+                                    >
                                     <DropdownLink
                                         :href="route('logout')"
                                         method="post"
                                         as="button"
+                                        >Log Out</DropdownLink
                                     >
-                                        Log Out
-                                    </DropdownLink>
                                 </template>
                             </Dropdown>
                         </div>
                     </div>
-
                     <!-- Hamburger -->
                     <div class="-me-2 flex items-center sm:hidden">
                         <button
@@ -163,10 +182,23 @@ const showingNavigationDropdown = ref(false);
                         </button>
                     </div>
                 </div>
+                <div v-else class="flex gap-4 items-center">
+                    <Link
+                        :href="route('login')"
+                        class="text-neutral-20 hover:text-primary-surface text-lg leading-[1.25rem] px-6 py-3 rounded-xl border-b-4 border-primary-hover bg-primary flex items-center justify-center"
+                        >Masuk</Link
+                    >
+                    <Link
+                        :href="route('register')"
+                        class="border-b-4 border-primary-border border-t-[3px] border-x-[3px] text-lg leading-[1.25rem] px-6 py-3 rounded-xl flex items-center justify-center bg-neutral-20"
+                        >Gabung</Link
+                    >
+                </div>
             </div>
 
             <!-- Responsive Navigation Menu -->
             <div
+                v-if="$page.props.auth.user"
                 :class="{
                     block: showingNavigationDropdown,
                     hidden: !showingNavigationDropdown,
@@ -177,11 +209,9 @@ const showingNavigationDropdown = ref(false);
                     <ResponsiveNavLink
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
+                        >Dashboard</ResponsiveNavLink
                     >
-                        Dashboard
-                    </ResponsiveNavLink>
                 </div>
-
                 <!-- Responsive Settings Options -->
                 <div class="border-t border-gray-200 pb-1 pt-4">
                     <div class="px-4">
@@ -192,21 +222,23 @@ const showingNavigationDropdown = ref(false);
                             {{ $page.props.auth.user.email }}
                         </div>
                     </div>
-
                     <div class="mt-3 space-y-1">
-                        <ResponsiveNavLink :href="route('profile.edit')">
-                            Profile
-                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('profile.edit')"
+                            >Profile</ResponsiveNavLink
+                        >
                         <ResponsiveNavLink
                             :href="route('logout')"
                             method="post"
                             as="button"
+                            >Log Out</ResponsiveNavLink
                         >
-                            Log Out
-                        </ResponsiveNavLink>
                     </div>
                 </div>
             </div>
         </nav>
     </div>
 </template>
+
+<style scoped>
+/* Add any custom styles here */
+</style>

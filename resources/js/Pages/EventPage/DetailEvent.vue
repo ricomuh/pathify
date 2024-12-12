@@ -71,7 +71,7 @@ const isRegistrationClosed = computed(() => {
     <Head title="Detail Event" />
 
     <AuthenticatedLayout>
-        <div class="bg-neutral-30 py-12">
+        <div class="bg-neutral-30 pb-12 pt-24">
             <div class="container">
                 <img
                     :src="props.event.thumbnail"

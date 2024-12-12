@@ -24,7 +24,7 @@ const props = defineProps({
     <Head title="Detail Mentor" />
 
     <AuthenticatedLayout>
-        <div class="h-80 relative">
+        <div class="h-80 relative mt-12">
             <img
                 src="/media/illustrations/cover-mentor.png"
                 class="w-full h-56 object-cover"

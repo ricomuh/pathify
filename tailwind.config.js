@@ -31,6 +31,7 @@ export default {
                 },
             },
             backgroundImage: {
+                home: "linear-gradient(180deg, #171A1B 20%, rgba(23, 26, 27, 0.90) 100%)",
                 "box-course":
                     "linear-gradient(180deg, rgba(23, 26, 27, 0.00) 25%, rgba(23, 26, 27, 0.80) 70%, #171A1B 95%)",
             },

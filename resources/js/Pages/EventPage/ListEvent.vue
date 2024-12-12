@@ -48,7 +48,7 @@ const goToPage = (url) => {
     <Head title="Event" />
 
     <AuthenticatedLayout>
-        <div class="container">
+        <div class="container pt-12">
             <!-- Hero -->
             <div class="flex flex-col items-center justify-center py-12">
                 <h1

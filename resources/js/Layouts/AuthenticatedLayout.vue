@@ -10,7 +10,7 @@ import Footer from "@/Components/Footer.vue";
             <Navbar />
 
             <!-- Page Content -->
-            <main class="pt-20">
+            <main>
                 <slot />
             </main>
 

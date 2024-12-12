@@ -37,7 +37,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
 
     <AuthenticatedLayout>
         <!-- Hero -->
-        <div class="container py-12">
+        <div class="container pb-12 pt-24">
             <img
                 src="media/illustrations/banner-course.png"
                 class="mx-auto"

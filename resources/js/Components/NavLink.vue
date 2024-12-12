@@ -10,11 +10,18 @@ const props = defineProps({
     active: {
         type: Boolean,
     },
+    isScrolled: {
+        type: Boolean,
+        default: false,
+    },
 });
 
-const classes = computed(() =>
-    props.active ? "text-primary" : "text-neutral-80"
-);
+const classes = computed(() => {
+    if (props.active) {
+        return "text-primary";
+    }
+    return props.isScrolled ? "text-neutral-80" : "text-neutral-20";
+});
 </script>
 
 <template>
