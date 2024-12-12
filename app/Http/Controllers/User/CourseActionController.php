@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\CourseComment;
 use App\Models\CourseContent;
 use App\Models\UserCourse;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 
 class CourseActionController extends Controller
 {
-    public function comment(Request $request)
+    public function comment(Course $course, Request $request)
     {
         $request->validate([
             'course_content_id' => 'required|exists:course_contents,id',
@@ -20,7 +21,7 @@ class CourseActionController extends Controller
 
         // check if user has joined the course
         $courseContent = CourseContent::findOrFail($request->course_content_id);
-        $course = $courseContent->course;
+        // $course = $courseContent->course;
         $userCourse = UserCourse::where('user_id', auth()->id())
             ->where('course_id', $course->id)
             ->first();
@@ -39,19 +40,18 @@ class CourseActionController extends Controller
         return redirect()->back();
     }
 
-    public function toggleCommentVote(Request $request, CourseComment $comment)
+    public function toggleCommentVote(Course $course, CourseComment $comment, Request $request)
     {
         // check if user has joined the course
-        $course = $comment->course;
         $userCourse = UserCourse::where('user_id', auth()->id())
             ->where('course_id', $course->id)
-            ->first();
+            ->firstOrFail();
 
         $request->validate([
             'is_upvote' => 'required|boolean',
         ]);
 
-        $vote = $comment->votes()->where('user_id', auth()->id())->first();
+        $vote = $comment->votes()->where('user_id', auth()->id())->where('course_comment_id', $comment->id)->first();
 
         if ($vote) {
             if ($vote->is_upvote === $request->is_upvote) {
@@ -63,6 +63,7 @@ class CourseActionController extends Controller
             }
         } else {
             $comment->votes()->create([
+                'course_comment_id' => $comment->id,
                 'user_id' => auth()->id(),
                 'is_upvote' => $request->is_upvote,
             ]);

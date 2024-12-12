@@ -127,15 +127,25 @@ class Course extends Model
         $courseContentCount = $this->contents()->count();
 
         $userCourse->last_watched_at = now();
+
+        if ($episode > $userCourse->last_watched_episode) {
+            $userCourse->last_watched_episode = $episode;
+            $userCourse->progress = $episode / $courseContentCount * 100;
+        }
+
+
+
+
+
         // check if the progress is bigger than the last progress
-        $proggres = $episode / $courseContentCount * 100;
-        if ($proggres > $userCourse->progress) {
-            $userCourse->progress = $proggres;
-        }
-        // check if the progress is 100%
-        if ($proggres === 100) {
-            $userCourse->completed_at = now();
-        }
+        // $proggres = $episode / $courseContentCount * 100;
+        // if ($proggres > $userCourse->progress) {
+        //     $userCourse->progress = $proggres;
+        // }
+        // // check if the progress is 100%
+        // if ($proggres === 100) {
+        //     $userCourse->completed_at = now();
+        // }
 
         $userCourse->save();
     }

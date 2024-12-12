@@ -9,7 +9,7 @@ class UserCourse extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'course_id', 'is_favorite', 'progress', 'last_watched_at', 'completed_at'];
+    protected $fillable = ['user_id', 'course_id', 'is_favorite', 'progress', 'last_watched_at', 'completed_at', 'last_watched_episode'];
 
     protected function casts()
     {

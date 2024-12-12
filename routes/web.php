@@ -50,7 +50,11 @@ Route::as('courses.')->prefix('courses')->group(function () {
         Route::get('/', [CourseWatchController::class, 'show'])->name('show');
         Route::middleware('auth')->group(function () {
             Route::get('/watch/{order}', [CourseWatchController::class, 'watch'])->name('watch');
+            Route::post('/join', [CourseWatchController::class, 'join'])->name('join');
             Route::get('/submission', [CourseWatchController::class, 'submission'])->name('submission');
+
+            Route::post('/comment', [CourseWatchController::class, 'comment'])->name('comment');
+            Route::post('/comment/{comment}/vote', [CourseWatchController::class, 'toggleCommentVote'])->name('comment.vote');
         });
     });
     // Route::get('/{course:slug}', [CourseWatchController::class, 'show'])->name('show');
