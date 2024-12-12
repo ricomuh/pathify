@@ -271,7 +271,9 @@ const defaultAccordionValue = computed(() => {
                                 class="size-[3.125rem] rounded-lg"
                                 alt=""
                             />
-                            <div>
+                            <Link
+                                :href="`/mentor/${props.course.mentor.username}`"
+                            >
                                 <h2 class="text-neutral-100 font-bold text-xl">
                                     {{ props.course.mentor.fullname }}
                                 </h2>
@@ -286,7 +288,7 @@ const defaultAccordionValue = computed(() => {
                                             .profession_at
                                     }}
                                 </p>
-                            </div>
+                            </Link>
                         </div>
                         <div class="p-3">
                             <h1 class="text-neutral-100 font-bold text-xl">

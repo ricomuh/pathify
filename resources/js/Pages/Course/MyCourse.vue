@@ -174,7 +174,7 @@ const bars = computed(() => {
                             :level="course.level"
                             :slug="course.slug"
                             :thumbnail="course.thumbnail"
-                            class="w-80 flex-shrink-0"
+                            class="!w-80 flex-shrink-0"
                         />
                     </div>
                 </div>
