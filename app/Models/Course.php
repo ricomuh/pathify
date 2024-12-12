@@ -128,10 +128,10 @@ class Course extends Model
 
         $userCourse->last_watched_at = now();
 
-        if ($episode > $userCourse->last_watched_episode) {
-            $userCourse->last_watched_episode = $episode;
-            $userCourse->progress = $episode / $courseContentCount * 100;
-        }
+        // if ($episode > $userCourse->last_watched_episode) {
+        //     $userCourse->last_watched_episode = $episode;
+        //     $userCourse->progress = $episode / $courseContentCount * 100;
+        // }
 
 
 

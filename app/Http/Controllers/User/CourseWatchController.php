@@ -89,6 +89,14 @@ class CourseWatchController extends Controller
     public function watch(Course $course, int $order)
     {
         abort_unless(auth()->user()->hasAccess($course), 403);
+
+        // disable access if the last_watch is not the same as the current order
+        $userCourse = UserCourse::where('user_id', auth()->id())
+            ->where('course_id', $course->id)
+            ->firstOrFail();
+
+        abort_unless($userCourse->last_watched_episode < $order, 403);
+
         // $owned = auth()->user()->access()
         $course->access($order);
 
@@ -159,6 +167,38 @@ class CourseWatchController extends Controller
         // return response()->json(compact('course', 'content', 'order'));
         // echo "hello";
         return Inertia::render('Course/WatchCourse', compact('course', 'content', 'order'));
+    }
+
+    public function next(Course $course, Request $request)
+    {
+        $request->validate([
+            'order' => 'required|integer',
+        ]);
+
+        $episode_count = $course->contents->count();
+        $order = $request->order + 1;
+
+        if ($order > $episode_count) {
+            return redirect()->route('courses.show.submission', $course->slug);
+        }
+
+        $userCourse = UserCourse::where('user_id', auth()->id())
+            ->where('course_id', $course->id)
+            ->firstOrFail();
+
+        abort_unless($userCourse->last_watched_episode + 1 < $order, 403);
+
+        // if the order is not the last watched episode, update the last watched episode
+        if ($userCourse->last_watched_episode < $order) {
+            $userCourse->update([
+                'last_watched_episode' => $order,
+            ]);
+        }
+        // $userCourse->update([
+        //     'last_watched_episode' => $order,
+        // ]);
+
+        return redirect()->route('courses.show.watch', [$course->slug, $order]);
     }
 
     public function submission(Course $course)
