@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Link, useForm } from "@inertiajs/vue3";
+import { Link, useForm, Head } from "@inertiajs/vue3";
 import { ref, watch } from "vue";
 import { Progress } from "@/Components/ui/progress";
 
@@ -43,8 +43,11 @@ const submitForm = () => {
 };
 
 watch(currentQuestionIndex, (newIndex) => {
-    progress.value =
-        ((newIndex + 1) / props.questionnaireQuestions.length) * 100;
+    progress.value = Number(
+        (((newIndex + 1) / props.questionnaireQuestions.length) * 100).toFixed(
+            0
+        )
+    );
 });
 
 interface Question {
@@ -61,6 +64,8 @@ const props = defineProps<{
 </script>
 
 <template>
+    <Head title="Quisioner Personifikasi" />
+
     <div v-if="!isStart">
         <!-- Header -->
         <div class="bg-primary-pressed py-6">
@@ -124,7 +129,7 @@ const props = defineProps<{
             <div class="container">
                 <div class="flex gap-6 items-center py-2">
                     <Progress
-                        :value="progress"
+                        :model-value="progress"
                         class="bg-white w-full border-none h-3"
                     />
                     <p class="text-white font-bold text-[1.75rem]">
