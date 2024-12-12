@@ -46,6 +46,15 @@ class MentorDetailController extends Controller
                 $query->with('mentorDetail');
             },
             'categories',
+            'testimonies' => function ($query) {
+                $query->inRandomOrder();
+                $query->with([
+                    'user' => function ($query) {
+                        $query->select('id', 'fullname', 'username', 'profile_picture');
+                    },
+                ]);
+                $query->limit(10);
+            },
             // 'joined'
         ])
             // ->when(auth()->check(), function ($query) {
