@@ -10,8 +10,8 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Progress } from "@/components/ui/progress";
+} from "@/Components/ui/accordion";
+import { Progress } from "@/Components/ui/progress";
 
 // bars
 const bars = computed(() => {

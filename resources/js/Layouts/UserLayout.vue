@@ -41,7 +41,7 @@ const menuItems = [
             <!-- Page Content -->
             <main class="pt-20">
                 <div
-                    class="grid grid-cols-5 h-[calc(100vh-80px)] overflow-hidden"
+                    class="grid grid-cols-5 min-h-[calc(100vh-80px)] overflow-hidden"
                 >
                     <!-- Sidebar -->
                     <div
