@@ -2,6 +2,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import BoxCourse from "@/Components/BoxCourse.vue";
+import CarouselReveiw from "@/Components/CarouselReveiw.vue";
 
 const props = defineProps({
     mentor: {
@@ -9,6 +10,10 @@ const props = defineProps({
         required: true,
     },
     courses: {
+        type: Array,
+        required: true,
+    },
+    testimonies: {
         type: Array,
         required: true,
     },
@@ -75,12 +80,16 @@ const props = defineProps({
                         />
                     </div>
                 </div>
-
-                <!-- Testimonial -->
-                <div>
-                    <h1 class="text-[2.3125rem] font-bold mb-6">Apa kata mereka?</h1>
-                </div>
             </div>
+        </div>
+        <!-- Testimonial -->
+        <div class="mb-12">
+            <div class="container">
+                <h1 class="text-[2.3125rem] font-bold mb-6">
+                    Apa kata mereka?
+                </h1>
+            </div>
+            <CarouselReveiw :testimonials="props.testimonies" />
         </div>
     </AuthenticatedLayout>
 </template>
