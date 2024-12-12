@@ -1,11 +1,20 @@
 <script setup>
+// filepath: /d:/website/pathify/resources/js/Pages/EventPage/DetailEvent.vue
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import { computed } from "vue";
 
 const props = defineProps({
-    event: Object,
+    event: {
+        type: Object,
+        required: true,
+    },
+    isJoined: {
+        type: Boolean,
+        required: true,
+    },
 });
+
 // registration end date
 const formattedDate = computed(() => {
     const date = new Date(props.event.registration_end_date);
@@ -42,6 +51,20 @@ const formattedDateTime = computed(() => {
 
     return `${dayName}, ${date}<br>Pukul ${startTime} WIB sampai ${endTime} WIB`;
 });
+
+// check if event is finished
+const isEventFinished = computed(() => {
+    const now = new Date();
+    const endDate = new Date(props.event.end_date);
+    return endDate < now;
+});
+
+//  check if registration is closed
+const isRegistrationClosed = computed(() => {
+    const now = new Date();
+    const registrationEndDate = new Date(props.event.registration_end_date);
+    return registrationEndDate < now;
+});
 </script>
 
 <template>
@@ -53,7 +76,7 @@ const formattedDateTime = computed(() => {
                 <img
                     :src="props.event.thumbnail"
                     class="h-[18.75rem] w-auto object-contain rounded-[2.25rem] mb-3 mx-auto"
-                    alt=""
+                    alt="Event Thumbnail"
                 />
                 <h1
                     class="text-3xl lg:text-[2.3125rem] font-bold text-neutral-100 xl:w-3/5 lg:leading-[2.775rem] text-center mx-auto"
@@ -167,20 +190,26 @@ const formattedDateTime = computed(() => {
                                     Pertemuan diadakan secara Offline dengan
                                     lokasi
                                 </p>
-                                <p v-else class="text-neutral-90">
-                                    Pertemuan diadakan secara Online melalui
-                                    kanal
-                                    <span class="font-bold text-neutral-90">{{
-                                        props.event.platform
-                                    }}</span>
-                                </p>
-                                <a
-                                    target="_blank"
-                                    class="text-primary"
-                                    :href="props.event.link"
-                                    ><span class="text-neutral-90">Link:</span>
-                                    {{ props.event.link }}</a
-                                >
+                                <div v-else>
+                                    <p class="text-neutral-90">
+                                        Pertemuan diadakan secara Online melalui
+                                        kanal
+                                        <span
+                                            class="font-bold text-neutral-90"
+                                            >{{ props.event.platform }}</span
+                                        >
+                                    </p>
+                                    <a
+                                        target="_blank"
+                                        class="text-primary"
+                                        :href="props.event.link"
+                                    >
+                                        <span class="text-neutral-90"
+                                            >Link:</span
+                                        >
+                                        {{ props.event.link }}
+                                    </a>
+                                </div>
                             </div>
                             <p
                                 v-if="props.event.is_online == 0"
@@ -192,21 +221,66 @@ const formattedDateTime = computed(() => {
                                 {{ props.event.location_address }}
                             </p>
                         </div>
-                        <div>
+                        <div v-if="props.isJoined">
                             <h1
                                 class="text-2xl lg:text-[1.75rem] font-bold text-neutral-100"
                             >
-                                Ikuti Event
+                                Kehadiran
                             </h1>
-                            <p class="text-neutral-90">
-                                Ayo daftar event ini agar anda tidak ketinggalan
-                                informasi
-                            </p>
-                            <button
-                                class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
-                            >
-                                Ikuti Event
-                            </button>
+                            <div v-if="isEventFinished">
+                                <p
+                                    class="bg-[#dcf9f9] text-[#155724] border border-[#11c5c6] p-4 rounded-xl"
+                                >
+                                    Event ini telah selesai. Terima kasih telah
+                                    berpartisipasi.
+                                </p>
+                            </div>
+
+                            <div v-else>
+                                <p
+                                    class="p-4 rounded-xl bg-[#DAEAFA] text-[#234B73] border border-[#C1DCF7]"
+                                >
+                                    Anda telah terdaftar dalam event ini.
+                                    Silahkan cek email Anda untuk informasi
+                                    lebih lanjut.
+                                </p>
+                                <button
+                                    class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
+                                >
+                                    Batalkan
+                                </button>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <div v-if="isRegistrationClosed">
+                                <h1
+                                    class="text-2xl lg:text-[1.75rem] font-bold text-neutral-100"
+                                >
+                                    Ikuti Event
+                                </h1>
+                                <p
+                                    class="p-4 rounded-lg bg-[#f8d7da] text-[#721c24] border border-[#f5c6cb]"
+                                >
+                                    Pendaftaran Tutup
+                                </p>
+                            </div>
+
+                            <div v-else>
+                                <h1
+                                    class="text-2xl lg:text-[1.75rem] font-bold text-neutral-100"
+                                >
+                                    Ikuti Event
+                                </h1>
+                                <p class="text-neutral-90">
+                                    Ayo daftar event ini agar anda tidak
+                                    ketinggalan informasi
+                                </p>
+                                <button
+                                    class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
+                                >
+                                    Ikuti Event
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
