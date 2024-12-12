@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class MentorDetailController extends Controller
 {
@@ -55,9 +56,11 @@ class MentorDetailController extends Controller
             ->withCount('users')
             ->where('mentor_id', $mentor->id)
             ->latest()
+            ->limit(4)
             ->get();
 
-        return response()->json(compact('mentor', 'courses'));
+        // return response()->json(compact('mentor', 'courses'));
         // return view('mentor-detail', compact('mentor'));
+        return Inertia::render('MentorDetail/Index', compact('mentor', 'courses'));
     }
 }
