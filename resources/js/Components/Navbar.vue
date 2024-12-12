@@ -39,7 +39,7 @@ const showingNavigationDropdown = ref(false);
                     </NavLink>
                     <NavLink
                         :href="route('events.index')"
-                        :active="route().current('events.index')"
+                        :active="route().current('events.*')"
                     >
                         Event
                     </NavLink>
