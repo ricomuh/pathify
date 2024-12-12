@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseContent;
 use App\Models\CourseSubmission;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -71,6 +72,18 @@ class CourseWatchController extends Controller
         // return response()->json(compact('course', 'hasAccess', 'relatedCourses'));
 
         return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess', 'relatedCourses'));
+    }
+
+    public function join(Course $course)
+    {
+        abort_unless(UserCourse::where('user_id', auth()->id())->where('course_id', $course->id)->exists(), 403);
+
+        UserCourse::create([
+            'user_id' => auth()->id(),
+            'course_id' => $course->id,
+        ]);
+
+        return redirect()->route('course.show', $course->slug);
     }
 
     public function watch(Course $course, int $order)
@@ -174,7 +187,7 @@ class CourseWatchController extends Controller
                     $query->where('user_id', auth()->id());
                 }
             ])
-            ->first();        
+            ->first();
 
         // return response()->json(compact('course', 'submission'));
         return Inertia::render('Course/WatchCourse', compact('course', 'submission'));
