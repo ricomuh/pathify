@@ -54,18 +54,7 @@ class CourseSeeder extends Seeder
             // attach users
             $this->command->info("Attaching users to the course {$course->title}");
             $users = $users->random(rand(8, 20));
-            $users->each(function ($user) use ($course) {
-                UserCourse::factory()->create([
-                    'user_id' => $user->id,
-                    'course_id' => $course->id,
-                ]);
-                // make course testimonies
-                // $this->command->info("Making course testimonies for the course {$course->title}");
-                CourseTestimony::factory()->create([
-                    'course_id' => $course->id,
-                    'user_id' => $user->id,
-                ]);
-            });
+
 
             $this->command->info("Making course submission for the course {$course->title}");
             $courseSubmission = CourseSubmission::factory()->create([
@@ -139,6 +128,21 @@ class CourseSeeder extends Seeder
                         });
                     });
                 });
+            });
+
+            $users->each(function ($user) use ($course, $episode) {
+                UserCourse::factory()
+                    ->withProgress($episode)
+                    ->create([
+                        'user_id' => $user->id,
+                        'course_id' => $course->id,
+                    ]);
+                // make course testimonies
+                // $this->command->info("Making course testimonies for the course {$course->title}");
+                CourseTestimony::factory()->create([
+                    'course_id' => $course->id,
+                    'user_id' => $user->id,
+                ]);
             });
         });
     }

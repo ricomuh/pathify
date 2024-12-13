@@ -220,10 +220,8 @@ const defaultAccordionValue = computed(() => {
                 <div class="lg:col-span-1 xl:col-span-3">
                     <h1 class="title mb-1">Kurikulum</h1>
                     <p class="text-neutral-90 mb-6">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. incididunt ut labore et dolore magna
-                        aliqua.
+                        Berikut adalah kurikulum yang akan kamu pelajari dalam
+                        kelas ini:
                     </p>
                     <Accordion
                         type="single"
