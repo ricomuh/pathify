@@ -1,6 +1,11 @@
 <template>
-    <div>
-        <div class="mb-6 max-w-[32.5rem] mx-auto">
+    <div class="flex gap-6 items-center justify-center w-3/4 mx-auto">
+        <img
+            src="media/illustrations/bottom-illustrations.webp"
+            class="w-ful mx-auto object-cover"
+            alt=""
+        />
+        <div>
             <h1
                 class="text-[2.3125rem] leading-[2.775rem] text-neutral-100 font-bold"
             >
@@ -12,10 +17,5 @@
             </p>
             <i data-lucide="x"></i>
         </div>
-        <img
-            src="media/illustrations/placeholder.jpg"
-            class="w-full md:w-3/4 mx-auto object-cover h-52"
-            alt=""
-        />
     </div>
 </template>

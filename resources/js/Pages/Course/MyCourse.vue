@@ -4,7 +4,14 @@ import { Head, Link } from "@inertiajs/vue3";
 import BoxCourse from "@/Components/BoxCourse.vue";
 import BadgeCategory from "@/Components/BadgeCategory.vue";
 import { computed } from "vue";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@/Components/ui/progress";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/Components/ui/carousel";
 
 const props = defineProps({
     courses: {
@@ -83,73 +90,121 @@ const bars = computed(() => {
                         Kamu belum bergabung pada kelas manapun, klik disini
                         untuk bergabung dan memilih kelas pertamamu
                     </p>
-                    <div v-else class="flex gap-6 overflow-x-auto mt-6">
-                        <Link
-                            :href="`/courses/${value.slug}`"
-                            v-for="(value, key) in props.courses"
-                            :key="key"
-                            class="p-3 rounded-2xl border border-neutral-90 bg-neutral-30 flex gap-6"
+                    <div v-else class="mt-6">
+                        <Carousel
+                            class="relative w-full"
+                            :opts="{
+                                align: 'center',
+                                gap: 24,
+                            }"
                         >
-                            <img
-                                :src="value.thumbnail"
-                                class="w-[16rem] h-80 object-cover rounded-xl"
-                                alt=""
-                            />
-                            <div class="flex flex-col gap-3 py-3 w-[32rem]">
-                                <!-- Category -->
-                                <BadgeCategory
-                                    :category="value.categories[0].name"
-                                    :backgroundColor="value.categories[0].color"
-                                    :icons="value.categories[0].icon_image"
-                                />
-                                <h1 class="text-[1.3125rem] font-bold h-16">
-                                    {{ value.title }}
-                                </h1>
-                                <!-- Mentor -->
-                                <div
-                                    class="flex justify-between items-center py-3 w-full"
+                            <CarouselContent>
+                                <CarouselItem
+                                    v-for="(value, key) in props.courses"
+                                    :key="key"
+                                    class="xl:basis-3/5"
                                 >
-                                    <div class="flex gap-2 items-center">
+                                    <Link
+                                        :href="`/courses/${value.slug}`"
+                                        class="p-3 rounded-2xl border border-neutral-90 bg-neutral-30 flex gap-6"
+                                    >
                                         <img
-                                            :src="value.mentor.profile_picture"
-                                            class="size-8 object-cover rounded-full"
+                                            :src="value.thumbnail"
+                                            class="w-[16rem] h-80 object-cover rounded-xl"
                                             alt=""
                                         />
-
-                                        <div>
-                                            <p class="font-bold text-sm mb-1">
-                                                {{ value.mentor.fullname }}
-                                            </p>
-                                            <p class="-mt-1.5 text-sm">
-                                                {{
-                                                    value.mentor.mentor_detail
-                                                        .profession
-                                                }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-end gap-[0.13rem]">
                                         <div
-                                            v-for="(bar, index) in bars[key]"
-                                            :key="index"
-                                            :class="`w-2 ${bar.height} ${bar.color} rounded-[6.25rem]`"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <!-- Progress -->
-                                <div class="flex gap-6 items-center py-2">
-                                    <Progress
-                                        v-model="value.joined.progress"
-                                        class="bg-white w-full border-none h-3"
-                                    />
-                                    <p
-                                        class="text-primary font-bold text-[1.75rem]"
-                                    >
-                                        {{ value.joined.progress }}%
-                                    </p>
-                                </div>
-                            </div>
-                        </Link>
+                                            class="flex flex-col gap-3 py-3 w-[32rem]"
+                                        >
+                                            <!-- Category -->
+                                            <BadgeCategory
+                                                :category="
+                                                    value.categories[0].name
+                                                "
+                                                :backgroundColor="
+                                                    value.categories[0].color
+                                                "
+                                                :icons="
+                                                    value.categories[0]
+                                                        .icon_image
+                                                "
+                                            />
+                                            <h1
+                                                class="text-[1.3125rem] font-bold h-16"
+                                            >
+                                                {{ value.title }}
+                                            </h1>
+                                            <!-- Mentor -->
+                                            <div
+                                                class="flex justify-between items-center py-3 w-full"
+                                            >
+                                                <div
+                                                    class="flex gap-2 items-center"
+                                                >
+                                                    <img
+                                                        :src="
+                                                            value.mentor
+                                                                .profile_picture
+                                                        "
+                                                        class="size-8 object-cover rounded-full"
+                                                        alt=""
+                                                    />
+
+                                                    <div>
+                                                        <p
+                                                            class="font-bold text-sm mb-1"
+                                                        >
+                                                            {{
+                                                                value.mentor
+                                                                    .fullname
+                                                            }}
+                                                        </p>
+                                                        <p
+                                                            class="-mt-1.5 text-sm"
+                                                        >
+                                                            {{
+                                                                value.mentor
+                                                                    .mentor_detail
+                                                                    .profession
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="flex items-end gap-[0.13rem]"
+                                                >
+                                                    <div
+                                                        v-for="(
+                                                            bar, index
+                                                        ) in bars[key]"
+                                                        :key="index"
+                                                        :class="`w-2 ${bar.height} ${bar.color} rounded-[6.25rem]`"
+                                                    ></div>
+                                                </div>
+                                            </div>
+                                            <!-- Progress -->
+                                            <div
+                                                class="flex gap-6 items-center py-2"
+                                            >
+                                                <Progress
+                                                    v-model="
+                                                        value.joined.progress
+                                                    "
+                                                    class="bg-white w-full border-none h-3"
+                                                />
+                                                <p
+                                                    class="text-primary font-bold text-[1.75rem]"
+                                                >
+                                                    {{ value.joined.progress }}%
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </CarouselItem>
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                        </Carousel>
                     </div>
                 </div>
 
@@ -158,25 +213,46 @@ const bars = computed(() => {
                     <h1 class="text-[2.3125rem] font-bold mb-6">
                         Mungkin kamu suka
                     </h1>
-                    <div class="flex flex-nowrap gap-6 overflow-x-auto">
-                        <BoxCourse
-                            v-for="(course, index) in props?.relatedCourses"
-                            :key="index"
-                            :iconBadge="course.categories[0].icon_image"
-                            :backgroundBadge="course.categories[0].color"
-                            :categoryClass="course.categories[0].name"
-                            :title="course.title"
-                            :teacher="course.mentor.fullname"
-                            :teachersJob="
-                                course.mentor.mentor_detail.profession
-                            "
-                            :avatar="course.mentor.profile_picture"
-                            :level="course.level"
-                            :slug="course.slug"
-                            :thumbnail="course.thumbnail"
-                            class="!w-80 flex-shrink-0"
-                        />
-                    </div>
+                    <Carousel
+                        class="relative w-full"
+                        :opts="{
+                            align: 'start',
+                        }"
+                    >
+                        <CarouselContent>
+                            <CarouselItem
+                                v-for="(course, index) in props?.relatedCourses"
+                                :key="index"
+                                class="md:basis-1/2 lg:basis-1/3 xl:basis-[30%]"
+                            >
+                                <div class="grid">
+                                    <BoxCourse
+                                        :iconBadge="
+                                            course.categories[0].icon_image
+                                        "
+                                        :backgroundBadge="
+                                            course.categories[0].color
+                                        "
+                                        :categoryClass="
+                                            course.categories[0].name
+                                        "
+                                        :title="course.title"
+                                        :teacher="course.mentor.fullname"
+                                        :teachersJob="
+                                            course.mentor.mentor_detail
+                                                .profession
+                                        "
+                                        :avatar="course.mentor.profile_picture"
+                                        :level="course.level"
+                                        :slug="course.slug"
+                                        :thumbnail="course.thumbnail"
+                                    />
+                                </div>
+                            </CarouselItem>
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                    </Carousel>
                 </div>
             </div>
         </div>
