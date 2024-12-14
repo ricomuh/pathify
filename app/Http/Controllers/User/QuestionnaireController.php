@@ -160,6 +160,7 @@ class QuestionnaireController extends Controller
             ->inRandomOrder()
             ->get();
 
-        return response()->json(compact('questionnaireResult', 'relatedCourses'));
+        // return response()->json(compact('questionnaireResult', 'relatedCourses'));
+         return Inertia::render('Questionnaire/Result', compact('questionnaireResult', 'relatedCourses'));
     }
 }
