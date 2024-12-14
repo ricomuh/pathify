@@ -37,12 +37,12 @@ const formatDate = (date) => {
 <template>
     <Head title="Hasil Kuisioner" />
     <div class="bg-neutral-20">
-        <div class="bg-neutral-10 py-6 sticky top-0 shadow-sm">
+        <div class="bg-neutral-10 py-6 sticky top-0 shadow-sm z-50">
             <div class="container">
                 <ApplicationLogo class="h-12 mx-auto" />
             </div>
         </div>
-        <div class="container py-6">
+        <div class="container pt-6 pb-20">
             <div class="flex flex-col gap-12">
                 <!-- Result -->
                 <div class="bg-neutral-10 p-6 rounded-xl flex flex-col gap-12">
@@ -129,6 +129,7 @@ const formatDate = (date) => {
                                 <Progress
                                     :model-value="result.score"
                                     class="w-full bg-neutral-30 h-5"
+                                    :backgroundColor="result.color"
                                 />
                                 <p class="text-neutral-80 font-semibold">
                                     {{ Math.round(result.score) }}%
@@ -147,7 +148,6 @@ const formatDate = (date) => {
                     <h1 class="text-[2.3125rem] font-bold mb-6">
                         Kelas yang kami rekomendasikan
                     </h1>
-                    <!-- {{ props.relatedCourses }} -->
                     <Carousel
                         class="relative w-full"
                         :opts="{
@@ -158,7 +158,7 @@ const formatDate = (date) => {
                             <CarouselItem
                                 v-for="(course, index) in props?.relatedCourses"
                                 :key="index"
-                                class="md:basis-1/2 lg:basis-1/3 xl:basis-[30%]"
+                                class="md:basis-1/2 lg:basis-1/3 xl:basis-[24%]"
                             >
                                 <div class="grid">
                                     <BoxCourse

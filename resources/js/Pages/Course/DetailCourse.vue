@@ -68,12 +68,17 @@ const defaultAccordionValue = computed(() => {
             <div class="container relative z-10">
                 <div class="grid xl:grid-cols-2 gap-8 xl:gap-12 items-center">
                     <div class="col">
-                        <BadgeCategory
-                            :icons="props.course.categories[0].icon_image"
-                            :backgroundColor="props.course.categories[0].color"
-                            :category="props.course.categories[0].name"
-                            fontSize="text-base"
-                        />
+                        <div class="flex gap-2 flex-wrap">
+                            <BadgeCategory
+                                v-for="(category, index) in props.course
+                                    .categories"
+                                :key="index"
+                                :icons="category.icon_image"
+                                :backgroundColor="category.color"
+                                :category="category.name"
+                                fontSize="text-base"
+                            />
+                        </div>
                         <h1
                             class="text-[2.3125rem] leading-[2.775rem] font-bold text-neutral-10 my-3"
                         >
