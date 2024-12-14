@@ -31,7 +31,10 @@ class QuestionnaireResultFactory extends Factory
 
         $result = $categories->map(function ($category) {
             return [
-                $category->name => $category->score,
+                $category->name => [
+                    'score' => $category->score,
+                    'color' => $category->color,
+                ],
             ];
         });
         // get the 2 highest value
