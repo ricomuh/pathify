@@ -35,10 +35,10 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-    hasAccess: {
-        type: Boolean,
-        required: true,
-    },
+    // hasAccess: {
+    //     type: Boolean,
+    //     required: true,
+    // },
     relatedCourses: {
         type: Array,
         required: true,

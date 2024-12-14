@@ -133,10 +133,6 @@ class Course extends Model
         //     $userCourse->progress = $episode / $courseContentCount * 100;
         // }
 
-
-
-
-
         // check if the progress is bigger than the last progress
         // $proggres = $episode / $courseContentCount * 100;
         // if ($proggres > $userCourse->progress) {
@@ -163,5 +159,19 @@ class Course extends Model
     public function testimonies()
     {
         return $this->hasMany(CourseTestimony::class);
+    }
+
+    public function scopeOwned($query)
+    {
+        return $query->whereHas('users', function ($query) {
+            $query->where('user_id', auth()->id());
+        });
+    }
+
+    public function scopeNotOwned($query)
+    {
+        return $query->whereDoesntHave('users', function ($query) {
+            $query->where('user_id', auth()->id());
+        });
     }
 }

@@ -18,7 +18,7 @@ class MentorDetailFactory extends Factory
     {
         return [
             'profession' => $this->faker->word,
-            'profession_at' => $this->faker->word,
+            'profession_at' => $this->faker->company,
             'description' => $this->faker->text,
         ];
     }

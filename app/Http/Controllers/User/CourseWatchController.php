@@ -66,17 +66,25 @@ class CourseWatchController extends Controller
 
         // return response()->json(compact('course', 'courseCategories', 'relatedCourses'));
         // check if user has access to this course
-        $hasAccess = auth()->user()->hasAccess($course);
+        // $hasAccess = auth()->user()->hasAccess($course);
         // dd(compact('course', 'hasAccess'));
 
         // return response()->json(compact('course', 'hasAccess', 'relatedCourses'));
 
-        return Inertia::render('Course/DetailCourse', compact('course', 'hasAccess', 'relatedCourses'));
+        return Inertia::render('Course/DetailCourse', compact('course', 'relatedCourses'));
     }
 
     public function join(Course $course)
     {
-        abort_unless(UserCourse::where('user_id', auth()->id())->where('course_id', $course->id)->exists(), 403);
+        $course->load([
+            'joined'
+        ]);
+
+        // abort if user already joined
+        // abort_if(!$course->joined, 403);
+
+
+        // abort_unless(UserCourse::where('user_id', auth()->id())->where('course_id', $course->id)->exists(), 403);
 
         UserCourse::create([
             'user_id' => auth()->id(),
@@ -88,17 +96,17 @@ class CourseWatchController extends Controller
 
     public function watch(Course $course, int $order)
     {
-        abort_unless(auth()->user()->hasAccess($course), 403);
+        // abort_unless(auth()->user()->hasAccess($course), 403);
 
-        // disable access if the last_watch is not the same as the current order
-        $userCourse = UserCourse::where('user_id', auth()->id())
-            ->where('course_id', $course->id)
-            ->firstOrFail();
+        // // disable access if the last_watch is not the same as the current order
+        // $userCourse = UserCourse::where('user_id', auth()->id())
+        //     ->where('course_id', $course->id)
+        //     ->firstOrFail();
 
-        abort_unless($userCourse->last_watched_episode < $order, 403);
+        // abort_unless($userCourse->last_watched_episode < $order, 403);
 
-        // $owned = auth()->user()->access()
-        $course->access($order);
+        // // $owned = auth()->user()->access()
+        // $course->access($order);
 
         $course->load([
             'mentor' => function ($query) {
@@ -120,7 +128,13 @@ class CourseWatchController extends Controller
                     }
                 ]);
             },
+            'joined'
         ]);
+        // dd(compact('course', 'order'));
+
+        abort_unless($course->joined, 403);
+
+
 
         $content = CourseContent::where('course_id', $course->id)
             ->where('order', $order)
@@ -148,6 +162,18 @@ class CourseWatchController extends Controller
             ])
             ->firstOrFail();
 
+        $update = [
+            'last_watched_at' => now(),
+        ];
+
+        if ($course->joined->last_watched_episode < $order) {
+            $update['last_watched_episode'] = $order;
+            $update['progress'] = $order / $course->contents->count() * 100;
+        }
+
+        // dd($course);
+        // $course->dd();
+        $course->joined->update($update);
         // calculate total votes each comment
         $content->comments->each(function ($comment) {
             $comment->votes = $comment->upvotes_count - $comment->downvotes_count;
@@ -163,10 +189,17 @@ class CourseWatchController extends Controller
 
         $content->increment('view_count');
 
+        // set $nextEpisode link, set to submission if the last episode
+        $nextEpisode = $order + 1;
+        $nextEpisode = $nextEpisode > $course->contents->count() ? route('courses.show.submission', $course->slug) : route('courses.show.watch', [$course->slug, $nextEpisode]);
+
+        $prevEpisode = $order - 1;
+        $prevEpisode = $prevEpisode < 1 ? route('courses.show.show', $course->slug) : route('courses.show.watch', [$course->slug, $prevEpisode]);
+
         // dd(compact('course', 'content'));
         // return response()->json(compact('course', 'content', 'order'));
         // echo "hello";
-        return Inertia::render('Course/WatchCourse', compact('course', 'content', 'order'));
+        return Inertia::render('Course/WatchCourse', compact('course', 'content', 'order', 'nextEpisode', 'prevEpisode'));
     }
 
     public function next(Course $course, Request $request)

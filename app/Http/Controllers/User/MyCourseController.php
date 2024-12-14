@@ -26,7 +26,7 @@ class MyCourseController extends Controller
             ->orderBy('created_at', 'desc')
             ->first();
 
-        $userCourses = UserCourse::where('user_id', $user->id)->get();
+        // $userCourses = UserCourse::where('user_id', $user->id)->get();
 
         $courses = Course::with([
             'mentor' => function ($query) {
@@ -38,7 +38,8 @@ class MyCourseController extends Controller
             },
             'joined',
         ])
-            ->whereIn('id', $userCourses->pluck('course_id'))
+            // ->whereIn('id', $userCourses->pluck('course_id'))
+            ->owned()
             ->get();
 
         // get related courses based on the questionnaire result and user courses
@@ -66,7 +67,8 @@ class MyCourseController extends Controller
                 ->whereColumn('courses.id', 'course_categories.course_id')
                 ->whereIn('categories.id', $categories);
         })
-            ->whereNotIn('courses.id', $userCourses->pluck('course_id'))
+            // ->whereNotIn('courses.id', $userCourses->pluck('course_id'))
+            ->notOwned()
             ->inRandomOrder()
             ->with([
                 'mentor' => function ($query) {

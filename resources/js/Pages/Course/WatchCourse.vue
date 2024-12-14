@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import SecondaryLayout from "@/Layouts/SecondaryLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
 import {
@@ -14,11 +14,18 @@ const props = defineProps({
     content: Object,
     order: Number,
     submission: Object,
+    nextEpisode: String,
+    prevEpisode: String,
 });
 
 // default value for accordion
+// default value for accordion
 const defaultAccordionValue = computed(() => {
-    return props.course.groups.length > 0 ? props.course.groups[0].id : null;
+    const group = props.course.groups.find((group) => {
+        return group.contents.some((content) => content.order === props.order);
+    });
+
+    return group ? group.id : null;
 });
 
 // current order
@@ -475,14 +482,14 @@ const formatDate = (dateString) => {
                 class="bg-neutral-10 px-6 py-5 border-t flex justify-between items-center rounded-xl fixed w-full"
             >
                 <Link
-                    :href="previousContentUrl"
+                    :href="prevEpisode"
                     class="flex gap-2 items-center p-3 border-2 boder-neutral-50 !border-b-[6px] hover:bg-neutral-20 rounded-xl"
                 >
                     <img src="/media/icons/arrow-left.svg" alt="" />
                     <p class="text-neutral-90">Materi Sebelumnya</p>
                 </Link>
                 <Link
-                    :href="nextContentUrl"
+                    :href="nextEpisode"
                     class="flex gap-2 items-center p-3 border-2 boder-neutral-50 !border-b-[6px] hover:bg-neutral-20 rounded-xl"
                 >
                     <p class="text-neutral-90">Materi Selanjutnya</p>
