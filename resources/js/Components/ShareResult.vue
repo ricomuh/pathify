@@ -1,5 +1,4 @@
 <script setup>
-// filepath: /d:/website/pathify/resources/js/Components/ShareResult.vue
 import { ref } from "vue";
 import {
     AlertDialog,
@@ -14,7 +13,6 @@ import {
 } from "@/Components/ui/alert-dialog";
 
 const profileUrl = window.location.href;
-const typeUrl = "https://pathify.com/tipe/arsitek-logika";
 
 const copyToClipboard = async (text) => {
     try {
@@ -117,35 +115,10 @@ const shareOnWhatsapp = () => {
                                 </div>
                             </div>
                         </div>
+
                         <div>
                             <h1 class="text-[1.75rem] font-bold">
-                                Bagikan Tipe IT dirimu
-                            </h1>
-                            <p class="mb-3 text-neutral-80">
-                                Bagikan tipe dirimu, tanpa memberikan detail
-                                spesifik.
-                            </p>
-                            <div
-                                class="flex gap-3 items-center w-full py-3 px-6 border-2 bg-neutral-10 rounded-xl border-neutral-40"
-                            >
-                                <input
-                                    type="text"
-                                    disabled
-                                    :value="typeUrl"
-                                    class="shadow-none p-0 outline-none border-none ring-0 w-full text-neutral-70 bg-transparent"
-                                />
-                                <button
-                                    type="button"
-                                    class="p-1"
-                                    @click="copyToClipboard(typeUrl)"
-                                >
-                                    <img src="/media/icons/copy.svg" alt="" />
-                                </button>
-                            </div>
-                        </div>
-                        <div>
-                            <h1 class="text-[1.75rem] font-bold">
-                                Bagikan Profilmu
+                                Bagikan tipe dirimu
                             </h1>
                             <p class="mb-3 text-neutral-80">
                                 Bagikan tipe dirimu, lengkap beserta

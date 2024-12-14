@@ -4,10 +4,22 @@ import { Head } from "@inertiajs/vue3";
 import BadgeCategory from "@/Components/BadgeCategory.vue";
 import { Progress } from "@/Components/ui/progress";
 import ShareResult from "@/Components/ShareResult.vue";
+import BoxCourse from "@/Components/BoxCourse.vue";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/Components/ui/carousel";
 
 const props = defineProps({
     questionnaireResult: {
         type: Object,
+        required: true,
+    },
+    relatedCourses: {
+        type: Array,
         required: true,
     },
 });
@@ -131,9 +143,52 @@ const formatDate = (date) => {
                 </div>
 
                 <!-- Recommendation Class -->
-                <h1 class="text-[2.3125rem] font-bold mb-6">
-                    Kelas yang kami rekomendasikan
-                </h1>
+                <div>
+                    <h1 class="text-[2.3125rem] font-bold mb-6">
+                        Kelas yang kami rekomendasikan
+                    </h1>
+                    {{ props.relatedCourses }}
+                    <!-- <Carousel
+                        class="relative w-full"
+                        :opts="{
+                            align: 'start',
+                        }"
+                    >
+                        <CarouselContent>
+                            <CarouselItem
+                                v-for="(course, index) in props?.relatedCourses"
+                                :key="index"
+                                class="md:basis-1/2 lg:basis-1/3 xl:basis-[30%]"
+                            >
+                                <div class="grid">
+                                    <BoxCourse
+                                        :iconBadge="
+                                            course.categories[0].icon_image
+                                        "
+                                        :backgroundBadge="
+                                            course.categories[0].color
+                                        "
+                                        :categoryClass="
+                                            course.categories[0].name
+                                        "
+                                        :title="course.title"
+                                        :teacher="course.mentor.fullname"
+                                        :teachersJob="
+                                            course.mentor.mentor_detail
+                                                .profession
+                                        "
+                                        :avatar="course.mentor.profile_picture"
+                                        :level="course.level"
+                                        :slug="course.slug"
+                                        :thumbnail="course.thumbnail"
+                                    />
+                                </div>
+                            </CarouselItem>
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                    </Carousel> -->
+                </div>
             </div>
         </div>
     </div>
