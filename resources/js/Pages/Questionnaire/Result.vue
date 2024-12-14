@@ -115,7 +115,7 @@ const formatDate = (date) => {
                     <div class="w-4/6 flex flex-col mx-auto gap-6">
                         <div
                             v-for="(
-                                percentage, category
+                                result, category
                             ) in questionnaireResult.result"
                             :key="category"
                             class="flex items-center gap-6 py-3"
@@ -127,11 +127,11 @@ const formatDate = (date) => {
                             </div>
                             <div class="w-3/4 flex items-center gap-6">
                                 <Progress
-                                    :model-value="percentage"
+                                    :model-value="result.score"
                                     class="w-full bg-neutral-30 h-5"
                                 />
                                 <p class="text-neutral-80 font-semibold">
-                                    {{ percentage.toFixed(0) }}%
+                                    {{ Math.round(result.score) }}%
                                 </p>
                             </div>
                         </div>
@@ -147,8 +147,8 @@ const formatDate = (date) => {
                     <h1 class="text-[2.3125rem] font-bold mb-6">
                         Kelas yang kami rekomendasikan
                     </h1>
-                    {{ props.relatedCourses }}
-                    <!-- <Carousel
+                    <!-- {{ props.relatedCourses }} -->
+                    <Carousel
                         class="relative w-full"
                         :opts="{
                             align: 'start',
@@ -187,7 +187,7 @@ const formatDate = (date) => {
                         </CarouselContent>
                         <CarouselPrevious />
                         <CarouselNext />
-                    </Carousel> -->
+                    </Carousel>
                 </div>
             </div>
         </div>

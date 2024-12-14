@@ -148,19 +148,24 @@ class QuestionnaireController extends Controller
         // }
 
         $relatedCourses = Course::whereHas('categories', function ($query) use ($categories) {
-            $query->whereIn('id', $categories);
+            $query->whereIn('categories.id', $categories);
         })
             ->with([
                 'mentor' => function ($query) {
                     $query->select('id', 'profile_picture', 'fullname', 'username');
                     $query->with('mentorDetail');
                 },
+                'categories' => function ($query) {
+                    $query->whereNull('parent_id');
+                },
             ])
             ->published()
             ->inRandomOrder()
+            ->limit(6)
             ->get();
+        // $relatedCourses = [];
 
         // return response()->json(compact('questionnaireResult', 'relatedCourses'));
-         return Inertia::render('Questionnaire/Result', compact('questionnaireResult', 'relatedCourses'));
+        return Inertia::render('Questionnaire/Result', compact('questionnaireResult', 'relatedCourses'));
     }
 }
