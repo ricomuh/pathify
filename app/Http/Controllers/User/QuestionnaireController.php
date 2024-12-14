@@ -60,16 +60,6 @@ class QuestionnaireController extends Controller
 
         $userAnswers = collect($request->answers);
 
-        // $categoryScores = $categories->map(function ($category) use ($answers, $userAnswers) {
-        //     $category->score = $answers->sum(function ($answer) use ($category, $userAnswers) {
-        //         $answerScore = $answer->scores->firstWhere('category_id', $category->id);
-        //         $userAnswer = $userAnswers->firstWhere('id', $answer->id);
-
-        //         return $answerScore->score * $userAnswer->answer;
-        //     });
-
-        //     return $category;
-        // });
         $answers->filter(function ($answer) use ($userAnswers) {
             return $userAnswers->contains('id', $answer->id);
         })->each(function ($answer) use ($categories, $userAnswers) {
@@ -117,7 +107,13 @@ class QuestionnaireController extends Controller
         $questionnaireResult = QuestionnaireResult::create([
             'user_id' => auth()->id(),
             'result' => $categories->mapWithKeys(function ($category) {
-                return [$category->name => $category->score];
+                // return [$category->name => $category->score];
+                return [$category->name => [
+                    'score' => $category->score,
+                    // 'raw_score' => $category->rawScore,
+                    // 'max_score' => $category->max_score,
+                    'color' => $category->color,
+                ]];
             }),
             'questionnaire_result_category_id' => $questionnaireCategory ? $questionnaireCategory->id : null,
             '1st_category_id' => $firstHighest->id,
