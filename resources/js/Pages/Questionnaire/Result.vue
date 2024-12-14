@@ -56,7 +56,9 @@ const formatDate = (date) => {
                             </h1>
                         </div>
                         <!-- Share -->
-                        <ShareResult />
+                        <ShareResult
+                            :image="questionnaireResult.category.image"
+                        />
                     </div>
                     <img
                         :src="questionnaireResult.category.image"

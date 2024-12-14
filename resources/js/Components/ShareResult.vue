@@ -44,6 +44,13 @@ const shareOnWhatsapp = () => {
     )}`;
     window.open(url, "_blank");
 };
+
+const props = defineProps({
+    image: {
+        type: String,
+        required: true,
+    },
+});
 </script>
 
 <template>
@@ -66,7 +73,7 @@ const shareOnWhatsapp = () => {
                     <AlertDialogDescription class="flex flex-col gap-6">
                         <div>
                             <img
-                                src="/media/illustrations/result.webp"
+                                :src="props.image"
                                 class="h-56 mx-auto mb-2.5"
                                 alt=""
                             />
