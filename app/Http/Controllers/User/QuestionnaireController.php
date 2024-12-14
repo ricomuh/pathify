@@ -142,6 +142,7 @@ class QuestionnaireController extends Controller
             'secondCategory',
         ]);
 
-        return response()->json(compact('questionnaireResult'));
+        // return response()->json(compact('questionnaireResult'));
+        return Inertia::render('Questionnaire/Result', compact('questionnaireResult'));
     }
 }

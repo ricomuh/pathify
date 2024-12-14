@@ -27,7 +27,7 @@ const props = defineProps({
 
 <template>
     <div
-        :class="`flex px-2 w-max rounded-lg gap-1 items-center ${paddingY}`"
+        :class="`flex px-2 w-max rounded-lg gap-1.5 items-center ${paddingY}`"
         :style="{ backgroundColor: backgroundColor }"
     >
         <i :class="`${icons} ${fontSize} text-white`"></i>
