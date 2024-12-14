@@ -59,7 +59,7 @@ const formatDate = (date) => {
                         <ShareResult />
                     </div>
                     <img
-                        src="/media/illustrations/result.webp"
+                        :src="questionnaireResult.category.image"
                         class="h-[25rem] w-auto object-contain"
                         alt=""
                     />

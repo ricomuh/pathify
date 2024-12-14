@@ -29,7 +29,15 @@ class QuestionnaireResultFactory extends Factory
             return $category;
         });
 
-        $result = $categories->map(function ($category) {
+        // $result = $categories->map(function ($category) {
+        //     return [
+        //         $category->name => [
+        //             'score' => $category->score,
+        //             'color' => $category->color,
+        //         ],
+        //     ];
+        // });
+        $result = $categories->mapWithKeys(function ($category) {
             return [
                 $category->name => [
                     'score' => $category->score,
