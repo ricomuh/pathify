@@ -3,6 +3,27 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import ContentBottom from "@/Components/ContentBottom.vue";
 import BoxCourse from "@/Components/BoxCourse.vue";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/Components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+// carousel
+const plugin = Autoplay({
+    delay: 2000,
+    stopOnMouseEnter: true,
+    stopOnInteraction: false,
+});
+
+const banner = [
+    "/media/illustrations/banner-course.png",
+    "/media/illustrations/banner-course.png",
+    "/media/illustrations/banner-course.png",
+];
 
 import { ref } from "vue";
 
@@ -38,11 +59,24 @@ const isSelected = (id) => selectedCategories.value.includes(id);
     <AuthenticatedLayout>
         <!-- Hero -->
         <div class="container pb-12 pt-24">
-            <img
-                src="media/illustrations/banner-course.png"
-                class="mx-auto"
-                alt=""
-            />
+            <Carousel
+                class="relative w-full"
+                :plugins="[plugin]"
+                @mouseenter="plugin.stop"
+                @mouseleave="
+                    [plugin.reset(), plugin.play(), console.log('Running')]
+                "
+            >
+                <CarouselContent>
+                    <CarouselItem v-for="(value, index) in banner" :key="index">
+                        <div class="p-1">
+                            <img :src="value" class="w-full mx-auto" alt="" />
+                        </div>
+                    </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
         </div>
         <!-- Search Based on Category -->
         <div class="container">
