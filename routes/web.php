@@ -13,14 +13,16 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
+// Route::get('/', function () {
+//     return Inertia::render('Home', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// })->name('home');
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -70,6 +72,9 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::as('events.')->prefix('events')->group(function () {
     Route::get('/', [EventController::class, 'index'])->name('index');
     Route::get('/{event:slug}', [EventController::class, 'show'])->name('show');
+    Route::get('/{event:slug}/join', [EventController::class, 'join'])
+        ->middleware('auth')
+        ->name('join');
 });
 
 Route::get('/mentor/{mentor:username}', [MentorDetailController::class, 'show'])->name('mentor.show');

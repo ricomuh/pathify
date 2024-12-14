@@ -25,6 +25,12 @@ const formattedDate = computed(() => {
     }).format(date);
 });
 
+// join event
+const joinEvent = () => {
+    // console.log("Join Event");
+    // open route('event.join', {event: props.event.id})
+};
+
 // format date to human readable
 const formattedDateTime = computed(() => {
     const startDate = new Date(props.event.start_date);
@@ -275,11 +281,16 @@ const isRegistrationClosed = computed(() => {
                                     Ayo daftar event ini agar anda tidak
                                     ketinggalan informasi
                                 </p>
-                                <button
+                                <a
+                                    :href="
+                                        route('events.join', {
+                                            event: props.event.slug,
+                                        })
+                                    "
                                     class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
                                 >
                                     Ikuti Event
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

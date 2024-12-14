@@ -53,4 +53,21 @@ class EventController extends Controller
         // return response()->json(compact('event', 'isJoined'));
         return Inertia::render('EventPage/DetailEvent', compact('event', 'isJoined'));
     }
+
+    public function join(Event $event)
+    {
+        if (UserEvent::where('user_id', auth()->id())
+            ->where('event_id', $event->id)
+            ->exists()
+        ) {
+            return back();
+        }
+
+        UserEvent::create([
+            'user_id' => auth()->id(),
+            'event_id' => $event->id,
+        ]);
+
+        return back();
+    }
 }
