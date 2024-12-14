@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Course;
 use App\Models\QuestionnaireAnswer;
 use App\Models\QuestionnaireAnswerScore;
 use App\Models\QuestionnaireQuestion;
@@ -142,6 +143,27 @@ class QuestionnaireController extends Controller
             'secondCategory',
         ]);
 
-        return response()->json(compact('questionnaireResult'));
+        // if (auth()-user()) {
+        // load courses related to the first and second category
+        $categories = [$questionnaireResult->firstCategory->id];
+        if ($questionnaireResult->secondCategory) {
+            $categories[] = $questionnaireResult->secondCategory->id;
+        }
+        // }
+
+        $relatedCourses = Course::whereHas('categories', function ($query) use ($categories) {
+            $query->whereIn('id', $categories);
+        })
+            ->with([
+                'mentor' => function ($query) {
+                    $query->select('id', 'profile_picture', 'fullname', 'username');
+                    $query->with('mentorDetail');
+                },
+            ])
+            ->published()
+            ->inRandomOrder()
+            ->get();
+
+        return response()->json(compact('questionnaireResult', 'relatedCourses'));
     }
 }
