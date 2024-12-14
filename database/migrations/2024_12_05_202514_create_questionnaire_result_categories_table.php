@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('color')->nullable();
-            $table->string('icon')->nullable();
+            // $table->string('icon')->nullable();
+            $table->string('image')->nullable();
             $table->foreignIdFor(Category::class, '1st_category_id')->nullable();
             $table->foreignIdFor(Category::class, '2nd_category_id')->nullable();
             $table->timestamps();
