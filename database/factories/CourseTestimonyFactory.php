@@ -17,6 +17,7 @@ class CourseTestimonyFactory extends Factory
     public function definition(): array
     {
         return [
+            'rating' => $this->faker->numberBetween(1, 5),
             'body' => $this->faker->paragraph(),
         ];
     }

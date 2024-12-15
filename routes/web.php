@@ -4,6 +4,7 @@ use App\Http\Controllers\MentorDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\AboutController;
+use App\Http\Controllers\User\CourseReviewController;
 use App\Http\Controllers\User\CourseWatchController;
 use App\Http\Controllers\User\EventController;
 use App\Http\Controllers\User\MyCourseController;
@@ -59,6 +60,11 @@ Route::as('courses.')->prefix('courses')->group(function () {
 
             Route::post('/comment', [CourseWatchController::class, 'comment'])->name('comment');
             Route::post('/comment/{comment}/vote', [CourseWatchController::class, 'toggleCommentVote'])->name('comment.vote');
+
+            Route::get('/review', [CourseReviewController::class, 'create'])->name('review.create');
+            Route::post('/review', [CourseReviewController::class, 'store'])->name('review.store');
+
+            Route::get('/certificate', [CourseController::class, 'certificate'])->name('certificate');
         });
     });
     // Route::get('/{course:slug}', [CourseWatchController::class, 'show'])->name('show');

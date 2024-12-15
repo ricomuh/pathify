@@ -10,7 +10,7 @@ class CourseTestimony extends Model
     /** @use HasFactory<\Database\Factories\CourseTestimonyFactory> */
     use HasFactory;
 
-    protected $fillable = ['course_id', 'user_id', 'body'];
+    protected $fillable = ['course_id', 'user_id', 'body', 'rating'];
 
     public function course()
     {
