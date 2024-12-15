@@ -212,21 +212,32 @@ const props = defineProps<{
         v-if="showModal"
         class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
     >
-        <div class="bg-white p-6 rounded-xl">
-            <h2 class="text-2xl font-bold mb-4">Confirm Submission</h2>
-            <p class="mb-4">Are you sure you want to submit your answers?</p>
-            <div class="flex gap-4">
-                <button
-                    @click="submitForm"
-                    class="bg-primary text-white py-2 px-4 rounded-xl"
-                >
-                    Yes
-                </button>
+        <div class="bg-white max-w-[35rem] p-6 rounded-xl flex flex-col">
+            <img
+                src="/media/illustrations/submit-quiz.png"
+                class="h-72 w-auto object-contain"
+                alt=""
+            />
+            <h2 class="text-2xl-plus font-bold">
+                Sudah yakin dengan jawaban anda?
+            </h2>
+            <p class="text-xl text-neutral-80">
+                Silahkan crosscheck ulang sebelum mengumpulkan. Pastikan anda
+                tidak tergesa - gesa dalam mengisi jawaban. Karena jawaban
+                pertanyaan ini akan menentukan karir anda kedepannya
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
                 <button
                     @click="showModal = false"
-                    class="bg-neutral-500 text-white py-2 px-4 rounded-xl"
+                    class="bg-[#FF0101] border-b-4 border-[#B30505] text-white py-2 px-4 rounded-xl text-xl"
                 >
-                    No
+                    Tidak, Kembali
+                </button>
+                <button
+                    @click="submitForm"
+                    class="bg-primary text-white py-3 px-4 border-b-4 border-primary-hover rounded-xl text-xl"
+                >
+                    Yakin, Lanjutkan
                 </button>
             </div>
         </div>
