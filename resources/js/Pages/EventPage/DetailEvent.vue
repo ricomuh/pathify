@@ -85,7 +85,7 @@ const isRegistrationClosed = computed(() => {
                     alt="Event Thumbnail"
                 />
                 <h1
-                    class="text-3xl lg:text-[2.3125rem] font-bold text-neutral-100 xl:w-3/5 lg:leading-[2.775rem] text-center mx-auto"
+                    class="text-3xl lg:text-4xl-plus font-bold text-neutral-100 xl:w-3/5 lg:leading-[2.775rem] text-center mx-auto"
                 >
                     {{ props.event.title }}
                 </h1>
@@ -100,7 +100,7 @@ const isRegistrationClosed = computed(() => {
                         <!-- About -->
                         <div>
                             <h1
-                                class="text-3xl lg:text-[2.3125rem] font-bold text-neutral-90 mb-3"
+                                class="text-3xl lg:text-4xl-plus font-bold text-neutral-90 mb-3"
                             >
                                 Tentang Event ini
                             </h1>
@@ -112,7 +112,7 @@ const isRegistrationClosed = computed(() => {
                         <!-- Rundown -->
                         <div>
                             <h1
-                                class="text-3xl lg:text-[2.3125rem] font-bold text-neutral-90 mb-3"
+                                class="text-3xl lg:text-4xl-plus font-bold text-neutral-90 mb-3"
                             >
                                 Rundown
                             </h1>
@@ -133,7 +133,7 @@ const isRegistrationClosed = computed(() => {
                         <!-- Pertanyaan -->
                         <div>
                             <h1
-                                class="text-3xl lg:text-[2.3125rem] font-bold text-neutral-90 mb-3"
+                                class="text-3xl lg:text-4xl-plus font-bold text-neutral-90 mb-3"
                             >
                                 Pertanyaan
                             </h1>
@@ -161,22 +161,20 @@ const isRegistrationClosed = computed(() => {
                         <div>
                             <p class="text-neutral-70">Sisa Kuota</p>
                             <h1
-                                class="text-neutral-90 text-[1.3125rem] font-bold mb-3"
+                                class="text-neutral-90 text-xl-plus font-bold mb-3"
                             >
                                 {{ props.event.seats_left }} Kursi
                             </h1>
                             <p class="text-neutral-70">
                                 Pendaftaran Dibuka Hingga
                             </p>
-                            <h1
-                                class="text-neutral-90 text-[1.3125rem] font-bold"
-                            >
+                            <h1 class="text-neutral-90 text-xl-plus font-bold">
                                 {{ formattedDate }}
                             </h1>
                         </div>
                         <div>
                             <h1
-                                class="text-2xl lg:text-[1.75rem] font-bold text-neutral-100"
+                                class="text-2xl lg:text-2xl-plus font-bold text-neutral-100"
                             >
                                 Waktu dan Tempat
                             </h1>
@@ -229,7 +227,7 @@ const isRegistrationClosed = computed(() => {
                         </div>
                         <div v-if="props.isJoined">
                             <h1
-                                class="text-2xl lg:text-[1.75rem] font-bold text-neutral-100"
+                                class="text-2xl lg:text-2xl-plus font-bold text-neutral-100"
                             >
                                 Kehadiran
                             </h1>
@@ -251,7 +249,7 @@ const isRegistrationClosed = computed(() => {
                                     lebih lanjut.
                                 </p>
                                 <button
-                                    class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
+                                    class="bg-primary text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
                                 >
                                     Batalkan
                                 </button>
@@ -260,7 +258,7 @@ const isRegistrationClosed = computed(() => {
                         <div v-else>
                             <div v-if="isRegistrationClosed">
                                 <h1
-                                    class="text-2xl lg:text-[1.75rem] font-bold text-neutral-100"
+                                    class="text-2xl lg:text-2xl-plus font-bold text-neutral-100"
                                 >
                                     Ikuti Event
                                 </h1>
@@ -273,7 +271,7 @@ const isRegistrationClosed = computed(() => {
 
                             <div v-else>
                                 <h1
-                                    class="text-2xl lg:text-[1.75rem] font-bold text-neutral-100"
+                                    class="text-2xl lg:text-2xl-plus font-bold text-neutral-100"
                                 >
                                     Ikuti Event
                                 </h1>
@@ -287,7 +285,7 @@ const isRegistrationClosed = computed(() => {
                                             event: props.event.slug,
                                         })
                                     "
-                                    class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl block w-max"
+                                    class="bg-primary text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl block w-max"
                                 >
                                     Ikuti Event
                                 </Link>

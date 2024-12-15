@@ -124,7 +124,7 @@ const props = defineProps({
                         </div>
 
                         <div>
-                            <h1 class="text-[1.75rem] font-bold">
+                            <h1 class="text-2xl xl:text-2xl-plus font-bold">
                                 Bagikan tipe dirimu
                             </h1>
                             <p class="mb-3 text-neutral-80">

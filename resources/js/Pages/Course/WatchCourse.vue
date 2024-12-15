@@ -141,7 +141,7 @@ onMounted(() => {
                                 :value="value.id"
                             >
                                 <AccordionTrigger
-                                    class="text-neutral-90 text-[1.3125rem] p-4 text-start bg-none"
+                                    class="text-neutral-90 text-xl-plus p-4 text-start bg-none"
                                 >
                                     {{ value.title }}
                                 </AccordionTrigger>
@@ -200,7 +200,7 @@ onMounted(() => {
                                 value="submission"
                             >
                                 <AccordionTrigger
-                                    class="text-neutral-90 text-[1.3125rem] p-4 text-start bg-none"
+                                    class="text-neutral-90 text-xl-plus p-4 text-start bg-none"
                                 >
                                     Submission
                                 </AccordionTrigger>
@@ -252,7 +252,7 @@ onMounted(() => {
                         <div v-if="!submission" class="p-6 rounded-xl">
                             <div class="flex flex-col gap-6">
                                 <div class="flex justify-between items-center">
-                                    <h1 class="text-[1.75rem] font-bold">
+                                    <h1 class="text-2xl-plus font-bold">
                                         Diskusi Terdahulu
                                     </h1>
                                     <div
@@ -462,7 +462,7 @@ onMounted(() => {
                                 </p>
                                 <ol class="list-decimal pl-6 text-neutral-90">
                                     <li
-                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                        class="text-neutral-90 font-bold text-2xl-plus"
                                     >
                                         Batas Waktu
                                         <span
@@ -474,7 +474,7 @@ onMounted(() => {
                                         >
                                     </li>
                                     <li
-                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                        class="text-neutral-90 font-bold text-2xl-plus"
                                     >
                                         Format dan Ukuran File
                                         <span
@@ -488,7 +488,7 @@ onMounted(() => {
                                         >
                                     </li>
                                     <li
-                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                        class="text-neutral-90 font-bold text-2xl-plus"
                                     >
                                         Nama File
                                         <span
@@ -555,7 +555,7 @@ onMounted(() => {
                                             alt=""
                                         />
                                         <span
-                                            class="text-[1.3125rem] text-neutral-90"
+                                            class="text-xl-plus text-neutral-90"
                                             >Silahkan upload file anda
                                             disini</span
                                         >
@@ -584,7 +584,7 @@ onMounted(() => {
                                                 alt=""
                                             />
                                             <p
-                                                class="text-[1.3125rem] text-neutral-90"
+                                                class="text-xl-plus text-neutral-90"
                                             >
                                                 {{ file.name }}
                                             </p>
@@ -623,21 +623,21 @@ onMounted(() => {
                             </h1>
                             <div class="flex flex-col gap-2 items-center mb-12">
                                 <img src="/media/icons/success.svg" alt="" />
-                                <p class="text-[1.3125rem] text-neutral-90">
+                                <p class="text-xl-plus text-neutral-90">
                                     Selamat! Submission anda telah diterima
                                     dengan perolehan nilai
                                 </p>
                                 <h1
-                                    class="text-[#038A00] text-[5rem] leading-[4.5rem] font-bold"
+                                    class="text-[#038A00] text-7xl leading-[4.5rem] font-bold"
                                 >
                                     85
                                 </h1>
                                 <p
-                                    class="text-[1.3125rem] text-neutral-90 flex items-center gap-2"
+                                    class="text-xl-plus text-neutral-90 flex items-center gap-2"
                                 >
                                     dengan ini anda dinyatakan
                                     <span
-                                        class="text-[1.75rem] font-bold text-[#038A00]"
+                                        class="text-2xl-plus font-bold text-[#038A00]"
                                         >LULUS</span
                                     >
                                 </p>

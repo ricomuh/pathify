@@ -42,7 +42,7 @@ const advantages = ref([
                 >
                     <div class="xl:w-2/3 mx-auto pt-20">
                         <h1
-                            class="text-[4.5rem] leading-[4.95rem] mb-3 font-bold text-neutral-20"
+                            class="text-6xl-plus leading-[4.95rem] mb-3 font-bold text-neutral-20"
                         >
                             Ikuti Kuiz dan Temukan Role yang
                             <span class="text-primary">Kamu Banget!</span>
@@ -79,32 +79,32 @@ const advantages = ref([
                     <!-- Repeating content dynamically using Vue.js -->
                     <template v-for="i in 8" :key="i">
                         <p
-                            class="text-[2rem] text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             Dunia IT adalah masa depan Anda
                         </p>
                         <p
-                            class="text-[2rem] text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             -
                         </p>
                         <p
-                            class="text-[2rem] text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             Belajar IT itu Menyenangkan
                         </p>
                         <p
-                            class="text-[2rem] text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             -
                         </p>
                         <p
-                            class="text-[2rem] text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             Temukan Spesialisasimu disini
                         </p>
                         <p
-                            class="text-[2rem] text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             -
                         </p>
@@ -133,7 +133,7 @@ const advantages = ref([
                             >
                                 <div>
                                     <h1
-                                        class="text-[2rem] font-bold text-neutral-90 leading-[2.5rem] mb-2"
+                                        class="text-3xl-plus font-bold text-neutral-90 leading-[2.5rem] mb-2"
                                     >
                                         {{ value.title }}
                                     </h1>

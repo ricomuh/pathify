@@ -43,15 +43,19 @@ const formatDate = (date) => {
             </div>
         </div>
         <div class="container pt-6 pb-20">
-            <div class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6 xl:gap-12">
                 <!-- Result -->
-                <div class="bg-neutral-10 p-6 rounded-xl flex flex-col gap-12">
-                    <div class="flex justify-between items-center gap-4">
+                <div
+                    class="bg-neutral-10 p-6 rounded-xl flex flex-col gap-4 xl:gap-12 lg:w-5/6 lg:mx-auto"
+                >
+                    <div
+                        class="flex justify-between flex-wrap items-center gap-4"
+                    >
                         <div>
-                            <p class="text-[1.3125rem] text-primary">
+                            <p class="text-xl xl:text-xl-plus text-primary">
                                 Kamu adalah seorang
                             </p>
-                            <h1 class="text-[2.3125rem] font-bold">
+                            <h1 class="text-3xl xl:text-4xl-plus font-bold">
                                 {{ questionnaireResult.category.name }}
                             </h1>
                         </div>
@@ -62,17 +66,17 @@ const formatDate = (date) => {
                     </div>
                     <img
                         :src="questionnaireResult.category.image"
-                        class="h-[25rem] w-auto object-contain"
+                        class="md:h-72 xl:h-[25rem] w-auto object-contain"
                         alt=""
                     />
-                    <p class="text-[1.3125rem] text-neutral-90">
+                    <p class="text-xl xl:text-xl-plus text-neutral-90">
                         {{ questionnaireResult.category.description }}
                     </p>
                     <div>
-                        <h1 class="text-[1.75rem] font-bold mb-3">
+                        <h1 class="text-2xl xl:text-2xl-plus font-bold mb-3">
                             Karir yang direkomendasikan
                         </h1>
-                        <div class="flex flex-wrap gap-4">
+                        <div class="flex flex-wrap gap-2 md:gap-4">
                             <BadgeCategory
                                 v-if="questionnaireResult.first_category"
                                 :category="
@@ -85,7 +89,7 @@ const formatDate = (date) => {
                                     questionnaireResult.first_category
                                         .icon_image
                                 "
-                                fontSize="text-lg"
+                                fontSize="xl:text-lg"
                                 paddingY="py-2 !rounded-xl"
                             />
                             <BadgeCategory
@@ -100,7 +104,7 @@ const formatDate = (date) => {
                                     questionnaireResult.second_category
                                         .icon_image
                                 "
-                                fontSize="text-lg"
+                                fontSize="xl:text-lg"
                                 paddingY="py-2 !rounded-xl"
                             />
                         </div>
@@ -108,26 +112,32 @@ const formatDate = (date) => {
                 </div>
 
                 <!-- Presentase -->
-                <div class="bg-neutral-10 p-6 rounded-xl flex flex-col gap-3">
+                <div
+                    class="bg-neutral-10 p-6 rounded-xl flex flex-col gap-3 lg:w-5/6 lg:mx-auto"
+                >
                     <h1
-                        class="text-[1.75rem] font-bold pb-6 border-b border-neutral-40"
+                        class="text-2xl xl:text-2xl-plus font-bold pb-6 border-b border-neutral-40"
                     >
                         Prosentase Bakat Anda
                     </h1>
-                    <div class="w-4/6 flex flex-col mx-auto gap-6">
+                    <div
+                        class="w-full md:w-5/6 xl:w-4/6 flex flex-col mx-auto gap-2 md:gap-6"
+                    >
                         <div
                             v-for="(
                                 result, category
                             ) in questionnaireResult.result"
                             :key="category"
-                            class="flex items-center gap-6 py-3"
+                            class="flex flex-col md:flex-row items-center gap-2 md:gap-6 py-3"
                         >
-                            <div class="w-1/4 text-end">
+                            <div class="w-full md:w-2/6 xl:w-1/4 md:text-end">
                                 <p class="text-neutral-80 font-semibold">
                                     {{ category }}
                                 </p>
                             </div>
-                            <div class="w-3/4 flex items-center gap-6">
+                            <div
+                                class="w-full md:w-3/6 xl:w-3/4 flex items-center gap-6"
+                            >
                                 <Progress
                                     :model-value="result.score"
                                     class="w-full bg-neutral-30 h-5"
@@ -146,8 +156,10 @@ const formatDate = (date) => {
                 </div>
 
                 <!-- Recommendation Class -->
-                <div>
-                    <h1 class="text-[2.3125rem] font-bold mb-6">
+                <div class="lg:w-5/6 lg:mx-auto">
+                    <h1
+                        class="text-3xl-plus leading-[2.5rem] xl:text-4xl-plus font-bold mb-6"
+                    >
                         Kelas yang kami rekomendasikan
                     </h1>
                     <Carousel
@@ -160,7 +172,7 @@ const formatDate = (date) => {
                             <CarouselItem
                                 v-for="(course, index) in props?.relatedCourses"
                                 :key="index"
-                                class="md:basis-1/2 lg:basis-1/3 xl:basis-[24%]"
+                                class="md:basis-1/2 lg:basis-[40%] xl:basis-[31%]"
                             >
                                 <div class="grid">
                                     <BoxCourse

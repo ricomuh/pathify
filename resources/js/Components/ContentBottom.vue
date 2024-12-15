@@ -7,7 +7,7 @@
         />
         <div>
             <h1
-                class="text-[2.3125rem] leading-[2.775rem] text-neutral-100 font-bold"
+                class="text-4xl-plus leading-[2.775rem] text-neutral-100 font-bold"
             >
                 Belajar tanpa batas ruang dan waktu
             </h1>

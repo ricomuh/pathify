@@ -82,7 +82,7 @@ const bars = computed(() => {
             />
             <!-- Title -->
             <h1
-                class="text-[1.3125rem] text-neutral-10 font-bold h-[4.6875rem] mb-3"
+                class="text-xl-plus text-neutral-10 font-bold h-[4.6875rem] mb-3"
             >
                 {{ title }}
             </h1>

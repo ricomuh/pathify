@@ -81,10 +81,10 @@ const isSelected = (id) => selectedCategories.value.includes(id);
         <!-- Search Based on Category -->
         <div class="container">
             <div class="flex justify-between items-center mb-6 flex-wrap">
-                <h1 class="text-[1.75rem] font-bold text-neutral-100">
+                <h1 class="text-2xl-plus font-bold text-neutral-100">
                     Filter berdasarkan Kategori
                 </h1>
-                <p class="text-[1.3125rem] text-neutral-80">
+                <p class="text-xl-plus text-neutral-80">
                     {{ props.latestCourses.length }} Kelas ditemukan
                 </p>
             </div>
@@ -139,7 +139,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
         <!-- List Course -->
         <div class="container pt-6 pb-12">
             <div class="flex flex-wrap gap-2 justify-between items-center mb-6">
-                <h1 class="text-[2.3125rem] text-neutral-100 font-bold">
+                <h1 class="text-4xl-plus text-neutral-100 font-bold">
                     Semua Kelas
                 </h1>
                 <div
@@ -176,7 +176,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
 
         <!-- Popular Course -->
         <div class="container pb-12">
-            <h1 class="text-[2.3125rem] text-neutral-100 font-bold mb-6">
+            <h1 class="text-4xl-plus text-neutral-100 font-bold mb-6">
                 Kelas paling populer
             </h1>
             <div

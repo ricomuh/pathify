@@ -78,7 +78,7 @@ const goToPage = (url) => {
             <!-- All Events -->
             <div class="pb-12">
                 <h1
-                    class="text-3xl md:text-[2.3125rem] font-bold text-neutral-100 mb-6"
+                    class="text-3xl md:text-4xl-plus font-bold text-neutral-100 mb-6"
                 >
                     Semua Event
                 </h1>

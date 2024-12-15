@@ -54,7 +54,7 @@ const bars = computed(() => {
             <div class="flex flex-col gap-12">
                 <!-- Header -->
                 <h1
-                    class="font-bold p-6 text-[2.3125rem] rounded-xl bg-neutral-10"
+                    class="font-bold p-6 text-4xl-plus rounded-xl bg-neutral-10"
                 >
                     Kelas Saya
                 </h1>
@@ -63,10 +63,10 @@ const bars = computed(() => {
                 <div
                     class="p-6 rounded-xl bg-primary-surface border-t-8 border-x-8 border-b-[32px] border-primary-hover xl:w-1/2"
                 >
-                    <h1 class="text-[1.75rem] font-bold mb-3">
+                    <h1 class="text-2xl-plus font-bold mb-3">
                         Quisioner Personifikasi
                     </h1>
-                    <p class="text-[1.3125rem] text-neutral-90 mb-9">
+                    <p class="text-xl-plus text-neutral-90 mb-9">
                         Ikuti Quisioner, dapatkan rekomendasi kelas dan alur
                         belajar yang sesuai dengan diri kamu. Coba sekarang,
                         Gratis!
@@ -83,7 +83,7 @@ const bars = computed(() => {
 
                 <!-- Your Class -->
                 <div>
-                    <h1 class="text-[2.3125rem] font-bold">
+                    <h1 class="text-4xl-plus font-bold">
                         Kelas yang kamu pilih
                     </h1>
                     <p v-if="!props.courses" class="mt-3">
@@ -130,7 +130,7 @@ const bars = computed(() => {
                                                 "
                                             />
                                             <h1
-                                                class="text-[1.3125rem] font-bold h-16"
+                                                class="text-xl-plus font-bold h-16"
                                             >
                                                 {{ value.title }}
                                             </h1>
@@ -193,7 +193,7 @@ const bars = computed(() => {
                                                     class="bg-white w-full border-none h-3"
                                                 />
                                                 <p
-                                                    class="text-primary font-bold text-[1.75rem]"
+                                                    class="text-primary font-bold text-2xl-plus"
                                                 >
                                                     {{ value.joined.progress }}%
                                                 </p>
@@ -210,7 +210,7 @@ const bars = computed(() => {
 
                 <!-- Maybe You Like -->
                 <div>
-                    <h1 class="text-[2.3125rem] font-bold mb-6">
+                    <h1 class="text-4xl-plus font-bold mb-6">
                         Mungkin kamu suka
                     </h1>
                     <Carousel

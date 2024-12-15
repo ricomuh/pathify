@@ -2,6 +2,7 @@
 import { Link, useForm, Head } from "@inertiajs/vue3";
 import { ref, watch } from "vue";
 import { Progress } from "@/Components/ui/progress";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 
 const isStart = ref(false);
 const progress = ref(0);
@@ -66,61 +67,68 @@ const props = defineProps<{
 <template>
     <Head title="Quisioner Personifikasi" />
 
-    <div v-if="!isStart">
-        <!-- Header -->
-        <div class="bg-primary-pressed py-6">
-            <div class="container">
-                <Link href="/my-courses" class="flex gap-3 items-center">
-                    <img src="/media/icons/arrow-white.svg" alt="" />
-                    <p class="text-[1.3125rem] text-white">Kembali</p>
-                </Link>
-            </div>
-        </div>
+    <AuthenticatedLayout v-if="!isStart">
         <!-- Content -->
         <div
-            class="bg-primary-border h-[calc(100vh-85px)] flex justify-center flex-col"
+            class="bg-neutral-20 flex justify-center flex-col pt-32 pb-12 md:w-5/6 mx-auto"
         >
             <div class="container">
                 <div
-                    class="xl:w-3/5 mx-auto h-[calc(100vh-250px)] flex flex-col justify-between"
+                    class="bg-neutral-10 rounded-3xl xl:w-4/5 py-12 px-6 mx-auto"
                 >
-                    <div class="flex flex-col gap-3">
-                        <h1 class="text-[2.3125rem] font-bold">
-                            Quisioner Personifikasi
-                        </h1>
-                        <p
-                            class="text-[1.75rem] text-neutral-90 leading-[2.1rem]"
+                    <img
+                        src="/media/illustrations/test.png"
+                        class="mx-auto max-h-96 xl:max-h-[30rem]"
+                        alt=""
+                    />
+                    <div class="flex flex-col justify-between">
+                        <div class="flex flex-col gap-3">
+                            <h1
+                                class="text-3xl md:text-4xl md:leading-[3rem] leading-10 xl:text-5xl xl:leading-[3.75rem] font-bold"
+                            >
+                                Luangkan waktu untuk mengenali potensi dirimu
+                            </h1>
+                            <p
+                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                            >
+                                Selamat datang di Quisioner Personifikasi!
+                                Setiap jawaban yang anda pilih merepresentasikan
+                                diri anda. Kenali potensi dirimu untuk karir
+                                yang lebih cemerlang.
+                            </p>
+                            <p
+                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                            >
+                                Setelah anda mengisikan quisioner ini, kami akan
+                                memberikan rekomendasi kursus yang sesuai hanya
+                                untuk anda!
+                            </p>
+                            <p
+                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                            >
+                                Ingatlah untuk meluangkan waktu dan tidak
+                                mengisi dengan tergesa - gesa agar mendapatkan
+                                hasil yang lebih maksimal
+                            </p>
+                            <p
+                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                            >
+                                Siapkah kalian untuk menggali potensi anda lebih
+                                dalam?
+                            </p>
+                        </div>
+                        <button
+                            @click="isStart = true"
+                            type="button"
+                            class="text-white mt-12 w-full font-bold text-xl xl:text-2xl py-4 px-9 bg-primary rounded-3xl block"
                         >
-                            Selamat datang di Quisioner Personifikasi! Setiap
-                            jawaban yang anda pilih merepresentasikan diri anda.
-                            Bantu kami untuk dapat memberikan rekomendasi kursus
-                            yang sesuai hanya untuk anda!
-                        </p>
-                        <p
-                            class="text-[1.75rem] text-neutral-90 leading-[2.1rem]"
-                        >
-                            Ingatlah untuk tidak memilih tergesa - gesa atau
-                            hanya ikut - ikutan teman saja. Sebab preferensi
-                            orang dapat berbeda - beda.
-                        </p>
-                        <p
-                            class="text-[1.75rem] text-neutral-90 leading-[2.1rem]"
-                        >
-                            Siapkah kalian untuk menggali potensi anda lebih
-                            dalam?
-                        </p>
+                            Ikuti Tes
+                        </button>
                     </div>
-                    <button
-                        @click="isStart = true"
-                        type="button"
-                        class="text-white font-bold ms-auto text-[1.75rem] py-4 px-9 bg-primary rounded-3xl block w-max"
-                    >
-                        Mulai
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
+    </AuthenticatedLayout>
 
     <!-- Start -->
     <div v-else>
@@ -132,7 +140,7 @@ const props = defineProps<{
                         :model-value="progress"
                         class="bg-white w-full border-none h-3"
                     />
-                    <p class="text-white font-bold text-[1.75rem]">
+                    <p class="text-white font-bold text-2xl xl:text-2xl-plus">
                         {{ progress }}%
                     </p>
                 </div>
@@ -140,11 +148,11 @@ const props = defineProps<{
         </div>
         <!-- Content -->
         <div
-            class="bg-primary-border h-[calc(100vh-85px)] flex justify-center flex-col"
+            class="bg-neutral-20 h-[calc(100vh-85px)] flex justify-center flex-col"
         >
             <div class="container">
                 <div
-                    class="xl:w-3/5 mx-auto h-[calc(100vh-200px)] flex flex-col justify-between"
+                    class="md:w-5/6 lg:w-4/5 xl:w-3/5 mx-auto h-[calc(100vh-200px)] flex flex-col justify-between"
                 >
                     <transition name="slide-fade" mode="out-in">
                         <div
@@ -153,12 +161,12 @@ const props = defineProps<{
                         >
                             <div class="flex flex-col gap-3">
                                 <p
-                                    class="text-[1.75rem] text-primary leading-[2.1rem]"
+                                    class="text-2xl xl:text-2xl-plus text-primary leading-[2.1rem]"
                                 >
                                     Soal {{ currentQuestionIndex + 1 }}
                                 </p>
                                 <h1
-                                    class="text-[2.3125rem] font-bold leading-[2.775rem] text-neutral-90"
+                                    class="text-3xl-plus xl:text-4xl-plus font-bold leading-[2.775rem] text-neutral-90"
                                 >
                                     {{
                                         props.questionnaireQuestions[
@@ -174,7 +182,7 @@ const props = defineProps<{
                                         currentQuestionIndex
                                     ].answers"
                                     :key="index"
-                                    class="rounded-xl p-6 flex gap-6 items-center cursor-pointer"
+                                    class="rounded-xl p-4 md:p-6 flex gap-6 items-center cursor-pointer"
                                     @click="
                                         handleSelect(answer.answer, answer.id)
                                     "
@@ -185,7 +193,9 @@ const props = defineProps<{
                                     "
                                     :disabled="isAnswering"
                                 >
-                                    <p class="text-[1.75rem] text-white">
+                                    <p
+                                        class="text-2xl xl:text-2xl-plus text-white"
+                                    >
                                         {{ answer.answer }}
                                     </p>
                                 </div>

@@ -80,7 +80,7 @@ const defaultAccordionValue = computed(() => {
                             />
                         </div>
                         <h1
-                            class="text-[2.3125rem] leading-[2.775rem] font-bold text-neutral-10 my-3"
+                            class="text-4xl-plus leading-[2.775rem] font-bold text-neutral-10 my-3"
                         >
                             {{ props.course.title }}
                         </h1>
@@ -135,7 +135,7 @@ const defaultAccordionValue = computed(() => {
                                         class="bg-white w-full border-none h-3"
                                     />
                                     <p
-                                        class="text-white font-bold text-[1.75rem]"
+                                        class="text-white font-bold text-2xl-plus"
                                     >
                                         {{ props.course.joined.progress }}%
                                     </p>
@@ -145,7 +145,7 @@ const defaultAccordionValue = computed(() => {
                                 <Link
                                     :href="`/courses/${props.course.slug}/watch/${props.course.joined.last_watched_episode}`"
                                     type="button"
-                                    class="bg-primary text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-8 py-3 rounded-xl"
+                                    class="bg-primary text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl"
                                 >
                                     Lanjut Belajar
                                 </Link>
@@ -154,7 +154,7 @@ const defaultAccordionValue = computed(() => {
                         <div v-else class="flex justify-between items-center">
                             <Link
                                 :href="`/courses/${props.course.slug}/watch/1`"
-                                class="bg-primary block text-neutral-20 text-[1.3125rem] border-b-4 border-primary-hover px-16 py-3 rounded-xl"
+                                class="bg-primary block text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-16 py-3 rounded-xl"
                             >
                                 Bergabung
                             </Link>
@@ -347,7 +347,7 @@ const defaultAccordionValue = computed(() => {
 
 <style scoped>
 .title {
-    @apply text-2xl xl:text-[2.3125rem] leading-[2.775rem] font-bold text-neutral-100;
+    @apply text-2xl xl:text-4xl-plus leading-[2.775rem] font-bold text-neutral-100;
 }
 ::v-deep .about-course ul {
     @apply list-disc list-inside;

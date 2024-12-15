@@ -49,16 +49,14 @@ const props = defineProps({
                     </p>
                 </div>
                 <div>
-                    <h1 class="text-[2.3125rem] font-bold mb-1">
-                        Tentang Mentor
-                    </h1>
-                    <p class="text-[1.3125rem] text-neutral-90">
+                    <h1 class="text-4xl-plus font-bold mb-1">Tentang Mentor</h1>
+                    <p class="text-xl-plus text-neutral-90">
                         {{ props.mentor.mentor_detail.description }}
                     </p>
                 </div>
                 <!-- My Class -->
                 <div>
-                    <h1 class="text-[2.3125rem] font-bold mb-6">Kelas Saya</h1>
+                    <h1 class="text-4xl-plus font-bold mb-6">Kelas Saya</h1>
                     <div
                         class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
                     >
@@ -85,9 +83,7 @@ const props = defineProps({
         <!-- Testimonial -->
         <div class="mb-12">
             <div class="container">
-                <h1 class="text-[2.3125rem] font-bold mb-6">
-                    Apa kata mereka?
-                </h1>
+                <h1 class="text-4xl-plus font-bold mb-6">Apa kata mereka?</h1>
             </div>
             <CarouselReveiw :testimonials="props.testimonies" />
         </div>
