@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\UserEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class EventController extends Controller
@@ -56,17 +57,24 @@ class EventController extends Controller
 
     public function join(Event $event)
     {
-        if (UserEvent::where('user_id', auth()->id())
-            ->where('event_id', $event->id)
-            ->exists()
-        ) {
-            return back();
-        }
+        // send email to user
+        // Mail::send('emails.event-joined', ['event' => $event], function ($message) use ($event) {
+        //     $message->to(auth()->user()->email, auth()->user()->name)
+        //         ->subject('You have joined ' . $event->title . ' | ' . config('app.name'));
+        // });
 
-        UserEvent::create([
-            'user_id' => auth()->id(),
-            'event_id' => $event->id,
-        ]);
+        $userEvent = UserEvent::where('user_id', auth()->id())
+            ->where('event_id', $event->id)
+            ->first();
+
+        if ($userEvent) {
+            $userEvent->delete();
+        } else {
+            UserEvent::create([
+                'user_id' => auth()->id(),
+                'event_id' => $event->id,
+            ]);
+        }
 
         return back();
     }

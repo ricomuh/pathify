@@ -91,7 +91,7 @@ class CourseWatchController extends Controller
             'course_id' => $course->id,
         ]);
 
-        return redirect()->route('course.show', $course->slug);
+        return redirect()->route('courses.show.show', $course->slug);
     }
 
     public function watch(Course $course, int $order)

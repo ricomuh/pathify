@@ -143,7 +143,15 @@ const defaultAccordionValue = computed(() => {
                             </div>
                             <div class="col-span-2 ms-auto">
                                 <Link
-                                    :href="`/courses/${props.course.slug}/watch/${props.course.joined.last_watched_episode}`"
+                                    :href="`/courses/${
+                                        props.course.slug
+                                    }/watch/${
+                                        props.course.joined
+                                            .last_watched_episode == 0
+                                            ? 1
+                                            : props.course.joined
+                                                  .last_watched_episode
+                                    }`"
                                     type="button"
                                     class="bg-primary text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl"
                                 >
@@ -153,7 +161,12 @@ const defaultAccordionValue = computed(() => {
                         </div>
                         <div v-else class="flex justify-between items-center">
                             <Link
-                                :href="`/courses/${props.course.slug}/watch/1`"
+                                :href="
+                                    route(
+                                        'courses.show.join',
+                                        props.course.slug
+                                    )
+                                "
                                 class="bg-primary block text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-16 py-3 rounded-xl"
                             >
                                 Bergabung

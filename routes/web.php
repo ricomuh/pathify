@@ -54,7 +54,7 @@ Route::as('courses.')->prefix('courses')->group(function () {
             Route::get('/watch/{order}', [CourseWatchController::class, 'watch'])->name('watch');
             Route::post('/watch/next', [CourseWatchController::class, 'next'])->name('watch.next');
 
-            Route::post('/join', [CourseWatchController::class, 'join'])->name('join');
+            Route::get('/join', [CourseWatchController::class, 'join'])->name('join');
             Route::get('/submission', [CourseWatchController::class, 'submission'])->name('submission');
 
             Route::post('/comment', [CourseWatchController::class, 'comment'])->name('comment');
