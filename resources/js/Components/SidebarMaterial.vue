@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref } from "vue";
 import { Link } from "@inertiajs/vue3";
 import {
     Accordion,
@@ -14,6 +14,25 @@ const props = defineProps({
     defaultAccordionValue: String,
     currentOrder: Number,
 });
+
+const showModal = ref(false);
+const targetOrder = ref(null);
+
+const lastWatchedEpisode = props.course?.joined.last_watched_episode;
+
+const checkOrder = (order) => {
+    if (order > lastWatchedEpisode + 1) {
+        targetOrder.value = order;
+        showModal.value = true;
+        return false;
+    }
+    return true;
+};
+
+const closeModal = () => {
+    showModal.value = false;
+    targetOrder.value = null;
+};
 </script>
 
 <template>
@@ -41,25 +60,42 @@ const props = defineProps({
                 </AccordionTrigger>
                 <AccordionContent class="bg-neutral-10 p-0">
                     <div class="flex flex-col gap-3 px-4 pb-3">
-                        <Link
-                            :href="`/courses/${course.slug}/watch/${item?.order}`"
+                        <button
                             v-for="(item, key) in value?.contents"
                             :key="key"
+                            :disabled="item.order > lastWatchedEpisode + 1"
+                            @click="
+                                checkOrder(item.order) &&
+                                    $inertia.get(
+                                        `/courses/${course.slug}/watch/${item.order}`
+                                    )
+                            "
                             class="text-base flex gap-3 items-center px-3 py-2 rounded-xl"
                             :class="{
                                 'bg-primary-border':
                                     item.order === currentOrder,
                                 '': item.order !== currentOrder,
+                                'cursor-not-allowed opacity-50':
+                                    item.order > lastWatchedEpisode + 1,
                             }"
                         >
                             <img
-                                v-if="item.order === currentOrder"
+                                v-if="
+                                    item.order === currentOrder &&
+                                    item.order < lastWatchedEpisode
+                                "
+                                src="/media/icons/checked.svg"
+                                alt=""
+                                class="w-[1.125rem]"
+                            />
+                            <img
+                                v-else-if="item.order === currentOrder"
                                 src="/media/icons/uncheck.svg"
                                 alt=""
                                 class="w-[1.125rem]"
                             />
                             <img
-                                v-else-if="item.order < currentOrder"
+                                v-else-if="item.order <= lastWatchedEpisode"
                                 src="/media/icons/checked.svg"
                                 alt=""
                                 class="w-[1.125rem]"
@@ -72,14 +108,15 @@ const props = defineProps({
                             />
                             <p
                                 :class="
-                                    item.order > currentOrder
+                                    item.order > lastWatchedEpisode
                                         ? 'text-neutral-70'
                                         : 'text-neutral-100'
                                 "
+                                class="text-start"
                             >
                                 {{ item.title }}
                             </p>
-                        </Link>
+                        </button>
                     </div>
                 </AccordionContent>
             </AccordionItem>
@@ -109,5 +146,24 @@ const props = defineProps({
                 </AccordionContent>
             </AccordionItem>
         </Accordion>
+    </div>
+
+    <div
+        v-if="showModal"
+        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+    >
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Access Denied</h2>
+            <p class="mb-4">
+                You must access the classes in order. Please complete the
+                previous classes first.
+            </p>
+            <button
+                @click="closeModal"
+                class="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+                OK
+            </button>
+        </div>
     </div>
 </template>
