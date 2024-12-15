@@ -7,7 +7,8 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
     course: Object,
@@ -70,6 +71,42 @@ const formatDate = (dateString) => {
         return `${diffSeconds} detik yang lalu`;
     }
 };
+
+// Reactive property to manage visibility
+const showSubmissionForm = ref(false);
+
+// Method to handle button click
+const handleSubmissionClick = () => {
+    showSubmissionForm.value = true;
+    const query = new URLSearchParams(window.location.search);
+    query.set("submission", "true");
+    window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}?${query.toString()}`
+    );
+};
+
+const files = ref([]);
+
+const handleFileUpload = (event) => {
+    const uploadedFiles = Array.from(event.target.files);
+    files.value = [...files.value, ...uploadedFiles];
+};
+
+const removeFile = (index) => {
+    files.value.splice(index, 1);
+    const fileInput = document.getElementById("file");
+    if (files.value.length === 0 && fileInput) fileInput.value = "";
+};
+
+// Check URL query parameters on page load
+onMounted(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("submission") === "true") {
+        showSubmissionForm.value = true;
+    }
+});
 </script>
 
 <template>
@@ -190,7 +227,7 @@ const formatDate = (dateString) => {
                     <div class="col-span-3 bg-neutral-20 p-6 overflow-y-auto">
                         <!-- Content -->
                         <div
-                            v-if="!submission"
+                            v-if="!submission || !showSubmissionForm"
                             class="bg-neutral-10 p-6 rounded-xl"
                         >
                             <h1
@@ -204,7 +241,10 @@ const formatDate = (dateString) => {
                             ></div>
                         </div>
                         <!-- Submission -->
-                        <div v-else class="bg-neutral-10 p-6 rounded-xl">
+                        <div
+                            v-if="submission && !showSubmissionForm"
+                            class="bg-neutral-10 p-6 rounded-xl"
+                        >
                             <div class="flex gap-2 flex-col mb-4">
                                 <h1 class="text-5xl font-bold leading-[3.5rem]">
                                     Submission
@@ -302,18 +342,99 @@ const formatDate = (dateString) => {
 
                         <!-- Ready to Submission -->
                         <div
-                            v-if="submission"
+                            v-if="submission && !showSubmissionForm"
                             class="bg-neutral-10 p-6 rounded-xl mt-12"
                         >
                             <p class="text-neutral-90 text-lg mb-4">
                                 Apakah anda sudah siap?
                             </p>
                             <button
+                                @click="handleSubmissionClick"
                                 type="button"
                                 class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
                             >
                                 Mulai Submission
                             </button>
+                        </div>
+
+                        <!-- File Upload Form -->
+                        <div
+                            v-if="showSubmissionForm"
+                            class="bg-neutral-10 p-6 rounded-xl mt-12"
+                        >
+                            <h1
+                                class="text-5xl font-bold leading-[3.5rem] mb-6"
+                            >
+                                Submission
+                            </h1>
+                            <form
+                                :action="`/courses/${props.course.slug}/submission`"
+                                method="POST"
+                                enctype="multipart/form-data"
+                            >
+                                <!-- Form -->
+                                <div v-if="files.length === 0" class="mb-6">
+                                    <label
+                                        for="file"
+                                        class="flex flex-col gap-4 justify-center items-center py-24 border-dashed border-4 bg-neutral-10 border-neutral-40 rounded-xl cursor-pointer"
+                                    >
+                                        <img
+                                            src="/media/icons/upload.svg"
+                                            alt=""
+                                        />
+                                        <span
+                                            class="text-[1.3125rem] text-neutral-90"
+                                            >Silahkan upload file anda
+                                            disini</span
+                                        >
+                                    </label>
+                                    <input
+                                        type="file"
+                                        id="file"
+                                        name="file"
+                                        class="hidden w-full text-neutral-90 text-lg border border-neutral-40 rounded-xl py-2 px-4"
+                                        required
+                                        multiple
+                                        @change="handleFileUpload"
+                                    />
+                                </div>
+
+                                <!-- Preview -->
+                                <div v-else class="mb-6 flex flex-col gap-4">
+                                    <div
+                                        v-for="(file, index) in files"
+                                        :key="index"
+                                        class="flex justify-between items-center gap-3"
+                                    >
+                                        <div class="flex gap-4 items-center">
+                                            <img
+                                                src="/media/icons/file.svg"
+                                                alt=""
+                                            />
+                                            <p
+                                                class="text-[1.3125rem] text-neutral-90"
+                                            >
+                                                {{ file.name }}
+                                            </p>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            @click="removeFile(index)"
+                                        >
+                                            <img
+                                                src="/media/icons/close.svg"
+                                                alt=""
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <button
+                                    type="submit"
+                                    class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
+                                >
+                                    Kumpulkan
+                                </button>
+                            </form>
                         </div>
                         <!-- Discussion -->
                         <div
@@ -489,6 +610,7 @@ const formatDate = (dateString) => {
                     <p class="text-neutral-90">Materi Sebelumnya</p>
                 </Link>
                 <Link
+                    v-if="!submission"
                     :href="nextEpisode"
                     class="flex gap-2 items-center p-3 border-2 boder-neutral-50 !border-b-[6px] hover:bg-neutral-20 rounded-xl"
                 >
