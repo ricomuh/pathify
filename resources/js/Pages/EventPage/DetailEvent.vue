@@ -3,6 +3,15 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
 import { computed } from "vue";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 
 const props = defineProps({
     event: {
@@ -24,12 +33,6 @@ const formattedDate = computed(() => {
         year: "numeric",
     }).format(date);
 });
-
-// join event
-const joinEvent = () => {
-    // console.log("Join Event");
-    // open route('event.join', {event: props.event.id})
-};
 
 // format date to human readable
 const formattedDateTime = computed(() => {
@@ -248,11 +251,41 @@ const isRegistrationClosed = computed(() => {
                                     Silahkan cek email Anda untuk informasi
                                     lebih lanjut.
                                 </p>
-                                <button
-                                    class="bg-primary text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
-                                >
-                                    Batalkan
-                                </button>
+                                <Dialog>
+                                    <DialogTrigger as-child>
+                                        <button
+                                            type="button"
+                                            class="bg-primary text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
+                                        >
+                                            Batalkan
+                                        </button>
+                                    </DialogTrigger>
+                                    <DialogContent class="sm:max-w-[425px]">
+                                        <DialogHeader>
+                                            <DialogTitle
+                                                >Batalkan Event</DialogTitle
+                                            >
+                                            <DialogDescription>
+                                                Apakah Anda yakin ingin
+                                                membatalkan event ini?
+                                            </DialogDescription>
+                                        </DialogHeader>
+
+                                        <DialogFooter>
+                                            <Link
+                                                class="bg-primary text-neutral-20 py-1.5 px-4 text-lg mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-lg w-full text-center"
+                                                :href="
+                                                    route('events.join', {
+                                                        event: props.event.slug,
+                                                    })
+                                                "
+                                                type="submit"
+                                            >
+                                                Batalkan Event
+                                            </Link>
+                                        </DialogFooter>
+                                    </DialogContent>
+                                </Dialog>
                             </div>
                         </div>
                         <div v-else>
