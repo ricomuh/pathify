@@ -92,7 +92,7 @@ class CourseController extends Controller
             ->published()
             ->paginate(10);
 
-        return response()->json(compact('courses', 'categories', 'query', 'categoryQuery'));
-        return Inertia::render('Course/SearchCourse', compact('courses', 'categories', 'query', 'categoryQuery'));
+        // return response()->json(compact('courses', 'categories', 'query', 'categoryQuery'));
+        return Inertia::render('Course/ListCourse', compact('courses', 'categories', 'query', 'categoryQuery'));
     }
 }

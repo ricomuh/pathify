@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, useForm } from "@inertiajs/vue3";
 import ContentBottom from "@/Components/ContentBottom.vue";
 import BoxCourse from "@/Components/BoxCourse.vue";
 import {
@@ -25,32 +25,78 @@ const banner = [
     "/media/illustrations/banner-course.png",
 ];
 
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 // get data
 const props = defineProps({
     latestCourses: Array,
     popularCourses: Array,
     categories: Array,
+    courses: Array,
 });
 
 // search function
-const search = ref("");
+const form = useForm({
+    query: new URLSearchParams(window.location.search).get("query") || "",
+});
 
-// categories
 const selectedCategories = ref([]);
 
-const toggleCategory = (id) => {
-    if (selectedCategories.value.includes(id)) {
-        selectedCategories.value = selectedCategories.value.filter(
-            (catId) => catId !== id
-        );
-    } else {
-        selectedCategories.value.push(id);
-    }
+const handleSearch = () => {
+    const query = form.query;
+    const categories = selectedCategories.value.join(",");
+
+    // Construct URL with query parameters
+    const params = new URLSearchParams();
+    if (query) params.append("query", query);
+    if (categories) params.append("categories", categories);
+
+    const url = `${window.location.pathname}?${params.toString()}`;
+
+    // Update the URL without reloading the page
+    window.history.pushState({}, "", url);
+
+    form.get(
+        route("courses.search", {
+            query,
+            categories,
+        }),
+        {
+            preserveState: true,
+            preserveScroll: true,
+            replace: true,
+        }
+    );
+
+    console.log("Selected categories:", selectedCategories.value);
 };
 
-const isSelected = (id) => selectedCategories.value.includes(id);
+const toggleCategory = (name) => {
+    if (selectedCategories.value.includes(name)) {
+        selectedCategories.value = selectedCategories.value.filter(
+            (catName) => catName !== name
+        );
+    } else {
+        selectedCategories.value.push(name);
+    }
+    handleSearch();
+};
+
+const isSelected = (name) => selectedCategories.value.includes(name);
+
+let searchTimeout = null;
+
+watch(
+    () => form.query,
+    () => {
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+        searchTimeout = setTimeout(() => {
+            handleSearch();
+        }, 1000);
+    }
+);
 </script>
 
 <template>
@@ -101,19 +147,19 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                         :name="category.name"
                         :id="`category${category.id}`"
                         class="hidden"
-                        :checked="isSelected(category.id)"
-                        @change="toggleCategory(category.id)"
+                        :checked="isSelected(category.name)"
+                        @change="toggleCategory(category.name)"
                     />
                     <label
                         :for="`category${category.id}`"
                         :class="[
                             'py-2 px-4 text-nowrap cursor-pointer text-lg rounded-2xl border-[1.4px] flex gap-2 items-center tracking-[0.00406rem]',
-                            isSelected(category.id)
+                            isSelected(category.name)
                                 ? `text-white`
                                 : 'bg-neutral-10 text-neutral-60 border-neutral-50',
                         ]"
                         :style="
-                            isSelected(category.id)
+                            isSelected(category.name)
                                 ? {
                                       backgroundColor: category.color,
                                       borderColor: category.color,
@@ -124,7 +170,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                         <i
                             :class="[
                                 category.icon_image,
-                                isSelected(category.id)
+                                isSelected(category.name)
                                     ? 'text-white'
                                     : 'text-neutral-60',
                             ]"
@@ -148,7 +194,7 @@ const isSelected = (id) => selectedCategories.value.includes(id);
                     <img src="/media/icons/search.svg" alt="" />
                     <input
                         type="search"
-                        v-model="search"
+                        v-model="form.query"
                         class="outline-none !h-max py-0 px-0 border-0 bg-neutral-10 shadow-none !ring-0 w-full"
                         placeholder="Mau belajar apa hari ini?"
                     />

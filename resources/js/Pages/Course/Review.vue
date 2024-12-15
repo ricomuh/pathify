@@ -50,7 +50,8 @@ const submitReview = () => {
                 </h1>
             </div>
             <div
-                class="p-6 lg:w-2/3 xl:w-1/2 w-full rounded-xl border-t-2 border-x-2 border-b-8 border-primary-border bg-neutral-10"
+                class="p-6 lg:w-2/3 xl:w-1/2 w-full rounded-xl border-2 border-primary-border bg-neutral-10"
+                style="border-bottom: 8px solid #c1dcf7 !important"
             >
                 <div class="flex gap-3 items-center justify-between mb-3">
                     <label
