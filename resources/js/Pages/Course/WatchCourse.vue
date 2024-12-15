@@ -6,9 +6,32 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/Components/ui/accordion";
 import { computed, onMounted } from "vue";
 import { ref } from "vue";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/Components/ui/dialog";
+
+// report
+const reportOptions = [
+    { value: "not-relevant", label: "Pertanyaan ini tidak relevan" },
+    { value: "sara", label: "Pertanyaan ini mengandung unsur SARA" },
+    { value: "nsfw", label: "Pertanyaan ini adalah NSFW" },
+    {
+        value: "inappropriate",
+        label: "Pertanyaan ini tidak selayaknya ditanyakan",
+    },
+    { value: "spam", label: "Pertanyaan ini adalah spam" },
+    { value: "duplicate", label: "Pertanyaan ini adalah duplikat" },
+    { value: "other", label: "Lainnya" },
+];
 
 const props = defineProps({
     course: Object,
@@ -32,23 +55,6 @@ const defaultAccordionValue = computed(() => {
 // current order
 const currentOrder = computed(() => {
     return parseInt(route().params.order);
-});
-
-// order of previous and next content
-const previousContentUrl = computed(() => {
-    if (props.order > 1) {
-        return `/courses/${props.course.slug}/watch/${props.order - 1}`;
-        defaultAccordionValue.value = props.course.groups[props.order - 1].id;
-    }
-    return null;
-});
-
-const nextContentUrl = computed(() => {
-    if (props.order < props.course.groups.length) {
-        return `/courses/${props.course.slug}/watch/${props.order + 1}`;
-        defaultAccordionValue.value = props.course.groups[props.order + 1].id;
-    }
-    return null;
 });
 
 // format date comment
@@ -229,7 +235,8 @@ onMounted(() => {
                         <div
                             v-if="
                                 (!submission || !showSubmissionForm) &&
-                                props.submission.user_course_submissions == null
+                                props.submission?.user_course_submissions ==
+                                    null
                             "
                             class="bg-neutral-10 p-6 rounded-xl"
                         >
@@ -392,13 +399,61 @@ onMounted(() => {
                                                 </p>
                                             </button>
                                         </div>
-                                        <button type="button">
-                                            <img
-                                                src="/media/icons/report.svg"
-                                                alt=""
-                                                class="size-6"
-                                            />
-                                        </button>
+                                        <!-- Report -->
+                                        <Dialog>
+                                            <DialogTrigger as-child>
+                                                <button type="button">
+                                                    <img
+                                                        src="/media/icons/report.svg"
+                                                        alt=""
+                                                        class="size-6"
+                                                    />
+                                                </button>
+                                            </DialogTrigger>
+                                            <DialogContent
+                                                class="sm:max-w-[425px]"
+                                            >
+                                                <DialogHeader>
+                                                    <DialogTitle
+                                                        >Laporkan
+                                                        Pertanyaan</DialogTitle
+                                                    >
+                                                </DialogHeader>
+                                                <div
+                                                    class="flex flex-col gap-4 items-start"
+                                                >
+                                                    <div
+                                                        v-for="option in reportOptions"
+                                                        :key="option.value"
+                                                        class="flex gap-4 items-center"
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            :name="`report-${value.id}`"
+                                                            :id="option.value"
+                                                            :value="
+                                                                option.value
+                                                            "
+                                                        />
+                                                        <label
+                                                            :for="option.value"
+                                                            class="text-lg text-neutral-90"
+                                                            >{{
+                                                                option.label
+                                                            }}</label
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <DialogFooter>
+                                                    <button
+                                                        type="button"
+                                                        class="text-lg w-full text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover py-2 px-6"
+                                                    >
+                                                        Laporkan
+                                                    </button>
+                                                </DialogFooter>
+                                            </DialogContent>
+                                        </Dialog>
                                     </div>
                                 </div>
                             </div>
@@ -409,7 +464,8 @@ onMounted(() => {
                             v-if="
                                 submission &&
                                 !showSubmissionForm &&
-                                props.submission.user_course_submissions == null
+                                props.submission?.user_course_submissions ==
+                                    null
                             "
                             class="bg-neutral-10 p-6 rounded-xl"
                         >
@@ -513,7 +569,8 @@ onMounted(() => {
                             v-if="
                                 submission &&
                                 !showSubmissionForm &&
-                                props.submission.user_course_submissions == null
+                                props.submission?.user_course_submissions ==
+                                    null
                             "
                             class="bg-neutral-10 p-6 rounded-xl mt-12"
                         >
@@ -612,7 +669,8 @@ onMounted(() => {
                         <!-- File  -->
                         <div
                             v-if="
-                                props.submission.user_course_submissions != null
+                                props.submission?.user_course_submissions !=
+                                null
                             "
                             class="bg-neutral-10 p-6 rounded-xl"
                         >
