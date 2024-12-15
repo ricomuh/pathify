@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $categories = Category::parentOnly()->get();
 
-        $events = Event::latest()->limit(5)->get();
+        $events = Event::latest()->limit(5)->with('category')->get();
 
         return inertia('Home', [
             'categories' => $categories,

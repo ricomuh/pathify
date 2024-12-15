@@ -27,6 +27,10 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    width: {
+        type: String,
+        default: "w-full",
+    },
 });
 
 // days left
@@ -42,12 +46,14 @@ const isFinished = computed(() => daysLeft.value <= 0);
 </script>
 
 <template>
-    <div class="rounded-2xl border border-neutral-90 overflow-hidden">
+    <div
+        :class="`rounded-2xl text-start bg-neutral-10 border border-neutral-90 overflow-hidden ${width}`"
+    >
         <img :src="thumbnail" alt="" class="w-full h-[12.5rem] object-cover" />
         <div class="p-3">
             <p class="text-primary">{{ category }}</p>
             <h1
-                class="font-bold text-[1.3125rem] leading-[1.575rem] text-neutral-100 mb-3 h-20"
+                class="font-bold text-start text-[1.3125rem] leading-[1.575rem] text-neutral-100 mb-3 h-20"
             >
                 {{ title }}
             </h1>
