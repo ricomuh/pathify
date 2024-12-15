@@ -21,8 +21,8 @@ const plugin = Autoplay({
 
 const banner = [
     "/media/illustrations/banner-course.png",
-    "/media/illustrations/banner-course.png",
-    "/media/illustrations/banner-course.png",
+    "/media/illustrations/banner-course2.png",
+    "/media/illustrations/banner-course3.png",
 ];
 
 import { ref, watch } from "vue";
