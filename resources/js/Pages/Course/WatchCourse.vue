@@ -227,7 +227,10 @@ onMounted(() => {
                     <div class="col-span-3 bg-neutral-20 p-6 overflow-y-auto">
                         <!-- Content -->
                         <div
-                            v-if="!submission || !showSubmissionForm"
+                            v-if="
+                                (!submission || !showSubmissionForm) &&
+                                props.submission.user_course_submissions == null
+                            "
                             class="bg-neutral-10 p-6 rounded-xl"
                         >
                             <h1
@@ -240,202 +243,7 @@ onMounted(() => {
                                 class="course-content"
                             ></div>
                         </div>
-                        <!-- Submission -->
-                        <div
-                            v-if="submission && !showSubmissionForm"
-                            class="bg-neutral-10 p-6 rounded-xl"
-                        >
-                            <div class="flex gap-2 flex-col mb-4">
-                                <h1 class="text-5xl font-bold leading-[3.5rem]">
-                                    Submission
-                                </h1>
-                                <p class="text-neutral-90 text-lg">
-                                    Selamat, Anda Telah Berhasil Sampai di Tahap
-                                    Ini!
-                                </p>
-                                <p class="text-neutral-90 text-lg">
-                                    Kami sangat mengapresiasi usaha dan dedikasi
-                                    Anda dalam mengikuti setiap langkah hingga
-                                    saat ini. Sekarang, Anda berada di titik
-                                    yang sangat penting dalam proses ini.
-                                    Sebelum melanjutkan pengumpulan tugas Anda,
-                                    pastikan Anda telah memahami dengan jelas
-                                    Aturan Submission, Petunjuk Submission,
-                                    serta Soal Submission yang telah disediakan.
-                                </p>
-                                <p class="text-neutral-90 text-lg">
-                                    Proses pengumpulan tugas ini dirancang untuk
-                                    menguji pemahaman dan keterampilan Anda
-                                    dalam mengaplikasikan materi yang telah
-                                    dipelajari. Kami berharap Anda dapat
-                                    menunjukkan hasil terbaik dalam setiap tugas
-                                    yang diserahkan.
-                                </p>
-                                <p class="text-neutral-90 text-lg">
-                                    Jangan lupa untuk memeriksa setiap detail
-                                    dengan teliti dan pastikan bahwa Anda
-                                    mengirimkan pekerjaan yang sesuai dengan
-                                    instruksi. Pengumpulan yang berhasil dan
-                                    tepat waktu akan membantu Anda mencapai
-                                    hasil yang maksimal.
-                                </p>
-                                <p class="text-neutral-90 text-lg">
-                                    Semoga sukses dalam penyelesaian tugas, dan
-                                    kami berharap Anda menikmati proses ini!
-                                </p>
-                            </div>
-                            <div class="flex flex-col gap-2 mb-4">
-                                <h1 class="text-4xl font-bold">
-                                    Aturan Submission
-                                </h1>
-                                <p class="text-neutral-90 text-lg">
-                                    Berikut adalah aturan yang harus Anda ikuti
-                                    dalam proses submission:
-                                </p>
-                                <ol class="list-decimal pl-6 text-neutral-90">
-                                    <li
-                                        class="text-neutral-90 font-bold text-[1.75rem]"
-                                    >
-                                        Batas Waktu
-                                        <span
-                                            class="block text-lg font-normal text-neutral-90"
-                                            >Semua submission harus diterima
-                                            paling lambat [Tanggal & Jam].
-                                            Pengiriman yang terlambat tidak akan
-                                            diproses.</span
-                                        >
-                                    </li>
-                                    <li
-                                        class="text-neutral-90 font-bold text-[1.75rem]"
-                                    >
-                                        Format dan Ukuran File
-                                        <span
-                                            class="block text-lg font-normal text-neutral-90"
-                                            >Pastikan file yang Anda kirimkan
-                                            dalam format yang sesuai.
-                                            Diperbolehkan untuk mengirimkan
-                                            dalam format file kompres (.zip)
-                                            dengan maksimal ukuran adalah
-                                            100mb.</span
-                                        >
-                                    </li>
-                                    <li
-                                        class="text-neutral-90 font-bold text-[1.75rem]"
-                                    >
-                                        Nama File
-                                        <span
-                                            class="block text-lg font-normal text-neutral-90"
-                                            >Harap beri nama file Anda dengan
-                                            format 1012341-nama.zip</span
-                                        >
-                                    </li>
-                                </ol>
-                            </div>
-                            <div class="flex gap-2 flex-col">
-                                <h1 class="text-4xl font-bold">Kesimpulan</h1>
-                                <div
-                                    v-html="submission?.body"
-                                    class="course-content text-neutral-90"
-                                ></div>
-                            </div>
-                        </div>
 
-                        <!-- Ready to Submission -->
-                        <div
-                            v-if="submission && !showSubmissionForm"
-                            class="bg-neutral-10 p-6 rounded-xl mt-12"
-                        >
-                            <p class="text-neutral-90 text-lg mb-4">
-                                Apakah anda sudah siap?
-                            </p>
-                            <button
-                                @click="handleSubmissionClick"
-                                type="button"
-                                class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
-                            >
-                                Mulai Submission
-                            </button>
-                        </div>
-
-                        <!-- File Upload Form -->
-                        <div
-                            v-if="showSubmissionForm"
-                            class="bg-neutral-10 p-6 rounded-xl mt-12"
-                        >
-                            <h1
-                                class="text-5xl font-bold leading-[3.5rem] mb-6"
-                            >
-                                Submission
-                            </h1>
-                            <form
-                                :action="`/courses/${props.course.slug}/submission`"
-                                method="POST"
-                                enctype="multipart/form-data"
-                            >
-                                <!-- Form -->
-                                <div v-if="files.length === 0" class="mb-6">
-                                    <label
-                                        for="file"
-                                        class="flex flex-col gap-4 justify-center items-center py-24 border-dashed border-4 bg-neutral-10 border-neutral-40 rounded-xl cursor-pointer"
-                                    >
-                                        <img
-                                            src="/media/icons/upload.svg"
-                                            alt=""
-                                        />
-                                        <span
-                                            class="text-[1.3125rem] text-neutral-90"
-                                            >Silahkan upload file anda
-                                            disini</span
-                                        >
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="file"
-                                        name="file"
-                                        class="hidden w-full text-neutral-90 text-lg border border-neutral-40 rounded-xl py-2 px-4"
-                                        required
-                                        multiple
-                                        @change="handleFileUpload"
-                                    />
-                                </div>
-
-                                <!-- Preview -->
-                                <div v-else class="mb-6 flex flex-col gap-4">
-                                    <div
-                                        v-for="(file, index) in files"
-                                        :key="index"
-                                        class="flex justify-between items-center gap-3"
-                                    >
-                                        <div class="flex gap-4 items-center">
-                                            <img
-                                                src="/media/icons/file.svg"
-                                                alt=""
-                                            />
-                                            <p
-                                                class="text-[1.3125rem] text-neutral-90"
-                                            >
-                                                {{ file.name }}
-                                            </p>
-                                        </div>
-                                        <button
-                                            type="button"
-                                            @click="removeFile(index)"
-                                        >
-                                            <img
-                                                src="/media/icons/close.svg"
-                                                alt=""
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                                <button
-                                    type="submit"
-                                    class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
-                                >
-                                    Kumpulkan
-                                </button>
-                            </form>
-                        </div>
                         <!-- Discussion -->
                         <div
                             v-if="!submission"
@@ -594,6 +402,252 @@ onMounted(() => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Submission -->
+                        <div
+                            v-if="
+                                submission &&
+                                !showSubmissionForm &&
+                                props.submission.user_course_submissions == null
+                            "
+                            class="bg-neutral-10 p-6 rounded-xl"
+                        >
+                            <div class="flex gap-2 flex-col mb-4">
+                                <h1 class="text-5xl font-bold leading-[3.5rem]">
+                                    Submission
+                                </h1>
+                                <p class="text-neutral-90 text-lg">
+                                    Selamat, Anda Telah Berhasil Sampai di Tahap
+                                    Ini!
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Kami sangat mengapresiasi usaha dan dedikasi
+                                    Anda dalam mengikuti setiap langkah hingga
+                                    saat ini. Sekarang, Anda berada di titik
+                                    yang sangat penting dalam proses ini.
+                                    Sebelum melanjutkan pengumpulan tugas Anda,
+                                    pastikan Anda telah memahami dengan jelas
+                                    Aturan Submission, Petunjuk Submission,
+                                    serta Soal Submission yang telah disediakan.
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Proses pengumpulan tugas ini dirancang untuk
+                                    menguji pemahaman dan keterampilan Anda
+                                    dalam mengaplikasikan materi yang telah
+                                    dipelajari. Kami berharap Anda dapat
+                                    menunjukkan hasil terbaik dalam setiap tugas
+                                    yang diserahkan.
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Jangan lupa untuk memeriksa setiap detail
+                                    dengan teliti dan pastikan bahwa Anda
+                                    mengirimkan pekerjaan yang sesuai dengan
+                                    instruksi. Pengumpulan yang berhasil dan
+                                    tepat waktu akan membantu Anda mencapai
+                                    hasil yang maksimal.
+                                </p>
+                                <p class="text-neutral-90 text-lg">
+                                    Semoga sukses dalam penyelesaian tugas, dan
+                                    kami berharap Anda menikmati proses ini!
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-2 mb-4">
+                                <h1 class="text-4xl font-bold">
+                                    Aturan Submission
+                                </h1>
+                                <p class="text-neutral-90 text-lg">
+                                    Berikut adalah aturan yang harus Anda ikuti
+                                    dalam proses submission:
+                                </p>
+                                <ol class="list-decimal pl-6 text-neutral-90">
+                                    <li
+                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                    >
+                                        Batas Waktu
+                                        <span
+                                            class="block text-lg font-normal text-neutral-90"
+                                            >Semua submission harus diterima
+                                            paling lambat [Tanggal & Jam].
+                                            Pengiriman yang terlambat tidak akan
+                                            diproses.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                    >
+                                        Format dan Ukuran File
+                                        <span
+                                            class="block text-lg font-normal text-neutral-90"
+                                            >Pastikan file yang Anda kirimkan
+                                            dalam format yang sesuai.
+                                            Diperbolehkan untuk mengirimkan
+                                            dalam format file kompres (.zip)
+                                            dengan maksimal ukuran adalah
+                                            100mb.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-neutral-90 font-bold text-[1.75rem]"
+                                    >
+                                        Nama File
+                                        <span
+                                            class="block text-lg font-normal text-neutral-90"
+                                            >Harap beri nama file Anda dengan
+                                            format 1012341-nama.zip</span
+                                        >
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="flex gap-2 flex-col">
+                                <h1 class="text-4xl font-bold">Kesimpulan</h1>
+                                <div
+                                    v-html="submission?.body"
+                                    class="course-content text-neutral-90"
+                                ></div>
+                            </div>
+                        </div>
+
+                        <!-- Ready to Submission -->
+                        <div
+                            v-if="
+                                submission &&
+                                !showSubmissionForm &&
+                                props.submission.user_course_submissions == null
+                            "
+                            class="bg-neutral-10 p-6 rounded-xl mt-12"
+                        >
+                            <p class="text-neutral-90 text-lg mb-4">
+                                Apakah anda sudah siap?
+                            </p>
+                            <button
+                                @click="handleSubmissionClick"
+                                type="button"
+                                class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
+                            >
+                                Mulai Submission
+                            </button>
+                        </div>
+
+                        <!-- File Upload Form -->
+                        <div
+                            v-if="showSubmissionForm"
+                            class="bg-neutral-10 p-6 rounded-xl mt-12"
+                        >
+                            <h1
+                                class="text-5xl font-bold leading-[3.5rem] mb-6"
+                            >
+                                Submission
+                            </h1>
+                            <form
+                                :action="`/courses/${props.course.slug}/submission`"
+                                method="POST"
+                                enctype="multipart/form-data"
+                            >
+                                <!-- Form -->
+                                <div v-if="files.length === 0" class="mb-6">
+                                    <label
+                                        for="file"
+                                        class="flex flex-col gap-4 justify-center items-center py-24 border-dashed border-4 bg-neutral-10 border-neutral-40 rounded-xl cursor-pointer"
+                                    >
+                                        <img
+                                            src="/media/icons/upload.svg"
+                                            alt=""
+                                        />
+                                        <span
+                                            class="text-[1.3125rem] text-neutral-90"
+                                            >Silahkan upload file anda
+                                            disini</span
+                                        >
+                                    </label>
+                                    <input
+                                        type="file"
+                                        id="file"
+                                        name="file"
+                                        class="hidden w-full text-neutral-90 text-lg border border-neutral-40 rounded-xl py-2 px-4"
+                                        required
+                                        multiple
+                                        @change="handleFileUpload"
+                                    />
+                                </div>
+
+                                <!-- Preview -->
+                                <div v-else class="mb-6 flex flex-col gap-4">
+                                    <div
+                                        v-for="(file, index) in files"
+                                        :key="index"
+                                        class="flex justify-between items-center gap-3"
+                                    >
+                                        <div class="flex gap-4 items-center">
+                                            <img
+                                                src="/media/icons/file.svg"
+                                                alt=""
+                                            />
+                                            <p
+                                                class="text-[1.3125rem] text-neutral-90"
+                                            >
+                                                {{ file.name }}
+                                            </p>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            @click="removeFile(index)"
+                                        >
+                                            <img
+                                                src="/media/icons/close.svg"
+                                                alt=""
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <button
+                                    type="submit"
+                                    class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
+                                >
+                                    Kumpulkan
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- File  -->
+                        <div
+                            v-if="
+                                props.submission.user_course_submissions != null
+                            "
+                            class="bg-neutral-10 p-6 rounded-xl"
+                        >
+                            <h1
+                                class="text-5xl font-bold leading-[3.5rem] mb-6"
+                            >
+                                Submission
+                            </h1>
+                            <div class="flex flex-col gap-2 items-center mb-12">
+                                <img src="/media/icons/success.svg" alt="" />
+                                <p class="text-[1.3125rem] text-neutral-90">
+                                    Selamat! Submission anda telah diterima
+                                    dengan perolehan nilai
+                                </p>
+                                <h1
+                                    class="text-[#038A00] text-[5rem] leading-[4.5rem] font-bold"
+                                >
+                                    85
+                                </h1>
+                                <p
+                                    class="text-[1.3125rem] text-neutral-90 flex items-center gap-2"
+                                >
+                                    dengan ini anda dinyatakan
+                                    <span
+                                        class="text-[1.75rem] font-bold text-[#038A00]"
+                                        >LULUS</span
+                                    >
+                                </p>
+                            </div>
+                            <Link
+                                href="/unduh-sertificate"
+                                class="w-full block text-center py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
+                            >
+                                Unduh Sertifikat
+                            </Link>
                         </div>
                     </div>
                 </div>
