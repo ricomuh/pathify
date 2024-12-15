@@ -1,7 +1,7 @@
 <script setup>
 // filepath: /d:/website/pathify/resources/js/Pages/EventPage/DetailEvent.vue
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -281,16 +281,16 @@ const isRegistrationClosed = computed(() => {
                                     Ayo daftar event ini agar anda tidak
                                     ketinggalan informasi
                                 </p>
-                                <a
+                                <Link
                                     :href="
                                         route('events.join', {
                                             event: props.event.slug,
                                         })
                                     "
-                                    class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
+                                    class="bg-primary text-neutral-20 py-3 px-8 text-[1.3125rem] mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl block w-max"
                                 >
                                     Ikuti Event
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
