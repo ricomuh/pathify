@@ -143,6 +143,15 @@ const defaultAccordionValue = computed(() => {
                             </div>
                             <div class="col-span-2 ms-auto">
                                 <Link
+                                    v-if="props.course.joined.progress == 100"
+                                    :href="`/courses/${props.course.slug}/review`"
+                                    type="button"
+                                    class="bg-primary text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl"
+                                >
+                                    Unduh Sertifikat
+                                </Link>
+                                <Link
+                                    v-else
                                     :href="`/courses/${
                                         props.course.slug
                                     }/watch/${

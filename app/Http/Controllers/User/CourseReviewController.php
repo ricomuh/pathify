@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CourseReviewController extends Controller
 {
@@ -13,9 +14,9 @@ class CourseReviewController extends Controller
         // check if user has already finished the course
         $course->load('joined');
 
-        abort_unless($course->joined->completed_at, 403, 'You can only review course that you have completed.');
+        // abort_unless($course->joined->completed_at, 403, 'You can only review course that you have completed.');
 
-
+        return Inertia::render('Course/Review', compact('course'));
         // return view('user.course-review.create');
     }
 
