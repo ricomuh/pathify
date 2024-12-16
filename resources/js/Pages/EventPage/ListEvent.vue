@@ -103,12 +103,13 @@ const goToPage = (url) => {
                     class="text-center py-20 flex flex-col items-center gap-2"
                 >
                     <img
-                        src="/media/illustrations/empty-state.svg"
+                        src="/media/illustrations/search-empty.svg"
                         class="h-60"
                         alt="Empty State"
                     />
                     <p class="text-xl text-neutral-80">
-                        Event tidak ditemukan. Coba cari event lainnya.
+                        Event yang Anda cari tidak ada, silahkan berikan kata
+                        kunci lain
                     </p>
                 </div>
             </div>
