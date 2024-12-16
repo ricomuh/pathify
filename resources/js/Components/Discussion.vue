@@ -149,7 +149,7 @@ onMounted(() => {
                 class="flex justify-between items-center"
             >
                 <h1 class="text-2xl-plus font-bold">Diskusi Terdahulu</h1>
-                <div
+                <!-- <div
                     class="flex gap-1 items-center py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 w-96"
                 >
                     <img src="/media/icons/search.svg" alt="" />
@@ -158,7 +158,7 @@ onMounted(() => {
                         class="outline-none !h-max py-0 px-0 border-0 bg-neutral-10 shadow-none !ring-0 w-full"
                         placeholder="Cari Pertanyaan"
                     />
-                </div>
+                </div> -->
             </div>
             <!-- Form -->
             <form

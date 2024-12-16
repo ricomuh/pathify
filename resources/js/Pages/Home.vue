@@ -58,7 +58,7 @@ const advantages = ref([
                             >
                         </p>
                         <Link
-                            href="/qui"
+                            href="/questionnaire"
                             class="block bg-primary text-neutral-20 w-max text-xl py-4 px-8 rounded-xl mx-auto border-b-4 border-primary-hover"
                             >Temukan Role</Link
                         >

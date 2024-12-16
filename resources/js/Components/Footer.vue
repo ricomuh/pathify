@@ -1,80 +1,47 @@
 <script setup>
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import { ref } from "vue";
-
-// sections of the footer
-const sections = ref([
-    {
-        heading: "Heading Link 1",
-        links: [
-            { text: "Link 1", href: "#" },
-            { text: "Link 2", href: "#" },
-            { text: "Link 3", href: "#" },
-        ],
-    },
-    {
-        heading: "Heading Link 2",
-        links: [
-            { text: "Link 1", href: "#" },
-            { text: "Link 2", href: "#" },
-            { text: "Link 3", href: "#" },
-        ],
-    },
-    {
-        heading: "Heading Link 3",
-        links: [
-            { text: "Link 1", href: "#" },
-            { text: "Link 2", href: "#" },
-            { text: "Link 3", href: "#" },
-        ],
-    },
-    {
-        heading: "Heading Link 4",
-        links: [
-            { text: "Link 1", href: "#" },
-            { text: "Link 2", href: "#" },
-            { text: "Link 3", href: "#" },
-        ],
-    },
-    {
-        heading: "Heading Link 5",
-        links: [
-            { text: "Link 1", href: "#" },
-            { text: "Link 2", href: "#" },
-            { text: "Link 3", href: "#" },
-        ],
-    },
-]);
+import ApplicationLogo from "./ApplicationLogo.vue";
+import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <footer class="bg-neutral-100">
-        <div class="container py-12">
-            <div class="flex justify-between">
-                <ApplicationLogo
-                    class="h-16 w-auto fill-current text-gray-500"
-                />
-                <div class="flex gap-12">
-                    <div v-for="(section, index) in sections" :key="index">
-                        <p class="text-neutral-10 mb-2 font-bold text-lg">
-                            {{ section.heading }}
-                        </p>
-                        <div class="flex flex-col gap-1">
-                            <a
-                                v-for="(link, linkIndex) in section.links"
-                                :key="linkIndex"
-                                :href="link.href"
-                                class="text-neutral-30 hover:text-neutral-50"
-                            >
-                                {{ link.text }}
-                            </a>
-                        </div>
+    <footer class="bg-footer bg-cover bg-left bg-no-repeat py-12">
+        <div class="container">
+            <div class="grid grid-cols-2 justify-between items-start gap-4">
+                <div class="col-span-1 flex flex-col gap-3 items-start">
+                    <ApplicationLogo
+                        class="h-16 w-auto fill-current text-gray-500"
+                    />
+                    <h1 class="text-white text-xl-plus font-bold">
+                        Pathify - Find Your Right Path Here
+                    </h1>
+                    <p class="text-white">
+                        Pathify merupakan platform yang menyediakan layanan
+                        kuisioner dan layanan pembelajaran bagi orang yang baru
+                        terjun dalam dunia Teknologi. Bersama kami, kita bisa
+                        menelusuri dunia teknologi bersama.
+                    </p>
+                </div>
+                <div class="col-span-1 ms-auto">
+                    <h1 class="text-neutral-10 text-xl font-bold mb-3">
+                        Berkembang bersama kami
+                    </h1>
+                    <div class="flex flex-col gap-3">
+                        <Link href="/questionnaire" class="text-neutral-50"
+                            >Kuisioner Personifikasi</Link
+                        >
+                        <Link href="/courses" class="text-neutral-50"
+                            >Telusuri Kelas</Link
+                        >
+                        <Link href="/events" class="text-neutral-50"
+                            >Ikuti Event</Link
+                        >
                     </div>
                 </div>
             </div>
-            <!-- <p class="text-neutral-90 text-center text-lg">
-                &copy; {{ new Date().getFullYear() }} Phatify
-            </p> -->
+            <p class="text-neutral-20 mt-5">
+                &copy; {{ new Date().getFullYear() }} Pathify. All rights
+                reserved.
+            </p>
         </div>
     </footer>
 </template>

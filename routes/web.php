@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [ReportController::class, 'store'])->name('store');
     });
 });
+Route::get('/certificate', function() {
+return view('user.course-certificate.show');
+});
 
 Route::as('courses.')->prefix('courses')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
