@@ -38,46 +38,35 @@ const props = defineProps({
 // search function
 const form = useForm({
     query: new URLSearchParams(window.location.search).get("query") || "",
+    categories:
+        new URLSearchParams(window.location.search).get("categories") || "",
 });
 
-const selectedCategories = ref([]);
+const selectedCategories = ref(
+    form.categories ? form.categories.split(",") : []
+);
 
 const handleSearch = () => {
     const query = form.query;
     const categories = selectedCategories.value.join(",");
 
-    // Construct URL with query parameters
     const params = new URLSearchParams();
     if (query) params.append("query", query);
     if (categories) params.append("categories", categories);
 
     const url = `${window.location.pathname}?${params.toString()}`;
 
-    // Update the URL without reloading the page
-    // window.history.pushState({}, "", url);
-
-    form.get(
-        route("courses.index", {
-            query,
-            categories,
-        }),
-        {
-            preserveState: true,
-            preserveScroll: true,
-            replace: true,
-        }
-    );
-
-    console.log("Selected categories:", selectedCategories.value);
+    // Reload the page with the new URL
+    window.location.href = url;
 };
 
-const toggleCategory = (name) => {
-    if (selectedCategories.value.includes(name)) {
+const toggleCategory = (slug) => {
+    if (selectedCategories.value.includes(slug)) {
         selectedCategories.value = selectedCategories.value.filter(
-            (catName) => catName !== name
+            (catSlug) => catSlug !== slug
         );
     } else {
-        selectedCategories.value.push(name);
+        selectedCategories.value.push(slug);
     }
     handleSearch();
 };
@@ -89,12 +78,10 @@ let searchTimeout = null;
 watch(
     () => form.query,
     () => {
-        if (searchTimeout) {
-            clearTimeout(searchTimeout);
-        }
+        clearTimeout(searchTimeout);
         searchTimeout = setTimeout(() => {
             handleSearch();
-        }, 1000);
+        }, 300);
     }
 );
 </script>
@@ -154,12 +141,12 @@ watch(
                         :for="`category${category.id}`"
                         :class="[
                             'py-2 px-4 text-nowrap cursor-pointer text-lg rounded-2xl border-[1.4px] flex gap-2 items-center tracking-[0.00406rem]',
-                            isSelected(category.name)
+                            isSelected(category.slug)
                                 ? `text-white`
                                 : 'bg-neutral-10 text-neutral-60 border-neutral-50',
                         ]"
                         :style="
-                            isSelected(category.name)
+                            isSelected(category.slug)
                                 ? {
                                       backgroundColor: category.color,
                                       borderColor: category.color,

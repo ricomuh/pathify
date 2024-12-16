@@ -28,8 +28,8 @@ class CourseController extends Controller
             ->when(request('query'), function ($q, $query) {
                 return $q->where('title', 'like', '%' . $query . '%');
             })
-            ->when(request('category'), function ($q, $category) {
-                $categories = is_array($category) ? $category : explode(',', $category);
+            ->when(request('categories'), function ($q, $categories) {
+                $categories = is_array($categories) ? $categories : explode(',', $categories);
                 return $q->whereHas('categories', function ($q) use ($categories) {
                     $q->whereIn('slug', $categories);
                 });
