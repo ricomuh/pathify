@@ -3,6 +3,13 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import BoxCourse from "@/Components/BoxCourse.vue";
 import CarouselReveiw from "@/Components/CarouselReveiw.vue";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/Components/ui/carousel";
 
 const props = defineProps({
     mentor: {
@@ -57,26 +64,46 @@ const props = defineProps({
                 <!-- My Class -->
                 <div>
                     <h1 class="text-4xl-plus font-bold mb-6">Kelas Saya</h1>
-                    <div
-                        class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
+                    <Carousel
+                        class="relative w-full"
+                        :opts="{
+                            align: 'start',
+                        }"
                     >
-                        <BoxCourse
-                            v-for="(course, index) in props?.courses"
-                            :key="index"
-                            :iconBadge="course.categories[0].icon_image"
-                            :backgroundBadge="course.categories[0].color"
-                            :categoryClass="course.categories[0].name"
-                            :title="course.title"
-                            :teacher="course.mentor.fullname"
-                            :teachersJob="
-                                course.mentor.mentor_detail.profession
-                            "
-                            :avatar="course.mentor.profile_picture"
-                            :level="course.level"
-                            :slug="course.slug"
-                            :thumbnail="course.thumbnail"
-                        />
-                    </div>
+                        <CarouselContent>
+                            <CarouselItem
+                                v-for="(course, index) in props?.courses"
+                                :key="index"
+                                class="md:basis-1/3 lg:basis-1/3 xl:basis-1/4"
+                            >
+                                <div class="grid">
+                                    <BoxCourse
+                                        :iconBadge="
+                                            course.categories[0].icon_image
+                                        "
+                                        :backgroundBadge="
+                                            course.categories[0].color
+                                        "
+                                        :categoryClass="
+                                            course.categories[0].name
+                                        "
+                                        :title="course.title"
+                                        :teacher="course.mentor.fullname"
+                                        :teachersJob="
+                                            course.mentor.mentor_detail
+                                                .profession
+                                        "
+                                        :avatar="course.mentor.profile_picture"
+                                        :level="course.level"
+                                        :slug="course.slug"
+                                        :thumbnail="course.thumbnail"
+                                    />
+                                </div>
+                            </CarouselItem>
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                    </Carousel>
                 </div>
             </div>
         </div>
