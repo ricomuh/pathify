@@ -53,7 +53,7 @@ const isFinished = computed(() => daysLeft.value <= 0);
         <div class="p-3">
             <p class="text-primary">{{ category }}</p>
             <h1
-                class="font-bold text-start text-xl-plus leading-[1.575rem] text-neutral-100 mb-3 h-20"
+                class="font-bold text-start text-xl-plus leading-[1.575rem] text-neutral-100 mb-3 h-20 text-wrap"
             >
                 {{ title }}
             </h1>

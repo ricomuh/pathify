@@ -48,7 +48,7 @@ const togglePasswordVisibility = () => {
 
         <TitleAuth
             title="Selamat Bergabung"
-            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            subtitle="Lanjutkan perjalanan anda dalam dunia Teknologi. Bersama Pathify, perjalanan karir anda akan menjadi lebih mudah."
         />
         <form @submit.prevent="submit">
             <div>

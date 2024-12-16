@@ -48,8 +48,7 @@ const submit = () => {
 
         <TitleAuth
             title="Selamat Bergabung"
-            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            subtitle="SIapkan dirimu untuk memulai perjalanan karir anda dalam dunia Teknologi!. Bersama Pathify, perjalanan karir anda akan semakin lebih terstruktur"
         />
 
         <form @submit.prevent="submit">
