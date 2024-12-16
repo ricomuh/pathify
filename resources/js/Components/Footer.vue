@@ -26,13 +26,13 @@ import { Link } from "@inertiajs/vue3";
                         Berkembang bersama kami
                     </h1>
                     <div class="flex flex-col gap-3">
-                        <Link href="/" class="text-neutral-50"
+                        <Link href="/questionnaire" class="text-neutral-50"
                             >Kuisioner Personifikasi</Link
                         >
-                        <Link href="/" class="text-neutral-50"
+                        <Link href="/courses" class="text-neutral-50"
                             >Telusuri Kelas</Link
                         >
-                        <Link href="/" class="text-neutral-50"
+                        <Link href="/events" class="text-neutral-50"
                             >Ikuti Event</Link
                         >
                     </div>
