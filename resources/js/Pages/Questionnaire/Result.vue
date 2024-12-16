@@ -1,6 +1,6 @@
 <script setup>
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import BadgeCategory from "@/Components/BadgeCategory.vue";
 import { Progress } from "@/Components/ui/progress";
 import ShareResult from "@/Components/ShareResult.vue";
@@ -39,7 +39,9 @@ const formatDate = (date) => {
     <div class="bg-neutral-20">
         <div class="bg-neutral-10 py-6 sticky top-0 shadow-sm z-50">
             <div class="container">
-                <ApplicationLogo class="h-12 mx-auto" />
+                <Link href="/">
+                    <ApplicationLogo class="h-12 mx-auto" />
+                </Link>
             </div>
         </div>
         <div class="container pt-6 pb-20">
@@ -48,6 +50,18 @@ const formatDate = (date) => {
                 <div
                     class="bg-neutral-10 p-6 rounded-xl flex flex-col gap-4 xl:gap-12 lg:w-5/6 lg:mx-auto"
                 >
+                    <div
+                        class="border w-max border-neutral-50 p-2 rounded-2xl flex gap-2 items-center"
+                    >
+                        <img
+                            :src="questionnaireResult.user.profile_picture"
+                            class="size-[3.5rem] object-cover rounded-2xl border-2 border-primary-border"
+                            alt=""
+                        />
+                        <p class="text-primary text-xl">
+                            {{ questionnaireResult.user.fullname }}
+                        </p>
+                    </div>
                     <div
                         class="flex justify-between flex-wrap items-center gap-4"
                     >
