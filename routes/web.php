@@ -6,6 +6,7 @@ use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\CourseReviewController;
 use App\Http\Controllers\User\CourseWatchController;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\EventController;
 use App\Http\Controllers\User\MyCourseController;
 use App\Http\Controllers\User\MyEventController;
@@ -25,9 +26,9 @@ use Inertia\Inertia;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-courses', [MyCourseController::class, 'index'])->name('my-courses.index');
     Route::get('/my-events', [MyEventController::class, 'index'])->name('my-events.index');
 
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::as('questionnaire.')->prefix('questionnaire')->group(function () {
         Route::get('/', [QuestionnaireController::class, 'index'])->name('index');
