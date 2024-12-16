@@ -1,4 +1,6 @@
-<script setup lang="ts">
+<script setup>
+import { useForm } from "@inertiajs/vue3";
+
 const props = defineProps({
     content: { type: Object, required: true },
     selectedCommentId: { type: Number, required: true },
@@ -8,24 +10,38 @@ const props = defineProps({
 });
 
 // upvote
-const upvoteComment = async (commentId: number) => {
-    try {
-        const response = await fetch(
-            `/courses/${props.classSlug}/comment/${commentId}/vote`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ is_upvote: true }),
-            }
-        );
-        const data = await response.json();
-        // Handle the response if needed
-        console.log(data);
-    } catch (error) {
-        console.error("Failed to upvote the comment:", error);
-    }
+const formVote = useForm({
+    is_upvote: true,
+});
+
+const upvoteComment = async (commentId) => {
+    formVote.post(`/courses/${props.classSlug}/comment/${commentId}/vote`, {
+        onSuccess: () => {
+            formVote.reset();
+        },
+        onError: (errors) => {
+            console.error("Validation errors:", errors);
+        },
+    });
+};
+
+// submit discussion
+const form = useForm({
+    title: "",
+    body: "",
+    course_content_id: props.content.id,
+    parent_id: props.selectedCommentId,
+});
+
+const onSubmit = async () => {
+    form.post(`/courses/${props.classSlug}/comment`, {
+        onSuccess: () => {
+            form.reset();
+        },
+        onError: (errors) => {
+            console.error("Validation errors:", errors);
+        },
+    });
 };
 
 // back
@@ -114,20 +130,22 @@ const goBack = () => {
                 </div>
             </div>
             <!-- Form -->
-            <div
+            <form
+                @submit.prevent="onSubmit"
                 class="p-6 border-2 border-neutral-40 bg-neutral-10 flex justify-between gap-6"
             >
                 <textarea
+                    v-model="form.body"
                     class="w-full h-12 bg-neutral-10 p-3 rounded-xl"
                     placeholder="Tulis Balasanmu"
                 ></textarea>
                 <button
-                    type="button"
+                    type="submit"
                     class="bg-primary h-auto px-10 rounded-xl border-b-4 border-primary-hover text-neutral-20"
                 >
                     Balas
                 </button>
-            </div>
+            </form>
 
             <!-- If have a child -->
             <div v-if="value.children">

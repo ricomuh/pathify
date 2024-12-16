@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import {
     Dialog,
     DialogContent,
@@ -10,6 +10,7 @@ import {
 } from "@/Components/ui/dialog";
 import ChildDiscussion from "@/Components/ChildDiscussion.vue";
 import { onMounted } from "vue";
+import { useForm } from "@inertiajs/vue3";
 
 // report
 const reportOptions = [
@@ -35,29 +36,44 @@ const props = defineProps({
     classSlug: String,
 });
 
-const upvoteComment = async (commentId: number) => {
-    try {
-        const response = await fetch(
-            `/courses/course-blabla/comment/${commentId}/vote`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ is_upvote: true }),
-            }
-        );
-        const data = await response.json();
-        // Handle the response if needed
-        console.log(data);
-    } catch (error) {
-        console.error("Failed to upvote the comment:", error);
-    }
+// upvote comment
+const formVote = useForm({
+    is_upvote: true,
+});
+
+const upvoteComment = async (commentId) => {
+    formVote.post(`/courses/${props.classSlug}/comment/${commentId}/vote`, {
+        onSuccess: () => {
+            formVote.reset();
+        },
+        onError: (errors) => {
+            console.error("Validation errors:", errors);
+        },
+    });
 };
 
-const openChildDiscussion = (commentId: number) => {
+const openChildDiscussion = (commentId) => {
     window.history.pushState({}, "", `?commentId=${commentId}`);
     props.toggleChildren(commentId);
+};
+
+// submit form
+const form = useForm({
+    title: "",
+    body: "",
+    course_content_id: props.content.id,
+    parent_id: props.selectedCommentId,
+});
+
+const onSubmit = async () => {
+    form.post(`/courses/${props.classSlug}/comment`, {
+        onSuccess: () => {
+            form.reset();
+        },
+        onError: (errors) => {
+            console.error("Validation errors:", errors);
+        },
+    });
 };
 
 onMounted(() => {
@@ -90,16 +106,18 @@ onMounted(() => {
             </div>
             <!-- Form -->
             <form
+                @submit.prevent="onSubmit"
                 v-if="selectedCommentId === null"
                 class="p-6 rounded-xl border-2 border-neutral-40 bg-neutral-10"
             >
-                <div class="mb-3">
+                <div class="mb-3 w-full">
                     <label for="title" class="text-neutral-90 block mb-1"
                         >Judul Pertanyaan</label
                     >
                     <input
                         type="text"
                         id="title"
+                        v-model="form.title"
                         name="title"
                         class="border-2 rounded-xl w-full py-3 px-6 border-neutral-40"
                         placeholder="Masukkan judul pertanyaan"
@@ -112,6 +130,7 @@ onMounted(() => {
                     <textarea
                         type="text"
                         rows="4"
+                        v-model="form.body"
                         id="question"
                         name="question"
                         class="border-2 rounded-xl w-full py-3 px-6 border-neutral-40"
