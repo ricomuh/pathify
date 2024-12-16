@@ -53,16 +53,6 @@ class RealCourseSeeder extends Seeder
                     ]
                 ]
             ],
-            // "reviews" => [
-            //     [
-            //         "rating" => "Please enter the rating of the review. 1-5",
-            //         "body" => "Please enter the body of the review. e.g. This course is amazing. I learned a lot from this course.",
-            //     ]
-            // ],
-            // "submission" => [
-            //     "title" => "Please enter the title of the submission. e.g. Assignment 1: Create a Simple Calculator",
-            //     "body" => "Please enter the body of the submission. e.g. Create a simple calculator using HTML, CSS, and JavaScript.",
-            // ],
         ];
 
         $json = json_encode($format, JSON_PRETTY_PRINT);
@@ -220,10 +210,12 @@ class RealCourseSeeder extends Seeder
                 // $course->mentor_id = $mentors->random()->id;
 
                 $episode = 1;
+                $groupOrder = 1;
 
                 // save the groups
                 foreach ($data['groups'] as $group) {
                     $courseGroup = $course->groups()->create([
+                        'order' => $groupOrder++,
                         'title' => $group['title'],
                     ]);
 

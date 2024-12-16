@@ -1,0 +1,1409 @@
+{
+    "courses": [
+        {
+            "categories": [1],
+            "title": "Backend Development: Tingkat Pemula",
+            "thumbnail": "https://example.com/backend-development-thumbnail.jpg",
+            "description": "Pelajari dasar-dasar pengembangan backend mulai dari konsep hingga implementasi menggunakan teknologi populer.",
+            "body": "<h1>Backend Development: Tingkat Pemula</h1><p>Kursus ini dirancang untuk pemula yang ingin memahami dasar-dasar pengembangan backend. Anda akan belajar konsep inti seperti server, API, dan pengelolaan basis data. Kursus ini menggunakan PHP dan Node.js sebagai teknologi utama untuk memberikan pengalaman praktis dan aplikatif.</p><p>Dengan menyelesaikan kursus ini, Anda akan memiliki pemahaman yang kuat tentang bagaimana backend bekerja dan mampu membangun aplikasi sederhana dengan backend yang berfungsi penuh.</p>",
+            "requirements": [
+                "Pemahaman dasar tentang komputer dan internet.",
+                "Tidak diperlukan pengalaman pemrograman sebelumnya."
+            ],
+            "recommended": [
+                "Pemula yang ingin belajar pengembangan backend.",
+                "Mahasiswa atau profesional yang ingin berkarier di bidang teknologi."
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan ke Backend Development",
+                    "contents": [
+                        {
+                            "title": "Apa itu Backend Development?",
+                            "description": "Pengenalan ke dunia backend development, fungsinya, dan perannya dalam pengembangan aplikasi web.",
+                            "body": "<h1>Apa itu Backend Development?</h1><p>Backend development adalah proses pembuatan dan pengelolaan bagian server dari sebuah aplikasi. Backend bertanggung jawab untuk menangani logika bisnis, komunikasi dengan database, dan pengelolaan autentikasi pengguna. Sebagai developer backend, Anda akan bekerja dengan server, API, dan database untuk memastikan aplikasi berjalan lancar.</p>"
+                        },
+                        {
+                            "title": "Memahami Klien dan Server",
+                            "description": "Penjelasan tentang bagaimana klien dan server berkomunikasi dalam arsitektur aplikasi web.",
+                            "body": "<h1>Memahami Klien dan Server</h1><p>Dalam pengembangan web, aplikasi biasanya dibagi menjadi dua bagian: klien (frontend) dan server (backend). Klien adalah antarmuka pengguna yang berinteraksi dengan server untuk mengakses data atau layanan. Server adalah komponen yang memproses permintaan dari klien dan mengirimkan respons. Proses ini menggunakan protokol HTTP dan RESTful API.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Dasar-Dasar Pemrograman Backend",
+                    "contents": [
+                        {
+                            "title": "Pengenalan ke PHP",
+                            "description": "Memulai dengan bahasa pemrograman PHP untuk backend development.",
+                            "body": "<h1>Pengenalan ke PHP</h1><p>PHP adalah salah satu bahasa pemrograman yang paling banyak digunakan untuk pengembangan backend. Dalam pelajaran ini, Anda akan mempelajari sintaks dasar PHP, cara menulis skrip sederhana, dan bagaimana menggunakan PHP untuk menangani permintaan HTTP.</p>"
+                        },
+                        {
+                            "title": "Memulai dengan Node.js",
+                            "description": "Belajar menggunakan Node.js untuk membangun server dan menangani API.",
+                            "body": "<h1>Memulai dengan Node.js</h1><p>Node.js adalah runtime JavaScript yang memungkinkan Anda menulis kode backend menggunakan JavaScript. Dalam pelajaran ini, Anda akan belajar cara menginstal Node.js, membuat server sederhana, dan menangani permintaan API dengan Express.js.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Pengelolaan Basis Data",
+                    "contents": [
+                        {
+                            "title": "Pengenalan ke Basis Data",
+                            "description": "Dasar-dasar tentang apa itu basis data dan bagaimana mereka digunakan dalam aplikasi backend.",
+                            "body": "<h1>Pengenalan ke Basis Data</h1><p>Basis data adalah sistem yang digunakan untuk menyimpan dan mengelola data. Dalam pengembangan backend, Anda akan sering bekerja dengan basis data untuk menyimpan informasi pengguna, produk, atau transaksi. Anda akan mempelajari perbedaan antara basis data relasional dan non-relasional.</p>"
+                        },
+                        {
+                            "title": "Menggunakan MySQL",
+                            "description": "Belajar menggunakan MySQL untuk membuat dan mengelola basis data relasional.",
+                            "body": "<h1>Menggunakan MySQL</h1><p>MySQL adalah sistem manajemen basis data relasional yang populer. Dalam pelajaran ini, Anda akan mempelajari cara membuat tabel, menyisipkan data, dan menjalankan kueri untuk mendapatkan informasi dari basis data.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [1, 5, 6],
+            "title": "Belajar Backend Development: Tingkat Pemula",
+            "thumbnail": "https://example.com/backend-development-thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk pemula yang ingin memulai karir di bidang Backend Development. Anda akan belajar dasar-dasar membangun aplikasi server-side dengan teknologi seperti Node.js dan Express.js.",
+            "body": "<h1>Backend Development: Tingkat Pemula</h1><p>Kursus ini mencakup semua dasar yang perlu Anda ketahui untuk memulai perjalanan sebagai pengembang backend. Anda akan belajar tentang arsitektur server-side, dasar-dasar HTTP, pembuatan API RESTful, dan banyak lagi. Dengan panduan langkah demi langkah, Anda akan membangun fondasi yang kokoh untuk memulai karir di bidang pengembangan backend.</p>",
+            "requirements": [
+                "Komputer atau laptop dengan akses internet",
+                "Pemahaman dasar tentang JavaScript",
+                "Kemauan untuk belajar"
+            ],
+            "recommended": [
+                "Mahasiswa IT",
+                "Pemula yang ingin belajar pengembangan backend",
+                "Profesional yang ingin mengembangkan keterampilan di bidang server-side"
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan",
+                    "contents": [
+                        {
+                            "title": "Apa itu Backend Development?",
+                            "description": "Memahami konsep dasar dari pengembangan backend dan peran pentingnya dalam aplikasi modern.",
+                            "body": "<p>Backend Development adalah proses pengembangan bagian server dari sebuah aplikasi. Ini mencakup pembuatan server, pengelolaan database, dan logika aplikasi. Backend bertanggung jawab untuk menangani data, otentikasi pengguna, dan memastikan aplikasi berjalan dengan lancar.</p><p>Pada kursus ini, Anda akan belajar mengapa pengembangan backend penting dan bagaimana menjadi pengembang backend yang sukses.</p>"
+                        },
+                        {
+                            "title": "Dasar-dasar HTTP",
+                            "description": "Mengenal protokol HTTP dan peranannya dalam komunikasi web.",
+                            "body": "<p>HTTP (HyperText Transfer Protocol) adalah fondasi komunikasi di web. Ini digunakan untuk mengirimkan dan menerima data antara klien (browser) dan server. Anda akan mempelajari metode HTTP seperti GET, POST, PUT, DELETE, dan bagaimana mereka digunakan dalam aplikasi web.</p><p>Dalam pelajaran ini, kita akan membuat permintaan HTTP sederhana menggunakan alat seperti Postman.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Memulai dengan Node.js",
+                    "contents": [
+                        {
+                            "title": "Pengantar Node.js",
+                            "description": "Mempelajari apa itu Node.js dan mengapa itu menjadi pilihan populer untuk pengembangan backend.",
+                            "body": "<p>Node.js adalah runtime JavaScript yang berjalan di sisi server. Ini memungkinkan Anda untuk menjalankan JavaScript di luar browser, yang membuka banyak peluang untuk pengembangan backend. Dalam modul ini, Anda akan mempelajari cara menginstal Node.js dan membuat server pertama Anda.</p>"
+                        },
+                        {
+                            "title": "Membuat Server Sederhana dengan Node.js",
+                            "description": "Langkah-langkah untuk membuat server HTTP menggunakan Node.js.",
+                            "body": "<p>Pada modul ini, Anda akan belajar bagaimana menggunakan modul HTTP bawaan di Node.js untuk membuat server sederhana. Anda juga akan mempelajari cara menangani permintaan dan mengirim respons ke klien.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Membangun API dengan Express.js",
+                    "contents": [
+                        {
+                            "title": "Apa itu Express.js?",
+                            "description": "Memahami framework Express.js dan bagaimana itu menyederhanakan pengembangan backend.",
+                            "body": "<p>Express.js adalah framework minimalis untuk Node.js yang dirancang untuk membangun aplikasi web dan API dengan cepat. Anda akan belajar bagaimana mengatur proyek Express.js, membuat rute, dan mengatur middleware.</p>"
+                        },
+                        {
+                            "title": "Membuat API RESTful",
+                            "description": "Panduan langkah demi langkah untuk membuat API RESTful menggunakan Express.js.",
+                            "body": "<p>Pada modul ini, Anda akan belajar bagaimana membuat API RESTful dengan metode seperti GET, POST, PUT, dan DELETE. Anda juga akan mempelajari cara menangani data JSON dan menghubungkan aplikasi Anda ke database.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [1, 5, 6, 32],
+            "title": "Backend Development Tingkat Menengah",
+            "thumbnail": "https://example.com/images/backend-level2-thumbnail.jpg",
+            "description": "Tingkatkan keterampilan Backend Development Anda dengan mempelajari arsitektur aplikasi yang lebih kompleks, pengelolaan database, dan penerapan praktik terbaik dalam pengembangan backend.",
+            "body": "<h1>Backend Development Tingkat Menengah</h1><p>Kursus ini dirancang untuk Anda yang telah memiliki dasar-dasar pengembangan backend dan ingin memperdalam kemampuan teknis dalam membangun aplikasi yang skalabel dan terstruktur dengan baik. Anda akan mempelajari konsep-konsep seperti REST API yang lebih kompleks, pengelolaan database relasional dan non-relasional, serta pengenalan ke DevOps seperti Docker.</p><h2>Tujuan Kursus</h2><ul><li>Mampu merancang dan mengimplementasikan REST API tingkat lanjut.</li><li>Memahami manajemen database dan optimasi query.</li><li>Memahami penggunaan alat seperti Docker untuk containerisasi aplikasi.</li><li>Meningkatkan keamanan aplikasi backend.</li></ul><h2>Siapa yang Cocok Mengikuti Kursus Ini?</h2><p>Kursus ini cocok untuk pengembang backend yang ingin memperdalam keterampilan mereka dan membangun aplikasi yang lebih kompleks untuk kebutuhan industri.</p>",
+            "requirements": [
+                "Memahami dasar-dasar pemrograman backend.",
+                "Memiliki pengalaman dengan salah satu framework backend seperti Express.js atau Django.",
+                "Memiliki pengetahuan dasar tentang database SQL atau NoSQL."
+            ],
+            "recommended": [
+                "Pengembang backend junior.",
+                "Mahasiswa ilmu komputer atau teknologi informasi.",
+                "Siapa saja yang ingin berkarier di bidang pengembangan backend."
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Pendalaman REST API",
+                    "contents": [
+                        {
+                            "title": "REST API Tingkat Lanjut",
+                            "description": "Pelajari bagaimana membangun REST API yang kompleks dan efisien.",
+                            "body": "<p>Dalam modul ini, Anda akan mempelajari bagaimana merancang REST API tingkat lanjut dengan struktur yang lebih baik, penerapan otentikasi dan otorisasi, serta bagaimana menangani error secara efisien. Anda juga akan mempelajari cara menambahkan dokumentasi menggunakan alat seperti Swagger.</p>"
+                        },
+                        {
+                            "title": "Otentikasi dan Otorisasi",
+                            "description": "Pelajari teknik otentikasi dan otorisasi seperti JWT dan OAuth.",
+                            "body": "<p>Modul ini akan membahas penggunaan token JWT (JSON Web Token) untuk otentikasi pengguna dan OAuth untuk akses pihak ketiga. Anda juga akan mempelajari praktik terbaik dalam melindungi API dari ancaman keamanan.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Manajemen Database",
+                    "contents": [
+                        {
+                            "title": "Optimasi Query Database",
+                            "description": "Pelajari cara meningkatkan performa query di database relasional.",
+                            "body": "<p>Optimasi query adalah langkah penting dalam menjaga performa aplikasi. Anda akan mempelajari bagaimana menggunakan indeks, memahami EXPLAIN plan, dan teknik normalisasi serta denormalisasi data di database seperti MySQL atau PostgreSQL.</p>"
+                        },
+                        {
+                            "title": "Pengenalan NoSQL",
+                            "description": "Pahami konsep database NoSQL seperti MongoDB.",
+                            "body": "<p>Database NoSQL seperti MongoDB semakin populer untuk aplikasi yang membutuhkan skalabilitas tinggi. Modul ini akan memperkenalkan Anda pada dasar-dasar NoSQL, termasuk penyimpanan dokumen, agregasi, dan desain skema untuk database NoSQL.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Containerisasi dan DevOps",
+                    "contents": [
+                        {
+                            "title": "Pengenalan Docker",
+                            "description": "Pelajari dasar-dasar containerisasi dengan Docker.",
+                            "body": "<p>Docker adalah alat yang sangat penting dalam pengembangan backend modern. Anda akan mempelajari bagaimana membuat Dockerfile, membangun image, menjalankan container, dan mengelola container menggunakan Docker Compose.</p>"
+                        },
+                        {
+                            "title": "Penyebaran Aplikasi Backend",
+                            "description": "Pelajari cara menyebarkan aplikasi backend ke server menggunakan Docker.",
+                            "body": "<p>Setelah aplikasi backend selesai dibuat, langkah berikutnya adalah penyebaran. Anda akan mempelajari cara menggunakan Docker untuk menyebarkan aplikasi Anda ke server cloud, serta integrasi dasar dengan CI/CD untuk pengembangan yang lebih efisien.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [1, 5, 6, 32, 33],
+            "title": "Advanced Backend Development: Mastering Scalable Systems",
+            "thumbnail": "https://example.com/advanced-backend-thumbnail.jpg",
+            "description": "Kursus tingkat lanjut yang dirancang untuk pengembang backend yang ingin menguasai sistem yang skalabel dan performa tinggi. Anda akan belajar tentang arsitektur mikroservis, pengelolaan kontainer dengan Docker dan Kubernetes, serta optimasi database untuk aplikasi skala besar.",
+            "body": "<h1>Advanced Backend Development: Mastering Scalable Systems</h1><p>Kursus ini ditujukan untuk pengembang backend yang ingin membawa keahlian mereka ke tingkat berikutnya. Dengan fokus pada arsitektur modern, Anda akan mempelajari cara membangun dan mengelola sistem yang skalabel, andal, dan dapat diandalkan untuk kebutuhan produksi skala besar.</p> <h2>Topik yang Akan Dipelajari:</h2><ul><li>Pengenalan arsitektur mikroservis</li><li>Mengelola kontainer dengan Docker</li><li>Orkestrasi aplikasi dengan Kubernetes</li><li>Desain dan implementasi database untuk performa tinggi</li><li>Optimasi API dan pengelolaan beban kerja</li></ul><h2>Kenapa Kursus Ini Penting?</h2><p>Pada era digital ini, aplikasi modern membutuhkan backend yang kuat untuk menangani jutaan pengguna sekaligus. Dalam kursus ini, Anda akan memahami prinsip-prinsip utama dalam membangun sistem backend yang mampu mendukung pertumbuhan bisnis dan menjawab tantangan teknis yang kompleks.</p>",
+            "requirements": [
+                "Memiliki pemahaman dasar tentang pengembangan backend",
+                "Pernah bekerja dengan framework backend seperti Node.js atau Django",
+                "Pengetahuan dasar tentang Docker akan menjadi nilai tambah"
+            ],
+            "recommended": [
+                "Pengembang backend yang ingin meningkatkan keahliannya",
+                "DevOps engineer yang ingin memahami backend secara lebih mendalam",
+                "Mahasiswa atau profesional yang ingin mengejar karier dalam sistem backend skala besar"
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Pendahuluan",
+                    "contents": [
+                        {
+                            "title": "Mengapa Skalabilitas Penting?",
+                            "description": "Memahami pentingnya skalabilitas dalam sistem backend modern.",
+                            "body": "<p>Skalabilitas adalah kemampuan sistem untuk menangani peningkatan beban kerja tanpa menurunkan performa. Dalam modul ini, kita akan membahas bagaimana kebutuhan ini menjadi prioritas utama untuk aplikasi modern.</p><p>Contoh kasus termasuk penggunaan sistem distribusi seperti Amazon, yang mampu melayani jutaan pengguna aktif secara bersamaan.</p>"
+                        },
+                        {
+                            "title": "Arsitektur Monolitik vs Mikroservis",
+                            "description": "Perbandingan antara pendekatan tradisional dan modern dalam pengembangan backend.",
+                            "body": "<p>Monolitik adalah arsitektur di mana semua komponen aplikasi berada dalam satu kesatuan. Sebaliknya, mikroservis memecah aplikasi menjadi layanan-layanan kecil yang dapat berjalan secara independen. Modul ini mencakup keuntungan dan tantangan masing-masing pendekatan.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Docker dan Kubernetes",
+                    "contents": [
+                        {
+                            "title": "Pengenalan Docker",
+                            "description": "Mempelajari dasar-dasar Docker dan cara penggunaannya untuk containerization.",
+                            "body": "<p>Docker adalah alat untuk membuat, mengelola, dan mendistribusikan aplikasi dalam container. Modul ini akan mengajarkan Anda cara membuat container, menulis Dockerfile, dan menjalankan aplikasi dalam lingkungan yang terisolasi.</p>"
+                        },
+                        {
+                            "title": "Orkestrasi dengan Kubernetes",
+                            "description": "Belajar mengelola aplikasi containerized dengan Kubernetes.",
+                            "body": "<p>Kubernetes adalah platform open-source yang dirancang untuk orkestrasi container. Dalam modul ini, Anda akan belajar membuat cluster, mengelola pod, dan menerapkan layanan skala besar menggunakan Kubernetes.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Optimasi Database",
+                    "contents": [
+                        {
+                            "title": "Teknik Indexing dan Query Optimization",
+                            "description": "Cara meningkatkan performa database melalui optimasi query dan indexing.",
+                            "body": "<p>Database adalah inti dari sistem backend. Dalam modul ini, kita akan membahas teknik indexing, caching, dan query optimization untuk mengurangi waktu respon pada sistem backend yang besar.</p>"
+                        },
+                        {
+                            "title": "Database Sharding dan Replication",
+                            "description": "Strategi untuk mendukung skala besar melalui sharding dan replikasi database.",
+                            "body": "<p>Sharding dan replication adalah teknik utama untuk meningkatkan kapasitas dan ketersediaan database. Dalam modul ini, kita akan membahas bagaimana menerapkan teknik ini secara efektif dalam sistem produksi.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Pengelolaan API dan Load Balancing",
+                    "contents": [
+                        {
+                            "title": "Mendesain API untuk Skalabilitas",
+                            "description": "Panduan untuk mendesain API yang scalable dan mudah diintegrasikan.",
+                            "body": "<p>API adalah jembatan antara backend dan frontend. Dalam modul ini, Anda akan belajar prinsip desain API RESTful dan GraphQL yang dapat mendukung skalabilitas tinggi.</p>"
+                        },
+                        {
+                            "title": "Implementasi Load Balancer",
+                            "description": "Cara mendistribusikan lalu lintas menggunakan load balancer.",
+                            "body": "<p>Load balancer digunakan untuk mendistribusikan lalu lintas pengguna ke beberapa server backend. Modul ini mencakup pengaturan load balancer seperti Nginx atau HAProxy untuk meningkatkan ketersediaan sistem.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [12, 13, 14, 15],
+            "title": "Frontend Development untuk Pemula",
+            "thumbnail": "https://example.com/frontend-development-thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk pemula yang ingin memulai perjalanan mereka dalam dunia Frontend Development. Anda akan belajar dasar-dasar HTML, CSS, dan JavaScript yang menjadi fondasi pengembangan web.",
+            "body": "<h1>Frontend Development untuk Pemula</h1><p>Frontend Development adalah seni membangun antarmuka pengguna untuk aplikasi web. Dalam kursus ini, Anda akan mempelajari dasar-dasar yang diperlukan untuk menjadi seorang pengembang frontend. Anda akan belajar HTML untuk membuat struktur halaman web, CSS untuk mempercantik tampilan, dan JavaScript untuk menambahkan interaktivitas.</p><h2>Manfaat Mengikuti Kursus Ini</h2><ul><li>Memahami dasar-dasar pengembangan frontend</li><li>Mampu membuat halaman web sederhana</li><li>Persiapan untuk belajar framework frontend modern</li></ul><h2>Apa yang Akan Anda Pelajari</h2><p>Kursus ini mencakup pengantar ke HTML, CSS, dan JavaScript. Anda juga akan belajar praktik terbaik dalam pengembangan frontend.</p><h2>Siapa yang Cocok Mengikuti Kursus Ini?</h2><p>Kursus ini cocok untuk pemula tanpa pengalaman coding sebelumnya atau siapa pun yang ingin memahami dasar-dasar pengembangan frontend.</p>",
+            "requirements": [
+                "Komputer atau laptop dengan akses internet",
+                "Editor teks seperti Visual Studio Code",
+                "Kemauan untuk belajar dan eksplorasi"
+            ],
+            "recommended": [
+                "Pemula yang ingin belajar pengembangan web",
+                "Siswa atau mahasiswa yang tertarik di bidang IT",
+                "Siapa saja yang ingin memulai karir sebagai Frontend Developer"
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan",
+                    "contents": [
+                        {
+                            "title": "Apa itu Frontend Development?",
+                            "description": "Pengenalan dasar tentang apa itu Frontend Development dan perannya dalam pengembangan web.",
+                            "body": "<p>Frontend Development adalah bagian dari pengembangan aplikasi web yang berfokus pada antarmuka pengguna (user interface). Ini mencakup teknologi seperti HTML, CSS, dan JavaScript untuk membuat halaman web yang interaktif dan menarik.</p>"
+                        },
+                        {
+                            "title": "Alat yang Dibutuhkan",
+                            "description": "Daftar alat dan software yang diperlukan untuk memulai pengembangan frontend.",
+                            "body": "<p>Untuk memulai, Anda membutuhkan:</p><ul><li>Editor teks seperti Visual Studio Code</li><li>Browser modern seperti Google Chrome</li><li>Pengelola versi seperti Git (opsional)</li></ul>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Dasar-dasar HTML",
+                    "contents": [
+                        {
+                            "title": "Struktur Dasar HTML",
+                            "description": "Pelajari bagaimana membuat struktur dasar dari halaman web menggunakan HTML.",
+                            "body": "<p>HTML (HyperText Markup Language) adalah bahasa dasar untuk membuat struktur halaman web. Berikut adalah contoh struktur HTML:</p><pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n    &lt;title&gt;Halaman Saya&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;h1&gt;Halo Dunia!&lt;/h1&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre>"
+                        },
+                        {
+                            "title": "Elemen dan Atribut HTML",
+                            "description": "Pengenalan elemen dan atribut dalam HTML.",
+                            "body": "<p>Elemen HTML adalah blok bangunan dari sebuah halaman web. Contohnya adalah &lt;h1&gt;, &lt;p&gt;, dan &lt;a&gt;. Atribut adalah informasi tambahan yang ditambahkan ke elemen, seperti <code>href</code> untuk tautan atau <code>src</code> untuk gambar.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Dasar-dasar CSS",
+                    "contents": [
+                        {
+                            "title": "Apa itu CSS?",
+                            "description": "Pengenalan ke CSS dan perannya dalam mempercantik halaman web.",
+                            "body": "<p>CSS (Cascading Style Sheets) digunakan untuk mengatur tampilan halaman web. Dengan CSS, Anda dapat mengubah warna, ukuran font, margin, dan banyak lagi. Contoh:</p><pre>h1 {\n  color: blue;\n  font-size: 24px;\n}</pre>"
+                        },
+                        {
+                            "title": "Selektor CSS",
+                            "description": "Pelajari berbagai jenis selektor CSS.",
+                            "body": "<p>Selektor CSS digunakan untuk memilih elemen HTML tertentu untuk diberi gaya. Contoh:</p><ul><li><strong>Selektor tag:</strong> <code>h1 { color: red; }</code></li><li><strong>Selektor kelas:</strong> <code>.class-name { color: green; }</code></li><li><strong>Selektor ID:</strong> <code>#id-name { color: blue; }</code></li></ul>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Dasar-dasar JavaScript",
+                    "contents": [
+                        {
+                            "title": "Apa itu JavaScript?",
+                            "description": "Pengenalan ke JavaScript dan bagaimana ia menambahkan interaktivitas ke halaman web.",
+                            "body": "<p>JavaScript adalah bahasa pemrograman yang digunakan untuk membuat halaman web interaktif. Contoh:</p><pre>document.querySelector('button').addEventListener('click', function() {\n  alert('Tombol diklik!');\n});</pre>"
+                        },
+                        {
+                            "title": "Variabel dan Tipe Data",
+                            "description": "Pelajari dasar variabel dan tipe data dalam JavaScript.",
+                            "body": "<p>Variabel digunakan untuk menyimpan data dalam JavaScript. Contoh:</p><pre>let name = 'John';\nlet age = 25;\nlet isStudent = true;</pre><p>Tipe data meliputi <strong>string</strong>, <strong>number</strong>, dan <strong>boolean</strong>.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+            "title": "Frontend Development Tingkat Menengah",
+            "thumbnail": "https://example.com/thumbnail-frontend-development-level-2.jpg",
+            "description": "Kursus ini dirancang untuk developer dengan pengalaman dasar Frontend Development yang ingin memperdalam pemahaman mereka tentang JavaScript modern, framework populer, dan teknik styling tingkat lanjut.",
+            "body": "<h1>Frontend Development Tingkat Menengah</h1><p>Kursus ini membawa Anda lebih dalam ke dunia pengembangan Frontend dengan mempelajari teknik pengembangan aplikasi web menggunakan JavaScript modern, framework seperti React atau Vue, dan styling tingkat lanjut menggunakan CSS preprocessors seperti SASS. Anda juga akan belajar cara memanfaatkan build tools dan mengoptimalkan aplikasi Anda.</p><h2>Apa yang akan Anda Pelajari?</h2><ul><li>Menggunakan JavaScript ES6+ untuk membangun aplikasi interaktif.</li><li>Memahami konsep dan penggunaan framework seperti React dan Vue.</li><li>Menerapkan teknik styling modern menggunakan SASS atau Tailwind CSS.</li><li>Mengenal build tools seperti Webpack dan Vite.</li></ul>",
+            "requirements": [
+                "Memahami dasar-dasar HTML, CSS, dan JavaScript.",
+                "Telah menyelesaikan kursus Frontend Development tingkat pemula atau memiliki pengalaman setara."
+            ],
+            "recommended": [
+                "Developer pemula yang ingin meningkatkan keterampilannya.",
+                "Mahasiswa IT yang tertarik dengan pengembangan Frontend.",
+                "Pengembang junior yang ingin memperdalam keahlian di bidang Frontend."
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Pendahuluan ke Frontend Development Tingkat Menengah",
+                    "contents": [
+                        {
+                            "title": "Menjelajahi Dunia JavaScript Modern",
+                            "description": "Pelajari fitur-fitur baru di JavaScript ES6+ untuk pengembangan aplikasi web yang lebih efisien.",
+                            "body": "<p>JavaScript modern menawarkan banyak fitur baru yang dapat membantu Anda menulis kode lebih cepat dan lebih efisien. Dalam modul ini, Anda akan mempelajari tentang let, const, arrow function, template literal, dan destructuring assignment.</p><p>Misalnya:</p><pre><code>const greet = (name) => `Hello, ${name}!`;</code></pre><p>Kami juga akan membahas cara menggunakan async/await untuk menangani operasi asynchronous secara mudah.</p>"
+                        },
+                        {
+                            "title": "Memahami Konsep Framework JavaScript",
+                            "description": "Pelajari cara kerja React atau Vue dan mengapa framework ini populer dalam pengembangan Frontend.",
+                            "body": "<p>Framework seperti React dan Vue membuat pengembangan Frontend lebih cepat dan terstruktur. Dalam modul ini, kita akan membahas komponen, state management, dan lifecycle hooks.</p><p>Anda akan belajar cara membuat komponen reusable seperti ini:</p><pre><code>// React Component\nfunction Button({ label, onClick }) {\n  return &lt;button onClick={onClick}&gt;{label}&lt;/button&gt;;\n}</code></pre>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Teknik Styling Tingkat Lanjut",
+                    "contents": [
+                        [
+                            {
+                                "title": "Menerapkan SASS untuk Styling Modular",
+                                "description": "Pelajari dasar-dasar SASS dan cara menggunakannya untuk membuat styling yang lebih terorganisir.",
+                                "body": "<p>SASS adalah CSS preprocessor yang memungkinkan Anda menggunakan fitur seperti variabel, nested rules, dan mixins. Contoh sederhana:</p><pre><code>$primary-color: #3498db;\n.button {\n  color: $primary-color;\n  &:hover {\n    color: darken($primary-color, 10%);\n  }\n}</code></pre><p>Dengan SASS, Anda dapat membuat kode CSS lebih modular dan mudah di-maintain.</p>"
+                            },
+                            {
+                                "title": "Menggunakan Tailwind CSS untuk Pengembangan Cepat",
+                                "description": "Pelajari bagaimana Tailwind CSS dapat mempercepat proses styling dengan pendekatan utility-first.",
+                                "body": "<p>Tailwind CSS adalah framework utility-first yang memungkinkan Anda untuk menulis styling langsung di HTML tanpa menulis CSS secara manual. Contoh:</p><pre><code>&lt;button class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\"&gt;\n  Click Me\n&lt;/button&gt;</code></pre><p>Anda akan belajar bagaimana memanfaatkan utility classes untuk mempercepat pengembangan Frontend Anda.</p>"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "title": "Mengoptimalkan Aplikasi dengan Build Tools",
+                    "contents": [
+                        {
+                            "title": "Pengantar ke Webpack dan Vite",
+                            "description": "Pelajari bagaimana build tools dapat membantu mengoptimalkan aplikasi Frontend Anda.",
+                            "body": "<p>Webpack dan Vite adalah build tools yang digunakan untuk mengelola aset Frontend seperti JavaScript, CSS, dan gambar. Anda akan mempelajari dasar-dasar konfigurasi dan bagaimana menggunakannya untuk meningkatkan performa aplikasi Anda.</p><p>Contoh sederhana konfigurasi Webpack:</p><pre><code>const path = require('path');\nmodule.exports = {\n  entry: './src/index.js',\n  output: {\n    filename: 'bundle.js',\n    path: path.resolve(__dirname, 'dist')\n  }\n};</code></pre>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [12, 13, 14, 15],
+            "title": "Frontend Development: Dari Pemula hingga Ahli",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk mengajarkan Anda Frontend Development dari dasar hingga tingkat lanjut, mencakup HTML, CSS, JavaScript, dan framework populer seperti React, Vue, dan Angular.",
+            "body": "<h1>Frontend Development: Dari Pemula hingga Ahli</h1><p>Frontend development adalah bagian penting dari pengembangan web, yang berfokus pada pembuatan antarmuka pengguna (UI) yang menarik dan interaktif. Dalam kursus ini, Anda akan mempelajari semua hal yang perlu Anda ketahui untuk menjadi seorang pengembang frontend yang kompeten, mulai dari dasar-dasar HTML, CSS, dan JavaScript, hingga framework dan teknologi yang lebih kompleks seperti React, Vue, dan Angular.</p><h2>Tingkat 1: Pemula</h2><p>Pada tingkat pertama, Anda akan mempelajari dasar-dasar pengembangan web. Ini mencakup pemahaman tentang struktur halaman web, pengenalan HTML dan CSS, serta bagaimana membuat halaman web statis yang sederhana.</p><h3>Konten:</h3><ul><li>Pengantar HTML dan CSS</li><li>Membuat halaman web statis</li><li>Pengenalan desain responsif</li></ul><h2>Tingkat 2: Menengah</h2><p>Di tingkat menengah, Anda akan belajar bagaimana membuat aplikasi web yang lebih interaktif menggunakan JavaScript. Anda juga akan diperkenalkan dengan library seperti jQuery dan mulai menguasai konsep-konsep dasar JavaScript seperti DOM manipulation, event handling, dan AJAX.</p><h3>Konten:</h3><ul><li>Dasar-dasar JavaScript</li><li>Manipulasi DOM dan Event Handling</li><li>Penggunaan AJAX untuk memuat data dinamis</li><li>Pengenalan jQuery</li></ul><h2>Tingkat 3: Lanjutan</h2><p>Pada tingkat lanjut, Anda akan mempelajari framework JavaScript modern seperti React, Vue, dan Angular. Kursus ini juga mencakup pengembangan aplikasi web yang lebih kompleks dengan penggunaan API dan pengelolaan status aplikasi.</p><h3>Konten:</h3><ul><li>Pengenalan React, Vue, dan Angular</li><li>Penggunaan API dalam aplikasi frontend</li><li>Pengelolaan status aplikasi dengan Redux atau Vuex</li><li>Pengenalan Testing pada Frontend</li></ul><p>Dengan mengikuti kursus ini, Anda akan memiliki keterampilan yang dibutuhkan untuk menjadi pengembang frontend profesional yang siap untuk bekerja di berbagai proyek web.</p>",
+            "requirements": [
+                "Tidak ada persyaratan khusus. Kursus ini cocok untuk pemula yang ingin memulai karir di bidang Frontend Development."
+            ],
+            "recommended": [
+                "Mahasiswa yang tertarik untuk belajar pengembangan web.",
+                "Profesional yang ingin memperdalam keterampilan frontend mereka."
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Tingkat 1: Pemula",
+                    "contents": [
+                        {
+                            "title": "Pengantar HTML dan CSS",
+                            "description": "Di bagian ini, Anda akan mempelajari dasar-dasar HTML dan CSS, yang merupakan fondasi dari semua pengembangan web.",
+                            "body": "<h1>Pengantar HTML dan CSS</h1><p>HTML adalah bahasa markup yang digunakan untuk membuat struktur halaman web, sedangkan CSS digunakan untuk menata dan mendesain tampilan halaman tersebut. Dalam bab ini, Anda akan mempelajari tag-tag HTML dasar seperti <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, dan <code>&lt;a&gt;</code>, serta bagaimana menggunakan CSS untuk mengubah warna, ukuran font, dan tata letak halaman web.</p>"
+                        },
+                        {
+                            "title": "Membuat Halaman Web Statis",
+                            "description": "Setelah mempelajari dasar HTML dan CSS, Anda akan mempraktikkan cara membuat halaman web statis yang dapat dilihat di browser.",
+                            "body": "<h1>Membuat Halaman Web Statis</h1><p>Di bagian ini, Anda akan membuat halaman web sederhana menggunakan HTML dan CSS. Anda akan mempelajari cara menata teks, gambar, dan link untuk membuat halaman yang rapi dan mudah dinavigasi.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Tingkat 2: Menengah",
+                    "contents": [
+                        {
+                            "title": "Dasar-dasar JavaScript",
+                            "description": "Di tingkat ini, Anda akan mempelajari JavaScript untuk membuat aplikasi web yang lebih dinamis dan interaktif.",
+                            "body": "<h1>Dasar-dasar JavaScript</h1><p>JavaScript adalah bahasa pemrograman yang digunakan untuk menambahkan interaktivitas pada halaman web. Dalam bagian ini, Anda akan belajar tentang variabel, tipe data, fungsi, dan kontrol alur dalam JavaScript.</p>"
+                        },
+                        {
+                            "title": "Manipulasi DOM dan Event Handling",
+                            "description": "Belajar cara mengakses dan memanipulasi elemen-elemen di halaman web menggunakan JavaScript.",
+                            "body": "<h1>Manipulasi DOM dan Event Handling</h1><p>DOM (Document Object Model) adalah struktur data yang digunakan browser untuk mewakili halaman web. Di bagian ini, Anda akan belajar bagaimana menggunakan JavaScript untuk mengubah elemen-elemen HTML, seperti menambahkan teks atau mengubah warna, serta menangani peristiwa seperti klik tombol atau input dari pengguna.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Tingkat 3: Lanjutan",
+                    "contents": [
+                        {
+                            "title": "Pengenalan React, Vue, dan Angular",
+                            "description": "Di tingkat lanjut, Anda akan mempelajari framework JavaScript modern seperti React, Vue, dan Angular untuk membuat aplikasi web yang lebih kompleks.",
+                            "body": "<h1>Pengenalan React, Vue, dan Angular</h1><p>React, Vue, dan Angular adalah framework JavaScript yang memungkinkan Anda untuk membuat aplikasi web yang lebih dinamis dan terstruktur. Di bagian ini, Anda akan mempelajari konsep dasar dari masing-masing framework, termasuk cara mengatur komponen, mengelola status, dan melakukan rendering data secara dinamis.</p>"
+                        },
+                        {
+                            "title": "Penggunaan API dalam Aplikasi Frontend",
+                            "description": "Belajar cara mengintegrasikan API eksternal untuk memuat data dalam aplikasi web.",
+                            "body": "<h1>Penggunaan API dalam Aplikasi Frontend</h1><p>API (Application Programming Interface) memungkinkan aplikasi web untuk berkomunikasi dengan server dan mengambil data. Di bagian ini, Anda akan mempelajari cara menggunakan fetch atau axios untuk memanggil API dan menampilkan data di halaman web Anda.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [22],
+            "title": "Pengenalan Pengembangan Aplikasi Mobile",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini diperuntukkan bagi pemula yang ingin memahami dasar-dasar pengembangan aplikasi mobile. Kursus ini akan membahas berbagai platform pengembangan aplikasi mobile seperti Android, iOS, dan React Native.",
+            "body": "<h1>Pengenalan Pengembangan Aplikasi Mobile</h1><p>Pengembangan aplikasi mobile telah menjadi salah satu bidang teknologi yang berkembang pesat. Dengan meningkatnya penggunaan smartphone di seluruh dunia, pengembangan aplikasi mobile menjadi salah satu keahlian yang paling dicari di industri teknologi. Dalam kursus ini, Anda akan belajar dasar-dasar pengembangan aplikasi mobile, mulai dari platform pengembangan hingga elemen-elemen dasar yang diperlukan untuk membuat aplikasi mobile yang efektif dan efisien.</p><h2>Tujuan Kursus</h2><p>Tujuan dari kursus ini adalah untuk memberikan pemahaman dasar tentang pengembangan aplikasi mobile. Anda akan belajar tentang:</p><ul><li>Pengembangan aplikasi untuk platform Android dan iOS</li><li>Pengenalan React Native untuk pengembangan aplikasi cross-platform</li><li>Dasar-dasar desain antarmuka pengguna (UI) dan pengalaman pengguna (UX) di aplikasi mobile</li></ul><h2>Pendahuluan ke Pengembangan Aplikasi Mobile</h2><p>Pengembangan aplikasi mobile memerlukan pemahaman mendalam tentang berbagai platform dan bahasa pemrograman. Kursus ini akan memperkenalkan Anda pada dua platform utama: Android dan iOS, serta alat pengembangan lintas platform seperti React Native. Anda akan mempelajari bagaimana membuat aplikasi sederhana di masing-masing platform dan memahami perbedaan dan kelebihan masing-masing metode.</p><h2>Platform Pengembangan Aplikasi Mobile</h2><p>Untuk pengembangan aplikasi mobile, ada beberapa platform yang dapat dipilih. Platform utama yang digunakan untuk pengembangan aplikasi mobile adalah Android dan iOS. Android menggunakan bahasa pemrograman Java atau Kotlin, sementara iOS menggunakan bahasa pemrograman Swift atau Objective-C. React Native adalah framework yang memungkinkan Anda untuk mengembangkan aplikasi yang dapat dijalankan di kedua platform ini menggunakan JavaScript.</p><h2>Pengembangan Aplikasi Android</h2><p>Pada bagian ini, Anda akan belajar cara mengembangkan aplikasi mobile menggunakan Android Studio, yang merupakan IDE resmi untuk pengembangan aplikasi Android. Anda akan memulai dengan membuat aplikasi Android pertama Anda, mempelajari antarmuka pengguna (UI) dan cara berinteraksi dengan pengguna menggunakan tombol, input teks, dan lainnya.</p><h2>Pengembangan Aplikasi iOS</h2><p>Pada bagian ini, Anda akan mempelajari cara mengembangkan aplikasi untuk perangkat iOS menggunakan Xcode dan Swift. Anda akan belajar tentang berbagai elemen dasar dari pengembangan aplikasi iOS, termasuk antarmuka pengguna dan pengelolaan aplikasi dalam ekosistem Apple.</p><h2>Pengembangan Aplikasi Cross-Platform dengan React Native</h2><p>React Native adalah framework yang memungkinkan Anda mengembangkan aplikasi mobile yang dapat dijalankan di Android dan iOS dengan satu basis kode. Pada bagian ini, Anda akan belajar dasar-dasar React Native, mulai dari instalasi hingga pembuatan aplikasi sederhana.</p><h2>Kesimpulan</h2><p>Setelah menyelesaikan kursus ini, Anda akan memiliki pemahaman yang baik tentang dasar-dasar pengembangan aplikasi mobile dan siap untuk melanjutkan ke tahap pengembangan yang lebih lanjut. Anda akan dapat membuat aplikasi mobile sederhana dan memilih platform terbaik untuk pengembangan aplikasi Anda.</p>",
+            "requirements": [
+                "Pemahaman dasar tentang teknologi dan pengembangan perangkat lunak.",
+                "Komputer atau laptop dengan sistem operasi Windows, macOS, atau Linux.",
+                "Koneksi internet untuk mengunduh alat pengembangan dan referensi materi kursus."
+            ],
+            "recommended": [
+                "Kursus ini cocok untuk pemula yang tertarik dalam pengembangan aplikasi mobile."
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan dan Pengenalan Platform",
+                    "contents": [
+                        {
+                            "title": "Pendahuluan ke Pengembangan Aplikasi Mobile",
+                            "description": "Ini adalah pengantar untuk pengembangan aplikasi mobile, mencakup platform Android dan iOS serta framework lintas platform seperti React Native.",
+                            "body": "<h1>Pendahuluan ke Pengembangan Aplikasi Mobile</h1><p>Di bagian ini, Anda akan mempelajari dasar-dasar pengembangan aplikasi mobile. Kami akan membahas tentang platform Android dan iOS, serta tools yang digunakan untuk mengembangkan aplikasi mobile.</p>"
+                        },
+                        {
+                            "title": "Pengantar Android dan iOS",
+                            "description": "Mempelajari dua platform utama untuk aplikasi mobile: Android dan iOS, serta perbedaan mendasar dalam pengembangan aplikasi di masing-masing platform.",
+                            "body": "<h1>Pengantar Android dan iOS</h1><p>Di bagian ini, kita akan membahas kedua platform utama untuk aplikasi mobile: Android dan iOS. Anda akan mempelajari alat dan bahasa pemrograman yang digunakan di kedua platform ini serta dasar-dasar pengembangan aplikasi untuk keduanya.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Dasar-Dasar Pengembangan Aplikasi Mobile",
+                    "contents": [
+                        {
+                            "title": "Mengembangkan Aplikasi Android",
+                            "description": "Menggunakan Android Studio untuk membuat aplikasi mobile pertama Anda.",
+                            "body": "<h1>Mengembangkan Aplikasi Android</h1><p>Di sini, Anda akan belajar cara menginstal Android Studio dan membuat aplikasi pertama Anda. Kami akan mengajari Anda cara menambahkan elemen antarmuka pengguna seperti tombol dan input teks.</p>"
+                        },
+                        {
+                            "title": "Mengembangkan Aplikasi iOS",
+                            "description": "Membangun aplikasi pertama Anda untuk perangkat iOS menggunakan Xcode dan Swift.",
+                            "body": "<h1>Mengembangkan Aplikasi iOS</h1><p>Di bagian ini, Anda akan belajar cara menggunakan Xcode untuk membuat aplikasi iOS pertama Anda. Anda akan mempelajari antarmuka pengguna di iOS dan bagaimana menghubungkan berbagai elemen UI dalam aplikasi.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Pengembangan Aplikasi Cross-Platform",
+                    "contents": [
+                        {
+                            "title": "Menggunakan React Native untuk Aplikasi Cross-Platform",
+                            "description": "Pengenalan ke React Native untuk mengembangkan aplikasi Android dan iOS dengan satu basis kode.",
+                            "body": "<h1>React Native untuk Aplikasi Cross-Platform</h1><p>Di sini, Anda akan belajar dasar-dasar React Native. Anda akan mempelajari cara menginstal React Native, membuat aplikasi pertama Anda, dan menguji aplikasi pada perangkat Android dan iOS.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [22, 23, 29, 30],
+            "title": "Intermediate Mobile Development: Mastering Android and Cross-Platform Apps",
+            "thumbnail": "https://example.com/course-thumbnail.jpg",
+            "description": "This intermediate-level course focuses on enhancing your mobile development skills. You will learn advanced Android app development using Java and Kotlin, and dive into cross-platform mobile app development with React Native and Flutter.",
+            "body": "<h1>Intermediate Mobile Development: Mastering Android and Cross-Platform Apps</h1><p>In this course, you will deepen your understanding of mobile development, building on the foundational knowledge of Java, Kotlin, React Native, and Flutter. The course is divided into sections to help you grasp each concept step by step, with practical examples and hands-on projects. By the end of this course, you will be capable of building advanced Android apps as well as cross-platform applications that work seamlessly across both Android and iOS devices.</p><h2>What You Will Learn</h2><ul><li>Advanced Android development with Java and Kotlin</li><li>Building apps with React Native and Flutter</li><li>Managing mobile app state and navigation</li><li>Integrating REST APIs and working with data in mobile apps</li><li>Optimizing app performance and debugging</li></ul><h2>Course Outline</h2><p>This course is designed for developers who already have basic mobile development knowledge and are looking to level up their skills. The course will cover Android development using Kotlin and Java as well as modern cross-platform frameworks, React Native and Flutter.</p>",
+            "requirements": [
+                "Basic knowledge of mobile development (Android or iOS)",
+                "Familiarity with Java or Kotlin for Android development",
+                "Some experience with React Native or Flutter"
+            ],
+            "recommended": [
+                "Frontend developers wanting to explore mobile app development",
+                "Intermediate-level mobile developers looking to expand their skills"
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Introduction to Intermediate Mobile Development",
+                    "contents": [
+                        {
+                            "title": "Understanding Mobile Development Frameworks",
+                            "description": "This section covers the fundamental differences between native Android development and cross-platform frameworks like React Native and Flutter.",
+                            "body": "<h1>Understanding Mobile Development Frameworks</h1><p>Mobile development can be broadly categorized into two types: native development and cross-platform development. Native Android apps are built specifically for the Android platform, while cross-platform apps can run on both Android and iOS devices using the same codebase. In this section, we'll explore the key differences between these two approaches, the advantages and challenges they present, and how to choose the best framework for your project.</p>"
+                        },
+                        {
+                            "title": "Setting Up Your Development Environment",
+                            "description": "Learn how to set up Android Studio for Android development and how to configure your development environment for React Native and Flutter.",
+                            "body": "<h1>Setting Up Your Development Environment</h1><p>To begin building Android apps, you need to install Android Studio. We'll guide you through the setup process for Android Studio, and show you how to configure it for React Native and Flutter development. You will also install the necessary SDKs for both frameworks, and test your installation by running sample apps.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Advanced Android App Development with Kotlin and Java",
+                    "contents": [
+                        {
+                            "title": "Advanced Kotlin Techniques for Android",
+                            "description": "Dive deeper into Kotlin features for building advanced Android apps.",
+                            "body": "<h1>Advanced Kotlin Techniques for Android</h1><p>Kotlin is now the preferred language for Android development. In this section, we'll explore advanced Kotlin techniques, such as extension functions, coroutines for asynchronous programming, and Kotlin's modern features to enhance your Android apps. You will learn how to use Kotlin's powerful features to simplify code and improve app performance.</p>"
+                        },
+                        {
+                            "title": "Java in Android: Advanced Concepts",
+                            "description": "Learn how to integrate Java with Kotlin in Android development.",
+                            "body": "<h1>Java in Android: Advanced Concepts</h1><p>Though Kotlin is the preferred language for Android development, Java is still widely used. In this section, we will focus on advanced Java concepts for Android development, including memory management, multi-threading, and integrating Java with Kotlin to take advantage of both languages in your projects.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Building Cross-Platform Apps with React Native and Flutter",
+                    "contents": [
+                        {
+                            "title": "Introduction to React Native",
+                            "description": "Learn how to build cross-platform mobile apps using React Native.",
+                            "body": "<h1>Introduction to React Native</h1><p>React Native allows you to build cross-platform apps using JavaScript. In this section, we will cover the basics of React Native, including how to set up a React Native project, how to create user interfaces, and how to manage state and navigation in your app. You'll also learn how to test and debug your React Native app on both Android and iOS.</p>"
+                        },
+                        {
+                            "title": "Flutter Basics and Advanced Concepts",
+                            "description": "Master Flutter for building fast and beautiful cross-platform apps.",
+                            "body": "<h1>Flutter Basics and Advanced Concepts</h1><p>Flutter is a powerful UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. In this section, we’ll dive into Flutter’s core features, such as widgets, state management, and custom animations. You'll also learn how to integrate APIs and manage data in your Flutter apps.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [22, 23, 25, 29, 30],
+            "title": "Mastering Mobile Development: Advanced Techniques and Best Practices",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini akan mengajarkan teknik-teknik lanjutan dalam pengembangan aplikasi mobile, dengan fokus pada Android, iOS, React Native, dan Flutter. Anda akan belajar bagaimana mengoptimalkan aplikasi untuk performa terbaik, menggunakan teknologi terbaru, dan mengimplementasikan praktik terbaik untuk pengembangan mobile.",
+            "body": "<h1>Mastering Mobile Development: Advanced Techniques and Best Practices</h1><p>Dalam kursus ini, Anda akan belajar tentang teknik-teknik lanjutan yang digunakan dalam pengembangan aplikasi mobile. Kursus ini mencakup pengembangan untuk platform Android dan iOS, serta penggunaan kerangka kerja lintas platform seperti React Native dan Flutter. Anda akan mempelajari cara membangun aplikasi yang efisien dan scalable dengan teknik-teknik terbaru di industri mobile development.</p><h2>Bab 1: Pengembangan Aplikasi Android dan iOS Lanjutan</h2><p>Bab pertama dari kursus ini akan membahas pengembangan aplikasi Android dan iOS menggunakan bahasa pemrograman Kotlin dan Swift. Anda akan mempelajari cara menangani berbagai aspek pengembangan aplikasi mobile tingkat lanjut seperti pengelolaan memori, pengoptimalan performa, dan pengembangan antarmuka pengguna yang intuitif.</p><h2>Bab 2: Menggunakan Framework Lintas Platform</h2><p>Pada bab ini, Anda akan mempelajari penggunaan React Native dan Flutter untuk membangun aplikasi mobile lintas platform. Anda akan mengeksplorasi kelebihan dan kekurangan dari masing-masing framework, serta bagaimana memilih framework yang tepat sesuai dengan kebutuhan proyek Anda.</p><h2>Bab 3: Optimasi dan Performa Aplikasi Mobile</h2><p>Bab ini membahas teknik-teknik optimasi aplikasi mobile untuk meningkatkan performa. Anda akan mempelajari cara menggunakan alat pengembang untuk menganalisis dan meningkatkan waktu respons aplikasi, serta cara mengoptimalkan penggunaan data dan pengelolaan cache.</p><h2>Bab 4: Praktik Terbaik dalam Pengembangan Mobile</h2><p>Pada bab terakhir ini, Anda akan mempelajari berbagai praktik terbaik yang dapat diterapkan dalam pengembangan aplikasi mobile. Fokusnya akan mencakup desain antarmuka pengguna (UI), pengalaman pengguna (UX), pengujian aplikasi, serta pengelolaan kode sumber dan kolaborasi tim pengembang.</p>",
+            "requirements": [
+                "Pemahaman dasar tentang pengembangan aplikasi mobile dengan Android (Kotlin) atau iOS (Swift).",
+                "Pengalaman dengan React Native atau Flutter sangat dianjurkan.",
+                "Pengetahuan tentang dasar-dasar UI/UX dan pengembangan perangkat lunak."
+            ],
+            "recommended": [
+                "Pengembang aplikasi mobile yang ingin mengembangkan keterampilan mereka lebih lanjut.",
+                "Profesional yang ingin beralih ke pengembangan aplikasi lintas platform.",
+                "Mereka yang tertarik untuk mempelajari teknik-teknik terbaru dalam mobile development."
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Pendahuluan",
+                    "contents": [
+                        {
+                            "title": "Pengenalan Mobile Development Lanjutan",
+                            "description": "Pengenalan tentang teknik-teknik lanjutan dalam mobile development untuk platform Android, iOS, dan framework lintas platform.",
+                            "body": "<h1>Pengenalan Mobile Development Lanjutan</h1><p>Kursus ini bertujuan untuk memberikan pemahaman mendalam tentang teknik-teknik lanjutan dalam pengembangan aplikasi mobile. Anda akan diajarkan tentang platform Android, iOS, dan framework lintas platform seperti React Native dan Flutter. Setiap teknologi akan dibahas secara rinci agar Anda dapat memahami kekuatan dan kelemahan masing-masing platform.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 1: Pengembangan Aplikasi Android dan iOS Lanjutan",
+                    "contents": [
+                        {
+                            "title": "Pengelolaan Memori dan Pengoptimalan Performa",
+                            "description": "Bagaimana cara mengelola memori secara efisien dan meningkatkan performa aplikasi mobile.",
+                            "body": "<h1>Pengelolaan Memori dan Pengoptimalan Performa</h1><p>Pada bagian ini, Anda akan belajar cara mengelola memori aplikasi dengan lebih efisien, serta teknik-teknik yang dapat digunakan untuk meningkatkan performa aplikasi Android dan iOS. Anda akan mempelajari cara menghindari kebocoran memori dan menggunakan alat pengembangan untuk analisis performa.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 2: Menggunakan Framework Lintas Platform",
+                    "contents": [
+                        {
+                            "title": "Menggunakan React Native dan Flutter",
+                            "description": "Panduan tentang penggunaan React Native dan Flutter untuk membangun aplikasi lintas platform.",
+                            "body": "<h1>Menggunakan React Native dan Flutter</h1><p>Di bab ini, Anda akan mempelajari bagaimana cara menggunakan React Native dan Flutter untuk membangun aplikasi lintas platform. Kami akan membahas perbandingan kedua framework tersebut dan memberi Anda wawasan tentang bagaimana memilih framework yang tepat berdasarkan kebutuhan aplikasi Anda.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 3: Optimasi dan Performa Aplikasi Mobile",
+                    "contents": [
+                        {
+                            "title": "Optimasi Waktu Respons dan Pengelolaan Data",
+                            "description": "Teknik untuk mengoptimalkan waktu respons aplikasi dan mengelola data dengan lebih baik.",
+                            "body": "<h1>Optimasi Waktu Respons dan Pengelolaan Data</h1><p>Bab ini akan mengajarkan Anda cara meningkatkan waktu respons aplikasi dengan menggunakan teknik-teknik seperti pengelolaan thread, pengurangan latensi, dan penggunaan cache yang efektif. Anda juga akan mempelajari cara mengelola data secara efisien untuk meningkatkan pengalaman pengguna.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 4: Praktik Terbaik dalam Pengembangan Mobile",
+                    "contents": [
+                        {
+                            "title": "Desain UI/UX dan Pengujian Aplikasi",
+                            "description": "Best practices untuk desain UI/UX dan pengujian aplikasi mobile.",
+                            "body": "<h1>Desain UI/UX dan Pengujian Aplikasi</h1><p>Bagian ini membahas tentang pentingnya desain antarmuka pengguna yang baik dan pengalaman pengguna yang mulus. Anda akan mempelajari tentang pengujian aplikasi mobile, mulai dari unit testing hingga pengujian pengguna untuk memastikan aplikasi berfungsi dengan baik di berbagai perangkat dan situasi.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [50, 51],
+            "title": "Introduction to Game Development",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "This course is an introduction to game development, covering the basics of game design, programming, and using game engines. It's perfect for beginners who want to start making games.",
+            "body": "<h1>Introduction to Game Development</h1><p>In this beginner-level course, you will learn the fundamentals of game development. From understanding game mechanics to creating simple interactive games, this course is designed to give you the necessary skills to get started with game development.</p><h2>Course Overview</h2><p>The course covers the basic principles of game development, including:</p><ul><li>Understanding Game Design</li><li>Basic Programming Concepts</li><li>Using Game Engines like Unity</li><li>Creating Simple Games</li></ul><h2>What You Will Learn</h2><p>By the end of this course, you'll be able to:</p><ul><li>Understand basic game mechanics</li><li>Write simple scripts to control game behavior</li><li>Create 2D games using Unity</li><li>Debug and test your games</li></ul><h2>Course Structure</h2><p>This course is structured into several lessons:</p><ul><li>Lesson 1: Introduction to Game Design</li><li>Lesson 2: Introduction to Unity</li><li>Lesson 3: Creating Your First Game</li><li>Lesson 4: Scripting and Animation</li><li>Lesson 5: Debugging and Testing</li></ul><h2>Prerequisites</h2><p>No prior game development experience is required. However, a basic understanding of programming concepts will be helpful.</p><h2>Recommended For</h2><p>This course is recommended for:</p><ul><li>Beginners in game development</li><li>Anyone interested in learning how to make video games</li></ul>",
+            "requirements": [
+                "A computer with internet access.",
+                "No prior game development experience is required."
+            ],
+            "recommended": [
+                "Aspiring game developers",
+                "Programming beginners",
+                "Anyone interested in interactive design"
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Introduction to Game Development",
+                    "contents": [
+                        {
+                            "title": "What is Game Development?",
+                            "description": "This lesson introduces you to the world of game development, explaining the roles involved and the basics of creating a game.",
+                            "body": "<h1>What is Game Development?</h1><p>Game development is the process of designing, programming, testing, and publishing video games. It involves different roles such as game designers, programmers, and artists working together to create an engaging experience for players. In this lesson, you'll learn about the different stages of game development and the skills needed to succeed in this field.</p>"
+                        },
+                        {
+                            "title": "Getting Started with Unity",
+                            "description": "In this lesson, we will introduce Unity, a powerful game engine for building games. You will learn how to navigate the Unity interface and create your first scene.",
+                            "body": "<h1>Getting Started with Unity</h1><p>Unity is one of the most popular game engines used for creating both 2D and 3D games. In this lesson, you will learn how to set up your Unity environment, explore the interface, and create your first game scene. We will walk through the basic tools and workflows to help you get started on your game development journey.</p>"
+                        },
+                        {
+                            "title": "Creating Your First Game",
+                            "description": "Now, it's time to put your skills into practice! You will create a simple 2D game in Unity using basic programming concepts.",
+                            "body": "<h1>Creating Your First Game</h1><p>In this lesson, we will guide you through the process of creating a simple 2D game in Unity. You'll learn how to add game objects, program simple interactions, and make your game playable. By the end of this lesson, you'll have a basic but functional game to showcase!</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [50],
+            "title": "Intermediate Game Development with Unity",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "This intermediate course dives deeper into game development, focusing on Unity and its advanced features. You will learn about game mechanics, 3D game creation, and scripting in C#.",
+            "body": "<h1>Intermediate Game Development with Unity</h1><p>Building upon the basics of game development, this course is designed for students who have a basic understanding of game design and Unity. You'll take your skills to the next level by exploring more advanced concepts like 3D game development, complex game mechanics, and scripting in C#.</p><h2>Course Overview</h2><p>This course will guide you through the following topics:</p><ul><li>Advanced Unity Features</li><li>3D Game Development</li><li>Complex Game Mechanics</li><li>Game Physics and Collisions</li><li>Implementing Artificial Intelligence (AI) in Games</li></ul><h2>What You Will Learn</h2><p>By the end of this course, you'll be able to:</p><ul><li>Create advanced 3D games in Unity</li><li>Implement complex game mechanics using Unity's physics system</li><li>Write scripts in C# to handle player input, game physics, and AI behavior</li><li>Optimize game performance</li></ul><h2>Course Structure</h2><p>This course is divided into the following lessons:</p><ul><li>Lesson 1: Advanced Unity Features</li><li>Lesson 2: 3D Game Development</li><li>Lesson 3: Scripting for Complex Game Mechanics</li><li>Lesson 4: Implementing Physics and Collisions</li><li>Lesson 5: AI and NPC Behavior</li></ul><h2>Prerequisites</h2><p>This course is for those who have completed a beginner-level course in game development or have a basic understanding of Unity and C# programming.</p><h2>Recommended For</h2><p>This course is recommended for:</p><ul><li>Intermediate game developers</li><li>Game designers looking to expand their knowledge of Unity</li><li>Anyone interested in learning how to develop 3D games</li></ul>",
+            "requirements": [
+                "Basic understanding of Unity and C#",
+                "Experience with 2D game development"
+            ],
+            "recommended": [
+                "Intermediate game developers",
+                "Aspiring 3D game developers",
+                "Unity users looking to learn advanced features"
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Intermediate Game Development",
+                    "contents": [
+                        {
+                            "title": "Advanced Unity Features",
+                            "description": "Explore advanced Unity tools, including lighting, animations, and particle systems.",
+                            "body": "<h1>Advanced Unity Features</h1><p>In this lesson, we'll dive into some of the more advanced features of Unity. You will learn how to use lighting, create particle effects, and work with Unity's animation system. These features will allow you to bring your games to life with more realism and dynamic visuals.</p>"
+                        },
+                        {
+                            "title": "3D Game Development",
+                            "description": "Learn how to build 3D games, focusing on 3D models, environments, and controls.",
+                            "body": "<h1>3D Game Development</h1><p>This lesson will teach you how to create 3D games in Unity. You'll learn about importing 3D models, setting up 3D environments, and implementing player controls. You'll also explore the principles of 3D space and how to optimize your game for better performance.</p>"
+                        },
+                        {
+                            "title": "Scripting for Complex Game Mechanics",
+                            "description": "Learn how to write complex scripts to control game mechanics like movement, combat, and inventory systems.",
+                            "body": "<h1>Scripting for Complex Game Mechanics</h1><p>In this lesson, you'll explore how to create more advanced game mechanics using C#. This includes scripting player movement, developing combat systems, and setting up inventory management systems. You'll also learn how to optimize and debug your scripts to ensure smooth gameplay.</p>"
+                        },
+                        {
+                            "title": "Implementing Physics and Collisions",
+                            "description": "Understand how to use Unity's physics engine to create realistic game interactions and collisions.",
+                            "body": "<h1>Implementing Physics and Collisions</h1><p>Unity's physics engine allows you to simulate realistic behavior in your games. This lesson will teach you how to implement physics for objects and characters. You'll also learn how to set up collisions, triggers, and rigidbodies to handle object interactions in the game world.</p>"
+                        },
+                        {
+                            "title": "AI and NPC Behavior",
+                            "description": "Learn how to create basic artificial intelligence (AI) for non-playable characters (NPCs).",
+                            "body": "<h1>AI and NPC Behavior</h1><p>This lesson will introduce you to the basics of AI in games. You'll learn how to implement simple NPC behaviors such as pathfinding, patrols, and reactive behaviors. By the end of this lesson, you'll have the skills to create interactive NPCs that respond to the player's actions in meaningful ways.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [50, 51, 52],
+            "title": "Advanced Game Development: Mastering Unity & Unreal Engine",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk pengembang game tingkat lanjut yang ingin menguasai Unity dan Unreal Engine, dua mesin game terkemuka. Anda akan belajar cara mengoptimalkan kinerja game, mengimplementasikan AI, dan menciptakan pengalaman game yang mendalam dan realistis.",
+            "body": "<h1>Advanced Game Development: Mastering Unity & Unreal Engine</h1><p>Kursus ini diperuntukkan bagi para pengembang game tingkat lanjut yang ingin mengembangkan keterampilan mereka dengan menggunakan dua mesin game terpopuler, yaitu Unity dan Unreal Engine. Dengan fokus pada teknik-teknik lanjutan seperti optimasi kinerja game, penerapan kecerdasan buatan (AI), serta pembuatan lingkungan dan pengalaman game yang realistis, peserta akan mempelajari cara mengatasi tantangan pengembangan game kompleks.</p><h2>Materi Kursus:</h2><p>Kursus ini dibagi menjadi beberapa bab yang mencakup berbagai aspek pengembangan game tingkat lanjut. Anda akan mempelajari pengembangan AI untuk game, teknik rendering canggih, serta pengelolaan sumber daya yang efektif untuk game besar. Selain itu, Anda akan bekerja dengan sistem fisika, animasi, dan audio yang mendalam.</p><p>Di akhir kursus ini, peserta akan mampu menciptakan game tingkat AAA yang siap untuk diterbitkan dengan kualitas terbaik menggunakan Unity atau Unreal Engine. Kursus ini memberikan wawasan mendalam bagi pengembang yang ingin berkarir di industri game dengan game yang memiliki dunia terbuka, cerita dinamis, dan interaksi pemain yang mendalam.</p>",
+            "requirements": [
+                "Pengalaman dasar dalam pengembangan game menggunakan Unity atau Unreal Engine.",
+                "Pengetahuan tentang pemrograman C# atau C++.",
+                "Pernah mengerjakan proyek game sederhana atau menengah sebelumnya."
+            ],
+            "recommended": [
+                "Pengembang game profesional",
+                "Mereka yang memiliki pengalaman dengan Unity atau Unreal Engine",
+                "Mereka yang tertarik untuk mengembangkan game 3D dan dunia terbuka"
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Pendahuluan: Menyusun Fondasi Game Canggih",
+                    "contents": [
+                        {
+                            "title": "Unity vs Unreal Engine: Mana yang Lebih Baik?",
+                            "description": "Pada bab ini, Anda akan mempelajari perbandingan mendalam antara Unity dan Unreal Engine, termasuk kelebihan dan kekurangannya serta memilih mesin yang sesuai dengan kebutuhan proyek Anda.",
+                            "body": "<h1>Unity vs Unreal Engine: Mana yang Lebih Baik?</h1><p>Unity dan Unreal Engine adalah dua mesin game yang paling banyak digunakan dalam industri game. Unity lebih dikenal karena kemudahan penggunaannya dan dukungannya untuk game 2D dan 3D, sementara Unreal Engine lebih unggul dalam rendering visual dan game berbasis FPS (First-Person Shooter) atau RPG (Role-Playing Game). Dalam bab ini, Anda akan mempelajari fitur utama dari kedua mesin ini, serta situasi di mana masing-masing lebih unggul. Anda juga akan melakukan studi kasus untuk memilih mesin yang tepat untuk proyek game Anda.</p>"
+                        },
+                        {
+                            "title": "Optimasi Kinerja Game: Teknik untuk Game Besar",
+                            "description": "Pelajari bagaimana mengoptimalkan kinerja game besar di kedua mesin, mulai dari teknik pengurangan pemakaian memori hingga penggunaan level-of-detail (LOD) dan manajemen sumber daya.",
+                            "body": "<h1>Optimasi Kinerja Game: Teknik untuk Game Besar</h1><p>Saat membuat game yang kompleks dan besar, mengelola kinerja menjadi sangat penting. Di bab ini, Anda akan mempelajari berbagai teknik optimasi untuk memastikan game berjalan lancar meskipun dengan grafik yang intensif dan dunia yang luas. Kami akan membahas teknik-teknik seperti penggunaan Level of Detail (LOD), optimasi skrip, dan cara memanfaatkan berbagai platform untuk meningkatkan kinerja game Anda.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 1: Penerapan AI dalam Game",
+                    "contents": [
+                        {
+                            "title": "Membuat NPC Cerdas dengan AI",
+                            "description": "Pelajari cara membuat karakter non-pemain (NPC) yang cerdas dan berperilaku realistis dalam dunia game.",
+                            "body": "<h1>Membuat NPC Cerdas dengan AI</h1><p>NPC (Non-Player Characters) adalah bagian penting dalam game yang memberikan nuansa dunia hidup. Pada bab ini, Anda akan mempelajari cara menggunakan kecerdasan buatan untuk membuat NPC yang dapat berinteraksi dengan pemain secara dinamis. Anda akan mempelajari teknik seperti pathfinding, finite state machines (FSM), dan behavior trees untuk menciptakan NPC yang bereaksi terhadap perubahan di dunia game dan keputusan pemain.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 2: Pengembangan Dunia Game yang Realistis",
+                    "contents": [
+                        {
+                            "title": "Membangun Dunia 3D: Teknik Rendering dan Pencahayaan",
+                            "description": "Pelajari teknik rendering dan pencahayaan canggih untuk menciptakan dunia game yang realistis dan mendalam.",
+                            "body": "<h1>Membangun Dunia 3D: Teknik Rendering dan Pencahayaan</h1><p>Dunia game 3D yang realistis memerlukan teknik rendering dan pencahayaan yang canggih. Di bab ini, Anda akan mempelajari cara memanfaatkan teknik rendering seperti ray tracing, global illumination, dan ambient occlusion untuk menciptakan dunia yang tampak hidup. Selain itu, Anda juga akan belajar bagaimana menggunakan pencahayaan dinamis untuk memberikan atmosfer yang tepat untuk setiap bagian dari game Anda.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [46, 47, 48],
+            "title": "Dasar-Dasar UI/UX Design untuk Pemula",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk pemula yang ingin mempelajari dasar-dasar UI/UX Design. Kursus ini mencakup prinsip-prinsip desain antarmuka pengguna (UI) dan pengalaman pengguna (UX) yang penting untuk membangun aplikasi dan situs web yang user-friendly.",
+            "body": "<h1>Dasar-Dasar UI/UX Design untuk Pemula</h1><p>Kursus ini memberikan pengenalan menyeluruh tentang UI/UX Design, mulai dari prinsip dasar desain visual hingga teknik untuk menciptakan pengalaman pengguna yang menyenangkan dan intuitif. UI (User Interface) mengacu pada elemen-elemen antarmuka yang digunakan oleh pengguna untuk berinteraksi dengan perangkat, sementara UX (User Experience) adalah pengalaman keseluruhan yang dirasakan pengguna saat berinteraksi dengan produk digital.</p><h2>Topik yang akan dibahas</h2><ul><li>Pengenalan UI/UX</li><li>Prinsip Desain Visual</li><li>Wireframe dan Prototyping</li><li>Pentingnya Responsivitas dalam Desain</li><li>Alat Desain Populer: Figma, Adobe XD, Sketch</li><li>Evaluasi dan Uji Coba Pengguna</li></ul><p>Di akhir kursus ini, peserta diharapkan dapat merancang antarmuka yang menarik dan intuitif serta memahami bagaimana membuat produk yang memberi pengalaman pengguna yang positif. Kami juga akan membahas studi kasus nyata untuk membantu peserta memahami penerapan teori dalam proyek yang lebih besar.</p>",
+            "requirements": [
+                "Tidak diperlukan pengalaman sebelumnya dalam desain.",
+                "Memiliki akses ke komputer dengan aplikasi desain seperti Figma atau Adobe XD."
+            ],
+            "recommended": [
+                "Mahasiswa atau profesional yang ingin memulai karier di bidang desain UI/UX.",
+                "Pengembang web atau aplikasi yang ingin memperdalam pemahaman tentang desain antarmuka dan pengalaman pengguna."
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan ke UI/UX Design",
+                    "contents": [
+                        {
+                            "title": "Apa itu UI/UX Design?",
+                            "description": "Mempelajari definisi dasar UI dan UX serta perbedaannya.",
+                            "body": "<h1>Apa itu UI/UX Design?</h1><p>UI/UX Design adalah kombinasi antara desain antarmuka pengguna (UI) yang mencakup elemen-elemen visual, dan pengalaman pengguna (UX) yang berfokus pada bagaimana pengguna berinteraksi dengan produk. Desain UI/UX yang baik bertujuan untuk membuat interaksi pengguna semudah dan seefisien mungkin.</p>"
+                        },
+                        {
+                            "title": "Prinsip Desain Visual",
+                            "description": "Memahami elemen-elemen visual yang membentuk antarmuka yang efektif.",
+                            "body": "<h1>Prinsip Desain Visual</h1><p>Desain visual mencakup penggunaan warna, tipografi, ikonografi, dan elemen-elemen lainnya untuk menciptakan antarmuka yang tidak hanya menarik tetapi juga mudah dipahami. Beberapa prinsip desain visual yang penting termasuk keselarasan, kontras, dan hirarki visual.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Praktik Desain UI/UX",
+                    "contents": [
+                        {
+                            "title": "Membuat Wireframe",
+                            "description": "Mempelajari bagaimana membuat wireframe untuk merencanakan struktur dan layout aplikasi.",
+                            "body": "<h1>Membuat Wireframe</h1><p>Wireframe adalah representasi visual dasar dari layout sebuah halaman atau aplikasi. Wireframe membantu merencanakan elemen-elemen yang akan ditampilkan di halaman dan bagaimana mereka saling terhubung. Di bagian ini, peserta akan mempelajari cara membuat wireframe menggunakan alat seperti Figma dan Adobe XD.</p>"
+                        },
+                        {
+                            "title": "Prototyping dan Uji Coba Pengguna",
+                            "description": "Mempelajari cara membuat prototipe interaktif dan melakukan uji coba pengguna.",
+                            "body": "<h1>Prototyping dan Uji Coba Pengguna</h1><p>Setelah membuat wireframe, langkah berikutnya adalah membuat prototipe interaktif untuk menguji alur pengguna. Di sini, peserta akan belajar cara menggunakan Figma untuk membuat prototipe yang dapat diuji oleh pengguna nyata untuk mengumpulkan umpan balik dan membuat perbaikan desain.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [46, 47, 49],
+            "title": "Desain UI/UX Lanjutan: Teknik dan Praktik",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini ditujukan untuk desainer UI/UX yang sudah memiliki pemahaman dasar dan ingin memperdalam pengetahuan mereka tentang teknik dan praktik desain yang lebih kompleks. Kursus ini akan mengajarkan keterampilan lanjutan untuk menciptakan desain antarmuka dan pengalaman pengguna yang efektif dengan alat desain seperti Adobe XD dan Figma.",
+            "body": "<h1>Desain UI/UX Lanjutan: Teknik dan Praktik</h1><p>Setelah menguasai dasar-dasar UI/UX, kursus ini menawarkan wawasan lebih dalam mengenai teknik dan praktik yang digunakan oleh desainer profesional dalam menciptakan pengalaman pengguna yang lebih baik. Kami akan membahas pembuatan desain responsif, teknik prototyping interaktif, serta evaluasi UX dengan tes pengguna. Desain UI/UX bukan hanya tentang membuat antarmuka yang menarik tetapi juga tentang menciptakan pengalaman pengguna yang memuaskan dan efektif.</p><h2>Topik yang akan dibahas</h2><ul><li>Desain Responsif dan Mobile First</li><li>Prototyping Interaktif dengan Figma dan Adobe XD</li><li>Evaluasi UX dan Uji Coba Pengguna</li><li>Penerapan Prinsip Desain untuk Pengalaman Pengguna</li><li>Desain untuk Aksesibilitas</li><li>Studi Kasus Desain UI/UX Profesional</li></ul><p>Setelah menyelesaikan kursus ini, peserta akan memiliki keterampilan untuk membuat desain UI/UX yang lebih efektif dan user-friendly, termasuk kemampuan untuk merancang antarmuka untuk perangkat seluler dan aplikasi responsif yang dapat memberikan pengalaman yang lebih baik kepada pengguna di berbagai platform.</p>",
+            "requirements": [
+                "Pemahaman dasar tentang UI/UX Design.",
+                "Pengalaman menggunakan alat desain seperti Figma atau Adobe XD.",
+                "Keterampilan dasar dalam desain responsif."
+            ],
+            "recommended": [
+                "Desainer UI/UX dengan pengalaman dasar yang ingin meningkatkan keterampilan mereka.",
+                "Pengembang yang bekerja dengan antarmuka pengguna dan ingin memahami lebih dalam aspek desain."
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Bab 1: Meningkatkan Keterampilan Desain Responsif",
+                    "contents": [
+                        {
+                            "title": "Desain Responsif dan Mobile First",
+                            "description": "Mengoptimalkan desain untuk berbagai ukuran layar dan perangkat.",
+                            "body": "<h1>Desain Responsif dan Mobile First</h1><p>Desain responsif adalah teknik yang digunakan untuk membuat aplikasi atau situs web yang dapat beradaptasi dengan berbagai ukuran layar dan perangkat. Prinsip desain mobile first berarti merancang terlebih dahulu untuk perangkat seluler dan kemudian menyesuaikannya untuk perangkat dengan ukuran layar yang lebih besar. Kursus ini akan mengajarkan cara merancang antarmuka yang adaptif menggunakan CSS dan alat desain seperti Figma dan Adobe XD.</p>"
+                        },
+                        {
+                            "title": "Membuat Prototipe Interaktif",
+                            "description": "Membuat prototipe fungsional untuk menguji desain dan interaksi.",
+                            "body": "<h1>Membuat Prototipe Interaktif</h1><p>Prototipe interaktif adalah alat yang sangat penting dalam desain UI/UX untuk menguji dan mengevaluasi pengalaman pengguna. Peserta akan mempelajari cara membuat prototipe interaktif yang realistis menggunakan Figma dan Adobe XD. Prototipe ini akan digunakan untuk menguji alur dan interaksi antarmuka dengan pengguna, memberikan gambaran yang lebih jelas tentang bagaimana aplikasi atau situs web akan berfungsi di dunia nyata.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 2: Teknik Evaluasi dan Uji Coba Pengguna",
+                    "contents": [
+                        {
+                            "title": "Evaluasi UX dengan Uji Coba Pengguna",
+                            "description": "Menguji desain dengan pengguna untuk mengidentifikasi masalah dan meningkatkan pengalaman.",
+                            "body": "<h1>Evaluasi UX dengan Uji Coba Pengguna</h1><p>Uji coba pengguna adalah metode yang digunakan untuk mengevaluasi desain UI/UX dengan melibatkan pengguna asli. Pada bagian ini, peserta akan mempelajari teknik evaluasi UX yang efektif, termasuk merencanakan uji coba pengguna, mengumpulkan umpan balik, dan menganalisis hasil untuk meningkatkan desain. Kami juga akan mempelajari bagaimana cara membuat prototipe yang siap diuji oleh pengguna.</p>"
+                        },
+                        {
+                            "title": "Desain untuk Aksesibilitas",
+                            "description": "Mempelajari cara mendesain untuk pengguna dengan berbagai kebutuhan aksesibilitas.",
+                            "body": "<h1>Desain untuk Aksesibilitas</h1><p>Aksesibilitas adalah aspek penting dalam desain UI/UX untuk memastikan bahwa aplikasi dan situs web dapat digunakan oleh semua orang, termasuk mereka yang memiliki kebutuhan khusus. Di kursus ini, peserta akan mempelajari prinsip-prinsip desain untuk aksesibilitas dan cara menerapkannya untuk membuat produk yang dapat diakses oleh semua orang, termasuk pengguna dengan gangguan penglihatan, pendengaran, dan mobilitas.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [46],
+            "title": "Advanced UI/UX Design for Professionals",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "This advanced course in UI/UX Design is intended for experienced designers who want to deepen their understanding of user-centered design, advanced prototyping techniques, and usability testing for complex systems.",
+            "body": "<h1>Advanced UI/UX Design for Professionals</h1><p>This course is designed for experienced UI/UX designers who wish to elevate their skills to the next level. Throughout this course, we will explore advanced topics such as creating complex user flows, integrating user research into design decisions, and advanced tools for high-fidelity prototyping. By the end of the course, you will be equipped with the skills to handle more complex design challenges, collaborate effectively with development teams, and lead UI/UX projects to completion with a focus on usability and user experience.</p><h2>Course Overview</h2><p>The course covers a broad range of topics, from understanding the psychological principles behind design to mastering tools such as Figma, Sketch, and Adobe XD for creating interactive prototypes. You will also learn about user testing methodologies and how to incorporate user feedback into your designs. Key learning objectives include:</p><ul><li>Creating detailed user personas and user journey maps.</li><li>Designing complex user interfaces and interactions.</li><li>Conducting usability testing and iterating based on feedback.</li><li>Mastering advanced features in design tools.</li><li>Collaborating effectively with developers to implement designs.</li></ul><h2>Module Breakdown</h2><p>This course is divided into several key modules:</p><h3>Module 1: Advanced Design Principles</h3><p>In this module, we will review advanced design principles, focusing on user psychology, design patterns, and how to create intuitive and aesthetically pleasing user interfaces.</p><h3>Module 2: Creating User Flows and Prototypes</h3><p>Learn how to map out user flows and create high-fidelity prototypes that reflect your design decisions. You will learn advanced prototyping techniques in tools like Figma and Adobe XD.</p><h3>Module 3: Usability Testing and Iteration</h3><p>Understand how to conduct usability tests, interpret user feedback, and make iterative improvements to your designs based on real-world data.</p><h3>Module 4: Collaborative UI/UX Design</h3><p>Focus on the importance of collaboration in UI/UX design, working with cross-functional teams, and using tools for sharing and presenting designs.</p><h2>Who Should Take This Course?</h2><p>This course is intended for experienced UI/UX designers who already have a solid foundation in design principles and are looking to level up their skills. If you have worked on several design projects and are familiar with the basic tools, this course will help you refine your craft and tackle more complex challenges.</p>",
+            "requirements": [
+                "Experience with UI/UX design principles.",
+                "Proficiency in design tools such as Figma, Sketch, or Adobe XD.",
+                "A portfolio demonstrating previous UI/UX design projects."
+            ],
+            "recommended": [
+                "Frontend Developers",
+                "UI/UX Designers with at least 2 years of experience"
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Introduction to Advanced UI/UX Design",
+                    "contents": [
+                        {
+                            "title": "Advanced Design Principles",
+                            "description": "Understanding advanced psychological principles behind design and how to apply them in UI/UX work.",
+                            "body": "<h1>Advanced Design Principles</h1><p>This section delves into the psychological factors that influence user behavior and decision-making, such as cognitive load, visual hierarchy, and Fitts's Law. Understanding these principles helps you design more intuitive and user-friendly interfaces. You will explore examples of successful designs and how they implement these principles to enhance user experiences.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Prototyping and User Flows",
+                    "contents": [
+                        {
+                            "title": "Creating User Flows and Prototypes",
+                            "description": "Learn how to develop user flows that map out the user's journey and design interactive prototypes for testing.",
+                            "body": "<h1>Creating User Flows and Prototypes</h1><p>In this module, you will learn how to create detailed user flows to represent the user's journey across your design. These flows will help guide decisions about how users interact with your product. You will then use this information to create high-fidelity prototypes in Figma or Adobe XD. Interactive prototypes are crucial for testing design ideas and gathering feedback early in the development process.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Usability Testing and Iteration",
+                    "contents": [
+                        {
+                            "title": "Conducting Usability Tests",
+                            "description": "Learn how to plan and conduct usability tests to gather actionable feedback from users.",
+                            "body": "<h1>Conducting Usability Tests</h1><p>In this section, we will cover the process of conducting usability tests. You will learn how to prepare test scenarios, recruit participants, and analyze test results. The goal is to identify areas of friction in your design and gather insights on how users interact with your product. Based on this feedback, you will learn how to iterate on your design to make it more user-friendly and intuitive.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [35, 36, 37, 40],
+            "title": "Dasar-Dasar Data Analytics untuk Pemula",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini akan mengenalkan Anda pada konsep dasar data analytics, pengolahan data menggunakan Python dan Pandas, serta cara membuat laporan analisis menggunakan SQL.",
+            "body": "<h1>Dasar-Dasar Data Analytics untuk Pemula</h1><p>Data analytics adalah kemampuan untuk mengekstrak wawasan dari data. Dalam kursus ini, Anda akan mempelajari dasar-dasar analisis data yang sangat penting untuk pengambilan keputusan bisnis yang berbasis data. Kursus ini ditujukan untuk pemula yang ingin memahami bagaimana data dikumpulkan, dianalisis, dan disajikan.</p><h2>Modul 1: Pengenalan Data Analytics</h2><p>Pada modul ini, Anda akan belajar apa itu data analytics, berbagai jenis analisis data, serta alat-alat yang digunakan dalam analisis data. Anda akan diperkenalkan dengan istilah-istilah dasar seperti data eksplorasi, pembersihan data, dan visualisasi data.</p><h2>Modul 2: Memahami Python untuk Analisis Data</h2><p>Modul ini akan membahas penggunaan bahasa pemrograman Python untuk analisis data. Anda akan belajar menggunakan pustaka Python seperti Pandas untuk memanipulasi data dan Matplotlib untuk visualisasi data. Anda juga akan belajar tentang struktur data dasar dalam Python dan cara menggunakannya untuk analisis data.</p><h2>Modul 3: Pengolahan Data dengan Pandas</h2><p>Pada modul ini, Anda akan mempelajari bagaimana mengimpor, membersihkan, dan memanipulasi data menggunakan Pandas. Anda akan memahami berbagai operasi seperti filter, transformasi, dan agregasi data yang sangat berguna untuk analisis.</p><h2>Modul 4: Dasar-Dasar SQL untuk Data Analyst</h2><p>SQL adalah bahasa query yang digunakan untuk berinteraksi dengan database. Dalam modul ini, Anda akan belajar bagaimana menulis query dasar untuk mengambil data dari database, serta cara melakukan agregasi, penyaringan, dan pengurutan data menggunakan SQL.</p><h2>Modul 5: Membuat Laporan Analisis</h2><p>Modul ini akan mengajarkan Anda cara membuat laporan analisis yang efektif menggunakan berbagai alat, seperti visualisasi data dan tabel pivot. Anda akan mempelajari cara menyajikan hasil analisis data dengan cara yang mudah dipahami oleh pihak yang tidak terlalu paham data.</p>",
+            "requirements": [
+                "Komputer dengan akses ke internet.",
+                "Keinginan untuk belajar tentang analisis data."
+            ],
+            "recommended": [
+                "Mahasiswa jurusan Ilmu Komputer, Statistika, atau Bisnis.",
+                "Pemula yang ingin memulai karir di bidang data analysis."
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan",
+                    "contents": [
+                        {
+                            "title": "Pengenalan Data Analytics",
+                            "description": "Modul ini memberikan gambaran umum tentang apa itu data analytics dan mengapa hal ini penting dalam dunia bisnis saat ini.",
+                            "body": "<h1>Pengenalan Data Analytics</h1><p>Data analytics merupakan kemampuan yang diperlukan untuk mengambil keputusan berbasis data. Dalam modul ini, Anda akan mempelajari apa itu data analytics, bagaimana data dikumpulkan, dan berbagai teknik analisis yang digunakan oleh data analyst.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Modul 1: Memulai dengan Python",
+                    "contents": [
+                        {
+                            "title": "Penggunaan Python untuk Data Analysis",
+                            "description": "Modul ini menjelaskan bagaimana Python digunakan dalam data analytics, dengan fokus pada pustaka Pandas dan Matplotlib.",
+                            "body": "<h1>Penggunaan Python untuk Data Analysis</h1><p>Python adalah bahasa pemrograman yang sangat populer di kalangan data analyst. Di modul ini, Anda akan belajar cara menggunakan Pandas untuk manipulasi data dan Matplotlib untuk visualisasi data.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Modul 2: Pengolahan Data dengan SQL",
+                    "contents": [
+                        {
+                            "title": "Dasar-Dasar SQL untuk Analisis Data",
+                            "description": "Modul ini mengenalkan dasar-dasar SQL, termasuk query dasar untuk memilih, mengurutkan, dan menggabungkan data.",
+                            "body": "<h1>Dasar-Dasar SQL untuk Analisis Data</h1><p>SQL adalah bahasa yang digunakan untuk mengelola dan menganalisis data yang disimpan dalam database. Di sini, Anda akan belajar cara menulis query dasar untuk mengambil data, menyaring data, dan membuat analisis yang lebih mendalam menggunakan SQL.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [35, 36, 37, 40],
+            "title": "Intermediate Data Analysis with Python and Pandas",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "This course will teach you intermediate-level skills in data analysis using Python, Pandas, and SQL. You'll learn to work with larger datasets, clean data, and perform advanced data manipulations and analyses.",
+            "body": "<h1>Intermediate Data Analysis with Python and Pandas</h1><p>This course is designed for individuals who are familiar with the basics of data analysis and are ready to take their skills to the next level. Throughout this course, you will learn how to handle more complex datasets, use Python and Pandas for data manipulation, and perform advanced statistical analysis. We will cover data cleaning, exploratory data analysis, and various types of analysis, including time series and regression. By the end of the course, you'll be able to tackle larger and more complicated datasets and extract meaningful insights from them.</p><h2>Course Overview</h2><p>Data analysis is an essential skill for anyone working with data. This course will teach you intermediate-level techniques that are vital for anyone looking to progress in the field. We'll dive deeper into:</p><ul><li>Data cleaning and preparation</li><li>Handling missing data</li><li>Advanced data manipulation with Pandas</li><li>Statistical analysis</li><li>SQL for querying data</li><li>Time series analysis</li><li>Regression and correlation analysis</li></ul><h2>Prerequisites</h2><p>Before starting this course, you should have a basic understanding of Python and Pandas. Familiarity with SQL is a plus. If you're new to these tools, we recommend completing a beginner-level course in Python and Pandas first.</p><h2>Learning Outcomes</h2><ul><li>Understand advanced data manipulation techniques using Pandas</li><li>Be able to clean and prepare data for analysis</li><li>Perform exploratory data analysis (EDA) on datasets</li><li>Master SQL queries for data retrieval</li><li>Use time series analysis techniques</li><li>Apply regression techniques to model data</li></ul><h2>Course Modules</h2><p>The course is divided into several modules, each focusing on a specific aspect of intermediate data analysis:</p><ul><li>Module 1: Data Cleaning and Preparation</li><li>Module 2: Advanced Data Manipulation with Pandas</li><li>Module 3: Statistical Analysis and Hypothesis Testing</li><li>Module 4: SQL for Data Analysts</li><li>Module 5: Time Series Analysis</li><li>Module 6: Regression Analysis and Machine Learning</li></ul>",
+            "requirements": [
+                "Basic knowledge of Python programming",
+                "Familiarity with Pandas library",
+                "Basic understanding of SQL"
+            ],
+            "recommended": [
+                "Aspiring data analysts",
+                "Data professionals looking to enhance their data manipulation and analysis skills"
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Module 1: Data Cleaning and Preparation",
+                    "contents": [
+                        {
+                            "title": "Handling Missing Data",
+                            "description": "Learn how to handle missing data in datasets using various techniques like imputation, removal, and interpolation.",
+                            "body": "<h1>Handling Missing Data</h1><p>Missing data is a common problem in real-world datasets. In this module, we will explore several techniques for dealing with missing values, including:</p><ul><li>Imputation: Replacing missing values with the mean, median, or mode of the column</li><li>Deletion: Removing rows with missing values</li><li>Interpolation: Estimating missing values using surrounding data</li></ul><p>You'll learn how to decide which method to use depending on the type of data and the extent of the missing values.</p>"
+                        },
+                        {
+                            "title": "Data Transformation Techniques",
+                            "description": "Learn how to transform data using techniques like normalization, standardization, and encoding.",
+                            "body": "<h1>Data Transformation Techniques</h1><p>Data transformation is essential to ensure that the data is in the right format for analysis. In this module, we will cover:</p><ul><li>Normalization: Scaling data to a standard range</li><li>Standardization: Transforming data to have a mean of 0 and a standard deviation of 1</li><li>Encoding: Converting categorical data into numerical format</li></ul><p>You'll learn how these transformations impact the analysis and the algorithms that require them.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Module 2: Advanced Data Manipulation with Pandas",
+                    "contents": [
+                        {
+                            "title": "Grouping and Aggregating Data",
+                            "description": "Learn how to group and aggregate data in Pandas to perform summary statistics on subsets of data.",
+                            "body": "<h1>Grouping and Aggregating Data</h1><p>In this module, we will explore how to group data by different categories and apply aggregation functions. Topics covered will include:</p><ul><li>GroupBy function in Pandas</li><li>Aggregation functions like sum, mean, and count</li><li>Transforming data within groups</li></ul><p>This is a powerful technique for summarizing data and performing high-level analyses.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [35, 36, 37, 40, 41],
+            "title": "Advanced Data Analysis with Python and SQL",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Pelajari teknik analisis data tingkat lanjut menggunakan Python dan SQL untuk mengolah, menganalisis, dan memvisualisasikan data besar secara efektif.",
+            "body": "<h1>Advanced Data Analysis with Python and SQL</h1><p>Kursus ini dirancang untuk membantu Anda menguasai teknik-teknik analisis data tingkat lanjut dengan menggunakan Python, Pandas, Matplotlib, serta SQL dan Tableau untuk analisis dan visualisasi data. Dalam kursus ini, Anda akan mempelajari cara mengelola dan memanipulasi data besar, melakukan analisis statistik yang lebih mendalam, serta membuat visualisasi interaktif yang menarik untuk menyampaikan wawasan data dengan lebih jelas.</p><h2>Topik yang akan dibahas:</h2><ul><li>Pengantar Pandas dan NumPy untuk manipulasi data besar.</li><li>Penerapan teknik analisis statistik dan regresi dengan Python.</li><li>Pengolahan data menggunakan SQL untuk analisis database besar.</li><li>Visualisasi data lanjutan menggunakan Matplotlib dan Tableau.</li><li>Penggunaan teknik machine learning untuk prediksi dan klasifikasi data.</li></ul><p>Kursus ini cocok untuk data scientist, analis data, dan profesional yang ingin mengasah kemampuan analisis data mereka menggunakan alat dan teknik terkini dalam industri.</p>",
+            "requirements": [
+                "Pengetahuan dasar Python dan SQL.",
+                "Pemahaman dasar tentang analisis data dan statistik.",
+                "Memiliki pengalaman bekerja dengan data set besar."
+            ],
+            "recommended": [
+                "Data Scientists",
+                "Data Analysts",
+                "Business Analysts",
+                "Machine Learning Engineers"
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Pendahuluan",
+                    "contents": [
+                        {
+                            "title": "Pendahuluan ke Analisis Data",
+                            "description": "Memahami pentingnya analisis data tingkat lanjut dan alat-alat yang digunakan.",
+                            "body": "<h1>Pendahuluan ke Analisis Data</h1><p>Analisis data merupakan bagian penting dari pengambilan keputusan berbasis data. Kursus ini bertujuan untuk memperkenalkan teknik-teknik lanjutan dalam analisis data menggunakan alat seperti Python, SQL, dan Tableau. Anda akan belajar bagaimana cara mengoptimalkan alur kerja analisis data dan menghasilkan wawasan yang lebih mendalam dari data yang tersedia.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 1: Manipulasi Data dengan Python",
+                    "contents": [
+                        {
+                            "title": "Menggunakan Pandas untuk Pengolahan Data",
+                            "description": "Teknik manipulasi data menggunakan Pandas untuk memanipulasi dataset besar.",
+                            "body": "<h1>Menggunakan Pandas untuk Pengolahan Data</h1><p>Pandas adalah pustaka Python yang sangat powerful untuk manipulasi dan analisis data. Di bab ini, kita akan mempelajari bagaimana menggunakan Pandas untuk memanipulasi dataset besar, membersihkan data, dan melakukan agregasi serta analisis statistik dasar.</p>"
+                        },
+                        {
+                            "title": "Visualisasi Data dengan Matplotlib",
+                            "description": "Membuat visualisasi data yang efektif menggunakan Matplotlib.",
+                            "body": "<h1>Visualisasi Data dengan Matplotlib</h1><p>Matplotlib adalah pustaka visualisasi data di Python yang memungkinkan Anda untuk membuat grafik dan plot yang sangat berguna untuk memahami data. Di bab ini, kita akan mempelajari cara membuat berbagai jenis grafik, termasuk grafik garis, batang, dan sebar, serta menyesuaikan visualisasi untuk presentasi yang lebih baik.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 2: Analisis Data dengan SQL dan Tableau",
+                    "contents": [
+                        {
+                            "title": "Pengolahan Data dengan SQL",
+                            "description": "Menggunakan SQL untuk mengolah dan menganalisis data besar.",
+                            "body": "<h1>Pengolahan Data dengan SQL</h1><p>SQL adalah bahasa yang digunakan untuk mengelola dan memanipulasi data dalam sistem manajemen basis data relasional. Di bab ini, Anda akan mempelajari cara menulis query SQL untuk mengekstraksi, menggabungkan, dan menganalisis data dari berbagai tabel.</p>"
+                        },
+                        {
+                            "title": "Visualisasi Data dengan Tableau",
+                            "description": "Membuat visualisasi interaktif dengan Tableau untuk analisis data lanjutan.",
+                            "body": "<h1>Visualisasi Data dengan Tableau</h1><p>Tableau adalah alat visualisasi data yang sangat kuat dan digunakan untuk membuat laporan interaktif yang memudahkan analisis data. Di bab ini, Anda akan mempelajari cara membuat dashboard interaktif yang dapat digunakan untuk menggali wawasan data secara lebih efektif.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Bab 3: Machine Learning untuk Prediksi dan Klasifikasi",
+                    "contents": [
+                        {
+                            "title": "Pengenalan Machine Learning untuk Data",
+                            "description": "Menggunakan teknik machine learning untuk prediksi dan klasifikasi.",
+                            "body": "<h1>Pengenalan Machine Learning untuk Data</h1><p>Machine learning memungkinkan kita untuk membuat model yang dapat memprediksi hasil di masa depan atau mengklasifikasikan data berdasarkan pola yang ada. Di bab ini, kita akan mempelajari dasar-dasar machine learning, termasuk cara menggunakan pustaka seperti scikit-learn untuk membangun model prediksi dan klasifikasi sederhana.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [31],
+            "title": "Pengenalan DevOps untuk Pemula",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini memberikan pengenalan dasar tentang DevOps, mengapa DevOps penting, dan bagaimana DevOps digunakan untuk mempercepat pengembangan perangkat lunak.",
+            "body": "<h1>Pengenalan DevOps untuk Pemula</h1><p>DevOps adalah kombinasi dari filosofi budaya, praktik, dan alat yang meningkatkan kemampuan organisasi dalam memberikan aplikasi dan layanan dengan kecepatan tinggi. Dalam kursus ini, Anda akan mempelajari konsep dasar DevOps dan bagaimana proses tersebut dapat digunakan untuk meningkatkan pengembangan perangkat lunak dan operasi TI.</p><h2>Apa itu DevOps?</h2><p>DevOps adalah suatu metodologi yang menghubungkan pengembangan perangkat lunak (Dev) dan operasi TI (Ops). Dengan DevOps, organisasi dapat mengembangkan, menguji, dan merilis perangkat lunak lebih cepat dan lebih efisien. Tujuan utama dari DevOps adalah untuk meningkatkan kolaborasi antar tim dan mengotomatisasi berbagai proses dalam pengembangan perangkat lunak.</p><h2>Prinsip Utama DevOps</h2><p>Prinsip utama dalam DevOps meliputi otomasi, kolaborasi, dan integrasi berkelanjutan. Prinsip-prinsip ini memastikan bahwa pengembangan dan operasi dapat bekerja lebih efektif bersama-sama untuk menghasilkan produk yang lebih baik dan lebih cepat.</p><h2>Alat yang Digunakan dalam DevOps</h2><p>DevOps menggunakan berbagai alat untuk mengotomatisasi proses dan meningkatkan kolaborasi. Beberapa alat populer yang digunakan dalam DevOps termasuk Jenkins untuk continuous integration, Docker untuk containerization, dan Kubernetes untuk orkestrasi container.</p><h2>Kenapa DevOps Penting?</h2><p>DevOps penting karena memungkinkan perusahaan untuk mengurangi siklus pengembangan perangkat lunak dan mempercepat waktu pengiriman produk ke pasar. Dengan DevOps, perusahaan dapat merilis pembaruan perangkat lunak secara lebih cepat dan lebih sering, yang pada gilirannya meningkatkan kepuasan pengguna dan daya saing.</p><h2>Kesimpulan</h2><p>DevOps adalah konsep yang dapat membantu tim pengembang dan operasi bekerja sama lebih baik, mengotomatisasi tugas-tugas berulang, dan menghasilkan perangkat lunak dengan lebih cepat. Kursus ini memberikan pemahaman dasar yang diperlukan untuk memulai perjalanan Anda dalam dunia DevOps.</p>",
+            "requirements": [
+                "Pemahaman dasar tentang pengembangan perangkat lunak.",
+                "Pengetahuan tentang sistem operasi dan jaringan dasar."
+            ],
+            "recommended": [
+                "Pengembang perangkat lunak yang ingin mempercepat pengembangan dan penerapan aplikasi.",
+                "Tim operasi yang ingin belajar tentang otomatisasi dan peningkatan kolaborasi dalam siklus pengembangan perangkat lunak."
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan ke DevOps",
+                    "contents": [
+                        {
+                            "title": "Apa itu DevOps?",
+                            "description": "Memahami konsep dasar DevOps dan mengapa DevOps penting.",
+                            "body": "<h1>Apa itu DevOps?</h1><p>DevOps adalah metodologi yang menggabungkan pengembangan perangkat lunak dan operasi TI untuk meningkatkan efisiensi, kecepatan, dan kolaborasi. Dalam bagian ini, Anda akan mempelajari definisi DevOps dan mengapa hal ini penting untuk dunia perangkat lunak saat ini.</p>"
+                        },
+                        {
+                            "title": "Prinsip Utama DevOps",
+                            "description": "Menjelaskan prinsip-prinsip yang menjadi dasar pengembangan DevOps.",
+                            "body": "<h1>Prinsip Utama DevOps</h1><p>DevOps berfokus pada tiga prinsip utama: kolaborasi, otomatisasi, dan integrasi berkelanjutan. Prinsip-prinsip ini membantu tim untuk bekerja lebih efektif bersama-sama dan menciptakan perangkat lunak dengan kualitas yang lebih tinggi.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Alat dalam DevOps",
+                    "contents": [
+                        {
+                            "title": "Jenkins untuk Continuous Integration",
+                            "description": "Memahami cara menggunakan Jenkins untuk mengotomatisasi integrasi kode secara terus-menerus.",
+                            "body": "<h1>Jenkins untuk Continuous Integration</h1><p>Jenkins adalah alat yang digunakan untuk mengotomatisasi integrasi perangkat lunak. Dalam bagian ini, Anda akan belajar cara mengkonfigurasi Jenkins untuk menjalankan tes otomatis setiap kali ada perubahan kode.</p>"
+                        },
+                        {
+                            "title": "Docker dan Kubernetes",
+                            "description": "Pengenalan ke containerization dengan Docker dan orkestrasi container dengan Kubernetes.",
+                            "body": "<h1>Docker dan Kubernetes</h1><p>Docker digunakan untuk membungkus aplikasi dan dependensinya dalam container. Kubernetes digunakan untuk mengelola container secara efisien. Dalam bagian ini, Anda akan mempelajari cara kerja kedua alat ini dan mengapa mereka penting dalam DevOps.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [31],
+            "title": "Membangun Infrastruktur DevOps dengan Otomatisasi Lanjut",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk memperdalam pemahaman tentang DevOps dengan memfokuskan pada pembuatan infrastruktur menggunakan alat dan teknik lanjutan, serta otomatisasi alur kerja yang efisien.",
+            "body": "<h1>Membangun Infrastruktur DevOps dengan Otomatisasi Lanjut</h1><p>DevOps bukan hanya tentang mengintegrasikan pengembangan dan operasi, tetapi juga tentang mengautomasi infrastruktur, pengujian, dan penerapan kode secara efisien. Dalam kursus ini, Anda akan mempelajari teknik dan alat lanjutan yang digunakan untuk membangun infrastruktur yang skalabel dan otomatis menggunakan berbagai alat DevOps seperti Jenkins, Docker, Kubernetes, dan lainnya.</p><h2>Membangun Infrastruktur dengan Docker</h2><p>Docker memungkinkan Anda untuk membangun aplikasi yang terisolasi dalam container, memastikan lingkungan pengembangan yang konsisten. Dalam bagian ini, Anda akan belajar bagaimana membuat, mengonfigurasi, dan menjalankan container Docker dalam proyek DevOps Anda.</p><h2>Otomatisasi Alur Kerja dengan Jenkins</h2><p>Jenkins adalah alat otomatisasi yang populer digunakan dalam DevOps untuk membangun dan menguji perangkat lunak secara berkelanjutan. Anda akan mempelajari cara membuat pipeline CI/CD menggunakan Jenkins untuk mengotomatiskan pengujian dan penerapan perangkat lunak ke berbagai lingkungan.</p><h2>Manajemen Orkestrasi dengan Kubernetes</h2><p>Kubernetes adalah platform orkestrasi container yang memungkinkan manajemen aplikasi container secara otomatis. Di bagian ini, Anda akan mempelajari bagaimana menggunakan Kubernetes untuk mengelola container di lingkungan produksi, skalabilitas aplikasi, dan pemulihan bencana secara otomatis.</p><h2>Implementasi Infrastruktur sebagai Kode (IaC)</h2><p>Infrastruktur sebagai Kode (IaC) memungkinkan Anda untuk mengelola dan menyediakan infrastruktur menggunakan kode. Anda akan mempelajari alat seperti Terraform dan Ansible untuk mendefinisikan infrastruktur yang dapat diulang dan dikelola dengan kode, serta menerapkan praktik terbaik untuk manajemen infrastruktur DevOps yang efisien.</p><h2>Kesimpulan</h2><p>Kursus ini akan memberikan keterampilan lanjutan yang diperlukan untuk membangun dan mengelola infrastruktur DevOps yang efisien dengan otomatisasi alur kerja dan orkestrasi aplikasi menggunakan alat-alat populer seperti Docker, Jenkins, dan Kubernetes.</p>",
+            "requirements": [
+                "Pengalaman dasar dengan DevOps dan alat-alat seperti Docker, Jenkins, atau Kubernetes.",
+                "Pengetahuan dasar tentang pengembangan perangkat lunak dan pengelolaan sistem operasi."
+            ],
+            "recommended": [
+                "Pengembang perangkat lunak yang ingin meningkatkan keterampilan dalam otomasi dan manajemen infrastruktur.",
+                "Administrator sistem yang ingin mengembangkan keterampilan dalam otomatisasi alur kerja DevOps."
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Pengantar Otomatisasi Lanjut",
+                    "contents": [
+                        {
+                            "title": "Membangun Aplikasi dengan Docker",
+                            "description": "Memahami cara menggunakan Docker untuk membangun dan mengelola aplikasi dalam container.",
+                            "body": "<h1>Membangun Aplikasi dengan Docker</h1><p>Docker memungkinkan aplikasi untuk dijalankan dalam container yang terisolasi, memastikan konsistensi lingkungan pengembangan di berbagai tahap siklus hidup aplikasi. Dalam bagian ini, Anda akan mempelajari cara membuat image Docker dan menjalankannya di berbagai platform.</p>"
+                        },
+                        {
+                            "title": "Continuous Integration dengan Jenkins",
+                            "description": "Memahami cara mengonfigurasi Jenkins untuk otomatisasi pengujian dan penerapan perangkat lunak.",
+                            "body": "<h1>Continuous Integration dengan Jenkins</h1><p>Jenkins adalah alat utama untuk otomatisasi CI/CD. Anda akan mempelajari cara mengonfigurasi Jenkins untuk menjalankan tes otomatis setiap kali ada perubahan kode dan mengintegrasikan alat lain untuk penerapan otomatis ke berbagai lingkungan.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Orkestrasi dan Manajemen Infrastruktur",
+                    "contents": [
+                        {
+                            "title": "Menggunakan Kubernetes untuk Orkestrasi",
+                            "description": "Pengenalan ke Kubernetes dan cara mengelola aplikasi container dengan platform orkestrasi ini.",
+                            "body": "<h1>Menggunakan Kubernetes untuk Orkestrasi</h1><p>Kubernetes mengelola aplikasi container dalam lingkungan terdistribusi. Anda akan belajar cara men-deploy, menskalakan, dan memonitor aplikasi menggunakan Kubernetes untuk pengelolaan container yang lebih efisien dan otomatis.</p>"
+                        },
+                        {
+                            "title": "Infrastruktur sebagai Kode (IaC) dengan Terraform",
+                            "description": "Mempelajari konsep Infrastruktur sebagai Kode dan cara mengelola infrastruktur menggunakan Terraform.",
+                            "body": "<h1>Infrastruktur sebagai Kode dengan Terraform</h1><p>Infrastruktur sebagai Kode memungkinkan Anda untuk mendefinisikan dan menyediakan infrastruktur menggunakan kode. Dalam bagian ini, Anda akan mempelajari cara menggunakan Terraform untuk mengelola infrastruktur cloud secara otomatis.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [31],
+            "title": "Advanced DevOps: Mastering Automation, Scaling, and CI/CD",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "This advanced DevOps course is designed for experienced professionals looking to deepen their knowledge in automation, scaling, and continuous integration/continuous deployment (CI/CD). You will learn best practices and cutting-edge tools for managing infrastructure and automating software delivery pipelines.",
+            "body": "<h1>Advanced DevOps: Mastering Automation, Scaling, and CI/CD</h1><p>In this advanced DevOps course, you will delve deeper into automating infrastructure, scaling applications, and setting up robust CI/CD pipelines. We will cover a range of tools like Jenkins, Kubernetes, Docker, and Terraform to streamline your development workflows and manage your deployment pipelines efficiently. You will also explore monitoring, logging, and security best practices to ensure the stability and security of your production environments.</p><h2>Course Topics</h2><ul><li>Advanced Automation with Jenkins and GitLab CI</li><li>Building Scalable Systems with Kubernetes</li><li>Implementing Infrastructure as Code with Terraform</li><li>Continuous Deployment with Docker and Kubernetes</li><li>Monitoring and Logging for DevOps</li><li>Best Practices for Security in DevOps Pipelines</li></ul><p>This course assumes a strong understanding of basic DevOps principles and aims to provide hands-on experience with advanced tools and techniques.</p><h2>What You Will Learn</h2><ul><li>Master the use of Jenkins, GitLab CI, and other CI/CD tools to automate your workflow</li><li>Scale applications using Kubernetes and Docker containers</li><li>Automate infrastructure provisioning with Terraform</li><li>Implement robust security practices in your DevOps pipelines</li><li>Gain expertise in monitoring and logging for a proactive approach to problem-solving</li></ul><p>By the end of this course, you will be equipped to design and manage complex DevOps workflows and deliver software faster and more securely.</p>",
+            "requirements": [
+                "Prior experience with DevOps tools such as Docker, Kubernetes, Jenkins, or GitLab CI",
+                "A strong understanding of Linux/Unix systems and networking concepts",
+                "Familiarity with cloud platforms like AWS, GCP, or Azure"
+            ],
+            "recommended": [
+                "Backend Developers",
+                "Cloud Engineers",
+                "Systems Administrators"
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Introduction to Advanced DevOps",
+                    "contents": [
+                        {
+                            "title": "Overview of Advanced DevOps Practices",
+                            "description": "In this section, we will review the foundational principles of DevOps and how they evolve in complex environments.",
+                            "body": "<h1>Overview of Advanced DevOps Practices</h1><p>Advanced DevOps practices are essential for organizations looking to scale their operations and improve automation. This section will cover key practices that make DevOps scalable and efficient, such as CI/CD pipelines, infrastructure as code (IaC), and containerization. We will also explore tools like Jenkins, Kubernetes, and Docker in greater depth.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "CI/CD Automation and Scaling",
+                    "contents": [
+                        {
+                            "title": "Setting Up Jenkins for CI/CD",
+                            "description": "Learn how to configure Jenkins for continuous integration and delivery in your DevOps pipeline.",
+                            "body": "<h1>Setting Up Jenkins for CI/CD</h1><p>In this chapter, you will learn how to set up and configure Jenkins for automating your development workflows. We will explore how to create pipelines, integrate with version control systems like Git, and automate testing and deployment tasks.</p>"
+                        },
+                        {
+                            "title": "Kubernetes for Scaling and Orchestration",
+                            "description": "This section dives deep into Kubernetes, explaining how it manages containerized applications and scales them across a cluster.",
+                            "body": "<h1>Kubernetes for Scaling and Orchestration</h1><p>Kubernetes is an open-source platform that automates deploying, scaling, and managing containerized applications. In this section, we will discuss how to set up Kubernetes, deploy containers, and manage clusters for scaling applications.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Infrastructure as Code and Security in DevOps",
+                    "contents": [
+                        {
+                            "title": "Automating Infrastructure with Terraform",
+                            "description": "Learn how to use Terraform to manage and provision your infrastructure as code.",
+                            "body": "<h1>Automating Infrastructure with Terraform</h1><p>Terraform is a tool that allows you to define infrastructure in code. In this section, we will walk through using Terraform to provision servers, databases, and networking components in a cloud environment like AWS.</p>"
+                        },
+                        {
+                            "title": "DevOps Security Best Practices",
+                            "description": "Security is a critical part of DevOps. Learn how to implement security throughout your DevOps pipeline.",
+                            "body": "<h1>DevOps Security Best Practices</h1><p>In this section, we will explore how to implement security in your DevOps pipelines. We will cover topics such as secure coding, vulnerability scanning, and how to integrate security tools like Snyk and Trivy into your CI/CD pipeline.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [42],
+            "title": "Pengenalan Keamanan Siber untuk Pemula",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini memberikan pengenalan dasar mengenai keamanan siber, termasuk konsep-konsep dasar dan langkah-langkah untuk menjaga data dan sistem Anda tetap aman dari ancaman.",
+            "body": "<h1>Pengenalan Keamanan Siber untuk Pemula</h1><p>Keamanan siber adalah bidang yang sangat penting dalam dunia digital saat ini. Setiap orang yang mengakses internet perlu memahami bagaimana cara menjaga data pribadi dan informasi penting agar tidak jatuh ke tangan yang salah. Dalam kursus ini, kita akan membahas konsep dasar keamanan siber dan langkah-langkah yang dapat diambil untuk melindungi perangkat dan data Anda.</p><h2>Apa itu Keamanan Siber?</h2><p>Keamanan siber mencakup semua tindakan yang diambil untuk melindungi perangkat keras, perangkat lunak, dan data Anda dari ancaman yang berasal dari dunia maya. Ancaman ini bisa berupa virus, malware, hacking, phishing, dan lainnya. Tujuan dari keamanan siber adalah untuk memastikan bahwa data pribadi dan perusahaan tetap aman dan terlindungi dari ancaman yang terus berkembang.</p><h2>Komponen Utama Keamanan Siber</h2><p>Keamanan siber terdiri dari beberapa komponen penting yang harus dipahami oleh setiap individu. Komponen-komponen ini meliputi:</p><ul><li><strong>Firewall</strong>: Alat yang digunakan untuk melindungi jaringan dari akses yang tidak sah.</li><li><strong>Antivirus</strong>: Program yang dirancang untuk mendeteksi dan menghapus virus dari perangkat.</li><li><strong>Enkripsi</strong>: Proses mengubah data menjadi format yang hanya dapat dibaca oleh pihak yang memiliki kunci dekripsi yang benar.</li><li><strong>Autentikasi</strong>: Proses memverifikasi identitas pengguna untuk memastikan hanya pengguna yang sah yang dapat mengakses sistem.</li></ul><h2>Langkah-langkah Melindungi Data Anda</h2><p>Untuk menjaga keamanan data Anda, ada beberapa langkah yang bisa diambil, antara lain:</p><ul><li><strong>Gunakan Password yang Kuat:</strong> Jangan gunakan password yang mudah ditebak. Kombinasikan huruf, angka, dan simbol untuk menciptakan password yang lebih aman.</li><li><strong>Perbarui Perangkat Lunak Secara Teratur:</strong> Pembaruan perangkat lunak sering kali mengandung perbaikan keamanan yang penting untuk melindungi sistem Anda.</li><li><strong>Jaga Privasi di Media Sosial:</strong> Jangan berbagi informasi pribadi yang terlalu banyak di platform media sosial.</li></ul><h2>Kesimpulan</h2><p>Keamanan siber adalah aspek yang sangat penting dalam kehidupan digital kita. Dengan memahami dasar-dasar keamanan siber dan mengambil langkah-langkah pencegahan yang tepat, Anda dapat melindungi data dan informasi Anda dari berbagai ancaman. Kursus ini bertujuan untuk memberikan pemahaman dasar yang akan membantu Anda mengembangkan pengetahuan lebih lanjut tentang keamanan siber di masa depan.</p>",
+            "requirements": [
+                "Tidak ada persyaratan khusus, hanya pengetahuan dasar tentang penggunaan komputer."
+            ],
+            "recommended": [
+                "Individu yang baru mengenal dunia teknologi dan keamanan siber."
+            ],
+            "level": 1,
+            "groups": [
+                {
+                    "title": "Pendahuluan Keamanan Siber",
+                    "contents": [
+                        {
+                            "title": "Apa itu Keamanan Siber?",
+                            "description": "Pengenalan dasar mengenai apa itu keamanan siber dan mengapa penting untuk dipahami.",
+                            "body": "<h1>Apa itu Keamanan Siber?</h1><p>Keamanan siber mencakup semua tindakan yang diambil untuk melindungi perangkat keras, perangkat lunak, dan data dari ancaman dunia maya. Dalam kursus ini, kita akan membahas dasar-dasar keamanan siber dan peranannya dalam dunia digital yang semakin berkembang.</p>"
+                        },
+                        {
+                            "title": "Langkah-langkah Dasar Melindungi Data Anda",
+                            "description": "Langkah-langkah dasar yang dapat diambil untuk menjaga data Anda tetap aman.",
+                            "body": "<h1>Langkah-langkah Dasar Melindungi Data Anda</h1><p>Pada bagian ini, kita akan membahas beberapa langkah dasar yang dapat dilakukan untuk melindungi data pribadi dan informasi penting dari ancaman dunia maya.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [42, 43, 45],
+            "title": "Lanjutan Keamanan Siber: Melindungi Sistem dan Infrastruktur",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk peserta yang memiliki pemahaman dasar tentang keamanan siber dan ingin meningkatkan keterampilan mereka dalam mengamankan sistem dan infrastruktur TI. Fokus kursus ini adalah teknik lanjutan untuk melindungi aplikasi, jaringan, dan data dari ancaman yang semakin kompleks.",
+            "body": "<h1>Lanjutan Keamanan Siber: Melindungi Sistem dan Infrastruktur</h1><p>Kursus ini adalah lanjutan dari kursus dasar keamanan siber dan akan membahas lebih dalam mengenai pengamanan sistem serta cara mengatasi ancaman yang lebih canggih. Anda akan belajar tentang teknik-teknik lanjutan yang digunakan oleh profesional keamanan untuk mencegah serangan dan merespon insiden keamanan.</p><h2>Topik yang akan dibahas:</h2><ul><li>Pengelolaan keamanan jaringan: firewall, IDS/IPS, dan VPN.</li><li>Keamanan aplikasi web: perlindungan dari XSS, SQL Injection, dan CSRF.</li><li>Pengenalan enkripsi dan keamanan data.</li><li>Penanggulangan serangan DDoS dan perencanaan mitigasi risiko.</li><li>Pengelolaan identitas dan akses (IAM) serta autentikasi multi-faktor.</li></ul><h2>Metode Pengajaran</h2><p>Kursus ini mengkombinasikan teori dengan latihan praktis, termasuk simulasi serangan dan respons insiden, penggunaan perangkat lunak keamanan, serta best practices dalam pengelolaan infrastruktur yang aman.</p>",
+            "requirements": [
+                "Pemahaman dasar mengenai jaringan komputer dan sistem operasi.",
+                "Pengalaman dengan penggunaan alat keamanan dasar seperti firewall dan antivirus."
+            ],
+            "recommended": [
+                "Profesional TI yang ingin memperdalam pengetahuan tentang keamanan siber.",
+                "Peserta yang telah mengikuti kursus dasar keamanan siber atau memiliki pengalaman praktis dalam dunia TI."
+            ],
+            "level": 2,
+            "groups": [
+                {
+                    "title": "Pendahuluan dan Dasar-Dasar Keamanan Jaringan",
+                    "contents": [
+                        {
+                            "title": "Pengelolaan Keamanan Jaringan",
+                            "description": "Pada bagian ini, Anda akan mempelajari dasar-dasar pengelolaan keamanan jaringan dengan menggunakan firewall, sistem deteksi intrusi (IDS), dan sistem pencegahan intrusi (IPS).",
+                            "body": "<h1>Pengelolaan Keamanan Jaringan</h1><p>Keamanan jaringan adalah fondasi dari setiap infrastruktur yang aman. Dalam sesi ini, kita akan membahas cara-cara untuk memanfaatkan firewall untuk membatasi akses yang tidak sah dan menggunakan IDS/IPS untuk mendeteksi serta merespon serangan jaringan. Anda akan belajar bagaimana cara mengonfigurasi perangkat ini untuk melindungi jaringan perusahaan dari potensi ancaman.</p>"
+                        },
+                        {
+                            "title": "Keamanan Aplikasi Web",
+                            "description": "Kursus ini akan mengajarkan Anda cara mengidentifikasi dan melindungi aplikasi web dari berbagai jenis serangan seperti XSS, SQL Injection, dan CSRF.",
+                            "body": "<h1>Keamanan Aplikasi Web</h1><p>Serangan terhadap aplikasi web adalah salah satu ancaman terbesar di dunia maya saat ini. Di sesi ini, Anda akan belajar cara melindungi aplikasi web dengan mengidentifikasi celah keamanan umum dan menerapkan metode pertahanan seperti sanitasi input dan teknik pengamanan autentikasi.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Keamanan Infrastruktur dan Pengelolaan Data",
+                    "contents": [
+                        {
+                            "title": "Enkripsi dan Keamanan Data",
+                            "description": "Pembahasan mengenai teknik enkripsi dan bagaimana hal ini membantu dalam melindungi data sensitif yang ada dalam sistem.",
+                            "body": "<h1>Enkripsi dan Keamanan Data</h1><p>Enkripsi adalah salah satu teknik yang paling efektif untuk menjaga kerahasiaan data. Di bagian ini, Anda akan mempelajari dasar-dasar enkripsi simetris dan asimetris, serta penerapannya untuk mengamankan data dalam proses transmisi maupun penyimpanan.</p>"
+                        },
+                        {
+                            "title": "Penanggulangan Serangan DDoS",
+                            "description": "Pelajari tentang jenis serangan DDoS dan strategi mitigasi untuk melindungi server serta jaringan Anda.",
+                            "body": "<h1>Penanggulangan Serangan DDoS</h1><p>Serangan DDoS (Distributed Denial of Service) dapat menyebabkan kerusakan besar pada infrastruktur TI. Kursus ini mengajarkan cara menganalisis dan melindungi sistem dari serangan semacam itu menggunakan alat dan strategi mitigasi, termasuk firewall dan teknologi load balancing.</p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categories": [42],
+            "title": "Advanced Cybersecurity Techniques",
+            "thumbnail": "https://example.com/thumbnail.jpg",
+            "description": "Kursus ini dirancang untuk memberikan pengetahuan mendalam tentang teknik-teknik lanjutan dalam dunia keamanan siber, yang mencakup topik seperti peretasan etis, penanggulangan ancaman, dan analisis forensik digital.",
+            "body": "<h1>Advanced Cybersecurity Techniques</h1><p>Keamanan siber adalah aspek krusial dalam dunia digital saat ini. Kursus ini mengajarkan teknik-teknik lanjutan yang digunakan oleh para profesional di bidang cybersecurity untuk melindungi sistem dan jaringan dari ancaman yang semakin kompleks.</p><h2>Topik Kursus</h2><p>Kursus ini akan membahas topik-topik berikut:</p><ul><li>Peretasan Etis: Teknik untuk mengidentifikasi kerentanannya</li><li>Penanggulangan Ancaman: Cara menghadapi serangan dunia maya secara proaktif</li><li>Analisis Forensik Digital: Menginvestigasi dan melacak jejak digital serangan</li><li>Keamanan Jaringan Lanjutan: Mengamankan komunikasi dan transfer data</li><li>Keamanan Aplikasi Web: Mengatasi celah-celah dalam pengembangan aplikasi web</li></ul><h2>Tujuan Kursus</h2><p>Setelah menyelesaikan kursus ini, peserta diharapkan dapat:</p><ul><li>Mengidentifikasi dan memitigasi ancaman canggih terhadap sistem komputer dan jaringan.</li><li>Menerapkan prinsip peretasan etis untuk mengamankan aplikasi dan infrastruktur.</li><li>Menggunakan alat dan teknik forensik untuk menginvestigasi insiden keamanan.</li><li>Menangani dan merespon insiden keamanan dengan strategi mitigasi yang tepat.</li></ul><h2>Siapa yang Harus Mengikuti?</h2><p>Kursus ini cocok untuk profesional di bidang keamanan siber, analis forensik digital, serta pengembang yang tertarik untuk memperdalam pemahaman tentang keamanan dunia maya tingkat lanjut.</p>",
+            "requirements": [
+                "Pengalaman dasar tentang keamanan siber",
+                "Pengetahuan tentang sistem operasi dan jaringan",
+                "Pemahaman dasar tentang pemrograman dan scripting"
+            ],
+            "recommended": [
+                "Profesional keamanan siber",
+                "Analis Forensik Digital",
+                "Pengembang perangkat lunak"
+            ],
+            "level": 3,
+            "groups": [
+                {
+                    "title": "Pendahuluan dan Konsep Dasar",
+                    "contents": [
+                        {
+                            "title": "Pemahaman Ancaman Keamanan Digital",
+                            "description": "Memahami berbagai jenis ancaman dan kerentanannya terhadap sistem informasi.",
+                            "body": "<h1>Pemahaman Ancaman Keamanan Digital</h1><p>Ancaman terhadap keamanan digital semakin berkembang. Dalam bab ini, kita akan mempelajari berbagai jenis ancaman, termasuk malware, ransomware, serangan denial of service (DoS), dan lainnya. Peserta akan diberikan wawasan tentang bagaimana ancaman ini dapat mempengaruhi sistem dan bagaimana cara mencegahnya.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Teknik Peretasan Etis dan Penanggulangan Ancaman",
+                    "contents": [
+                        {
+                            "title": "Peretasan Etis: Pengujian Keamanan Sistem",
+                            "description": "Menggunakan teknik peretasan untuk mengidentifikasi kerentanannya dalam sistem.",
+                            "body": "<h1>Peretasan Etis: Pengujian Keamanan Sistem</h1><p>Peretasan etis adalah teknik untuk mengidentifikasi celah keamanan dalam sistem secara sah dan terstruktur. Dalam bab ini, kita akan mempelajari berbagai metode untuk melakukan pengujian penetrasi pada jaringan dan aplikasi, serta teknik mitigasi setelah temuan kerentanannya.</p>"
+                        }
+                    ]
+                },
+                {
+                    "title": "Forensik Digital dan Investigasi",
+                    "contents": [
+                        {
+                            "title": "Analisis Forensik Digital untuk Insiden Keamanan",
+                            "description": "Teknik untuk menyelidiki dan mengidentifikasi jejak serangan di dunia maya.",
+                            "body": "<h1>Analisis Forensik Digital untuk Insiden Keamanan</h1><p>Forensik digital adalah proses pengumpulan dan analisis bukti-bukti elektronik setelah serangan. Bab ini mengajarkan tentang alat dan teknik yang digunakan untuk menginvestigasi insiden keamanan, mengidentifikasi penyerang, dan memitigasi kerusakan yang ditimbulkan oleh serangan tersebut.</p>"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
