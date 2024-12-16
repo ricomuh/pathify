@@ -54,10 +54,10 @@ const handleSearch = () => {
     const url = `${window.location.pathname}?${params.toString()}`;
 
     // Update the URL without reloading the page
-    window.history.pushState({}, "", url);
+    // window.history.pushState({}, "", url);
 
     form.get(
-        route("courses.search", {
+        route("courses.index", {
             query,
             categories,
         }),
@@ -144,11 +144,11 @@ watch(
                 >
                     <input
                         type="checkbox"
-                        :name="category.name"
+                        :name="category.slug"
                         :id="`category${category.id}`"
                         class="hidden"
-                        :checked="isSelected(category.name)"
-                        @change="toggleCategory(category.name)"
+                        :checked="isSelected(category.slug)"
+                        @change="toggleCategory(category.slug)"
                     />
                     <label
                         :for="`category${category.id}`"

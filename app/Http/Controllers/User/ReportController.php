@@ -52,7 +52,7 @@ class ReportController extends Controller
             'reportable_id' => $comment->id,
             'reportable_type' => CourseComment::class,
             'reason' => $request->reason,
-            'description' => $request->description,
+            'description' => $request->description ?? null,
         ]);
 
         return redirect()->back()->with('success', 'Comment has been reported.');

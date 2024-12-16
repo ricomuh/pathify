@@ -25,6 +25,15 @@ class CourseController extends Controller
             },
             'joined'
         ])
+            ->when(request('query'), function ($q, $query) {
+                return $q->where('title', 'like', '%' . $query . '%');
+            })
+            ->when(request('category'), function ($q, $category) {
+                $categories = is_array($category) ? $category : explode(',', $category);
+                return $q->whereHas('categories', function ($q) use ($categories) {
+                    $q->whereIn('slug', $categories);
+                });
+            })
             ->published()
             ->latest()->limit(6)->get();
 
