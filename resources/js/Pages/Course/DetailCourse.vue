@@ -146,7 +146,7 @@ const defaultAccordionValue = computed(() => {
                                     v-if="props.course.joined.progress == 100"
                                     :href="`/courses/${props.course.slug}/review`"
                                     type="button"
-                                    class="bg-primary text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl"
+                                    class="bg-primary text-neutral-20 text-xl-plus hover:bg-primary-hover transition-all duration-200 ease-in-out border-b-4 border-primary-hover px-8 py-3 rounded-xl"
                                 >
                                     Unduh Sertifikat
                                 </Link>
@@ -162,7 +162,7 @@ const defaultAccordionValue = computed(() => {
                                                   .last_watched_episode
                                     }`"
                                     type="button"
-                                    class="bg-primary text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl"
+                                    class="bg-primary text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 ease-in-out"
                                 >
                                     Lanjut Belajar
                                 </Link>
@@ -176,7 +176,7 @@ const defaultAccordionValue = computed(() => {
                                         props.course.slug
                                     )
                                 "
-                                class="bg-primary block text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-16 py-3 rounded-xl"
+                                class="bg-primary block text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-16 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 ease-in-out"
                             >
                                 Bergabung
                             </Link>

@@ -14,7 +14,7 @@ import { Link } from "@inertiajs/vue3";
         </p>
         <Link
             href="/"
-            class="py-3 px-16 text-neutral-20 text-2xl bg-primary rounded-xl border-b-4 border-primary-hover"
+            class="py-3 px-16 text-neutral-20 text-2xl bg-primary rounded-xl border-b-4 hover:bg-primary-hover transition-all duration-200 ease-in-out border-primary-hover"
             >Kembali</Link
         >
     </div>

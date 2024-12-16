@@ -13,7 +13,7 @@
     </div>
     <Link
         href="/unduh-sertificate"
-        class="w-full block text-center py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
+        class="w-full block text-center py-3 text-2xl text-neutral-20 bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out border-b-4 rounded-xl border-primary-hover"
     >
         Unduh Sertifikat
     </Link>

@@ -100,7 +100,7 @@ const props = defineProps({
         <button
             @click="handleSubmissionClick"
             type="button"
-            class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover"
+            class="w-full py-3 text-2xl text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover hover:bg-primary-hover transition-all duration-200 ease-in-out"
         >
             Mulai Submission
         </button>

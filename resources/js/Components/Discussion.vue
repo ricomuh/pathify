@@ -208,7 +208,7 @@ onMounted(() => {
                 <div class="flex justify-end">
                     <button
                         type="submit"
-                        class="text-neutral-20 rounded-xl border-b-4 bg-primary border-primary-hover py-2 px-16"
+                        class="text-neutral-20 rounded-xl hover:bg-primary-hover transition-all duration-200 ease-in-out border-b-4 bg-primary border-primary-hover py-2 px-16"
                     >
                         Tanyakan
                     </button>
@@ -346,7 +346,7 @@ onMounted(() => {
                                 <DialogFooter>
                                     <button
                                         type="button"
-                                        class="text-lg w-full text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover py-2 px-6"
+                                        class="text-lg w-full text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover py-2 px-6 hover:bg-primary-hover transition-all duration-200 ease-in-out"
                                         @click="submitReport(value.id)"
                                     >
                                         Laporkan

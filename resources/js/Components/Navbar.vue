@@ -185,7 +185,7 @@ onUnmounted(() => {
                 <div v-else class="flex gap-4 items-center">
                     <Link
                         :href="route('login')"
-                        class="text-neutral-20 hover:text-primary-surface text-lg leading-[1.25rem] px-6 py-3 rounded-xl border-b-4 border-primary-hover bg-primary flex items-center justify-center"
+                        class="text-neutral-20 hover:text-primary-surface text-lg leading-[1.25rem] px-6 py-3 rounded-xl border-b-4 border-primary-hover hover:bg-primary-hover transition-all duration-200 ease-in-out bg-primary flex items-center justify-center"
                         >Masuk</Link
                     >
                     <Link

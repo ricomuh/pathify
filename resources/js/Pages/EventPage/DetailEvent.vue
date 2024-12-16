@@ -255,7 +255,7 @@ const isRegistrationClosed = computed(() => {
                                     <DialogTrigger as-child>
                                         <button
                                             type="button"
-                                            class="bg-primary text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
+                                            class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
                                         >
                                             Batalkan
                                         </button>
@@ -273,7 +273,7 @@ const isRegistrationClosed = computed(() => {
 
                                         <DialogFooter>
                                             <Link
-                                                class="bg-primary text-neutral-20 py-1.5 px-4 text-lg mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-lg w-full text-center"
+                                                class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 py-1.5 px-4 text-lg mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-lg w-full text-center"
                                                 :href="
                                                     route('events.join', {
                                                         event: props.event.slug,
@@ -318,7 +318,7 @@ const isRegistrationClosed = computed(() => {
                                             event: props.event.slug,
                                         })
                                     "
-                                    class="bg-primary text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl block w-max"
+                                    class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl block w-max"
                                 >
                                     Ikuti Event
                                 </Link>

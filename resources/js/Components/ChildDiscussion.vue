@@ -152,7 +152,7 @@ const goBack = () => {
                 ></textarea>
                 <button
                     type="submit"
-                    class="bg-primary h-auto px-10 rounded-xl border-b-4 border-primary-hover text-neutral-20"
+                    class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out h-auto px-10 rounded-xl border-b-4 border-primary-hover text-neutral-20"
                 >
                     Balas
                 </button>

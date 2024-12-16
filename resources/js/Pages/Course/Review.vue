@@ -88,7 +88,7 @@ const submitReview = () => {
             <button
                 type="submit"
                 @click="submitReview"
-                class="bg-primary w-full max-w-96 text-xl-plus py-3 rounded-xl text-neutral-20 border-b-4 border-primary-hover text-center"
+                class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out w-full max-w-96 text-xl-plus py-3 rounded-xl text-neutral-20 border-b-4 border-primary-hover text-center"
             >
                 Selanjutnya
             </button>

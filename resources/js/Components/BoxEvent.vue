@@ -59,7 +59,7 @@ const isFinished = computed(() => daysLeft.value <= 0);
             </h1>
             <Link
                 :href="`/events/${slug}`"
-                class="w-full text-center text-neutral-20 block rounded-xl border-b-4 border-primary-hover mb-1 bg-primary py-2"
+                class="w-full text-center text-neutral-20 block rounded-xl border-b-4 border-primary-hover mb-1 bg-primary py-2 hover:bg-primary-hover transition-all duration-200 ease-in-out"
                 >Lihat Detail</Link
             >
             <div v-if="!isFinished" class="flex justify-between items-center">

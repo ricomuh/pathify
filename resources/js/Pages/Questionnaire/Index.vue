@@ -235,7 +235,7 @@ const props = defineProps<{
                 </button>
                 <button
                     @click="submitForm"
-                    class="bg-primary text-white py-3 px-4 border-b-4 border-primary-hover rounded-xl text-xl"
+                    class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-white py-3 px-4 border-b-4 border-primary-hover rounded-xl text-xl"
                 >
                     Yakin, Lanjutkan
                 </button>
