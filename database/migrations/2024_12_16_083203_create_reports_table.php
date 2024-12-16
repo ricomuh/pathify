@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class, 'user_id')->constrained()->cascadeOnDelete();
             // $table->foreignIdFor(ReportType::class, 'report_type_id')->constrained()->cascadeOnDelete();
             $table->morphs('reportable');
-            $table->string('reportable_type');
+            // $table->string('reportable_type');
             $table->string('reason');
             $table->text('description');
             $table->timestamps();
