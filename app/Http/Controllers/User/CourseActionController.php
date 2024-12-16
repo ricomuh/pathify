@@ -43,15 +43,16 @@ class CourseActionController extends Controller
     public function toggleCommentVote(Course $course, CourseComment $comment, Request $request)
     {
         // check if user has joined the course
-        $userCourse = UserCourse::where('user_id', auth()->id())
-            ->where('course_id', $course->id)
-            ->firstOrFail();
+        // $userCourse = UserCourse::where('user_id', auth()->id())
+        //     ->where('course_id', $course->id)
+        //     ->firstOrFail();
+        abort_unless($course->joined(), 403, 'You have not joined this course');
 
         $request->validate([
             'is_upvote' => 'required|boolean',
         ]);
 
-        $vote = $comment->votes()->where('user_id', auth()->id())->where('course_comment_id', $comment->id)->first();
+        $vote = $comment->votes()->where('user_id', auth()->id())->first();
 
         if ($vote) {
             if ($vote->is_upvote === $request->is_upvote) {
