@@ -45,44 +45,62 @@ class MyCourseController extends Controller
         // get related courses based on the questionnaire result and user courses
         // sometimes the second category is null
         // get the categories first
-        $categories = [
-            $questionnaireResult->firstCategory->id,
-        ];
 
-        if ($questionnaireResult->secondCategory) {
-            $categories[] = $questionnaireResult->secondCategory->id;
+        if ($questionnaireResult) {
+            $categories = [
+                $questionnaireResult->firstCategory->id,
+            ];
+
+            if ($questionnaireResult->secondCategory) {
+                $categories[] = $questionnaireResult->secondCategory->id;
+            }
+
+            // append the user courses (if not exists)
+            $coursesCategories = $courses->map(function ($course) {
+                return $course->categories->pluck('id');
+            })->flatten()->unique();
+
+            $categories = array_merge($categories, $coursesCategories->toArray());
+
+            $relatedCourses = Course::whereExists(function ($query) use ($categories) {
+                $query->select(DB::raw(1))
+                    ->from('categories')
+                    ->join('course_categories', 'categories.id', '=', 'course_categories.category_id')
+                    ->whereColumn('courses.id', 'course_categories.course_id')
+                    ->whereIn('categories.id', $categories);
+            })
+                // ->whereNotIn('courses.id', $userCourses->pluck('course_id'))
+                ->notOwned()
+                ->inRandomOrder()
+                ->with([
+                    'mentor' => function ($query) {
+                        $query->select('id', 'profile_picture', 'fullname', 'username');
+                        $query->with('mentorDetail');
+                    },
+                    'categories' => function ($query) {
+                        $query->whereNull('parent_id');
+                    },
+                ])
+                ->limit(6)
+                ->get();
+
+            // return response()->json(compact('courses'));
+        } else {
+            $relatedCourses = Course::inRandomOrder()
+                // ->whereNotIn('courses.id', $userCourses->pluck('course_id'))
+                ->notOwned()
+                ->with([
+                    'mentor' => function ($query) {
+                        $query->select('id', 'profile_picture', 'fullname', 'username');
+                        $query->with('mentorDetail');
+                    },
+                    'categories' => function ($query) {
+                        $query->whereNull('parent_id');
+                    },
+                ])
+                ->limit(6)
+                ->get();
         }
-
-        // append the user courses (if not exists)
-        $coursesCategories = $courses->map(function ($course) {
-            return $course->categories->pluck('id');
-        })->flatten()->unique();
-
-        $categories = array_merge($categories, $coursesCategories->toArray());
-
-        $relatedCourses = Course::whereExists(function ($query) use ($categories) {
-            $query->select(DB::raw(1))
-                ->from('categories')
-                ->join('course_categories', 'categories.id', '=', 'course_categories.category_id')
-                ->whereColumn('courses.id', 'course_categories.course_id')
-                ->whereIn('categories.id', $categories);
-        })
-            // ->whereNotIn('courses.id', $userCourses->pluck('course_id'))
-            ->notOwned()
-            ->inRandomOrder()
-            ->with([
-                'mentor' => function ($query) {
-                    $query->select('id', 'profile_picture', 'fullname', 'username');
-                    $query->with('mentorDetail');
-                },
-                'categories' => function ($query) {
-                    $query->whereNull('parent_id');
-                },
-            ])
-            ->limit(6)
-            ->get();
-
-        // return response()->json(compact('courses'));
         // return response()->json([
         //     'courses' => $courses,
         //     'questionnaire_result' => $questionnaireResult,
