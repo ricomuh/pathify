@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseTestimony;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -38,12 +39,18 @@ class CourseReviewController extends Controller
         ]);
 
         // store review
-        $course->testimonies()->create([
+        // $course->testimonies()->create([
+        //     'user_id' => auth()->id(),
+        //     'rating' => $request->rating,
+        //     'body' => $request->body,
+        // ]);
+        CourseTestimony::create([
             'user_id' => auth()->id(),
+            'course_id' => $course->id,
             'rating' => $request->rating,
             'body' => $request->body,
         ]);
 
-        return redirect()->route('user.course.show.show', $course->slug)->with('success', 'Review has been submitted.');
+        return redirect()->route('courses.show.certificate', $course->slug);
     }
 }

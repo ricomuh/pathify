@@ -17,7 +17,7 @@ const handleStarClick = (rating: number) => {
 };
 
 const form = useForm({
-    review: "",
+    body: "",
     rating: 0,
 });
 
@@ -79,7 +79,7 @@ const submitReview = () => {
                     name="review"
                     id="review"
                     for="review"
-                    v-model="form.review"
+                    v-model="form.body"
                     rows="3"
                     placeholder="Berikan Umpan balik anda"
                     class="w-full rounded-xl border-2 border-neutral-40 px-6 py-3"

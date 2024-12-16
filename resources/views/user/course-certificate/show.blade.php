@@ -126,9 +126,9 @@
             <!-- Content -->
             <div class="content">
                 <p class="content1">diberikan kepada</p>
-                <h1>Danang Wahyu Utomo</h1>
+                <h1>{{ $name }}</h1>
                 <p class="content2">atas kelulusannya pada kelas</p>
-                <b>Dasar Pemrograman dengan Website</b>
+                <b>{{ $title }}</b>
             </div>
 
             <table>

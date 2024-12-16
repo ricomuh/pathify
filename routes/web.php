@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\CourseActionController;
+use App\Http\Controllers\User\CourseCertificateController;
 use App\Http\Controllers\User\CourseReviewController;
 use App\Http\Controllers\User\CourseWatchController;
 use App\Http\Controllers\User\DashboardController;
@@ -52,9 +53,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [ReportController::class, 'store'])->name('store');
     });
 });
-Route::get('/certificate', function () {
-    return view('user.course-certificate.show');
-});
+// Route::get('/certificate', function () {
+//     return view('user.course-certificate.show');
+// });
 
 Route::as('courses.')->prefix('courses')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
@@ -75,7 +76,7 @@ Route::as('courses.')->prefix('courses')->group(function () {
             Route::get('/review', [CourseReviewController::class, 'create'])->name('review.create');
             Route::post('/review', [CourseReviewController::class, 'store'])->name('review.store');
 
-            Route::get('/certificate', [CourseController::class, 'certificate'])->name('certificate');
+            Route::get('/certificate', [CourseCertificateController::class, 'show'])->name('certificate');
         });
     });
     // Route::get('/{course:slug}', [CourseWatchController::class, 'show'])->name('show');
