@@ -30,14 +30,14 @@ class CourseReviewController extends Controller
         // validate request
         $request->validate([
             'rating' => 'required|numeric|min:1|max:5',
-            'comment' => 'required|string',
+            'body' => 'required|string',
         ]);
 
         // store review
         $course->testimonies()->create([
             'user_id' => auth()->id(),
             'rating' => $request->rating,
-            'comment' => $request->comment,
+            'body' => $request->body,
         ]);
 
         // return redirect()->route('user.course.show', $course->slug)->with('success', 'Review has been submitted.');
