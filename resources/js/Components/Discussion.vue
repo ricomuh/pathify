@@ -11,18 +11,34 @@ import {
 import ChildDiscussion from "@/Components/ChildDiscussion.vue";
 import { onMounted } from "vue";
 import { useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
 
 // report
 const reportOptions = [
-    { value: "not-relevant", label: "Pertanyaan ini tidak relevan" },
-    { value: "sara", label: "Pertanyaan ini mengandung unsur SARA" },
-    { value: "nsfw", label: "Pertanyaan ini adalah NSFW" },
     {
-        value: "inappropriate",
+        value: "Pertanyaan ini tidak relevan",
+        label: "Pertanyaan ini tidak relevan",
+    },
+    {
+        value: "Pertanyaan ini mengandung unsur SARA",
+        label: "Pertanyaan ini mengandung unsur SARA",
+    },
+    {
+        value: "Pertanyaan ini adalah NSFW",
+        label: "Pertanyaan ini adalah NSFW",
+    },
+    {
+        value: "Pertanyaan ini tidak selayaknya ditanyakan",
         label: "Pertanyaan ini tidak selayaknya ditanyakan",
     },
-    { value: "spam", label: "Pertanyaan ini adalah spam" },
-    { value: "duplicate", label: "Pertanyaan ini adalah duplikat" },
+    {
+        value: "Pertanyaan ini adalah spam",
+        label: "Pertanyaan ini adalah spam",
+    },
+    {
+        value: "Pertanyaan ini adalah duplikat",
+        label: "Pertanyaan ini adalah duplikat",
+    },
     { value: "other", label: "Lainnya" },
 ];
 
@@ -72,6 +88,40 @@ const onSubmit = async () => {
         },
         onError: (errors) => {
             console.error("Validation errors:", errors);
+        },
+    });
+};
+
+// report form
+const selectedReason = ref("");
+const description = ref("");
+
+const showDialog = ref(true);
+
+const openDialog = () => {
+    showDialog.value = true;
+};
+
+const closeDialog = () => {
+    showDialog.value = false;
+};
+
+const submitReport = (commentId) => {
+    const form = useForm({
+        reportable_type: "course_comments",
+        reportable_id: commentId,
+        reason: selectedReason.value,
+        description: description.value || null,
+    });
+
+    form.post(route("reports.store"), {
+        onSuccess: () => {
+            // close the dialog
+            closeDialog();
+        },
+        onError: () => {
+            // close the dialog
+            closeDialog();
         },
     });
 };
@@ -206,21 +256,36 @@ onMounted(() => {
                                 @click="upvoteComment(value.id)"
                                 class="flex gap-3 items-center"
                                 type="button"
+                                :class="{
+                                    'bg-primary-surface p-3 rounded-3xl':
+                                        value.voted?.is_upvote == 1,
+                                }"
                             >
                                 <img
-                                    src="/media/icons/chevron-up.svg"
+                                    :src="
+                                        value.voted?.is_upvote == 1
+                                            ? '/media/icons/chevron-up-primary.svg'
+                                            : '/media/icons/chevron-up.svg'
+                                    "
                                     alt=""
                                     class="size-6"
                                 />
-                                <p class="text-neutral-80 text-lg">
+                                <p
+                                    class="text-lg"
+                                    :class="
+                                        value.voted?.is_upvote == 1
+                                            ? 'text-primary'
+                                            : 'text-neutral-80 '
+                                    "
+                                >
                                     {{ value.upvotes_count }}
                                 </p>
                             </button>
                         </div>
                         <!-- Report -->
-                        <Dialog>
+                        <Dialog v-if="showDialog">
                             <DialogTrigger as-child>
-                                <button type="button">
+                                <button type="button" @click="openDialog">
                                     <img
                                         src="/media/icons/report.svg"
                                         alt=""
@@ -245,6 +310,7 @@ onMounted(() => {
                                             :name="`report-${value.id}`"
                                             :id="option.value"
                                             :value="option.value"
+                                            v-model="selectedReason"
                                         />
                                         <label
                                             :for="option.value"
@@ -253,11 +319,17 @@ onMounted(() => {
                                             {{ option.label }}
                                         </label>
                                     </div>
+                                    <textarea
+                                        v-model="description"
+                                        placeholder="Tambahkan deskripsi (opsional)"
+                                        class="border rounded p-2"
+                                    ></textarea>
                                 </div>
                                 <DialogFooter>
                                     <button
                                         type="button"
                                         class="text-lg w-full text-neutral-20 bg-primary border-b-4 rounded-xl border-primary-hover py-2 px-6"
+                                        @click="submitReport(value.id)"
                                     >
                                         Laporkan
                                     </button>
