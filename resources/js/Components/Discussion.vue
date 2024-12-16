@@ -118,10 +118,16 @@ const submitReport = (commentId) => {
         onSuccess: () => {
             // close the dialog
             closeDialog();
+            setTimeout(() => {
+                openDialog();
+            }, 500);
         },
         onError: () => {
             // close the dialog
             closeDialog();
+            setTimeout(() => {
+                openDialog();
+            }, 500);
         },
     });
 };
