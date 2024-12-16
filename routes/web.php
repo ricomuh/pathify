@@ -12,6 +12,7 @@ use App\Http\Controllers\User\EventController;
 use App\Http\Controllers\User\MyCourseController;
 use App\Http\Controllers\User\MyEventController;
 use App\Http\Controllers\User\QuestionnaireController;
+use App\Http\Controllers\User\ReportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -45,6 +46,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [QuestionnaireController::class, 'index'])->name('index');
         Route::post('/', [QuestionnaireController::class, 'store'])->name('store');
         Route::get('/{questionnaireResult}', [QuestionnaireController::class, 'show'])->name('show')->withoutMiddleware('auth');
+    });
+
+    Route::as('reports.')->prefix('reports')->group(function () {
+        Route::post('/', [ReportController::class, 'store'])->name('store');
     });
 });
 
