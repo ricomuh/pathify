@@ -12,6 +12,7 @@ import ChildDiscussion from "@/Components/ChildDiscussion.vue";
 import { onMounted } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
+import SuccessAlert from "@/Components/SuccessAlert.vue";
 
 // report
 const reportOptions = [
@@ -60,6 +61,8 @@ const formVote = useForm({
 const upvoteComment = async (commentId) => {
     formVote.post(`/courses/${props.classSlug}/comment/${commentId}/vote`, {
         onSuccess: () => {
+            successMessage.value = ref("Berhasil memberikan suara!");
+            showSuccessAlert.value = true;
             formVote.reset();
         },
         onError: (errors) => {
@@ -84,6 +87,8 @@ const form = useForm({
 const onSubmit = async () => {
     form.post(`/courses/${props.classSlug}/comment`, {
         onSuccess: () => {
+            successMessage.value = ref("Pertanyaan berhasil diajukan!");
+            showSuccessAlert.value = true;
             form.reset();
         },
         onError: (errors) => {
@@ -106,6 +111,9 @@ const closeDialog = () => {
     showDialog.value = false;
 };
 
+const successMessage = ref("");
+const showSuccessAlert = ref(false);
+
 const submitReport = (commentId) => {
     const form = useForm({
         reportable_type: "course_comments",
@@ -116,6 +124,8 @@ const submitReport = (commentId) => {
 
     form.post(route("reports.store"), {
         onSuccess: () => {
+            successMessage.value = ref("Laporan berhasil dikirim!");
+            showSuccessAlert.value = true;
             // close the dialog
             closeDialog();
             setTimeout(() => {
@@ -142,6 +152,8 @@ onMounted(() => {
 </script>
 
 <template>
+    <!-- Success Alert -->
+    <SuccessAlert v-if="showSuccessAlert" :message="successMessage" />
     <div v-if="!submission" class="p-6 rounded-xl">
         <div class="flex flex-col gap-6">
             <div

@@ -1,5 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { defineProps, ref } from "vue";
+import SuccessAlert from "@/Components/SuccessAlert.vue";
 
 const props = defineProps({
     content: { type: Object, required: true },
@@ -17,6 +19,8 @@ const formVote = useForm({
 const upvoteComment = async (commentId) => {
     formVote.post(`/courses/${props.classSlug}/comment/${commentId}/vote`, {
         onSuccess: () => {
+            successMessage.value = ref("Berhasil memberikan suara");
+            showSuccessAlert.value = true;
             formVote.reset();
         },
         onError: (errors) => {
@@ -33,9 +37,14 @@ const form = useForm({
     parent_id: props.selectedCommentId,
 });
 
+const successMessage = ref("");
+const showSuccessAlert = ref(false);
+
 const onSubmit = async () => {
     form.post(`/courses/${props.classSlug}/comment`, {
         onSuccess: () => {
+            successMessage.value = ref("Balasan berhasil ditambahkan");
+            showSuccessAlert.value = true;
             form.reset();
         },
         onError: (errors) => {
@@ -51,6 +60,8 @@ const goBack = () => {
 </script>
 
 <template>
+    <!-- Success Alert -->
+    <SuccessAlert v-if="showSuccessAlert" :message="successMessage" />
     <button @click="goBack" class="mb-4 p-2 bg-gray-200 rounded">Back</button>
     <div v-for="(value, key) in content?.comments" :key="key">
         <div v-if="selectedCommentId === value.id" class="child-discussions">
