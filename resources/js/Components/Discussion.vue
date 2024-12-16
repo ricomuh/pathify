@@ -9,6 +9,7 @@ import {
     DialogTrigger,
 } from "@/Components/ui/dialog";
 import ChildDiscussion from "@/Components/ChildDiscussion.vue";
+import { onMounted } from "vue";
 
 // report
 const reportOptions = [
@@ -31,6 +32,40 @@ const props = defineProps({
     selectedCommentId: Number,
     toggleChildren: Function,
     formatDate: Function,
+    classSlug: String,
+});
+
+const upvoteComment = async (commentId: number) => {
+    try {
+        const response = await fetch(
+            `/courses/course-blabla/comment/${commentId}/vote`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ is_upvote: true }),
+            }
+        );
+        const data = await response.json();
+        // Handle the response if needed
+        console.log(data);
+    } catch (error) {
+        console.error("Failed to upvote the comment:", error);
+    }
+};
+
+const openChildDiscussion = (commentId: number) => {
+    window.history.pushState({}, "", `?commentId=${commentId}`);
+    props.toggleChildren(commentId);
+};
+
+onMounted(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const commentId = urlParams.get("commentId");
+    if (commentId) {
+        props.toggleChildren(Number(commentId));
+    }
 });
 </script>
 
@@ -128,7 +163,7 @@ const props = defineProps({
                         <div class="flex gap-6 items-center">
                             <!-- Total Discuss -->
                             <button
-                                @click="toggleChildren(value.id)"
+                                @click="openChildDiscussion(value.id)"
                                 type="button"
                                 class="flex gap-3 items-center"
                             >
@@ -149,6 +184,7 @@ const props = defineProps({
 
                             <!-- Upvote -->
                             <button
+                                @click="upvoteComment(value.id)"
                                 class="flex gap-3 items-center"
                                 type="button"
                             >
@@ -220,6 +256,7 @@ const props = defineProps({
                     :selectedCommentId="selectedCommentId"
                     :formatDate="formatDate"
                     :toggleChildren="toggleChildren"
+                    :classSlug="classSlug"
                 />
             </div>
         </div>

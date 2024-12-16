@@ -133,6 +133,7 @@ onMounted(() => {
                             :selectedCommentId="selectedCommentId"
                             :toggleChildren="toggleChildren"
                             :formatDate="formatDate"
+                            :classSlug="props.course.slug"
                         />
 
                         <!-- Submission -->
