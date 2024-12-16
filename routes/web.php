@@ -4,6 +4,7 @@ use App\Http\Controllers\MentorDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\AboutController;
+use App\Http\Controllers\User\CourseActionController;
 use App\Http\Controllers\User\CourseReviewController;
 use App\Http\Controllers\User\CourseWatchController;
 use App\Http\Controllers\User\DashboardController;
@@ -60,8 +61,8 @@ Route::as('courses.')->prefix('courses')->group(function () {
             Route::get('/join', [CourseWatchController::class, 'join'])->name('join');
             Route::get('/submission', [CourseWatchController::class, 'submission'])->name('submission');
 
-            Route::post('/comment', [CourseWatchController::class, 'comment'])->name('comment');
-            Route::post('/comment/{comment}/vote', [CourseWatchController::class, 'toggleCommentVote'])->name('comment.vote');
+            Route::post('/comment', [CourseActionController::class, 'comment'])->name('comment');
+            Route::post('/comment/{comment}/vote', [CourseActionController::class, 'toggleCommentVote'])->name('comment.vote');
 
             Route::get('/review', [CourseReviewController::class, 'create'])->name('review.create');
             Route::post('/review', [CourseReviewController::class, 'store'])->name('review.store');
