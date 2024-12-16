@@ -120,7 +120,7 @@ const closeModal = () => {
                     </div>
                 </AccordionContent>
             </AccordionItem>
-            <AccordionItem
+            <!-- <AccordionItem
                 class="bg-neutral-10 cursor-pointer border border-neutral-40 rounded-xl"
                 value="submission"
             >
@@ -144,7 +144,7 @@ const closeModal = () => {
                         </Link>
                     </div>
                 </AccordionContent>
-            </AccordionItem>
+            </AccordionItem> -->
         </Accordion>
     </div>
 
