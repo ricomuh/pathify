@@ -71,4 +71,10 @@ class CourseComment extends Model
             $query->where('user_id', $userId);
         });
     }
+
+    // reportable
+    public function reports()
+    {
+        return $this->morphMany(Report::class, 'reportable');
+    }
 }
