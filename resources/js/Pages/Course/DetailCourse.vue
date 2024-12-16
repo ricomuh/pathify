@@ -86,7 +86,7 @@ const defaultAccordionValue = computed(() => {
                         </h1>
                         <p
                             class="text-neutral-40 text-base mb-6"
-                            v-html="props.course.body"
+                            v-html="props.course.description"
                         ></p>
                         <!-- Mentor -->
                         <div class="flex justify-between items-center p-3 mb-6">

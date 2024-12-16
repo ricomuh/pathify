@@ -191,7 +191,7 @@ class CourseWatchController extends Controller
 
         // set $nextEpisode link, set to submission if the last episode
         $nextEpisode = $order + 1;
-        $nextEpisode = $nextEpisode > $course->contents->count() ? route('courses.show.submission', $course->slug) : route('courses.show.watch', [$course->slug, $nextEpisode]);
+        $nextEpisode = $nextEpisode > $course->contents->count() ? route('courses.show.review.create', $course->slug) : route('courses.show.watch', [$course->slug, $nextEpisode]);
 
         $prevEpisode = $order - 1;
         $prevEpisode = $prevEpisode < 1 ? route('courses.show.show', $course->slug) : route('courses.show.watch', [$course->slug, $prevEpisode]);

@@ -13,6 +13,10 @@ class CourseReviewController extends Controller
     {
         // check if user has already finished the course
         $course->load('joined');
+        $course->loadCount('contents');
+
+        $course->joined->completed_at = now();
+        $course->joined->save();
 
         // abort_unless($course->joined->completed_at, 403, 'You can only review course that you have completed.');
 
@@ -40,6 +44,6 @@ class CourseReviewController extends Controller
             'body' => $request->body,
         ]);
 
-        // return redirect()->route('user.course.show', $course->slug)->with('success', 'Review has been submitted.');
+        return redirect()->route('user.course.show.show', $course->slug)->with('success', 'Review has been submitted.');
     }
 }
