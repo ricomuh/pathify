@@ -14,7 +14,7 @@ import { Link } from "@inertiajs/vue3";
         <div class="flex justify-end">
             <Link
                 href="/questionnaire"
-                class="py-3 px-6 bg-primary rounded-3xl"
+                class="py-3 px-6 bg-primary rounded-3xl hover:bg-primary-hover transition-all duration-200 ease-in-out"
             >
                 <img src="/media/icons/play.svg" alt="" />
             </Link>

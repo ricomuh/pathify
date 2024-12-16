@@ -19,7 +19,7 @@ import { Link } from "@inertiajs/vue3";
         <div class="flex justify-center">
             <Link
                 href="/questionnaire"
-                class="py-3 px-6 bg-primary rounded-3xl flex gap-2.5 items-center"
+                class="py-3 px-6 bg-primary rounded-3xl flex gap-2.5 items-center hover:bg-primary-hover transition-all duration-200 ease-in-out"
             >
                 <img src="/media/icons/play.svg" alt="" />
                 <span class="text-white text-xl">Mulai sekarang</span>

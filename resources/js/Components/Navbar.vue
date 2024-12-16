@@ -84,7 +84,7 @@ onUnmounted(() => {
                                     <div class="inline-flex">
                                         <button
                                             type="button"
-                                            class="size-10 border-[3px] border-primary-surface bg-primary-surface rounded-xl flex items-center justify-center"
+                                            class="size-10 border-[3px] border-primary-surface bg-primary-surface rounded-xl flex items-center justify-center hover:!bg-primary-focus transition-all duration-200 ease-in-out"
                                         >
                                             <img
                                                 src="../../images/icons/notification.svg"
@@ -115,7 +115,7 @@ onUnmounted(() => {
                                 <template #trigger>
                                     <button
                                         type="button"
-                                        class="size-10 rounded-xl border-[3px] border-primary-border overflow-hidden"
+                                        class="size-10 rounded-xl border-[3px] border-primary-border overflow-hidden hover:bg-primary-focus hover:text-primary transition-all duration-200 ease-in-out"
                                     >
                                         <img
                                             :src="
@@ -190,7 +190,7 @@ onUnmounted(() => {
                     >
                     <Link
                         :href="route('register')"
-                        class="border-b-4 border-primary-border border-t-[3px] border-x-[3px] text-lg leading-[1.25rem] px-6 py-3 rounded-xl flex items-center justify-center bg-neutral-20"
+                        class="border-b-4 border-primary-border border-t-[3px] border-x-[3px] text-lg leading-[1.25rem] px-6 py-3 rounded-xl flex items-center justify-center bg-neutral-20 hover:bg-primary-focus hover:text-primary transition-all duration-200 ease-in-out"
                         >Gabung</Link
                     >
                 </div>
