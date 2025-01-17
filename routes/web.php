@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Mentor\ClassRoomController;
+use App\Http\Controllers\Mentor\DashboardController as MentorDashboardController;
+use App\Http\Controllers\Mentor\SubmissionController;
 use App\Http\Controllers\MentorDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CourseController;
@@ -38,10 +41,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/my-courses', [MyCourseController::class, 'index'])->name('my-courses.index');
-    Route::get('/my-events', [MyEventController::class, 'index'])->name('my-events.index');
+    Route::prefix('/user')->as('user.')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/my-courses', [MyCourseController::class, 'index'])->name('my-courses.index');
+        Route::get('/my-events', [MyEventController::class, 'index'])->name('my-events.index');
+    });
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix('/mentor')->as('mentor.')->group(function () {
+        Route::get('/dashboard', [MentorDashboardController::class, 'index'])->name('dashboard');
+
+        Route::resource('classroom', ClassRoomController::class);
+        Route::get('/classroom/{classroom}/submissions', [SubmissionController::class, 'show'])->name('classroom.submissions.show');
+    });
+
 
     Route::as('questionnaire.')->prefix('questionnaire')->group(function () {
         Route::get('/', [QuestionnaireController::class, 'index'])->name('index');
