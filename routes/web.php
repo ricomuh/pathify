@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\EventController as AdminEventController;
+use App\Http\Controllers\Admin\MentorController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Mentor\ClassRoomController;
 use App\Http\Controllers\Mentor\DashboardController as MentorDashboardController;
 use App\Http\Controllers\Mentor\SubmissionController;
@@ -52,6 +56,14 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('classroom', ClassRoomController::class);
         Route::get('/classroom/{classroom}/submissions', [SubmissionController::class, 'show'])->name('classroom.submissions.show');
+    });
+
+    Route::prefix('/admin')->as('admin.')->group(function () {
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+        Route::resource('mentors', MentorController::class);
+        Route::resource('users', UserController::class)->except(['edit', 'update']);
+        Route::resource('events', AdminEventController::class);
     });
 
 
