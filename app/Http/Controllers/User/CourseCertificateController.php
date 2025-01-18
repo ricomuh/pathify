@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\CourseCertificate;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CourseCertificateController extends Controller
 {
@@ -22,18 +23,22 @@ class CourseCertificateController extends Controller
 
         abort_unless($testimony, 403, 'You can only download certificate for course that you have reviewed.');
 
+        return Inertia::render('Pages/Course/Certificate', [
+            'course' => $course,
+        ]);
+
         // create certificate pdf
-        $pdf = app('dompdf.wrapper');
-        $pdf->loadView('user.course-certificate.show', ['title' => $course->title, 'name' => auth()->user()->name]);
-        return $pdf->download('certificate - ' . $course->title . '.pdf');
+        // $pdf = app('dompdf.wrapper');
+        // $pdf->loadView('user.course-certificate.show', ['title' => $course->title, 'name' => auth()->user()->name]);
+        // return $pdf->download('certificate - ' . $course->title . '.pdf');
 
         // check if there is already certificate
-        $exists = CourseCertificate::where('user_id', auth()->id())
-            ->where('course_id', $course->id)
-            ->first();
+        // $exists = CourseCertificate::where('user_id', auth()->id())
+        //     ->where('course_id', $course->id)
+        //     ->first();
 
-        if (!$exists) {
-        }
+        // if (!$exists) {
+        // }
 
         // return view('user.course-certificate.show', compact('course'));
 
