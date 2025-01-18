@@ -1,6 +1,6 @@
 <script setup>
 import UserLayout from "@/Layouts/UserLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import BoxEvent from "@/Components/BoxEvent.vue";
 import { computed } from "vue";
 
@@ -28,18 +28,20 @@ const finishedEvents = computed(() => {
     <Head title="Event Saya" />
 
     <UserLayout>
-        <div class="container py-12">
-            <div class="flex flex-col gap-12">
+        <div class="container pt-8 pb-32 lg:pb-12 xl:!py-12">
+            <div class="flex flex-col gap-6 lg:gap-8 xl:gap-12">
                 <!-- Header -->
                 <h1
-                    class="font-bold p-6 text-4xl-plus leading-[2.775rem] rounded-xl bg-neutral-10"
+                    class="font-bold p-6 text-2xl-plus md:text-3xl lg:text-4xl xl:text-4xl-plus rounded-xl bg-neutral-10"
                 >
                     Event Saya
                 </h1>
 
                 <!-- Upcoming Event -->
                 <div>
-                    <h1 class="font-bold text-4xl-plus leading-[2.775rem] mb-6">
+                    <h1
+                        class="text-2xl-plus md:text-3xl lg:text-4xl xl:text-4xl-plus font-bold mb-6"
+                    >
                         Akan datang
                     </h1>
                     <div
@@ -51,10 +53,14 @@ const finishedEvents = computed(() => {
                             class="h-60"
                             alt="Empty State"
                         />
-                        <p class="text-neutral-90 text-xl-plus text-center">
+                        <p
+                            class="text-neutral-90 text-lg md:w-3/4 mx-auto lg:text-xl xl:text-xl-plus text-center"
+                        >
                             Anda belum tergabung dalam event apapun,
-                            <a href="#" class="text-primary font-bold"
-                                >klik disini</a
+                            <Link
+                                :href="route('events.index')"
+                                class="text-primary font-bold"
+                                >klik disini</Link
                             >
                             untuk mengikuti event terbaru dari kami
                         </p>
@@ -78,7 +84,9 @@ const finishedEvents = computed(() => {
 
                 <!-- Finished Event -->
                 <div>
-                    <h1 class="font-bold text-4xl-plus leading-[2.775rem] mb-6">
+                    <h1
+                        class="text-2xl-plus md:text-3xl lg:text-4xl xl:text-4xl-plus font-bold mb-6"
+                    >
                         Event lampau
                     </h1>
                     <div v-if="finishedEvents.length === 0">

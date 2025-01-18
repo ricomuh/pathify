@@ -51,11 +51,11 @@ const bars = computed(() => {
     <Head title="Kelas Saya" />
 
     <UserLayout>
-        <div class="container py-12">
-            <div class="flex flex-col gap-12">
+        <div class="container pt-8 pb-32 lg:pb-12 xl:!py-12">
+            <div class="flex flex-col gap-6 lg:gap-8 xl:gap-12">
                 <!-- Header -->
                 <h1
-                    class="font-bold p-6 text-4xl-plus rounded-xl bg-neutral-10"
+                    class="font-bold p-6 text-2xl-plus md:text-3xl lg:text-4xl xl:text-4xl-plus rounded-xl bg-neutral-10"
                 >
                     Kelas Saya
                 </h1>
@@ -65,7 +65,9 @@ const bars = computed(() => {
 
                 <!-- Your Class -->
                 <div>
-                    <h1 class="text-4xl-plus font-bold">
+                    <h1
+                        class="text-2xl-plus md:text-3xl lg:text-4xl xl:text-4xl-plus font-bold"
+                    >
                         Kelas yang kamu pilih
                     </h1>
                     <p v-if="!props.courses" class="mt-3">
@@ -76,7 +78,7 @@ const bars = computed(() => {
                         <Carousel
                             class="relative w-full"
                             :opts="{
-                                align: 'center',
+                                align: 'start',
                                 gap: 24,
                             }"
                         >
@@ -84,19 +86,19 @@ const bars = computed(() => {
                                 <CarouselItem
                                     v-for="(value, key) in props.courses"
                                     :key="key"
-                                    class="xl:basis-3/5"
+                                    class="md:basis-1/2 xl:basis-3/5"
                                 >
                                     <Link
                                         :href="`/courses/${value.slug}`"
-                                        class="p-3 rounded-2xl border border-neutral-90 bg-neutral-30 flex gap-6"
+                                        class="p-3 rounded-2xl border border-neutral-90 bg-neutral-30 flex xl:flex-row flex-col gap-2 xl:gap-6"
                                     >
                                         <img
                                             :src="value.thumbnail"
-                                            class="w-[16rem] h-80 object-cover rounded-xl"
+                                            class="w-full xl:w-[16rem] h-56 xl:h-72 object-cover rounded-xl"
                                             alt=""
                                         />
                                         <div
-                                            class="flex flex-col gap-3 py-3 w-[32rem]"
+                                            class="flex flex-col gap-2 xl:gap-3 py-3 xl:w-[32rem]"
                                         >
                                             <!-- Category -->
                                             <BadgeCategory
@@ -112,7 +114,7 @@ const bars = computed(() => {
                                                 "
                                             />
                                             <h1
-                                                class="text-xl-plus font-bold h-16"
+                                                class="text-xl xl:text-xl-plus font-bold md:h-[4.5rem]"
                                             >
                                                 {{ value.title }}
                                             </h1>
@@ -175,7 +177,7 @@ const bars = computed(() => {
                                                     class="bg-white w-full border-none h-3"
                                                 />
                                                 <p
-                                                    class="text-primary font-bold text-2xl-plus"
+                                                    class="text-primary font-bold text-xl lg:text-2xl xl:text-2xl-plus"
                                                 >
                                                     {{ value.joined.progress }}%
                                                 </p>
@@ -192,7 +194,9 @@ const bars = computed(() => {
 
                 <!-- Maybe You Like -->
                 <div>
-                    <h1 class="text-4xl-plus font-bold mb-6">
+                    <h1
+                        class="text-2xl-plus md:text-3xl lg:text-4xl xl:text-4xl-plus font-bold mb-6"
+                    >
                         Mungkin kamu suka
                     </h1>
                     <Carousel
@@ -205,7 +209,7 @@ const bars = computed(() => {
                             <CarouselItem
                                 v-for="(course, index) in props?.relatedCourses"
                                 :key="index"
-                                class="md:basis-1/2 lg:basis-1/3 xl:basis-[30%]"
+                                class="sm:basis-1/2 xl:basis-[35%]"
                             >
                                 <div class="grid">
                                     <BoxCourse

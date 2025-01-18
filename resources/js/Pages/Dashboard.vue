@@ -38,11 +38,11 @@ const props = defineProps({
             </h2>
         </template>
 
-        <div class="container py-12">
-            <div class="flex flex-col gap-12">
+        <div class="container pt-8 pb-32 lg:pb-12 xl:!py-12">
+            <div class="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-12">
                 <!-- Quisioner result -->
-                <div class="bg-neutral-10 p-6 rounded-xl">
-                    <h1 class="font-bold text-4xl">
+                <div class="bg-neutral-10 p-4 lg:p-5 xl:p-6 rounded-xl">
+                    <h1 class="font-bold text-2xl lg:text-3xl xl:text-4xl">
                         Halo,
                         <span class="text-primary">{{
                             props.auth.user.fullname
@@ -50,16 +50,18 @@ const props = defineProps({
                         👋
                     </h1>
                     <div v-if="props.questionnaireResult">
-                        <p class="text-2xl text-neutral-90">
+                        <p
+                            class="text-lg lg:text-xl xl:text-2xl text-neutral-90"
+                        >
                             Sang
                             <span class="text-primary">{{
                                 props.questionnaireResult?.category.name
                             }}</span>
                         </p>
                         <div
-                            class="py-2 px-4 bg-neutral-20 rounded-xl flex justify-between items-center mt-8 mb-3"
+                            class="py-2 px-4 bg-neutral-20 rounded-xl flex justify-between sm:flex-row md:items-center gap-2 mt-3 flex-col xl:mt-8 mb-3"
                         >
-                            <p class="text-neutral-90 text-xl">
+                            <p class="text-neutral-90 md:text-lg xl:text-xl">
                                 Karir yang cocok untuk Anda
                             </p>
                             <div class="flex flex-wrap gap-2 md:gap-4">
@@ -79,7 +81,7 @@ const props = defineProps({
                                         props.questionnaireResult.first_category
                                             .icon_image
                                     "
-                                    fontSize="xl:text-lg"
+                                    fontSize="text-sm xl:text-lg"
                                     paddingY="py-2 !rounded-xl"
                                 />
                                 <BadgeCategory
@@ -99,7 +101,7 @@ const props = defineProps({
                                         props.questionnaireResult
                                             .second_category.icon_image
                                     "
-                                    fontSize="xl:text-lg"
+                                    fontSize="text-sm xl:text-lg"
                                     paddingY="py-2 !rounded-xl"
                                 />
                             </div>
@@ -113,38 +115,42 @@ const props = defineProps({
                 </div>
 
                 <!-- Data -->
-                <div class="bg-neutral-10 p-6 rounded-xl">
-                    <h1 class="text-2xl font-bold text-center mb-6">
+                <div class="bg-neutral-10 p-4 lg:p-5 xl:p-6 rounded-xl">
+                    <h1
+                        class="text-xl xl:text-2xl font-bold text-center mb-4 xl:mb-6"
+                    >
                         Pencapaian
                     </h1>
                     <div
-                        class="grid grid-cols-3 w-3/4 mx-auto justify-center items-center gap-6"
+                        class="grid grid-cols-3 xl:w-3/4 mx-auto justify-center gap-6"
                     >
                         <div class="col-span-1 text-center">
                             <p
-                                class="text-[3.5rem] leading-[4.25rem] font-bold"
+                                class="text-4xl lg:text-5xl xl:text-[3.5rem] leading-[4.25rem] font-bold"
                             >
                                 {{ props.coursesCount }}
                             </p>
-                            <p class="text-lg text-neutral-80">Kelas Diikuti</p>
+                            <p class="lg:text-lg text-neutral-80">
+                                Kelas Diikuti
+                            </p>
                         </div>
                         <div class="col-span-1 text-center">
                             <p
-                                class="text-[3.5rem] leading-[4.25rem] font-bold"
+                                class="text-4xl lg:text-5xl xl:text-[3.5rem] leading-[4.25rem] font-bold"
                             >
                                 {{ props.eventsCount }}
                             </p>
-                            <p class="text-lg text-neutral-80">
+                            <p class="lg:text-lg text-neutral-80">
                                 Event Dihadiri
                             </p>
                         </div>
                         <div class="col-span-1 text-center">
                             <p
-                                class="text-[3.5rem] leading-[4.25rem] font-bold"
+                                class="text-4xl lg:text-5xl xl:text-[3.5rem] leading-[4.25rem] font-bold"
                             >
                                 {{ props.certificateCount }}
                             </p>
-                            <p class="text-lg text-neutral-80">Sertifikat</p>
+                            <p class="lg:text-lg text-neutral-80">Sertifikat</p>
                         </div>
                     </div>
                 </div>
