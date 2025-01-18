@@ -57,7 +57,7 @@ const defaultAccordionValue = computed(() => {
     <AuthenticatedLayout>
         <!-- Hero -->
         <div
-            class="bg-primary-pressed relative xl:h-screen flex justify-center flex-col py-16"
+            class="bg-primary-pressed relative xl:h-screen flex justify-center flex-col pt-24 py-16"
         >
             <img
                 :src="props.course.thumbnail"
@@ -66,7 +66,7 @@ const defaultAccordionValue = computed(() => {
             />
             <!-- Konten dalam container -->
             <div class="container relative z-10">
-                <div class="grid xl:grid-cols-2 gap-8 xl:gap-12 items-center">
+                <div class="grid lg:grid-cols-2 gap-8 xl:gap-12 items-center">
                     <div class="col">
                         <div class="flex gap-2 flex-wrap">
                             <BadgeCategory
@@ -76,11 +76,11 @@ const defaultAccordionValue = computed(() => {
                                 :icons="category.icon_image"
                                 :backgroundColor="category.color"
                                 :category="category.name"
-                                fontSize="text-base"
+                                fontSize="text-xs md:text-sm lg:text-base"
                             />
                         </div>
                         <h1
-                            class="text-4xl-plus leading-[2.775rem] font-bold text-neutral-10 my-3"
+                            class="text-2xl md:text-3xl xl:text-4xl-plus xl:leading-[2.775rem] font-bold text-neutral-10 my-3"
                         >
                             {{ props.course.title }}
                         </h1>
@@ -168,7 +168,10 @@ const defaultAccordionValue = computed(() => {
                                 </Link>
                             </div>
                         </div>
-                        <div v-else class="flex justify-between items-center">
+                        <div
+                            v-else
+                            class="flex flex-col gap-2 md:flex-row justify-between items-center"
+                        >
                             <Link
                                 :href="
                                     route(
@@ -176,7 +179,7 @@ const defaultAccordionValue = computed(() => {
                                         props.course.slug
                                     )
                                 "
-                                class="bg-primary block text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-16 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 ease-in-out"
+                                class="bg-primary w-full md:w-max text-center block text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-16 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 ease-in-out"
                             >
                                 Bergabung
                             </Link>
@@ -191,7 +194,7 @@ const defaultAccordionValue = computed(() => {
         </div>
 
         <!-- Detail Course -->
-        <div class="container xl:py-12 py-8">
+        <div class="container py-6 xl:py-12 lg:py-8">
             <div class="grid md:grid-cols-2 gap-8 xl:gap-12">
                 <div class="col-span-1">
                     <!-- For Who -->
@@ -216,7 +219,7 @@ const defaultAccordionValue = computed(() => {
                 </div>
                 <div class="col-span-1">
                     <!-- Requirement -->
-                    <div class="mb-12">
+                    <div class="mb-6 lg:mb-12">
                         <h1 class="title mb-1">Kebutuhan kamu</h1>
                         <p class="text-neutral-90 mb-6">
                             Sebagai peralatan dan penunjang belajar kamu pada
@@ -241,7 +244,7 @@ const defaultAccordionValue = computed(() => {
                 </div>
             </div>
             <div
-                class="grid lg:grid-cols-2 xl:grid-cols-5 gap-8 xl:gap-12 xl:py-12 py-8"
+                class="grid lg:grid-cols-2 xl:grid-cols-5 gap-8 xl:gap-12 pt-6 xl:pt-12 lg:pt-8"
             >
                 <!-- Curriculum -->
                 <div class="lg:col-span-1 xl:col-span-3">
@@ -331,10 +334,10 @@ const defaultAccordionValue = computed(() => {
             </div>
         </div>
         <!-- Review -->
-        <div class="xl:py-12 py-8">
+        <div class="py-6 xl:py-12 lg:py-8">
             <div class="container">
                 <h1 class="title mb-1">Apa kata mereka?</h1>
-                <p class="text-neutral-90 mb-12 md:w-3/5">
+                <p class="text-neutral-90 mb-6 lg:mb-12 md:w-3/5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. incididunt ut labore et dolore magna aliqua.
@@ -343,10 +346,10 @@ const defaultAccordionValue = computed(() => {
             <CarouselReveiw :testimonials="props.course.testimonies" />
         </div>
         <!-- You Might Like -->
-        <div class="container xl:py-12 py-8">
+        <div class="container py-6 xl:py-12 lg:py-8">
             <h1 class="title mb-3">Mungkin kamu suka</h1>
             <div
-                class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
             >
                 <BoxCourse
                     v-for="(course, index) in props.relatedCourses"
@@ -369,7 +372,7 @@ const defaultAccordionValue = computed(() => {
 
 <style scoped>
 .title {
-    @apply text-2xl xl:text-4xl-plus leading-[2.775rem] font-bold text-neutral-100;
+    @apply text-2xl md:text-3xl xl:text-4xl-plus xl:leading-[2.775rem] font-bold text-neutral-100;
 }
 ::v-deep .about-course ul {
     @apply list-disc list-inside;

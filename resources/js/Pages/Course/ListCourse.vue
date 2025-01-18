@@ -91,7 +91,7 @@ watch(
 
     <AuthenticatedLayout>
         <!-- Hero -->
-        <div class="container pb-12 pt-24">
+        <div class="container pb-6 lg:pb-12 pt-24">
             <Carousel
                 class="relative w-full"
                 :plugins="[plugin]"
@@ -113,16 +113,22 @@ watch(
         </div>
         <!-- Search Based on Category -->
         <div class="container">
-            <div class="flex justify-between items-center mb-6 flex-wrap">
-                <h1 class="text-2xl-plus font-bold text-neutral-100">
+            <div
+                class="flex justify-between items-center mb-3 md:mb-4 xl:mb-6 flex-wrap"
+            >
+                <h1
+                    class="text-2xl xl:text-2xl-plus font-bold text-neutral-100"
+                >
                     Filter berdasarkan Kategori
                 </h1>
-                <p class="text-xl-plus text-neutral-80">
+                <p
+                    class="md:text-lg lg:text-xl xl:text-xl-plus text-neutral-80"
+                >
                     {{ props.latestCourses.length }} Kelas ditemukan
                 </p>
             </div>
             <div
-                class="flex gap-3 flex-wrap w-full overflow-x-auto items-center"
+                class="flex gap-2 md:gap-3 flex-nowrap w-full overflow-x-auto items-center"
             >
                 <div
                     v-for="category in props.categories"
@@ -140,7 +146,7 @@ watch(
                     <label
                         :for="`category${category.id}`"
                         :class="[
-                            'py-2 px-4 text-nowrap cursor-pointer text-lg rounded-2xl border-[1.4px] flex gap-2 items-center tracking-[0.00406rem]',
+                            'py-2 px-2 md:px-4 text-nowrap cursor-pointer text-xs md:text-sm lg:text-base xl:text-lg rounded-xl lg:rounded-2xl border-[1.4px] flex gap-2 items-center tracking-[0.00406rem]',
                             isSelected(category.slug)
                                 ? `text-white`
                                 : 'bg-neutral-10 text-neutral-60 border-neutral-50',
@@ -157,11 +163,11 @@ watch(
                         <i
                             :class="[
                                 category.icon_image,
-                                isSelected(category.name)
-                                    ? 'text-white'
+                                isSelected(category.slug)
+                                    ? '!text-white'
                                     : 'text-neutral-60',
                             ]"
-                            class="text-lg"
+                            class="text-xs md:text-sm lg:text-base xl:text-lg"
                         ></i>
                         {{ category.name }}
                     </label>
@@ -171,24 +177,28 @@ watch(
 
         <!-- List Course -->
         <div class="container pt-6 pb-12">
-            <div class="flex flex-wrap gap-2 justify-between items-center mb-6">
-                <h1 class="text-4xl-plus text-neutral-100 font-bold">
+            <div
+                class="flex flex-col md:flex-row flex-wrap gap-2 justify-between md:items-center mb-3 lg:mb-6"
+            >
+                <h1
+                    class="text-2xl md:text-3xl xl:text-4xl-plus text-neutral-100 font-bold"
+                >
                     Semua Kelas
                 </h1>
                 <div
-                    class="flex gap-1 items-center py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 w-96"
+                    class="flex gap-1 items-center py-2 lg:py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 md:w-64 lg:w-72 xl:w-96"
                 >
                     <img src="/media/icons/search.svg" alt="" />
                     <input
                         type="search"
                         v-model="form.query"
-                        class="outline-none !h-max py-0 px-0 border-0 bg-neutral-10 shadow-none !ring-0 w-full"
+                        class="outline-none text-sm !h-max py-0 px-0 border-0 bg-neutral-10 shadow-none !ring-0 w-full"
                         placeholder="Mau belajar apa hari ini?"
                     />
                 </div>
             </div>
             <div
-                class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
+                class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
             >
                 <BoxCourse
                     v-for="(course, index) in props?.latestCourses"
@@ -209,11 +219,13 @@ watch(
 
         <!-- Popular Course -->
         <div class="container pb-12">
-            <h1 class="text-4xl-plus text-neutral-100 font-bold mb-6">
+            <h1
+                class="text-2xl md:text-3xl xl:text-4xl-plus text-neutral-100 font-bold mb-6"
+            >
                 Kelas paling populer
             </h1>
             <div
-                class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
+                class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
             >
                 <BoxCourse
                     v-for="(course, index) in props.popularCourses"
@@ -238,3 +250,9 @@ watch(
         </div>
     </AuthenticatedLayout>
 </template>
+
+<style scoped>
+.overflow-x-auto::-webkit-scrollbar {
+    display: none;
+}
+</style>

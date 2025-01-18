@@ -50,19 +50,23 @@ const goToPage = (url) => {
     <AuthenticatedLayout>
         <div class="container pt-12">
             <!-- Hero -->
-            <div class="flex flex-col items-center justify-center py-12">
+            <div
+                class="flex flex-col items-center justify-center pt-8 pb-4 lg:py-12"
+            >
                 <h1
-                    class="text-4xl md:text-5xl font-bold text-neutral-100 -mb-1"
+                    class="text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-100 -mb-1"
                 >
                     Event
                 </h1>
-                <p class="text-2xl text-neutral-90 mb-6 text-center">
+                <p
+                    class="text-lg lg:text-xl xl:text-2xl text-neutral-90 mb-4 lg:mb-6 text-center"
+                >
                     Ikuti Event, dapatkan insight, dan jalin networking
                 </p>
                 <!-- Search Form -->
-                <div class="w-full max-w-md">
+                <div class="w-full flex justify-center mx-auto">
                     <div
-                        class="flex gap-1 items-center py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 w-96"
+                        class="flex gap-1 justify-center items-center py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 w-96"
                     >
                         <img src="media/icons/search.svg" alt="" />
                         <input
@@ -78,13 +82,13 @@ const goToPage = (url) => {
             <!-- All Events -->
             <div class="pb-12">
                 <h1
-                    class="text-3xl md:text-4xl-plus font-bold text-neutral-100 mb-6"
+                    class="text-2xl lg:text-3xl xl:text-4xl-plus font-bold text-neutral-100 mb-3 lg:mb-6"
                 >
                     Semua Event
                 </h1>
                 <div
                     v-if="props.events.data.length > 0"
-                    class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
+                    class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
                 >
                     <BoxEvent
                         v-for="(value, key) in props.events.data"

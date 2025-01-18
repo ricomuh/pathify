@@ -42,12 +42,12 @@ const advantages = ref([
                 >
                     <div class="xl:w-2/3 mx-auto pt-20">
                         <h1
-                            class="text-6xl-plus leading-[4.95rem] mb-3 font-bold text-neutral-20"
+                            class="text-4xl leading-[3rem] lg:text-5xl xl:text-6xl-plus xl:leading-[4.95rem] mb-3 font-bold text-neutral-20"
                         >
                             Ikuti Kuiz dan Temukan Role yang
                             <span class="text-primary">Kamu Banget!</span>
                         </h1>
-                        <p class="text-xl text-neutral-70 mb-12">
+                        <p class="lg:text-lg xl:text-xl text-neutral-70 mb-12">
                             Merasa sudah belajar coding namun tidak segera
                             pandai?. Atau merasa salah mengambil role?. Ikuti
                             Quiz dari kami dan temukan role serta dapatkan
@@ -59,13 +59,13 @@ const advantages = ref([
                         </p>
                         <Link
                             href="/questionnaire"
-                            class="block bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 w-max text-xl py-4 px-8 rounded-xl mx-auto border-b-4 border-primary-hover"
+                            class="block bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 w-max lg:text-lg xl:text-x py-3 lg:py-4 px-8 rounded-xl mx-auto border-b-4 border-primary-hover"
                             >Temukan Role</Link
                         >
                     </div>
                     <img
                         src="/media/illustrations/home-banner.png"
-                        class="w-4/5 mx-auto"
+                        class="lg:w-4/5 mx-auto"
                         alt=""
                     />
                 </div>
@@ -73,38 +73,38 @@ const advantages = ref([
         </div>
 
         <!-- Section 2 -->
-        <div class="bg-neutral-100 py-12 overflow-hidden">
+        <div class="bg-neutral-100 py-6 xl:py-12 overflow-hidden">
             <div class="marquee">
                 <div class="marquee-content">
                     <!-- Repeating content dynamically using Vue.js -->
                     <template v-for="i in 8" :key="i">
                         <p
-                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-2xl lg:text-2xl-plus xl:text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             Dunia IT adalah masa depan Anda
                         </p>
                         <p
-                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-2xl lg:text-2xl-plus xl:text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             -
                         </p>
                         <p
-                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-2xl lg:text-2xl-plus xl:text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             Belajar IT itu Menyenangkan
                         </p>
                         <p
-                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-2xl lg:text-2xl-plus xl:text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             -
                         </p>
                         <p
-                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-2xl lg:text-2xl-plus xl:text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             Temukan Spesialisasimu disini
                         </p>
                         <p
-                            class="text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
+                            class="text-2xl lg:text-2xl-plus xl:text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
                             -
                         </p>
@@ -116,32 +116,42 @@ const advantages = ref([
         <!-- Section 3 -->
         <div class="bg-primary py-12">
             <div class="container">
-                <div class="grid grid-cols-4 gap-12 items-center">
+                <div
+                    class="grid grid-cols-1 xl:grid-cols-4 gap-6 xl:gap-12 items-center"
+                >
                     <div class="col-span-1">
                         <h1
-                            class="text-4xl text-neutral-20 font-bold leading-[2.7rem]"
+                            class="text-3xl md:text-4xl text-center xl:text-start text-neutral-20 font-bold leading-[2.7rem]"
                         >
                             Rasakan manfaat dari bergabung bersama kami
                         </h1>
                     </div>
-                    <div class="col-span-3">
-                        <div class="grid grid-cols-3 gap-6">
+                    <div class="xl:col-span-3">
+                        <div
+                            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5 xl:gap-6"
+                        >
                             <div
                                 v-for="(value, index) in advantages"
                                 :key="index"
-                                class="rounded-3xl border-4 border-neutral-90 bg-neutral-20 p-6 flex flex-col justify-between"
+                                class="rounded-3xl border md:border-2 lg:border-3 xl:border-4 border-neutral-90 bg-neutral-20 p-6 flex flex-col justify-between"
                             >
                                 <div>
                                     <h1
-                                        class="text-3xl-plus font-bold text-neutral-90 leading-[2.5rem] mb-2"
+                                        class="text-xl md:text-2xl xl:text-3xl-plus font-bold text-neutral-90 xl:leading-[2.5rem] mb-2"
                                     >
                                         {{ value.title }}
                                     </h1>
-                                    <p class="text-neutral-70">
+                                    <p
+                                        class="text-sm md:text-base text-neutral-70"
+                                    >
                                         {{ value.desc }}
                                     </p>
                                 </div>
-                                <img :src="value.image" alt="" />
+                                <img
+                                    :src="value.image"
+                                    class="w-1/2 sm:w-3/4 lg:w-full mx-auto"
+                                    alt=""
+                                />
                             </div>
                         </div>
                     </div>

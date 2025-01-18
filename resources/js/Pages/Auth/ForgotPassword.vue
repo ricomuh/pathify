@@ -78,7 +78,7 @@ const submit = () => {
         </div>
         <Link
             :href="route('register')"
-            class="text-primary block text-center mt-3 text-xl font-bold"
+            class="text-primary block text-center mt-3 text-lg lg:text-xl font-bold"
         >
             Buat akun baru
         </Link>

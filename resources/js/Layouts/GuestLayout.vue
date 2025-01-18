@@ -23,7 +23,7 @@ import { Link } from "@inertiajs/vue3";
             >
                 <slot />
             </div>
-            <div class="bg-primary-surface py-6 px-12 text-center">
+            <div class="bg-primary-surface py-3 lg:py-6 px-12 text-center">
                 <p class="text-neutral-90 md:text-lg">
                     &copy; {{ new Date().getFullYear() }} Phatify
                 </p>
