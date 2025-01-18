@@ -7,19 +7,19 @@ import { Link } from "@inertiajs/vue3";
 const menuItems = [
     {
         name: "Dashboard",
-        href: "/dashboard",
+        href: route("user.dashboard"),
         icon: "/media/icons/dashboard.svg",
         active: "dashboard",
     },
     {
         name: "Kelas Saya",
-        href: "/my-courses",
+        href: route("user.my-courses.index"),
         icon: "/media/icons/class.svg",
         active: "my-courses.index",
     },
     {
         name: "Event Saya",
-        href: "/my-events",
+        href: route("user.my-events.index"),
         icon: "/media/icons/event.svg",
         active: "my-events.index",
     },

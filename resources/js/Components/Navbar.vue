@@ -22,6 +22,13 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener("scroll", handleScroll);
 });
+
+const dashboardURL =
+    page.props.auth.role == "Admin"
+        ? route("admin.dashboard")
+        : page.props.auth.role == "Mentor"
+        ? route("mentor.dashboard")
+        : route("user.dashboard");
 </script>
 
 <template>
@@ -128,7 +135,7 @@ onUnmounted(() => {
                                     </button>
                                 </template>
                                 <template #content>
-                                    <DropdownLink :href="route('dashboard')"
+                                    <DropdownLink :href="dashboardURL"
                                         >Dashboard</DropdownLink
                                     >
                                     <DropdownLink
@@ -207,7 +214,7 @@ onUnmounted(() => {
             >
                 <div class="space-y-1 pb-3 pt-2">
                     <ResponsiveNavLink
-                        :href="route('dashboard')"
+                        :href="dashboardURL"
                         :active="route().current('dashboard')"
                         >Dashboard</ResponsiveNavLink
                     >

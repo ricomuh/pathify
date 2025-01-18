@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\RoleEnum;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
@@ -34,6 +35,8 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user()?->only('id', 'profile_picture', 'fullname', 'username', 'email'),
+                // 'role' => $request->user()?->
+                'role' => $request->user()?->role_name
             ],
             'ziggy' => fn() => [
                 ...(new Ziggy)->toArray(),
