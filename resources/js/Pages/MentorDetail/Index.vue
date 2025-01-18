@@ -31,39 +31,49 @@ const props = defineProps({
     <Head title="Detail Mentor" />
 
     <AuthenticatedLayout>
-        <div class="h-80 relative mt-12">
+        <div class="h-48 xl:h-80 relative mt-12">
             <img
                 src="/media/illustrations/cover-mentor.png"
-                class="w-full h-56 object-cover"
+                class="w-full h-32 xl:h-56 object-cover"
                 alt=""
             />
             <div class="absolute left-1/2 -translate-x-1/2">
                 <img
                     :src="props.mentor.profile_picture"
-                    class="h-56 w-56 object-cover rounded-3xl border borde-neutral-90 -mt-32"
+                    class="size-32 -mt-16 xl:size-56 object-cover rounded-3xl border borde-neutral-90 xl:-mt-32"
                     alt=""
                 />
             </div>
         </div>
         <div class="container mb-12">
-            <div class="flex flex-col gap-12 mt-2.5">
+            <div class="flex flex-col gap-6 lg:gap-8 xl:gap-12 mt-2.5">
                 <div class="text-center">
-                    <h1 class="text-4xl font-bold">
+                    <h1 class="text-2xl lg:text-3xl xl:text-4xl font-bold">
                         {{ props.mentor.fullname }}
                     </h1>
-                    <p class="text-xl text-neutral-90">
+                    <p class="text-lg xl:text-xl text-neutral-90">
                         {{ props.mentor.mentor_detail.profession }}
                     </p>
                 </div>
                 <div>
-                    <h1 class="text-4xl-plus font-bold mb-1">Tentang Mentor</h1>
-                    <p class="text-xl-plus text-neutral-90">
+                    <h1
+                        class="text-xl md:text-2xl lg:text-3xl xl:text-4xl-plus font-bold mb-1"
+                    >
+                        Tentang Mentor
+                    </h1>
+                    <p
+                        class="md:text-lg lg:text-xl xl:text-xl-plus text-neutral-90"
+                    >
                         {{ props.mentor.mentor_detail.description }}
                     </p>
                 </div>
                 <!-- My Class -->
                 <div>
-                    <h1 class="text-4xl-plus font-bold mb-6">Kelas Saya</h1>
+                    <h1
+                        class="text-xl md:text-2xl lg:text-3xl xl:text-4xl-plus font-bold mb-6"
+                    >
+                        Kelas Saya
+                    </h1>
                     <Carousel
                         class="relative w-full"
                         :opts="{
@@ -74,7 +84,7 @@ const props = defineProps({
                             <CarouselItem
                                 v-for="(course, index) in props?.courses"
                                 :key="index"
-                                class="md:basis-1/3 lg:basis-1/3 xl:basis-1/4"
+                                class="sm:basis-[48%] md:basis-[42%] lg:basis-1/3 xl:basis-1/4"
                             >
                                 <div class="grid">
                                     <BoxCourse
@@ -110,7 +120,11 @@ const props = defineProps({
         <!-- Testimonial -->
         <div class="mb-12">
             <div class="container">
-                <h1 class="text-4xl-plus font-bold mb-6">Apa kata mereka?</h1>
+                <h1
+                    class="text-xl md:text-2xl lg:text-3xl xl:text-4xl-plus font-bold mb-4 xl:mb-6"
+                >
+                    Apa kata mereka?
+                </h1>
             </div>
             <CarouselReveiw :testimonials="props.testimonies" />
         </div>

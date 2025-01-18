@@ -182,15 +182,15 @@ onUnmounted(() => {
                         </button>
                     </div>
                 </div>
-                <div v-else class="flex gap-4 items-center">
+                <div v-else class="flex gap-3 lg:gap-4 items-center">
                     <Link
                         :href="route('login')"
-                        class="text-neutral-20 hover:text-primary-surface text-lg leading-[1.25rem] px-6 py-3 rounded-xl border-b-4 border-primary-hover hover:bg-primary-hover transition-all duration-200 ease-in-out bg-primary flex items-center justify-center"
+                        class="text-neutral-20 hover:text-primary-surface lg:text-lg leading-[1.25rem] px-4 lg:px-6 py-2 lg:py-3 rounded-xl border-b-4 border-primary-hover hover:bg-primary-hover transition-all duration-200 ease-in-out bg-primary flex items-center justify-center"
                         >Masuk</Link
                     >
                     <Link
                         :href="route('register')"
-                        class="border-b-4 border-primary-border border-t-[3px] border-x-[3px] text-lg leading-[1.25rem] px-6 py-3 rounded-xl flex items-center justify-center bg-neutral-20 hover:bg-primary-focus hover:text-primary transition-all duration-200 ease-in-out"
+                        class="border-b-4 border-primary-border border-t-[3px] border-x-[3px] lg:text-lg leading-[1.25rem] px-4 lg:px-6 py-2 lg:py-3 rounded-xl flex items-center justify-center bg-neutral-20 hover:bg-primary-focus hover:text-primary transition-all duration-200 ease-in-out"
                         >Gabung</Link
                     >
                 </div>

@@ -64,7 +64,7 @@ const bars = computed(() => {
 <template>
     <Link
         :href="`/courses/${slug}`"
-        class="h-[25rem] w-full rounded-2xl border border-neutral-90 overflow-hidden relative group"
+        class="h-[22rem] xl:h-[25rem] w-full rounded-2xl border border-neutral-90 overflow-hidden relative group"
     >
         <img
             :src="thumbnail"
@@ -82,7 +82,7 @@ const bars = computed(() => {
             />
             <!-- Title -->
             <h1
-                class="text-xl-plus text-neutral-10 font-bold h-[4.6875rem] mb-3"
+                class="text-lg lg:text-xl xl:text-xl-plus text-neutral-10 font-bold h-12 xl:h-[4.6875rem] mb-3"
             >
                 {{ title }}
             </h1>

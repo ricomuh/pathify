@@ -10,19 +10,19 @@ import { Head } from "@inertiajs/vue3";
         <div class="container pt-16">
             <!-- Section 1 -->
             <div
-                class="grid gap-4 py-8 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
+                class="grid gap-4 py-4 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
             >
                 <div
                     class="flex flex-col gap-3 xl:col-span-3 order-last md:order-first"
                 >
                     <h1
-                        class="text-3xl lg:text-4xl lg:leading-[2.75rem] leading-10 xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
+                        class="text-2xl lg:text-3xl lg:leading-[2.75rem] xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
                     >
                         Mencari <span class="text-primary">Passion</span> yang
                         tepat itu membuang Waktu dan Tenaga?
                     </h1>
                     <p
-                        class="text-xl-plus leading-[1.60125rem] text-neutral-90"
+                        class="md:text-lg lg:text-xl xl:text-xl-plus leading-[1.60125rem] text-neutral-90"
                     >
                         Tahukah kalian? bahwa mencari “alur belajar” yang tepat
                         itu menjadi sebuah tantangan tersendiri bagi orang yang
@@ -34,26 +34,26 @@ import { Head } from "@inertiajs/vue3";
                     <img
                         loading="lazy"
                         src="/media/illustrations/about1.svg"
-                        class="xl:h-[31.25rem]"
+                        class="max-w-60 md:max-w-72 lg:max-w-80 xl:max-w-none mx-auto xl:h-[31.25rem]"
                         alt=""
                     />
                 </div>
             </div>
             <!-- Section 2 -->
             <div
-                class="grid gap-4 py-8 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
+                class="grid gap-4 py-4 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
             >
                 <div class="xl:col-span-2">
                     <img
                         loading="lazy"
                         src="/media/illustrations/about2.svg"
-                        class="xl:h-[31.25rem]"
+                        class="max-w-60 md:max-w-72 lg:max-w-80 xl:max-w-none mx-auto xl:h-[31.25rem]"
                         alt=""
                     />
                 </div>
                 <div class="flex flex-col gap-3 xl:col-span-3">
                     <h1
-                        class="text-3xl lg:text-4xl lg:leading-[2.75rem] leading-10 xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
+                        class="text-2xl lg:text-3xl lg:leading-[2.75rem] xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
                     >
                         Dunia IT sangatlah
                         <span class="text-primary">abstrak</span>, Namun kami
@@ -61,7 +61,7 @@ import { Head } from "@inertiajs/vue3";
                         <span class="text-primary">terstruktur!</span>
                     </h1>
                     <p
-                        class="text-xl-plus leading-[1.60125rem] text-neutral-90"
+                        class="md:text-lg lg:text-xl xl:text-xl-plus leading-[1.60125rem] text-neutral-90"
                     >
                         Tidak hanya dalam proses mencari “passion” saja yang
                         ribet, namun juga dalam hal mencari sumber belajar, dan
@@ -73,19 +73,19 @@ import { Head } from "@inertiajs/vue3";
             </div>
             <!-- Section 3 -->
             <div
-                class="grid gap-4 py-8 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
+                class="grid gap-4 py-4 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
             >
                 <div
                     class="flex flex-col gap-3 xl:col-span-3 order-last md:order-first"
                 >
                     <h1
-                        class="text-3xl lg:text-4xl lg:leading-[2.75rem] leading-10 xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
+                        class="text-2xl lg:text-3xl lg:leading-[2.75rem] xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
                     >
                         Karena belajar bersama itu jauh lebih
                         <span class="text-primary">menyenangkan</span>
                     </h1>
                     <p
-                        class="text-xl-plus leading-[1.60125rem] text-neutral-90"
+                        class="md:text-lg lg:text-xl xl:text-xl-plus leading-[1.60125rem] text-neutral-90"
                     >
                         Belajar bersama membuat kita menjadi lebih mudah dalam
                         memahami materi karena memiliki support system dan teman
@@ -97,40 +97,40 @@ import { Head } from "@inertiajs/vue3";
                     <img
                         loading="lazy"
                         src="/media/illustrations/about3.svg"
-                        class="xl:h-[31.25rem]"
+                        class="max-w-60 md:max-w-72 lg:max-w-80 xl:max-w-none mx-auto xl:h-[31.25rem]"
                         alt=""
                     />
                 </div>
             </div>
             <!-- Section 4 -->
             <div
-                class="grid gap-4 py-8 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
+                class="grid gap-4 py-4 md:grid-cols-2 xl:py-0 xl:grid-cols-5 xl:gap-12 items-center"
             >
                 <div class="xl:col-span-2">
                     <img
                         loading="lazy"
                         src="/media/illustrations/about4.svg"
-                        class="xl:h-[31.25rem]"
+                        class="max-w-60 md:max-w-72 lg:max-w-80 xl:max-w-none mx-auto xl:h-[31.25rem]"
                         alt=""
                     />
                 </div>
                 <div class="flex flex-col gap-3 xl:col-span-3">
                     <h1
-                        class="text-3xl lg:text-4xl lg:leading-[2.75rem] leading-10 xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
+                        class="text-2xl lg:text-3xl lg:leading-[2.75rem] xl:text-5xl-plus font-bold xl:leading-[3.6995rem]"
                     >
                         Berhenti Membuang Waktu Anda, Mulailah belajar coding
                         sesuai dengan
                         <span class="text-primary">Passion Anda</span>
                     </h1>
                     <p
-                        class="text-xl-plus leading-[1.60125rem] text-neutral-90"
+                        class="md:text-lg lg:text-xl xl:text-xl-plus leading-[1.60125rem] text-neutral-90"
                     >
                         Pathify hadir untuk menjembatani semua orang yang ingin
                         terjun ke dalam dunia teknologi bahkan dengan tidak
                         memiliki basic sama sekali.
                     </p>
                     <p
-                        class="text-xl-plus leading-[1.60125rem] text-neutral-90"
+                        class="md:text-lg lg:text-xl xl:text-xl-plus leading-[1.60125rem] text-neutral-90"
                     >
                         Dengan kuisioner personifikasi yang membantu kalian
                         menemukan alur belajar yang tepat, dan forum diskusi
@@ -138,7 +138,7 @@ import { Head } from "@inertiajs/vue3";
                         rekomendasi alur belajar yang tepat dan terstruktur
                     </p>
                     <p
-                        class="text-xl-plus leading-[1.60125rem] text-neutral-90"
+                        class="md:text-lg lg:text-xl xl:text-xl-plus leading-[1.60125rem] text-neutral-90"
                     >
                         Maka anda telah siap untuk meraih mimpi anda!
                     </p>
@@ -147,7 +147,7 @@ import { Head } from "@inertiajs/vue3";
             <!-- Section 5 -->
             <div class="pt-6 text-center">
                 <h1
-                    class="text-3xl lg:text-4xl lg:leading-[2.75rem] leading-10 xl:text-5xl-plus font-bold xl:leading-[3.6995rem] md:w-3/4 mx-auto"
+                    class="text-2xl lg:text-lg md:text-3xl xl:text-4xl lg:leading-[2.75rem] leading-10 xl:-plus font-bold xl:leading-[3.6995rem] md:w-3/4 mx-auto"
                 >
                     Bersama Pathify, Anda siap memulai karir anda dalam dunia
                     Teknologi
@@ -155,7 +155,7 @@ import { Head } from "@inertiajs/vue3";
                 <img
                     loading="lazy"
                     src="/media/illustrations/about5.svg"
-                    class="mx-auto"
+                    class="mx-auto max-w-72"
                     alt=""
                 />
             </div>

@@ -49,11 +49,17 @@ const isFinished = computed(() => daysLeft.value <= 0);
     <div
         :class="`rounded-2xl text-start bg-neutral-10 border border-neutral-90 overflow-hidden ${width}`"
     >
-        <img :src="thumbnail" alt="" class="w-full h-[12.5rem] object-cover" />
+        <img
+            :src="thumbnail"
+            alt=""
+            class="w-full h-40 md:h-48 xl:h-[12.5rem] object-cover"
+        />
         <div class="p-3">
-            <p class="text-primary">{{ category }}</p>
+            <p class="text-xs sm:text-sm lg:text-base text-primary">
+                {{ category }}
+            </p>
             <h1
-                class="font-bold text-start text-xl-plus leading-[1.575rem] text-neutral-100 mb-3 h-20 text-wrap"
+                class="font-bold text-start text-lg lg:text-xl xl:text-xl-plus leading-[1.575rem] text-neutral-100 mb-3 sm:h-[4.5rem] xl:h-20 text-wrap"
             >
                 {{ title }}
             </h1>

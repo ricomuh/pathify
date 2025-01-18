@@ -80,7 +80,7 @@ const isRegistrationClosed = computed(() => {
     <Head title="Detail Event" />
 
     <AuthenticatedLayout>
-        <div class="bg-neutral-30 pb-12 pt-24">
+        <div class="bg-neutral-30 pb-6 pt-20 lg:pb-12 lg:pt-24">
             <div class="container">
                 <img
                     :src="props.event.thumbnail"
@@ -88,7 +88,7 @@ const isRegistrationClosed = computed(() => {
                     alt="Event Thumbnail"
                 />
                 <h1
-                    class="text-3xl lg:text-4xl-plus font-bold text-neutral-100 xl:w-3/5 lg:leading-[2.775rem] text-center mx-auto"
+                    class="text-2xl md:text-3xl lg:text-4xl xl:text-4xl-plus font-bold text-neutral-100 xl:w-3/5 xl:leading-[2.775rem] text-center mx-auto"
                 >
                     {{ props.event.title }}
                 </h1>
@@ -96,14 +96,14 @@ const isRegistrationClosed = computed(() => {
         </div>
         <div class="bg-neutral-10">
             <div
-                class="py-12 grid lg:grid-cols-2 xl:grid-cols-5 gap-6 xl:gap-12 container"
+                class="py-6 md:py-8 lg:py-12 grid lg:grid-cols-2 xl:grid-cols-5 gap-6 xl:gap-12 container"
             >
                 <div class="lg:col-span-1 xl:col-span-3">
                     <div class="flex flex-col gap-6">
                         <!-- About -->
                         <div>
                             <h1
-                                class="text-3xl lg:text-4xl-plus font-bold text-neutral-90 mb-3"
+                                class="text-2xl lg:text-3xl xl:text-4xl-plus font-bold text-neutral-90 mb-3"
                             >
                                 Tentang Event ini
                             </h1>
@@ -115,19 +115,23 @@ const isRegistrationClosed = computed(() => {
                         <!-- Rundown -->
                         <div>
                             <h1
-                                class="text-3xl lg:text-4xl-plus font-bold text-neutral-90 mb-3"
+                                class="text-2xl lg:text-3xl xl:text-4xl-plus font-bold text-neutral-90 mb-3"
                             >
                                 Rundown
                             </h1>
-                            <table>
+                            <table class="w-full lg:w-max">
                                 <tr
                                     v-for="(value, key) in props.event.rundown"
                                     :key="key"
                                 >
-                                    <td class="text-neutral-90">
+                                    <td
+                                        class="align-top text-neutral-90 text-nowrap"
+                                    >
                                         {{ value[0] }} - {{ value[1] }}
                                     </td>
-                                    <td class="text-neutral-90 ps-6">
+                                    <td
+                                        class="text-neutral-90 ps-4 md:ps-0 lg:ps-6"
+                                    >
                                         {{ value[2] }}
                                     </td>
                                 </tr>
@@ -136,7 +140,7 @@ const isRegistrationClosed = computed(() => {
                         <!-- Pertanyaan -->
                         <div>
                             <h1
-                                class="text-3xl lg:text-4xl-plus font-bold text-neutral-90 mb-3"
+                                class="text-2xl lg:text-3xl xl:text-4xl-plus font-bold text-neutral-90 mb-3"
                             >
                                 Pertanyaan
                             </h1>
@@ -164,14 +168,16 @@ const isRegistrationClosed = computed(() => {
                         <div>
                             <p class="text-neutral-70">Sisa Kuota</p>
                             <h1
-                                class="text-neutral-90 text-xl-plus font-bold mb-3"
+                                class="text-neutral-90 md:text-lg lg:text-xl xl:text-xl-plus font-bold mb-3"
                             >
                                 {{ props.event.seats_left }} Kursi
                             </h1>
                             <p class="text-neutral-70">
                                 Pendaftaran Dibuka Hingga
                             </p>
-                            <h1 class="text-neutral-90 text-xl-plus font-bold">
+                            <h1
+                                class="text-neutral-90 md:text-lg lg:text-xl xl:text-xl-plus font-bold"
+                            >
                                 {{ formattedDate }}
                             </h1>
                         </div>
@@ -255,7 +261,7 @@ const isRegistrationClosed = computed(() => {
                                     <DialogTrigger as-child>
                                         <button
                                             type="button"
-                                            class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
+                                            class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 py-3 px-8 md:text-lg lg:text-xl xl:text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl"
                                         >
                                             Batalkan
                                         </button>
@@ -318,7 +324,7 @@ const isRegistrationClosed = computed(() => {
                                             event: props.event.slug,
                                         })
                                     "
-                                    class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 py-3 px-8 text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl block w-max"
+                                    class="bg-primary hover:bg-primary-hover transition-all duration-200 ease-in-out text-neutral-20 py-3 px-8 md:text-lg lg:text-xl xl:text-xl-plus mt-3 border-b-4 border-primary-hover leading-[1.575rem] rounded-xl block w-max"
                                 >
                                     Ikuti Event
                                 </Link>
