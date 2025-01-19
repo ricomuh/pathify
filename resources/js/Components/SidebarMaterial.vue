@@ -54,7 +54,7 @@ const closeModal = () => {
                 :value="value.id"
             >
                 <AccordionTrigger
-                    class="text-neutral-90 text-xl-plus p-4 text-start bg-none"
+                    class="text-neutral-90 !text-lg lg:!text-xl xl:!text-xl-plus p-4 text-start bg-none"
                 >
                     {{ value.title }}
                 </AccordionTrigger>

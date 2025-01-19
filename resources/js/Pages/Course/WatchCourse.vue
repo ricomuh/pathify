@@ -107,17 +107,21 @@ onMounted(() => {
             <div class="container mx-auto xl:px-0">
                 <!-- Container utama -->
                 <div
-                    class="grid grid-cols-4 gap-6 h-[calc(100vh-170px)] overflow-hidden"
+                    class="grid lg:grid-cols-4 gap-6 h-[calc(100vh-170px)] overflow-hidden"
                 >
                     <!-- Sidebar -->
-                    <SidebarMaterial
-                        :course="props.course"
-                        :currentOrder="currentOrder"
-                        :order="props.order"
-                        :defaultAccordionValue="defaultAccordionValue"
-                    />
+                    <div class="hidden lg:block col-span-1">
+                        <SidebarMaterial
+                            :course="props.course"
+                            :currentOrder="currentOrder"
+                            :order="props.order"
+                            :defaultAccordionValue="defaultAccordionValue"
+                        />
+                    </div>
 
-                    <div class="col-span-3 bg-neutral-20 p-6 overflow-y-auto">
+                    <div
+                        class="lg:col-span-3 xl:bg-neutral-20 lg:p-6 overflow-y-auto"
+                    >
                         <!-- Content -->
                         <ContentMaterial
                             :content="props.content"
@@ -158,7 +162,7 @@ onMounted(() => {
                                 props.submission?.user_course_submissions !=
                                 null
                             "
-                            class="bg-neutral-10 p-6 rounded-xl"
+                            class="bg-neutral-10 md:p-6 rounded-xl"
                         >
                             <SuccessSubmission />
                         </div>
@@ -170,7 +174,14 @@ onMounted(() => {
                 :prevEpisode="prevEpisode"
                 :nextEpisode="nextEpisode"
                 :submission="props.submission"
+                :title="props.content.title"
             />
         </div>
     </SecondaryLayout>
 </template>
+
+<style scoped>
+.overflow-y-auto::-webkit-scrollbar {
+    display: none !important;
+}
+</style>

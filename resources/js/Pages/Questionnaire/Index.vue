@@ -82,14 +82,14 @@ const props = defineProps<{
                         alt=""
                     />
                     <div class="flex flex-col justify-between">
-                        <div class="flex flex-col gap-3">
+                        <div class="flex flex-col gap-2 md:gap-3">
                             <h1
-                                class="text-3xl md:text-4xl md:leading-[3rem] leading-10 xl:text-5xl xl:leading-[3.75rem] font-bold"
+                                class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold"
                             >
                                 Luangkan waktu untuk mengenali potensi dirimu
                             </h1>
                             <p
-                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                                class="text-lg lg:text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
                             >
                                 Selamat datang di Quisioner Personifikasi!
                                 Setiap jawaban yang anda pilih merepresentasikan
@@ -97,21 +97,21 @@ const props = defineProps<{
                                 yang lebih cemerlang.
                             </p>
                             <p
-                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                                class="text-lg lg:text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
                             >
                                 Setelah anda mengisikan quisioner ini, kami akan
                                 memberikan rekomendasi kursus yang sesuai hanya
                                 untuk anda!
                             </p>
                             <p
-                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                                class="text-lg lg:text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
                             >
                                 Ingatlah untuk meluangkan waktu dan tidak
                                 mengisi dengan tergesa - gesa agar mendapatkan
                                 hasil yang lebih maksimal
                             </p>
                             <p
-                                class="text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
+                                class="text-lg lg:text-xl xl:text-2xl text-neutral-90 xl:leading-[2rem]"
                             >
                                 Siapkah kalian untuk menggali potensi anda lebih
                                 dalam?
@@ -120,7 +120,7 @@ const props = defineProps<{
                         <button
                             @click="isStart = true"
                             type="button"
-                            class="text-white mt-12 w-full font-bold text-xl xl:text-2xl py-4 px-9 bg-primary rounded-3xl block"
+                            class="text-white mt-12 w-full font-bold text-lg lg:text-xl xl:text-2xl py-4 px-9 bg-primary rounded-3xl block hover:bg-primary-hover transition-all duration-200 ease-in-out"
                         >
                             Ikuti Tes
                         </button>
@@ -140,7 +140,9 @@ const props = defineProps<{
                         :model-value="progress"
                         class="bg-white w-full border-none h-3"
                     />
-                    <p class="text-white font-bold text-2xl xl:text-2xl-plus">
+                    <p
+                        class="text-white font-bold text-xl lg:text-2xl xl:text-2xl-plus"
+                    >
                         {{ progress }}%
                     </p>
                 </div>
@@ -157,16 +159,16 @@ const props = defineProps<{
                     <transition name="slide-fade" mode="out-in">
                         <div
                             :key="currentQuestionIndex"
-                            class="flex flex-col gap-12"
+                            class="flex flex-col gap-6 xl:gap-12"
                         >
                             <div class="flex flex-col gap-3">
                                 <p
-                                    class="text-2xl xl:text-2xl-plus text-primary leading-[2.1rem]"
+                                    class="text-xl lg:text-2xl xl:text-2xl-plus text-primary leading-[2.1rem]"
                                 >
                                     Soal {{ currentQuestionIndex + 1 }}
                                 </p>
                                 <h1
-                                    class="text-3xl-plus xl:text-4xl-plus font-bold leading-[2.775rem] text-neutral-90"
+                                    class="text-2xl md:text-2xl-plus lg:text-3xl-plus xl:text-4xl-plus font-bold text-neutral-90"
                                 >
                                     {{
                                         props.questionnaireQuestions[
@@ -194,7 +196,7 @@ const props = defineProps<{
                                     :disabled="isAnswering"
                                 >
                                     <p
-                                        class="text-2xl xl:text-2xl-plus text-white"
+                                        class="text-lg md:text-xl lg:text-2xl xl:text-2xl-plus text-white"
                                     >
                                         {{ answer.answer }}
                                     </p>

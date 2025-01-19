@@ -57,7 +57,7 @@ const defaultAccordionValue = computed(() => {
     <AuthenticatedLayout>
         <!-- Hero -->
         <div
-            class="bg-primary-pressed relative xl:h-screen flex justify-center flex-col pt-24 py-16"
+            class="bg-primary-pressed relative xl:h-screen flex justify-center flex-col pt-32 py-16"
         >
             <img
                 :src="props.course.thumbnail"
@@ -80,7 +80,7 @@ const defaultAccordionValue = computed(() => {
                             />
                         </div>
                         <h1
-                            class="text-2xl md:text-3xl xl:text-4xl-plus xl:leading-[2.775rem] font-bold text-neutral-10 my-3"
+                            class="text-3xl-plus xl:text-4xl-plus xl:leading-[2.775rem] font-bold text-neutral-10 my-3"
                         >
                             {{ props.course.title }}
                         </h1>
@@ -126,27 +126,27 @@ const defaultAccordionValue = computed(() => {
                         </div>
                         <div
                             v-if="props.course.joined != null"
-                            class="grid grid-cols-5 items-center gap-4"
+                            class="grid md:grid-cols-5 items-center gap-4"
                         >
-                            <div class="col-span-3">
+                            <div class="md:col-span-3">
                                 <div class="flex gap-4 items-center py-2">
                                     <Progress
                                         v-model="props.course.joined.progress"
                                         class="bg-white w-full border-none h-3"
                                     />
                                     <p
-                                        class="text-white font-bold text-2xl-plus"
+                                        class="text-white font-bold text-xl-plus xl:text-2xl-plus"
                                     >
                                         {{ props.course.joined.progress }}%
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-span-2 ms-auto">
+                            <div class="md:col-span-2 ms-auto w-full md:w-max">
                                 <Link
                                     v-if="props.course.joined.progress == 100"
                                     :href="`/courses/${props.course.slug}/review`"
                                     type="button"
-                                    class="bg-primary text-neutral-20 text-xl-plus hover:bg-primary-hover transition-all duration-200 ease-in-out border-b-4 border-primary-hover px-8 py-3 rounded-xl"
+                                    class="bg-primary text-neutral-20 w-full md:w-max text-xl-plus block text-center hover:bg-primary-hover transition-all duration-200 ease-in-out border-b-4 border-primary-hover px-8 py-3 rounded-xl"
                                 >
                                     Unduh Sertifikat
                                 </Link>
@@ -162,7 +162,7 @@ const defaultAccordionValue = computed(() => {
                                                   .last_watched_episode
                                     }`"
                                     type="button"
-                                    class="bg-primary text-neutral-20 text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 ease-in-out"
+                                    class="bg-primary text-neutral-20 block text-center w-full md:w-max text-xl-plus border-b-4 border-primary-hover px-8 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 ease-in-out"
                                 >
                                     Lanjut Belajar
                                 </Link>
@@ -374,21 +374,21 @@ const defaultAccordionValue = computed(() => {
 .title {
     @apply text-2xl md:text-3xl xl:text-4xl-plus xl:leading-[2.775rem] font-bold text-neutral-100;
 }
-::v-deep .about-course ul {
+:deep(.about-course ul) {
     @apply list-disc list-inside;
 }
-::v-deep .about-course ul li,
-::v-deep .about-course ol li,
-::v-deep .about-course p,
-::v-deep .about-course h1,
-::v-deep .about-course h2,
-::v-deep .about-course h3,
-::v-deep .about-course h4,
-::v-deep .about-course h5,
-::v-deep .about-course h6 {
+:deep(.about-course ul li),
+:deep(.about-course ol li),
+:deep(.about-course p),
+:deep(.about-course h1),
+:deep(.about-course h2),
+:deep(.about-course h3),
+:deep(.about-course h4),
+:deep(.about-course h5),
+:deep(.about-course h6) {
     @apply text-neutral-90;
 }
-::v-deep .about-course ol li {
+:deep(.about-course ol li) {
     @apply list-decimal list-inside;
 }
 </style>

@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import Dropdown from "@/Components/Dropdown.vue";
-import DropdownLink from "@/Components/DropdownLink.vue";
+import Notifications from "@/Components/Notifications.vue";
+import UserMenu from "@/Components/UserMenu.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link, usePage } from "@inertiajs/vue3";
@@ -85,68 +85,8 @@ const dashboardURL =
                     <div class="flex"></div>
                     <div class="hidden sm:ms-6 gap-4 sm:flex sm:items-center">
                         <!-- Settings Dropdown -->
-                        <div class="relative">
-                            <Dropdown align="right" width="48">
-                                <template #trigger>
-                                    <div class="inline-flex">
-                                        <button
-                                            type="button"
-                                            class="size-10 border-[3px] border-primary-surface bg-primary-surface rounded-xl flex items-center justify-center hover:!bg-primary-focus transition-all duration-200 ease-in-out"
-                                        >
-                                            <img
-                                                src="../../images/icons/notification.svg"
-                                                alt=""
-                                                class="h-full w-full p-1.5 object-cover"
-                                            />
-                                        </button>
-                                    </div>
-                                </template>
-                                <template #content>
-                                    <div class="py-3 px-4">
-                                        <h1
-                                            class="text-lg font-bold text-neutral-100"
-                                        >
-                                            Notifikasi
-                                        </h1>
-                                        <p
-                                            class="text-neutral-80 text-center text-sm mt-2"
-                                        >
-                                            Tidak ada notifikasi
-                                        </p>
-                                    </div>
-                                </template>
-                            </Dropdown>
-                        </div>
-                        <div class="relative">
-                            <Dropdown align="right" width="48">
-                                <template #trigger>
-                                    <button
-                                        type="button"
-                                        class="size-10 rounded-xl border-[3px] border-primary-border overflow-hidden hover:bg-primary-focus hover:text-primary transition-all duration-200 ease-in-out"
-                                    >
-                                        <img
-                                            :src="
-                                                $page.props.auth.user
-                                                    .profile_picture
-                                            "
-                                            alt=""
-                                            class="h-full w-full object-cover"
-                                        />
-                                    </button>
-                                </template>
-                                <template #content>
-                                    <DropdownLink :href="dashboardURL"
-                                        >Dashboard</DropdownLink
-                                    >
-                                    <DropdownLink
-                                        :href="route('logout')"
-                                        method="post"
-                                        as="button"
-                                        >Log Out</DropdownLink
-                                    >
-                                </template>
-                            </Dropdown>
-                        </div>
+                        <Notifications />
+                        <UserMenu />
                     </div>
                     <!-- Hamburger -->
                     <div class="-me-2 flex items-center sm:hidden">

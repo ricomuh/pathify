@@ -6,7 +6,9 @@ import { Link } from "@inertiajs/vue3";
 <template>
     <footer class="bg-footer bg-cover bg-left bg-no-repeat py-12">
         <div class="container">
-            <div class="grid grid-cols-2 justify-between items-start gap-4">
+            <div
+                class="grid md:grid-cols-2 md:justify-between items-start gap-4"
+            >
                 <div class="col-span-1 flex flex-col gap-3 items-start">
                     <ApplicationLogo
                         class="h-16 w-auto fill-current text-gray-500"
@@ -21,7 +23,7 @@ import { Link } from "@inertiajs/vue3";
                         menelusuri dunia teknologi bersama.
                     </p>
                 </div>
-                <div class="col-span-1 ms-auto">
+                <div class="col-span-1 md:ms-auto">
                     <h1 class="text-neutral-10 text-xl font-bold mb-3">
                         Berkembang bersama kami
                     </h1>
@@ -38,7 +40,7 @@ import { Link } from "@inertiajs/vue3";
                     </div>
                 </div>
             </div>
-            <p class="text-neutral-20 mt-5">
+            <p class="text-neutral-20 mt-5 text-center md:text-start">
                 &copy; {{ new Date().getFullYear() }} Pathify. All rights
                 reserved.
             </p>

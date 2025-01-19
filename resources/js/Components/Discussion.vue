@@ -154,13 +154,15 @@ onMounted(() => {
 <template>
     <!-- Success Alert -->
     <SuccessAlert v-if="showSuccessAlert" :message="successMessage" />
-    <div v-if="!submission" class="p-6 rounded-xl">
-        <div class="flex flex-col gap-6">
+    <div v-if="!submission" class="py-4 xl:p-6 rounded-xl">
+        <div class="flex flex-col gap-4 xl:gap-6">
             <div
                 v-if="selectedCommentId === null"
                 class="flex justify-between items-center"
             >
-                <h1 class="text-2xl-plus font-bold">Diskusi Terdahulu</h1>
+                <h1 class="text-xl-plus xl:text-2xl-plus font-bold">
+                    Diskusi Terdahulu
+                </h1>
                 <!-- <div
                     class="flex gap-1 items-center py-3 px-4 rounded-xl border-2 border-neutral-40 bg-neutral-10 w-96"
                 >
@@ -176,7 +178,7 @@ onMounted(() => {
             <form
                 @submit.prevent="onSubmit"
                 v-if="selectedCommentId === null"
-                class="p-6 rounded-xl border-2 border-neutral-40 bg-neutral-10"
+                class="p-5 xl:p-6 rounded-xl border-2 border-neutral-40 bg-neutral-10"
             >
                 <div class="mb-3 w-full">
                     <label for="title" class="text-neutral-90 block mb-1"
@@ -216,33 +218,46 @@ onMounted(() => {
             </form>
 
             <!-- Discuss content -->
-            <div v-if="selectedCommentId === null" class="flex flex-col gap-6">
+            <div
+                v-if="selectedCommentId === null"
+                class="flex flex-col gap-4 xl:gap-6"
+            >
                 <div
                     v-for="(value, key) in content?.comments"
                     :key="key"
-                    class="p-6 rounded-xl bg-neutral-10 flex flex-col gap-6"
+                    class="p-6 rounded-xl bg-neutral-10 flex flex-col gap-4 xl:gap-6"
                 >
                     <div class="flex gap-3 items-center">
                         <img
                             :src="value.user.profile_picture"
-                            class="size-11 rounded-full object-cover"
+                            class="size-8 xl:size-11 rounded-full object-cover"
                             alt=""
                         />
-                        <div class="flex gap-2.5 items-center">
-                            <p class="text-lg font-bold">
+                        <div
+                            class="flex md:gap-2.5 flex-col md:flex-row items-start sm:items-center"
+                        >
+                            <p
+                                class="text-xs md:text-sm lg:text-base xl:text-lg font-bold"
+                            >
                                 {{ value.user.fullname }}
                             </p>
-                            <img src="/media/icons/dot.svg" alt="" />
-                            <p class="text-neutral-80">
+                            <img
+                                src="/media/icons/dot.svg"
+                                class="hidden md:inline-block"
+                                alt=""
+                            />
+                            <p
+                                class="text-neutral-80 text-xs md:text-sm lg:text-base"
+                            >
                                 {{ formatDate(value.created_at) }}
                             </p>
                         </div>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold">
+                        <h1 class="text-xl-plus xl:text-2xl font-bold">
                             {{ value.title }}
                         </h1>
-                        <p class="text-neutral-90 text-lg">
+                        <p class="text-neutral-90xl:text-lg">
                             {{ value.body }}
                         </p>
                     </div>
@@ -259,7 +274,7 @@ onMounted(() => {
                                     alt=""
                                     class="size-6"
                                 />
-                                <p class="text-neutral-80 text-lg">
+                                <p class="text-neutral-80 xl:text-lg">
                                     {{
                                         value.children?.length > 0
                                             ? value.children.length
@@ -289,7 +304,7 @@ onMounted(() => {
                                     class="size-6"
                                 />
                                 <p
-                                    class="text-lg"
+                                    class="xl:text-lg"
                                     :class="
                                         value.voted?.is_upvote == 1
                                             ? 'text-primary'
