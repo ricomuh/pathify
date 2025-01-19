@@ -48,7 +48,8 @@ class CourseFactory extends Factory
         $title = $this->faker->sentence();
         return [
             'status_id' => CourseStatusEnum::Published,
-            'thumbnail' => $this->faker->imageUrl(),
+            // 'thumbnail' => $this->faker->imageUrl(),
+            'thumbnail' => asset('media/placeholder/' . $this->faker->randomNumber(1, 10) . '.jpg'),
             'title' => $title,
             'description' => $this->faker->paragraph(),
             'level' => $this->faker->randomElement([1, 2, 3]),

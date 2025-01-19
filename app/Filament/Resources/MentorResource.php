@@ -27,7 +27,15 @@ class MentorResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('fullname')
+                    ->label('Fullname')
+                    ->required(),
+                Forms\Components\TextInput::make('username')
+                    ->label('Username')
+                    ->required(),
+                Forms\Components\TextInput::make('email')
+                    ->label('Email')
+                    ->required(),
             ]);
     }
 
@@ -86,7 +94,7 @@ class MentorResource extends Resource
         return [
             'index' => Pages\ListMentors::route('/'),
             'create' => Pages\CreateMentor::route('/create'),
-            'edit' => Pages\EditMentor::route('/{record}/edit'),
+            // 'edit' => Pages\EditMentor::route('/{record}/edit'),
         ];
     }
 }

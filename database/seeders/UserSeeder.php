@@ -47,6 +47,9 @@ class UserSeeder extends Seeder
             // 'name' => 'Mentor',
             'role_id' => RoleEnum::Mentor,
         ])->each(function ($mentor) {
+
+            $mentor->mentorDetail()->delete();
+
             $mentorDetail = MentorDetail::factory()->create([
                 'user_id' => $mentor->id,
             ])->each(function ($mentorDetail) {

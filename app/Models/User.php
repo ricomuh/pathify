@@ -66,6 +66,11 @@ class User extends Authenticatable implements FilamentUser, HasName
         return $this->fullname;
     }
 
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->profile_picture;
+    }
+
     // auto generate uuid when creating a new user
     protected static function boot(): void
     {
@@ -101,6 +106,14 @@ class User extends Authenticatable implements FilamentUser, HasName
 
                 $model->username = $username;
             }
+
+
+            // // check if the user is mentor
+            // if ($model->role_id === RoleEnum::Mentor) {
+            //     MentorDetail::create([
+            //         'user_id' => $model->id,
+            //     ]);
+            // }
         });
     }
 

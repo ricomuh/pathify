@@ -61,7 +61,8 @@ class EventFactory extends Factory
 
         return [
             'event_category_id' => $this->faker->numberBetween(1, 4),
-            'thumbnail' => $this->faker->imageUrl(),
+            // 'thumbnail' => $this->faker->imageUrl(),
+            'thumbnail' => asset('media/placeholder/' . $this->faker->randomNumber(1, 10) . '.jpg'),
             'title' => $this->faker->sentence(),
             'body' => $this->faker->paragraphs(3, true),
             'start_date' => $start,
