@@ -2,5 +2,6 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    \Barryvdh\DomPDF\ServiceProvider::class,
+    App\Providers\Filament\AdminPanelProvider::class,
+    Barryvdh\DomPDF\ServiceProvider::class,
 ];
