@@ -23,7 +23,9 @@ const form = useForm({
 const submitReview = () => {
     form.post(`/courses/${props.course.slug}/review`, {
         onSuccess: () => {
-            window.location.href = `/courses/${props.course.slug}/certificate`;
+            window.location.href = route("courses.show.certificate", {
+                course: props.course.slug,
+            });
         },
     });
 };
