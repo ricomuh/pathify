@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, usePage } from "@inertiajs/vue3";
 import {
     Accordion,
     AccordionContent,
@@ -33,11 +33,19 @@ const closeModal = () => {
     showModal.value = false;
     targetOrder.value = null;
 };
+
+const page = usePage();
+const dashboardURL =
+    page.props.auth.role === "Admin"
+        ? route("admin.dashboard")
+        : page.props.auth.role === "Mentor"
+        ? route("mentor.dashboard")
+        : route("user.dashboard");
 </script>
 
 <template>
     <div class="col-span-1 py-6 overflow-y-auto">
-        <Link href="/dashboard" class="flex gap-3 items-center p-3 mb-6">
+        <Link :href="dashboardURL" class="flex gap-3 items-center p-3 mb-6">
             <img src="/media/icons/arrow.svg" alt="" />
             <p>Dashboard</p>
         </Link>

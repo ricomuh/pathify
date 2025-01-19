@@ -102,15 +102,20 @@ onMounted(() => {
 <template>
     <Head title="Detail Materi" />
 
-    <SecondaryLayout>
+    <SecondaryLayout
+        :course="props.course"
+        :currentOrder="currentOrder"
+        :order="props.order"
+        :defaultAccordionValue="defaultAccordionValue"
+    >
         <div class="bg-neutral-30 relative">
-            <div class="container mx-auto xl:px-0">
+            <div class="container mx-auto xl:px-4">
                 <!-- Container utama -->
                 <div
-                    class="grid lg:grid-cols-4 gap-6 h-[calc(100vh-170px)] overflow-hidden"
+                    class="grid lg:grid-cols-3 xl:grid-cols-4 gap-6 h-[calc(100vh-170px)] overflow-hidden"
                 >
                     <!-- Sidebar -->
-                    <div class="hidden lg:block col-span-1">
+                    <div class="hidden lg:block xl:col-span-1 overflow-y-auto">
                         <SidebarMaterial
                             :course="props.course"
                             :currentOrder="currentOrder"
@@ -120,7 +125,7 @@ onMounted(() => {
                     </div>
 
                     <div
-                        class="lg:col-span-3 xl:bg-neutral-20 lg:p-6 overflow-y-auto"
+                        class="lg:col-span-2 xl:col-span-3 xl:bg-neutral-20 lg:p-6 overflow-y-auto"
                     >
                         <!-- Content -->
                         <ContentMaterial

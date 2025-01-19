@@ -15,6 +15,9 @@ const props = defineProps({
         "
         class="bg-neutral-10 p-5 xl:p-6 rounded-xl"
     >
+        <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-3">
+            {{ content.title }}
+        </h1>
         <div v-html="content?.body" class="course-content"></div>
     </div>
 </template>
@@ -121,7 +124,7 @@ const props = defineProps({
 }
 
 :deep(.course-content p) {
-    @apply mb-4;
+    @apply mb-4 text-xl;
 }
 
 :deep(.course-content ul) {
