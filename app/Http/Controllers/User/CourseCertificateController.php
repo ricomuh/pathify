@@ -60,7 +60,7 @@ class CourseCertificateController extends Controller
 
         // create certificate pdf
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('user.course-certificate.show', ['title' => $course->title, 'name' => auth()->user()->name]);
-        return $pdf->download('certificate - ' . $course->title . '.pdf');
+        $pdf->loadView('user.course-certificate.show', ['title' => $course->title, 'name' => auth()->user()->name])->setPaper('a4', 'landscape');
+        return $pdf->stream('certificate - ' . $course->title . '.pdf');
     }
 }
