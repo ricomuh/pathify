@@ -27,11 +27,10 @@ const props = defineProps({
                             course: props.course.slug,
                         })
                     "
-                    class="w-3/4 h-[42rem] mb-6 border-2 border-neutral-40 rounded-xl shadow-lg"
+                    class="w-full h-64 sm:h-80 md:h-96 lg:h-[42rem] mb-6 border-2 border-neutral-40 rounded-xl shadow-lg"
                     title="Sertifikat"
                     allowfullscreen
-                >
-                </iframe>
+                ></iframe>
 
                 <!-- Download button -->
                 <a
