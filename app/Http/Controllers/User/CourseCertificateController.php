@@ -45,4 +45,22 @@ class CourseCertificateController extends Controller
         // create certificate pdf
         // $pdf = PDF::loadView('user.course-certificate.show', compact('course'));
     }
+
+    public function download(Course $course)
+    {
+        // check if user has already finished the course
+        $course->load('joined');
+
+        abort_unless($course->joined->completed_at, 403, 'You can only download certificate for course that you have completed.');
+
+        // check if user has already reviewed the course
+        $testimony = $course->testimonies->where('user_id', auth()->id())->first();
+
+        abort_unless($testimony, 403, 'You can only download certificate for course that you have reviewed.');
+
+        // create certificate pdf
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('user.course-certificate.show', ['title' => $course->title, 'name' => auth()->user()->name]);
+        return $pdf->download('certificate - ' . $course->title . '.pdf');
+    }
 }

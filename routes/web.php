@@ -103,6 +103,7 @@ Route::as('courses.')->prefix('courses')->group(function () {
             Route::post('/review', [CourseReviewController::class, 'store'])->name('review.store');
 
             Route::get('/certificate', [CourseCertificateController::class, 'show'])->name('certificate');
+            Route::get('/certificate/download', [CourseCertificateController::class, 'download'])->name('certificate.download');
         });
     });
     // Route::get('/{course:slug}', [CourseWatchController::class, 'show'])->name('show');
