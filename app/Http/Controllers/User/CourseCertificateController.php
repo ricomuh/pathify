@@ -23,7 +23,7 @@ class CourseCertificateController extends Controller
 
         abort_unless($testimony, 403, 'You can only download certificate for course that you have reviewed.');
 
-        return Inertia::render('Pages/Course/Certificate', [
+        return Inertia::render('Course/Certificate', [
             'course' => $course,
         ]);
 

@@ -29,6 +29,13 @@ const dashboardURL =
         : page.props.auth.role == "Mentor"
         ? route("mentor.dashboard")
         : route("user.dashboard");
+
+const menuItems = [
+    { name: "Beranda", routeName: "home", href: route("home") },
+    { name: "Kelas", routeName: "courses.index", href: route("courses.index") },
+    { name: "Event", routeName: "events.index", href: route("events.index") },
+    { name: "Tentang", routeName: "about.index", href: route("about.index") },
+];
 </script>
 
 <template>
@@ -38,7 +45,7 @@ const dashboardURL =
                 'fixed top-0 w-full z-50 transition-colors duration-300',
                 isScrolled || !route().current('home')
                     ? 'bg-neutral-10 shadow'
-                    : 'bg-transparent',
+                    : 'bg-neutral-10 sm:bg-transparent',
             ]"
         >
             <!-- Primary Navigation Menu -->
@@ -47,36 +54,21 @@ const dashboardURL =
             >
                 <!-- Logo -->
                 <Link :href="route('home')">
-                    <ApplicationLogo class="block h-12 w-auto" />
+                    <ApplicationLogo class="block h-10 md:h-12 w-auto" />
                 </Link>
                 <!-- Navigation Links -->
                 <div
                     class="hidden justify-center space-x-8 sm:-my-px sm:ms-10 sm:flex"
                 >
                     <NavLink
-                        :href="route('home')"
-                        :active="route().current('home')"
+                        v-for="item in menuItems"
+                        :key="item.routeName"
+                        :href="item.href"
+                        :active="route().current(item.routeName)"
                         :isScrolled="isScrolled || !route().current('home')"
-                        >Beranda</NavLink
                     >
-                    <NavLink
-                        :href="route('courses.index')"
-                        :active="route().current('courses.*')"
-                        :isScrolled="isScrolled || !route().current('home')"
-                        >Kelas</NavLink
-                    >
-                    <NavLink
-                        :href="route('events.index')"
-                        :active="route().current('events.*')"
-                        :isScrolled="isScrolled || !route().current('home')"
-                        >Event</NavLink
-                    >
-                    <NavLink
-                        :href="route('about.index')"
-                        :active="route().current('about.index')"
-                        :isScrolled="isScrolled || !route().current('home')"
-                        >Tentang</NavLink
-                    >
+                        {{ item.name }}
+                    </NavLink>
                 </div>
                 <div
                     v-if="$page.props.auth.user"
@@ -95,37 +87,13 @@ const dashboardURL =
                                 showingNavigationDropdown =
                                     !showingNavigationDropdown
                             "
-                            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
+                            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:text-gray-500 focus:text-gray-500 focus:outline-none"
                         >
-                            <svg
-                                class="h-6 w-6"
-                                stroke="currentColor"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    :class="{
-                                        hidden: showingNavigationDropdown,
-                                        'inline-flex':
-                                            !showingNavigationDropdown,
-                                    }"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                                <path
-                                    :class="{
-                                        hidden: !showingNavigationDropdown,
-                                        'inline-flex':
-                                            showingNavigationDropdown,
-                                    }"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
+                            <img
+                                src="/media/icons/menu.svg"
+                                class="size-6 rotate-180"
+                                alt=""
+                            />
                         </button>
                     </div>
                 </div>
@@ -152,12 +120,16 @@ const dashboardURL =
                 }"
                 class="sm:hidden"
             >
-                <div class="space-y-1 pb-3 pt-2">
+                <div class="space-y-1 pb-3 pt-2 flex flex-col">
                     <ResponsiveNavLink
-                        :href="dashboardURL"
-                        :active="route().current('dashboard')"
-                        >Dashboard</ResponsiveNavLink
+                        v-for="item in menuItems"
+                        :key="item.routeName"
+                        :href="item.href"
+                        :active="route().current(item.routeName)"
+                        :isScrolled="isScrolled || !route().current('home')"
                     >
+                        {{ item.name }}
+                    </ResponsiveNavLink>
                 </div>
                 <!-- Responsive Settings Options -->
                 <div class="border-t border-gray-200 pb-1 pt-4">
@@ -170,8 +142,10 @@ const dashboardURL =
                         </div>
                     </div>
                     <div class="mt-3 space-y-1">
-                        <ResponsiveNavLink :href="route('profile.edit')"
-                            >Profile</ResponsiveNavLink
+                        <ResponsiveNavLink
+                            :href="dashboardURL"
+                            :active="route().current('dashboard')"
+                            >Dashboard</ResponsiveNavLink
                         >
                         <ResponsiveNavLink
                             :href="route('logout')"
@@ -185,7 +159,3 @@ const dashboardURL =
         </nav>
     </div>
 </template>
-
-<style scoped>
-/* Add any custom styles here */
-</style>

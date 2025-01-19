@@ -46,7 +46,7 @@ const props = defineProps({
             <div
                 class="container w-full flex items-center justify-between relative py-3"
             >
-                <button @click="toggleMenu">
+                <button @click="toggleMenu" class="md:hidden">
                     <img
                         src="/media/icons/menu.svg"
                         class="size-8"
@@ -56,7 +56,7 @@ const props = defineProps({
                 <!-- Logo -->
                 <Link
                     :href="route('home')"
-                    class="absolute left-1/2 transform -translate-x-1/2"
+                    class="absolute left-1/2 transform -translate-x-1/2 md:static"
                 >
                     <ApplicationLogo class="block h-12 w-auto" />
                 </Link>
@@ -92,7 +92,3 @@ const props = defineProps({
         </div>
     </div>
 </template>
-
-<style scoped>
-/* Add any additional styles for the off-canvas menu here */
-</style>

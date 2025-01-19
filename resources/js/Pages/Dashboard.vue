@@ -109,7 +109,7 @@ const props = defineProps({
                         <img
                             :src="props.questionnaireResult?.category.image"
                             alt=""
-                            class="mx-auto"
+                            class="mx-auto max-w-72"
                         />
                     </div>
                 </div>

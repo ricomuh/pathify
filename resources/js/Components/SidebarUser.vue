@@ -7,23 +7,23 @@ const menuItems = [
         name: "Dashboard",
         href: route("user.dashboard"),
         icon: "/media/icons/dashboard.svg",
-        active: "dashboard",
+        active: "user.dashboard",
     },
     {
         name: "Kelas Saya",
         href: route("user.my-courses.index"),
         icon: "/media/icons/class.svg",
-        active: "my-courses.index",
+        active: "user.my-courses.index",
     },
     {
         name: "Event Saya",
         href: route("user.my-events.index"),
         icon: "/media/icons/event.svg",
-        active: "my-events.index",
+        active: "user.my-events.index",
     },
     {
         name: "Akun Saya",
-        href: "/profile",
+        href: route("profile.edit"),
         icon: "/media/icons/profile.svg",
         active: "profile.edit",
     },
@@ -76,3 +76,10 @@ const menuItems = [
         </Link>
     </div>
 </template>
+
+<style scoped>
+.filter-image {
+    filter: invert(26%) sepia(5%) saturate(299%) hue-rotate(149deg)
+        brightness(102%) contrast(87%);
+}
+</style>

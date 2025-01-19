@@ -1,5 +1,4 @@
 <script setup>
-import Navbar from "@/Components/Navbar.vue";
 import NavbarWatchCourse from "@/Components/NavbarWatchCourse.vue";
 
 const props = defineProps({
@@ -15,16 +14,14 @@ const props = defineProps({
         <div class="min-h-screen bg-gray-100">
             <!-- Navbar -->
             <NavbarWatchCourse
-                class="lg:hidden"
                 :course="props.course"
                 :currentOrder="currentOrder"
                 :order="props.order"
                 :defaultAccordionValue="defaultAccordionValue"
             />
-            <Navbar class="hidden lg:block" />
 
             <!-- Page Content -->
-            <main class="pt-20">
+            <main class="pt-16">
                 <slot />
             </main>
         </div>
