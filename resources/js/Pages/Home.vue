@@ -77,7 +77,7 @@ const advantages = ref([
             <div class="marquee">
                 <div class="marquee-content">
                     <!-- Repeating content dynamically using Vue.js -->
-                    <template v-for="i in 8" :key="i">
+                    <template v-for="i in 4" :key="i">
                         <p
                             class="text-2xl lg:text-2xl-plus xl:text-3xl-plus text-neutral-20 font-semibold text-center leading-[2.4rem]"
                         >
@@ -121,9 +121,9 @@ const advantages = ref([
                 >
                     <div class="col-span-1">
                         <h1
-                            class="text-3xl md:text-4xl text-center xl:text-start text-neutral-20 font-bold leading-[2.7rem]"
+                            class="text-3xl md:text-4xl text-center xl:text-start text-neutral-20 font-bold lg:leading-[2.7rem]"
                         >
-                            Rasakan manfaat dari bergabung bersama kami
+                            Rasakan Manfaat dari Bergabung Bersama Kami
                         </h1>
                     </div>
                     <div class="xl:col-span-3">
@@ -161,20 +161,22 @@ const advantages = ref([
 
         <!-- Role -->
         <div class="bg-primary-pressed py-12">
-            <h1 class="text-center text-4xl text-neutral-20 font-bold mb-6">
+            <h1
+                class="text-center text-3xl md:text-4xl text-neutral-20 font-bold mb-6"
+            >
                 Pilih Rolemu, Sekarang!
             </h1>
             <div class="marquee">
                 <div class="marquee-content !gap-6">
-                    <template v-for="i in 8" :key="i">
+                    <template v-for="i in 2" :key="i">
                         <BadgeCategory
                             v-for="category in props.categories"
                             :key="category.id"
                             :category="category.name"
                             :backgroundColor="category.color"
                             :icons="category.icon_image"
-                            fontSize="text-lg"
-                            paddingY="py-1.5 rounded-xl"
+                            fontSize="md:text-lg"
+                            paddingY="py-1 md:py-1.5 rounded-xl"
                         />
                     </template>
                 </div>
@@ -183,8 +185,10 @@ const advantages = ref([
 
         <!-- Event -->
         <div class="bg-primary py-12">
-            <h1 class="text-center text-4xl text-neutral-20 font-bold mb-6">
-                Ikuti Event, dapatkan Insight
+            <h1
+                class="text-center text-3xl md:text-4xl text-neutral-20 font-bold mb-6"
+            >
+                Ikuti Event, Dapatkan Insight
             </h1>
             <div class="marquee">
                 <div class="marquee-event inline-flex gap-5">
